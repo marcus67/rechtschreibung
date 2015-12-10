@@ -3,98 +3,84 @@
 import ui
 import log
 
+import defaults
 import ui_util
+import popup
 import predefined_modes
 
+reload(defaults)
 reload(ui_util)
+reload(popup)
 reload(predefined_modes)
 
 global logger
 logger = log.open_logging()
 
-class MyTableViewDelegate (object):
-  
-  def __init__(self, parent_view_controller):
-    
-    self.parent_view_controller = parent_view_controller
-    
-  def tableview_did_select(self, tableview, section, row):
-    # Called when a row was selected.
-    print "SELECT!"
-    pass
-
-  def tableview_did_deselect(self, tableview, section, row):
-    # Called when a row was de-selected (in multiple selection mode).
-    pass
-
-  def tableview_title_for_delete_button(self, tableview, section, row):
-    # Return the title for the 'swipe-to-***' button.
-    return 'Delete'
-
-  def tableview_accessory_button_tapped(self, tableview, section, row):
-    
-    global logger
-    print "hallo!"
-    logger.debug("tableview_accessory_button_tapped: tableview='%s' row='%s'" % ( str(tableview), str(row) ))
-
-
-class spelling_mode_selector(ui_util.view_controller):
+class SpellingModeSelector(ui_util.view_controller):
   
   def __init__(self, parent_vc=None):
     
-    super(spelling_mode_selector, self).__init__(parent_vc)
-#    ui_util.view_controller.__init__(self, parent_vc)
-
-    self.selectedIndex = None
+    super(SpellingModeSelector, self).__init__(parent_vc)
+    self.selected_index = None
+    self.popup_vc = None
     self.load('mode_selector')
          
   def get_selected_mode(self):
     
-    if self.selectedIndex == None:
+    if self.selected_index == None:
       return None
+      
     else:
-      return self.modes[self.selectedIndex]
+      return self.modes[self.selected_index]
 
   def is_my_action(self, sender):
     
     return sender == self
     
-  def select(self, modes):
+  def select(self, modes, cancel_label=defaults.DEFAULT_CANCEL_LABEL, close_label=defaults.DEFAULT_CLOSE_LABEL, style='sheet'):
 
     global logger
         
     self.modes = modes
+    self.cancel_label = cancel_label
+    self.close_label = close_label
+    
     items = []
 
     for mode in modes:
      
       logger.debug("add mode '%s' to list" % mode.name)
       entryMap = { 'title' : mode.name }
+
       if mode.isImmutable: 
         entryMap['image'] = 'ionicons-ios7-locked-outline-32'
         logger.debug("add image for mode '%s'" % mode.name)
+
       if len(mode.comment) > 0:
         entryMap['accessory_type'] = 'detail_button'
         logger.debug("add accessory for mode '%s'" % mode.name)
         
-      
       items.append(entryMap)
       
-    self.listDataSource = ui.ListDataSource(items)
-    #self.listDataSource.delegate = MyTableViewDelegate(self)
-    self.listDataSource.tableview_accessory_button_tapped = lambda tableview, section, row:self.tableview_accessory_button_tapped(row)
-    self.selectedIndex = None
-    self.view['tableview_spelling_mode_selector'].data_source = self.listDataSource
+    self.list_data_source = ui.ListDataSource(items)
+    self.list_data_source.highlight_color = defaults.COLOR_LIGHT_GREEN
+#    self.list_data_source.tableview_accessory_button_tapped = lambda tableview, section, row:self.tableview_accessory_button_tapped(row)
+    self.selected_index = None
+    self.tableview_spelling_mode_selector = self.find_subview_by_name('tableview_spelling_mode_selector')
+    self.tableview_spelling_mode_selector.data_source = self.list_data_source
+    
+    self.button_view_cancel = self.find_subview_by_name('button_cancel')
+    self.button_view_cancel.title = self.cancel_label
 
-    self.present()
+    self.present(style)
     
     if not self.parent_view:
       self.view.wait_modal()
     
     
-  def tableview_accessory_button_tapped(self, row):
-    
-    print str(row)
+#  def tableview_accessory_button_tapped(self, row):
+#    
+#    print str(row)
     
   def handle_action(self, sender):
     
@@ -102,8 +88,8 @@ class spelling_mode_selector(ui_util.view_controller):
     
     close = False
     if type(sender).__name__ == 'ListDataSource':
-      self.selectedIndex = sender.selected_row
-      logger.debug("handle_action from ListDataSource: selectedIndex=%d" % self.selectedIndex)
+      self.selected_index = sender.selected_row
+      logger.debug("handle_action from ListDataSource: selected_index=%d" % self.selected_index)
       close = True
         
     elif sender.name == 'button_cancel':
@@ -114,6 +100,18 @@ class spelling_mode_selector(ui_util.view_controller):
       self.view.close()
       if self.parent_view:
         self.parent_view.handle_action(self)
+        
+  def handle_accessory(self, sender):
+    
+    global logger
+    
+    logger.debug("handle_accessory row=%d" % sender.tapped_accessory_row)
+    comment = self.modes[sender.tapped_accessory_row].comment
+         
+    if not self.popup_vc:
+      self.popup_vc = popup.PopupViewController()
+
+    self.popup_vc.present(comment, close_label=self.close_label)
 
     
 def test():
@@ -121,7 +119,7 @@ def test():
   global logger
   
   logger.info("Test started")
-  selector = spelling_mode_selector()
+  selector = SpellingModeSelector()
   
   selector.select(predefined_modes.get_predefined_modes())
   result = selector.get_selected_mode()

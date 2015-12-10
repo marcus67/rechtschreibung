@@ -50,6 +50,7 @@ class view_controller (object):
     self.child_controllers = {}
     self.view = None
     self.subview_map = {}
+    self.warningWorkaroundIssued = False
     
   def add_child_controller(self, name, child_controller):
     
@@ -96,7 +97,9 @@ class view_controller (object):
         return view
       else:
         if type(view).__name__ == 'SegmentedControl':
-          logger.warning("find_subview_by_name2: WORKAROUND: skipping iteration over subviews of SegmentedControl '%s'" % view.name)
+          if not self.warningWorkaroundIssued:
+            logger.warning("find_subview_by_name2: WORKAROUND: skipping iteration over subviews of SegmentedControl '%s'" % view.name)
+            self.warningWorkaroundIssued = True
         else:
           if view.subviews:
             for subview in view.subviews:

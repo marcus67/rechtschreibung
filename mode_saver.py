@@ -5,10 +5,12 @@ import console
 import log
 import copy
 
+import defaults
 import ui_util
 import spelling_mode
 import mode_manager
 
+reload(defaults)
 reload(ui_util)
 reload(spelling_mode)
 reload(mode_manager)
@@ -16,51 +18,73 @@ reload(mode_manager)
 global logger
 logger = log.open_logging()
 
-class spelling_mode_saver(ui_util.view_controller):
+class TextFieldDelegate (object):
+  
+  def __init__(self, vc, name):
+    self.vc = vc
+    self.name = name
+    
+  def textfield_did_change(self, textview):
+    self.action = 'textfield_did_change'
+    self.vc.handle_action(self)
+
+
+class SpellingModeSaver(ui_util.view_controller):
   
   def __init__(self, parent_vc=None):
     
-    ui_util.view_controller.__init__(self, parent_vc)
+    super(SpellingModeSaver, self).__init__(parent_vc)
+    self.load('mode_saver')
+    
+    self.text_field_mode_name = self.find_subview_by_name('textfield_mode_name')
+    self.text_field_mode_name.delegate = TextFieldDelegate(self, 'textfield_mode_name')
+    self.text_field_mode_name.action = self.handle_action
+    
+    self.text_view_comment = self.find_subview_by_name('textview_comment')
+    self.button_view_cancel = self.find_subview_by_name('button_cancel')
+    self.button_view_save = self.find_subview_by_name('button_save')
+    self.tableview_mode_selector = self.find_subview_by_name('tableview_mode_selector')
 
     self.selectedIndex = None
-    self.load('mode_saver')
+    self.listDataSource = None
          
   def is_my_action(self, sender):
     
     return sender == self
     
-  def select(self, modes, currentMode):
+  def select(self, modes, current_mode, cancel_label='Abbrechen', save_label='Speichern', overwrite_label='Überschreiben', style='sheet'):
 
     global logger
         
-    self.currentMode = copy.copy(currentMode)
+    self.cancel_label = cancel_label
+    self.save_label = save_label
+    self.overwrite_label = overwrite_label
+    self.current_mode = copy.copy(current_mode)
     self.modes = modes
     items = []
 
     for mode in modes:
       
       logger.debug("add mode '%s' to list" % mode.name)
-      entryMap = { 'title' : mode.name }
+      entry_map = { 'title' : mode.name }
 
-      if len(mode.comment) > 0:
-        entryMap['accessory_type'] = 'detail_button'
-        logger.debug("add accessory for mode '%s'" % mode.name)
-              
-      items.append(entryMap)
+      items.append(entry_map)
       
-    self.listDataSource = ui.ListDataSource(items)
-    self.view['tableview_mode_selector'].data_source = self.listDataSource
+    self.list_data_source = ui.ListDataSource(items)
+    self.list_data_source.highlight_color = defaults.COLOR_LIGHT_GREEN
+    self.tableview_mode_selector.data_source = self.list_data_source
     
-    self.set_model(self.currentMode)
+    self.set_model(self.current_mode)
+    self.update_controls()
 
-    self.present()
+    self.present(style)
     
     if not self.parent_view:
       self.view.wait_modal()
       
   def get_selected_mode(self):
     
-    return self.currentMode
+    return self.current_mode
         
   def handle_action(self, sender):
     
@@ -74,75 +98,65 @@ class spelling_mode_saver(ui_util.view_controller):
       
       self.fill_model(self.modes[self.selectedIndex])
               
+    elif sender.name == 'textfield_mode_name' and sender.action == 'textfield_did_change':
+      logger.debug("handle_action from textfield")
+      self.update_controls()
+
     elif sender.name == 'button_cancel':
       logger.debug("handle_action from cancel button")
-      self.currentMode = None
+      self.current_mode = None
       close =True
       
     elif sender.name == 'button_save':
       logger.debug("handle_action from save button")
       
-      view = self.find_subview_by_name('textview_comment')
-      self.currentMode.comment = view.text
-      view = self.find_subview_by_name('textfield_mode_name')
-      self.currentMode.name = view.text
-      
-      found = False
-      for mode in self.modes:
-        
-        if mode.name == self.currentMode.name:
-          found = True
-          
-      if found:
-        
-        try:
-          
-          pass
-          close = True
-          #result = console.alert("Bitte bestätigen", "Existierenden Regelsatz ersetzen?", button1="Überschreiben")
-        
-        except KeyboardInterrupt as i:
-          
-          pass
-
-      else:
-        
-        close = True
-    
+      self.current_mode.comment = self.text_view_comment.text
+      self.current_mode.name = self.text_field_mode_name.text
+      close = True    
 
     if close:
       self.view.close()
       if self.parent_view:
         self.parent_view.handle_action(self)
 
-  def fill_model(self, mode):
-    
-    view = self.find_subview_by_name('textview_comment')
-    view.text = mode.comment
-    view = self.find_subview_by_name('textfield_mode_name')
-    view.text = mode.name
+  def update_controls(self):
     index = 0
     found = False
     for aMode in self.modes:
         
-      if mode.name == self.aMode.name:
+      if self.text_field_mode_name.text == aMode.name:
           found = True
           break
       index = index + 1
           
+    self.button_view_cancel.title = self.cancel_label
+
     if found:
-      view = self.find_subview_by_name('tableview_mode_selector')
-      view.selectedIndex = index
+      self.button_view_save.title = self.overwrite_label
+      self.button_view_save.background_color = defaults.COLOR_LIGHT_RED
+      self.list_data_source.selected_row = index
+      
+    else:
+      self.button_view_save.title = self.save_label
+      self.button_view_save.background_color = defaults.COLOR_GREY
+      self.list_data_source.selected_row = -1
+
+  def fill_model(self, mode):
+    
+    self.text_view_comment.text = mode.comment
+    self.text_field_mode_name.text = mode.name
+    self.update_controls()
+      
     
 def test():
   
   global logger
   
   logger.info("Test started")
-  saver = spelling_mode_saver()
+  saver = SpellingModeSaver()
   
-  currentMode = spelling_mode.spelling_mode()
-  saver.select(mode_manager.get_available_modes(False), currentMode)
+  current_mode = spelling_mode.spelling_mode()
+  saver.select(mode_manager.get_available_modes(False), current_mode)
   result = saver.get_selected_mode()
   
   if result:
@@ -155,4 +169,4 @@ if __name__ == '__main__':
   test()
     
     
-    
+  

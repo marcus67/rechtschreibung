@@ -119,6 +119,9 @@ def aumlu(c=C_NONE):
 def b(c=C_NONE):
   return capitalize("b", c)
 
+def bb():
+  return double_consonant("b")
+      
 def c(c=C_NONE, m=C_K):
   if default_mode.switch_simplification_c_kz:
     if m == C_K:

@@ -7,6 +7,9 @@ reload(spelling_mode)
 from rulesets import *
 from spelling_mode import *
 
+def abbrechen(c=0):
+  return a(c)+bb()+r()+e()+ch()+e()+n()
+
 def aus(c=0):
   return au(c)+s()
   
@@ -63,6 +66,12 @@ def sie(c=0):
   
 def sind(c=0):
   return s(c)+i()+n()+d(m=VOICELESS)
+  
+def speichern(c=0):
+  return sp(c)+ei()+ch()+e()+r()+n()
+
+def ueberschreiben(c=0):
+  return uuml(c)+b()+e()+r()+sch()+r()+ei()+b()+e()+n()
   
 def und(c=0):
   return u(c)+n()+d(m=VOICELESS)

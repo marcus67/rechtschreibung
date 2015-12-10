@@ -58,9 +58,9 @@ class main_view_controller ( ui_util.view_controller ) :
     self.autoHide = True
     self.autoHideSeconds = 3
     self.suppressShowChanges = False
-    self.selectModeVC = mode_selector.spelling_mode_selector(self)
-    self.selectModeForSaveVC = mode_saver.spelling_mode_saver(self)
-    self.info_popup = popup.popup_view_controller()
+    self.selectModeVC = mode_selector.SpellingModeSelector(self)
+    self.selectModeForSaveVC = mode_saver.SpellingModeSaver(self)
+    self.info_popup = popup.PopupViewController()
     self.set_reference_mode(filter(lambda m:m.isReference, mode_manager.get_available_modes())[0])
     self.loadedMode = spelling_mode.spelling_mode()
     
@@ -186,7 +186,7 @@ class main_view_controller ( ui_util.view_controller ) :
     
   def load_mode_start(self):
     
-    self.selectModeVC.select(mode_manager.get_available_modes())
+    self.selectModeVC.select(mode_manager.get_available_modes(), cancel_label=words.abbrechen(c=rulesets.C_BOS), close_label=words.schlieszen(c=rulesets.C_BOS))
     
     
   def load_mode_finish(self):
@@ -201,7 +201,7 @@ class main_view_controller ( ui_util.view_controller ) :
     
   def save_mode_start(self):
     
-    self.selectModeForSaveVC.select(mode_manager.get_available_modes(), self.model)
+    self.selectModeForSaveVC.select(mode_manager.get_available_modes(), self.model, cancel_label=words.abbrechen(c=rulesets.C_BOS), save_label=words.speichern(c=rulesets.C_BOS), overwrite_label=words.ueberschreiben(c=rulesets.C_BOS), style='sheet')
     
     
   def save_mode_finish(self):

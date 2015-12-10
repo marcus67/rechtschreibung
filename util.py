@@ -1,5 +1,6 @@
 #coding: utf-8
 import difflib
+import string
 
 DIFF_INSERT = u'i'
 DIFF_DELETE = u'd'
@@ -41,7 +42,6 @@ span#ch {
 
 def get_change_control_strings(oldString, newString):
 
-  
     enhancedString = unicode( oldString )
     controlString = unicode( " " * len(enhancedString) )
     
@@ -59,12 +59,31 @@ def get_change_control_strings(oldString, newString):
     return ( enhancedString, controlString )    
   
   
+def get_multi_token_change_control_strings(oldString, newString):
+  
+  oldTokens = string.split(oldString, ' ')
+  newTokens = string.split(newString, ' ')
+  if len(oldTokens) == len(newTokens):
+    enhancedString = ''
+    controlString = ''
+    i = 0
+    for oldToken in oldTokens:
+      enhancedToken, tokenControlString = get_change_control_strings(oldToken,newTokens[i])
+      if len(enhancedString) > 0:
+        enhancedString = enhancedString + ' '
+        controlString = controlString + ' '  
+      enhancedString = enhancedString + enhancedToken
+      controlString = controlString + tokenControlString
+      i = i + 1
+    return (enhancedString, controlString)
+  else:  
+    return get_change_control_strings(oldString, newString)  
   
 def get_html_body(oldString, newString, show_changes):
   
   if oldString and show_changes:
     
-    enhancedNewString, controlString = get_change_control_strings(oldString, newString)
+    enhancedNewString, controlString = get_multi_token_change_control_strings(oldString, newString)
     
     #print enhancedNewString
     #print controlString
