@@ -90,3 +90,7 @@ class spelling_mode:
   def __eq__(self, other):
     
     return self.__dict__ == other.__dict__
+    
+def compare_spelling_modes(mode1, mode2):
+  return cmp(mode1.name.lower(), mode2.name.lower())
+  

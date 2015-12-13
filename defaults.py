@@ -1,0 +1,10 @@
+#coding: utf-8
+
+COLOR_GREY = '#DDDDDD'
+COLOR_LIGHT_RED = '#FF8080'
+COLOR_LIGHT_GREEN = '#C4FFA4'
+
+DEFAULT_CLOSE_LABEL = 'Schließen'
+DEFAULT_CANCEL_LABEL = 'Abbrechen'
+
+
