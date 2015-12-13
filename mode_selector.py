@@ -7,11 +7,13 @@ import defaults
 import ui_util
 import popup
 import predefined_modes
+import spelling_mode
 
 reload(defaults)
 reload(ui_util)
 reload(popup)
 reload(predefined_modes)
+reload(spelling_mode)
 
 global logger
 logger = log.open_logging()
@@ -41,27 +43,28 @@ class SpellingModeSelector(ui_util.view_controller):
 
     global logger
         
-    self.modes = modes
+    self.modes = sorted(modes, spelling_mode.compare_spelling_modes)
     self.cancel_label = cancel_label
     self.close_label = close_label
     
     items = []
 
-    for mode in modes:
+    for mode in self.modes:
      
       logger.debug("add mode '%s' to list" % mode.name)
       entryMap = { 'title' : mode.name }
 
       if mode.isImmutable: 
-        entryMap['image'] = 'ionicons-ios7-locked-outline-32'
-        logger.debug("add image for mode '%s'" % mode.name)
-
+        entryMap['image'] = 'ionicons-ios7-locked-32'
+      else:
+        entryMap['image'] = 'ionicons-ios7-unlocked-outline-32'
+        
       if len(mode.comment) > 0:
         entryMap['accessory_type'] = 'detail_button'
         logger.debug("add accessory for mode '%s'" % mode.name)
         
       items.append(entryMap)
-      
+        
     self.list_data_source = ui.ListDataSource(items)
     self.list_data_source.highlight_color = defaults.COLOR_LIGHT_GREEN
 #    self.list_data_source.tableview_accessory_button_tapped = lambda tableview, section, row:self.tableview_accessory_button_tapped(row)
