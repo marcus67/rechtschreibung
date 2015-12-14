@@ -3,4 +3,5 @@ test.py
 log
 configurations
 view_harmonization.py
-
+view_capitalization.py
+view_layout.py
