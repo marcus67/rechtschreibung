@@ -125,7 +125,7 @@ class main_view_controller ( ui_util.view_controller ) :
       info_name = sender.name[len(INFO_PREFIX):]
       info_messages = infos.get_info_messages()
       if info_name in info_messages:
-        self.info_popup.show_info(info_messages[info_name], button_label=words.schlieszen(c=rulesets.C_BOS))
+        self.info_popup.present(info_messages[info_name], close_label=words.schlieszen(c=rulesets.C_BOS))
       else:
         print "ERROR: cannot find info text for %s" % info_name
       

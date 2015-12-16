@@ -28,6 +28,8 @@ def capitalize(l, c=C_NONE):
       return 'Ö'
     elif l == 'š':
       return 'Š'
+    elif l == 'č':
+      return 'Č'
     elif l == 'ß':
       if default_mode.switch_capitalization_expand_sz:
         return 'SS'
@@ -129,7 +131,7 @@ def c(c=C_NONE, m=C_K):
     elif m == C_S:
       return s(c)
     elif m == C_TSCH:
-      return t(c) + sch()
+      return tsch(c)
     else:
       return z(c)
   else:
@@ -281,6 +283,12 @@ def st(c=C_NONE):
 
 def t(c=C_NONE):
   return capitalize("t", c)
+  
+def tsch(c=C_NONE):
+  if default_mode.switch_simplification_tsch_c:
+    return capitalize("č", c)
+  else:  
+    return t(c) + sch()
 
 def th(c=C_NONE):
   if default_mode.switch_simplification_th_t:

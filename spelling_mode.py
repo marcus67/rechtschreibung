@@ -69,6 +69,7 @@ class spelling_mode:
     self.switch_simplification_y_uej = False
     self.switch_simplification_z_ts = False
     self.switch_simplification_sz_ss = False
+    self.switch_simplification_tsch_c = False
     self.switch_simplification_sch_s = False
     self.switch_simplification_eu_oi = False
     self.switch_simplification_ei_ai = False
