@@ -1,0 +1,10 @@
+[webdav]
+
+epoch_delta = 3600
+
+[repository]
+
+name = Rechtschreibung
+local_path = ../rechtschreibung
+remote_path = /rechtschreibung
+
