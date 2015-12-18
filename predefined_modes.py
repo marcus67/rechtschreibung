@@ -19,6 +19,7 @@ def get_predefined_modes():
   mode.switch_simplification_x_ks = True
   mode.switch_simplification_y_uej = True
   mode.switch_simplification_sch_s = True
+  mode.switch_simplification_tsch_c = True
   mode.switch_simplification_eu_oi = True
   mode.switch_simplification_ei_ai = True
   mode.switch_simplification_aumlu_oi = True
