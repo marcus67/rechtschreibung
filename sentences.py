@@ -21,15 +21,15 @@ def sentence2():
 
 # Die kleine Nuss mit großer Masse liegt auf der Straße.
 def sentence3(): 
-  return d(c=C_BOS)+ie()+space()+k()+l()+ei()+n()+e()+space()+n(c=C_NOUN)+u()+sz(m=EOW)+space()+m()+i()+t()+space()+g()+r()+o()+sz()+e()+r()+space()+m(c=C_NOUN)+a()+ss()+e()+space()+l()+ie()+g()+t()+space()+au()+f()+space()+d()+e()+r()+space()+st(c=C_NOUN)+r()+a()+sz()+e()+fs()
+  return d(c=C_BOS)+ie()+space()+k()+l()+ei()+n()+e()+space()+n(c=C_NOUN)+u()+sz(m=EOW)+space()+mit()+space()+g()+r()+o()+sz()+e()+r()+space()+m(c=C_NOUN)+a()+ss()+e()+space()+l()+ie()+g()+t()+space()+au()+f()+space()+d()+e()+r()+space()+st(c=C_NOUN)+r()+a()+sz()+e()+fs()
 
 # Viele Häuser sind Beute von kecken Dachsen.
 def sentence4():
   return viel(c=C_BOS)+e()+space()+h(c=C_NOUN)+aumlu()+s()+e()+r()+space()+sind()+space()+b(c=C_NOUN)+eu()+t()+e()+space()+von()+space()+k()+e()+ck()+e()+n()+space()+d(c=C_NOUN)+a()+ch(m=CH_CK)+s()+e()+n()+fs()
   
-# Der Cellist spielt für ein paar Cent im Casino bei 5 Grad Celcius.
+# Der Cellist begleitet den Chor für ein paar Cent im Casino bei 5 Grad Celcius.
 def sentence5():
-  return der(c=C_BOS)+space()+c(c=C_NOUN, m=C_TSCH)+e()+ll()+i()+s()+t()+space()+sp()+ie()+l()+t()+space()+fuer()+space()+ein()+space()+p()+aa()+r()+space()+c(c=C_NOUN, m=C_S)+e()+n()+t()+space()+i()+m()+space()+c(c=C_NOUN)+a()+s()+i()+n()+o()+space()+bei()+space()+"5"+space()+g(c=C_NOUN)+r()+a()+d(m=VOICELESS)+space()+c(c=C_NOUN, m=C_Z)+e()+l()+s()+i()+u()+s()+fs()
+  return der(c=C_BOS)+space()+c(c=C_NOUN, m=C_TSCH)+e()+ll()+i()+s()+t()+space()+b()+e()+g()+l()+ei()+t()+e()+t()+space()+den()+space()+ch(m=CH_K, c=C_NOUN)+o()+r()+space()+fuer()+space()+ein()+space()+p()+aa()+r()+space()+c(c=C_NOUN, m=C_S)+e()+n()+t()+space()+i()+m()+space()+c(c=C_NOUN)+a()+s()+i()+n()+o()+space()+bei()+space()+"5"+space()+g(c=C_NOUN)+r()+a()+d(m=VOICELESS)+space()+c(c=C_NOUN, m=C_Z)+e()+l()+s()+i()+u()+s()+fs()
 
 # Casimir und Wendy sind zwei durchschnittliche Deutsche.
 def sentence001():
@@ -41,7 +41,7 @@ def sentence002():
 
 # Casimir ist eher konservativ und möchte am liebsten den Status Quo wiederherstellen, wie er vor der Rechtschreibreform im Jahre 1996 gültig war.
 def sentence003():
-  return casimir(c=C_BOS)+space()+ist()+space()+e()+h()+e()+r()+space()+k()+o()+n()+s()+e()+r()+v(m=VOICEFULL)+a()+t()+i()+v()+space()+und()+space()+m()+ouml()+ch()+t()+e()+space()+a()+m()+space()+l()+ie()+b()+s()+t()+e()+n()+space()+d()+e()+n()+space()+s(c=C_NOUN)+t()+a()+t()+u()+s()+space()+qu(c=C_NOUN)+o()+space()+w()+ie()+d()+e()+r()+h()+e()+r()+s()+t()+e()+ll()+e()+n()+comma_sc()+space()+w()+ie()+space()+e()+r()+space()+v()+o()+r()+space()+der()+space()+r(c=C_NOUN)+e()+ch()+t()+sch()+r()+ei()+b()+r()+e()+f()+o()+r()+m()+space()+i()+m()+space()+j(c=C_NOUN)+ah()+r()+e()+space()+"1996"+space()+g()+uuml()+l()+t()+i()+g()+space()+w()+a()+r()+fs()
+  return casimir(c=C_BOS)+space()+ist()+space()+e()+h()+e()+r()+space()+k()+o()+n()+s()+e()+r()+v(m=VOICEFULL)+a()+t()+i()+v()+space()+und()+space()+m()+ouml()+ch()+t()+e()+space()+a()+m()+space()+l()+ie()+b()+s()+t()+e()+n()+space()+den()+space()+s(c=C_NOUN)+t()+a()+t()+u()+s()+space()+qu(c=C_NOUN)+o()+space()+w()+ie()+d()+e()+r()+h()+e()+r()+s()+t()+e()+ll()+e()+n()+comma_sc()+space()+w()+ie()+space()+e()+r()+space()+v()+o()+r()+space()+der()+space()+r(c=C_NOUN)+e()+ch()+t()+sch()+r()+ei()+b()+r()+e()+f()+o()+r()+m()+space()+i()+m()+space()+j(c=C_NOUN)+ah()+r()+e()+space()+"1996"+space()+g()+uuml()+l()+t()+i()+g()+space()+w()+a()+r()+fs()
    
 # Wendy ist eher fortschrittlich und überlegt ständig, wie man die Rechtschreibung verbessern und vereinfachen kann. 
 
@@ -71,11 +71,11 @@ def sentence009():
   
 # Besonders störend sind dabei die Fälle, bei denen sich die Aussprache von Worten nicht aus dem Schriftbild ableiten lässt.
 def sentence010():
-  return b(c=C_BOS)+e()+s()+o()+n()+d()+e()+r()+s()+space()+st()+ouml()+r()+end()+space()+sind()+space()+d()+a()+b()+ei()+space()+die()+space()+f(c=C_NOUN)+auml()+ll()+e()+comma_sc()+space()+bei()+space()+d()+e()+n()+e()+n()+space()+sich()+space()+die()+space()+a(c=C_NOUN)+u()+s()+sp()+r()+a()+ch()+e()+space()+von()+space()+w(c=C_NOUN)+o()+r()+t()+e()+n()+space()+n()+i()+ch()+t()+space()+aus()+space()+dem()+space()+sch(c=C_NOUN)+r()+i()+f()+t()+b()+i()+l()+d(m=VOICELESS)+space()+a()+b()+l()+ei()+t()+e()+n()+space()+l()+auml()+ss()+t()+fs()
+  return b(c=C_BOS)+e()+s()+o()+n()+d()+e()+r()+s()+space()+st()+ouml()+r()+end()+space()+sind()+space()+d()+a()+b()+ei()+space()+die()+space()+f(c=C_NOUN)+auml()+ll()+e()+comma_sc()+space()+bei()+space()+den()+e()+n()+space()+sich()+space()+die()+space()+a(c=C_NOUN)+u()+s()+sp()+r()+a()+ch()+e()+space()+von()+space()+w(c=C_NOUN)+o()+r()+t()+e()+n()+space()+n()+i()+ch()+t()+space()+aus()+space()+dem()+space()+sch(c=C_NOUN)+r()+i()+f()+t()+b()+i()+l()+d(m=VOICELESS)+space()+a()+b()+l()+ei()+t()+e()+n()+space()+l()+auml()+ss()+t()+fs()
   
 #  Casimir möchte dennoch diesen althergebrachten Regelsatz erhalten und damit das Schriftbild, das ihm aus fast der gesamten heute verfügbaren Literatur vertraut ist.
 def sentence011():
-  return casimir(c=C_BOS)+space()+m()+ouml()+ch()+t()+e()+space()+d()+e()+nn()+o()+ch()+space()+d()+ie()+s()+e()+n()+space()+a()+l()+t()+h()+e()+r()+g()+e()+b()+r()+a()+ch()+t()+e()+n()+space()+r(c=C_NOUN)+e()+g()+e()+l()+s()+a()+t()+z()+space()+e()+r()+h()+a()+l()+t()+e()+n()+space()+und()+space()+d()+a()+m()+i()+t()+space()+das()+space()+sch(c=C_NOUN)+r()+i()+f()+t()+b()+i()+l()+d()+comma_sc()+space()+das()+space()+ih()+m()+space()+aus()+space()+f()+a()+s()+t()+space()+der()+space()+g()+e()+s()+a()+m()+t()+e()+n()+space()+h()+eu()+t()+e()+space()+v()+e()+r()+f()+uuml()+g()+b()+a()+r()+e()+n()+space()+l(c=C_NOUN)+i()+t()+e()+r()+a()+t()+u()+r()+space()+v()+e()+r()+t()+r()+a()+u()+t()+space()+ist()+fs()
+  return casimir(c=C_BOS)+space()+m()+ouml()+ch()+t()+e()+space()+d()+e()+nn()+o()+ch()+space()+d()+ie()+s()+e()+n()+space()+a()+l()+t()+h()+e()+r()+g()+e()+b()+r()+a()+ch()+t()+e()+n()+space()+r(c=C_NOUN)+e()+g()+e()+l()+s()+a()+t()+z()+space()+e()+r()+h()+a()+l()+t()+e()+n()+space()+und()+space()+d()+a()+mit()+space()+das()+space()+sch(c=C_NOUN)+r()+i()+f()+t()+b()+i()+l()+d()+comma_sc()+space()+das()+space()+ih()+m()+space()+aus()+space()+f()+a()+s()+t()+space()+der()+space()+g()+e()+s()+a()+m()+t()+e()+n()+space()+h()+eu()+t()+e()+space()+v()+e()+r()+f()+uuml()+g()+b()+a()+r()+e()+n()+space()+l(c=C_NOUN)+i()+t()+e()+r()+a()+t()+u()+r()+space()+v()+e()+r()+t()+r()+a()+u()+t()+space()+ist()+fs()
   
 # Wendy hat einen anderen Ansatz. 
 def sentence012():

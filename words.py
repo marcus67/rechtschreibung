@@ -23,10 +23,13 @@ def dass(c=0):
   return d(c)+a()+sz(m=EOW)
   
 def das(c=0):
-  return d(c)+a()+s()
+  return d(c)+a()+s(m=ACTUALLY_SHORT)
 
 def dem(c=0):
-  return d(c)+e()+m()
+  return d(c)+e(m=ACTUALLY_ELONGATED)+m()
+
+def den(c=0):
+  return d(c)+e(m=ACTUALLY_ELONGATED)+n()
   
 def der(c=0):
   return d(c)+e()+r()
@@ -50,10 +53,10 @@ def hat(c=0):
   return h(c)+a()+t()
   
 def man(c=0):
-  if get_default_mode().switch_harmonization_homophony:
-    return m(c)+a()+nn()
-  else:
-    return m(c)+a()+n()
+  return m(c)+a()+n(m=ACTUALLY_SHORT)
+    
+def mit(c=0):
+  return m(c)+i()+t(m=ACTUALLY_SHORT)
     
 def schlieszen(c):
   return sch(c)+l()+ie()+sz()+e()+n()

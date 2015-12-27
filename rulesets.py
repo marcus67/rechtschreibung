@@ -142,6 +142,8 @@ def ch(c=C_NONE, m=0):
     return sch(c)
   elif default_mode.switch_simplification_ch_ck and m == CH_CK:
     return capitalize("c", c) + k()
+  elif default_mode.switch_simplification_ch_k and m == CH_K:
+    return k(c)
   else:
     return capitalize("c", c) + capitalize("h")
 
@@ -157,8 +159,11 @@ def d(c=C_NONE, m=VOICEFULL):
   else:
     return capitalize("d", c)
 
-def e(c=C_NONE):
-  return capitalize("e", c)
+def e(c=C_NONE, m=0):
+  if default_mode.switch_harmonization_homophony_elongated_vowels and (m == ACTUALLY_ELONGATED):
+    return eh(c)
+  else:
+    return capitalize("e", c)
 
 def eh(c=C_NONE):
   return elongation(e, c, ELONGATION_MODE_H)
@@ -214,8 +219,11 @@ def m(c=C_NONE):
 def mm():
   return double_consonant("m")
       
-def n(c=C_NONE):
-  return capitalize("n", c)
+def n(c=C_NONE, m=0):
+  if default_mode.switch_harmonization_homophony_terminating_consonants and (m == ACTUALLY_SHORT):
+    return nn()
+  else:
+    return capitalize("n", c)
   
 def nn():
   return double_consonant("n")
@@ -251,8 +259,11 @@ def qu(c=C_NONE):
 def r(c=C_NONE):
   return capitalize("r", c)
 
-def s(c=C_NONE):
-  return capitalize("s", c)
+def s(c=C_NONE, m=0):
+  if default_mode.switch_harmonization_homophony_terminating_consonants and (m == ACTUALLY_SHORT):
+    return ss()
+  else:
+    return capitalize("s", c)
 
 def sp(c=C_NONE):
   if default_mode.switch_simplification_sch_s:
@@ -281,9 +292,12 @@ def st(c=C_NONE):
   else:
     return s(c) + t()
 
-def t(c=C_NONE):
-  return capitalize("t", c)
-  
+def t(c=C_NONE, m=0):
+  if default_mode.switch_harmonization_homophony_terminating_consonants and (m == ACTUALLY_SHORT):
+    return tt()
+  else:
+    return capitalize("t", c)
+
 def tsch(c=C_NONE):
   if default_mode.switch_simplification_tsch_c:
     return capitalize("č", c)

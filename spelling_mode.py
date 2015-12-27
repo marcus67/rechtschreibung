@@ -17,6 +17,9 @@ Y_J=13
 Y_UE=14
 CH_GREEK=15
 CH_CK=16
+CH_K=17
+ACTUALLY_SHORT=18
+ACTUALLY_ELONGATED=19
 
 ELONGATION_MODE_DEFAULT=0
 ELONGATION_MODE_NONE=1
@@ -60,6 +63,7 @@ class spelling_mode:
     self.switch_simplification_double_consonants = False
     self.switch_simplification_c_kz = False
     self.switch_simplification_ch_sch = False
+    self.switch_simplification_ch_k = False
     self.switch_simplification_ck_kk = False
     self.switch_simplification_th_t = False
     self.switch_simplification_ph_f = False
@@ -86,7 +90,8 @@ class spelling_mode:
     self.switch_punctuation_colon = True
     self.switch_legacy_sz = False
     self.segmented_control_harmonization_elongation = ELONGATION_MODE_DEFAULT
-    self.switch_harmonization_homophony = False
+    self.switch_harmonization_homophony_terminating_consonants = False
+    self.switch_harmonization_homophony_elongated_vowels = False
 
   def __eq__(self, other):
     
