@@ -20,12 +20,14 @@ CH_CK=16
 CH_K=17
 ACTUALLY_SHORT=18
 ACTUALLY_ELONGATED=19
+UNSTRESSED=20
 
 ELONGATION_MODE_DEFAULT=0
 ELONGATION_MODE_NONE=1
 ELONGATION_MODE_E=2
 ELONGATION_MODE_H=3
 ELONGATION_MODE_DOUBLE=4
+ELONGATION_MODE_MACRON=5
 
 # Maß 
 # Nuss
@@ -82,6 +84,7 @@ class spelling_mode:
     self.switch_simplification_expand_umlaut = False
     self.switch_simplification_suppress_mute_h = False
     self.switch_simplification_d_t = False
+    self.switch_simplification_er_a = False
     self.switch_layout_word_separation = True
     self.switch_layout_paragraph_separation = True
     self.switch_punctuation_full_stop = True

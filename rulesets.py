@@ -30,6 +30,16 @@ def capitalize(l, c=C_NONE):
       return 'Š'
     elif l == 'č':
       return 'Č'
+    elif l == 'ā':
+      return 'Ā'
+    elif l == 'ė':
+      return 'Ė'
+    elif l == 'ī':
+      return 'Ī'
+    elif l == 'ō':
+      return 'Ō'
+    elif l == 'ū':
+      return 'Ū'
     elif l == 'ß':
       if default_mode.switch_capitalization_expand_sz:
         return 'SS'
@@ -89,6 +99,20 @@ def elongation(l, c, m):
     return l(c) + capitalize("e")
   elif default_mode.segmented_control_harmonization_elongation == ELONGATION_MODE_H or (default_mode.segmented_control_harmonization_elongation == ELONGATION_MODE_DEFAULT and m == ELONGATION_MODE_H):
     return l(c) + capitalize("h")
+  elif default_mode.segmented_control_harmonization_elongation == ELONGATION_MODE_MACRON or (default_mode.segmented_control_harmonization_elongation == ELONGATION_MODE_DEFAULT and m == ELONGATION_MODE_MACRON):
+    if (l == a):
+      return capitalize("ā")
+    elif (l == e):
+      return capitalize("ė")
+    elif (l == i):
+      return capitalize("ī")
+    elif (l == o):
+      return capitalize("ō")
+    elif (l == u):
+      return capitalize("ū")
+    else:
+      return l(c) + l()
+      
   else: 
     return l(c) + l()
 
@@ -174,6 +198,12 @@ def ei(c=C_NONE):
   else:
     return e(c) + i()
 
+def er(c=C_NONE, m=UNSTRESSED):
+  if default_mode.switch_simplification_er_a and (m == UNSTRESSED):
+    return a(c)
+  else:
+    return e(c)+r()
+
 def eu(c=C_NONE):
   if default_mode.switch_simplification_eu_oi:
     return o(c) + i()
@@ -182,6 +212,9 @@ def eu(c=C_NONE):
 
 def f(c=C_NONE):
   return capitalize("f", c)
+
+def ff():
+  return double_consonant("f")
 
 def g(c=C_NONE):
   return capitalize("g", c)

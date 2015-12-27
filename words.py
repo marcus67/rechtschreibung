@@ -74,7 +74,7 @@ def speichern(c=0):
   return sp(c)+ei()+ch()+e()+r()+n()
 
 def ueberschreiben(c=0):
-  return uuml(c)+b()+e()+r()+sch()+r()+ei()+b()+e()+n()
+  return uuml(c)+b()+er()+sch()+r()+ei()+b()+e()+n()
   
 def und(c=0):
   return u(c)+n()+d(m=VOICELESS)

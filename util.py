@@ -103,7 +103,7 @@ def get_html_body(oldString, newString, show_changes):
   
   # '<link rel="stylesheet" type="text/css" href="file:styles.css">'
   # get_style_sheet()
-  return '<html>' + get_style_sheet() + '<body>' + newString.replace("\n","<BR/>") + "</body></html>"
+  return '<html>' + get_style_sheet() + '<body>' + newString.replace("\n","<BR/>").replace("ė","&#275;").replace("Ė","&#274;") + "</body></html>"
   
   
 def add_missing_attributes(object, template):
