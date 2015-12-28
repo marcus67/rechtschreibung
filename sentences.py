@@ -51,7 +51,7 @@ def sentence004():
   
 # Diese unterschiedlichen Sichtweisen führen ständig zu Diskussionen und Streitereien.
 def sentence005():
-  return d(c=C_BOS)+ie()+s()+e()+space()+u()+n()+t()+er()+sch()+ie()+d()+l()+i()+ch()+e()+n()+space()+s(c=C_NOUN)+i()+ch()+t()+w()+ei()+s()+e()+n()+space()+f()+uuml()+h()+r()+e()+n()+space()+st()+auml()+n()+d()+i()+g()+space()+z()+u()+space()+d(c=C_NOUN)+i()+s()+k()+u()+ss()+i()+o()+n()+e()+n()+space()+und()+space()+st(c=C_NOUN)+r()+ei()+t()+e()+r()+ei()+e()+n()+fs() 
+  return d(c=C_BOS)+ie()+s()+e()+space()+u()+n()+t()+er()+sch()+ie()+d()+l()+i()+ch()+e()+n()+space()+s(c=C_NOUN)+i()+ch()+t()+w()+ei()+s()+e()+n()+space()+f()+uumlh()+r()+e()+n()+space()+st()+auml()+n()+d()+i()+g()+space()+z()+u()+space()+d(c=C_NOUN)+i()+s()+k()+u()+ss()+i()+o()+n()+e()+n()+space()+und()+space()+st(c=C_NOUN)+r()+ei()+t()+e()+r()+ei()+e()+n()+fs() 
      
 # Der grundlegende Unterschied ist ganz einfach: Casimir hat in seiner Jugend die damals aktuelle Rechtschreibung kennengelernt und hat sich an sie gewöhnt.
 def sentence006():
@@ -99,7 +99,7 @@ def sentence016():
   
 # Kein Satz würde mehr so aussehen wie vorher. 
 def sentence017():
-  return k(c=C_BOS)+ei()+n()+space()+s(c=C_NOUN)+a()+t()+z()+space()+w()+uuml()+r()+d()+e()+space()+m()+eh()+r()+space()+s()+o()+space()+au()+s()+s()+e()+h()+e()+n()+space()+w()+ie()+space()+v()+o()+r()+h()+er()+fs() 
+  return k(c=C_BOS)+ei()+n()+space()+s(c=C_NOUN)+a()+t()+z()+space()+w()+uuml()+r()+d()+e()+space()+m()+eh()+r()+space()+s()+o()+space()+au()+s()+s()+e()+h()+e()+n()+space()+w()+ie()+space()+v()+o()+r()+h()+e()+r()+fs() 
   
 # Alle Werke der Literatur müssten angepasst werden. 
 def sentence018():
@@ -111,7 +111,7 @@ def sentence019():
   
 # Andererseits könnten sich Kinder schneller das Lesen und Schreiben aneignen, weil sie weniger Zeit mit dem Lernen überflüssiger und inkonsistenter Regeln verschwenden würden. 
 def sentence020():
-  return a(c=C_BOS)+n()+d()+e()+r()+er()+s()+ei()+t()+s()+space()+k()+ouml()+nn()+t()+e()+n()+space()+s()+i()+ch()+space()+k(c=C_NOUN)+i()+n()+d()+er()+space()+sch()+n()+e()+ll()+er()+space()+das()+space()+l(c=C_NOUN)+e()+s()+e()+n()+space()+und()+space()+sch(c=C_NOUN)+r()+ei()+b()+e()+n()+space()+a()+n()+ei()+g()+n()+e()+n()+comma_sc()+space()+w()+ei()+l()+space()+sie()+space()+w()+e()+n()+i()+g()+e()+r()+space()+z(c=C_NOUN)+ei()+t()+space()+mit()+space()+dem()+space()+l(c=C_NOUN)+e()+r()+n()+e()+n()+space()+uuml()+b()+e()+r()+f()+l()+uuml()+ss()+i()+g()+er()+space()+und()+space()+i()+n()+k()+o()+n()+s()+i()+s()+t()+e()+n()+t()+er()+space()+r(c=C_NOUN)+e()+g()+e()+l()+n()+space()+v()+e()+r()+sch()+w()+e()+n()+d()+e()+n()+space()+w()+uuml()+r()+d()+e()+n()+fs() 
+  return a(c=C_BOS)+n()+d()+e()+r()+er()+s()+ei()+t()+s()+space()+k()+ouml()+nn()+t()+e()+n()+space()+s()+i()+ch()+space()+k(c=C_NOUN)+i()+n()+d()+er()+space()+sch()+n()+e()+ll()+er()+space()+das()+space()+l(c=C_NOUN)+e()+s()+e()+n()+space()+und()+space()+sch(c=C_NOUN)+r()+ei()+b()+e()+n()+space()+a()+n()+ei()+g()+n()+e()+n()+comma_sc()+space()+w()+ei()+l()+space()+sie()+space()+w()+e()+n()+i()+g()+e()+r()+space()+z(c=C_NOUN)+ei()+t()+space()+mit()+space()+dem()+space()+l(c=C_NOUN)+e()+r()+n()+e()+n()+space()+uuml()+b()+er()+f()+l()+uuml()+ss()+i()+g()+er()+space()+und()+space()+i()+n()+k()+o()+n()+s()+i()+s()+t()+e()+n()+t()+er()+space()+r(c=C_NOUN)+e()+g()+e()+l()+n()+space()+v()+e()+r()+sch()+w()+e()+n()+d()+e()+n()+space()+w()+uuml()+r()+d()+e()+n()+fs() 
     
 # Auch Nichtmuttersprachler würden davon profitieren.  
 def sentence021():

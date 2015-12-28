@@ -355,6 +355,9 @@ def uuml(c=C_NONE):
   else:
     return capitalize("ü", c)
   
+def uumlh(c=C_NONE):
+  return elongation(uuml, c, ELONGATION_MODE_H)
+  
 def v(c=C_NONE, m=VOICELESS):
   if default_mode.switch_simplification_v_fw:
     if m == VOICELESS:
