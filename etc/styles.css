@@ -1,11 +1,15 @@
-div#ins {
-    background-color: green;
+html {
+      font-size: 120%;
+}
+span#ins {
+    background-color: #C8FFD1;
 }
 
-div#del {
-    background-color: red;
+span#del {
+    background-color: #C0C0C0; text-decoration: line-through;
 }
 
-div#ch {
-    background-color: yellow;
-}
+span#ch {
+    bg-color: yellow;
+}  
+

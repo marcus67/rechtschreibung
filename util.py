@@ -78,15 +78,19 @@ def get_multi_token_change_control_strings(oldString, newString):
     return (enhancedString, controlString)
   else:  
     return get_change_control_strings(oldString, newString)  
+
+def get_html_page():
+  # return an HTML page template. The paragraph with id "content" will be filled using java script.
+  return '<html>' + get_style_sheet() + '<body><p id="content">TO BE FILLED</p></body></html>'
+#  return '<html><link rel="stylesheet" type="text/css" href="etc/styles.css"><body><p id="content">TO BE FILLED</p></body></html>'
   
-def get_html_body(oldString, newString, show_changes):
+  
+  
+def get_html_content(oldString, newString, show_changes):
   
   if oldString and show_changes:
     
     enhancedNewString, controlString = get_multi_token_change_control_strings(oldString, newString)
-    
-    #print enhancedNewString
-    #print controlString
     
     newString = u''
     i = 0
@@ -96,15 +100,20 @@ def get_html_body(oldString, newString, show_changes):
       if c == DIFF_NONE:
         newString = newString + enhancedNewString[i]
       elif c == DIFF_INSERT:
-        newString = newString + '<span id="ins">' + enhancedNewString[i] + '</span>'
+        newString = newString + '<span id=''ins''>' + enhancedNewString[i] + '</span>'
       elif c == DIFF_DELETE:
-        newString = newString + '<span id="del">' + enhancedNewString[i] + '</span>'
+        newString = newString + '<span id=''del''>' + enhancedNewString[i] + '</span>'
       i = i + 1
   
-  # '<link rel="stylesheet" type="text/css" href="file:styles.css">'
+  # ''
   # get_style_sheet()
-  return '<html>' + get_style_sheet() + '<body>' + newString.replace("\n","<BR/>").replace("ė","&#275;").replace("Ė","&#274;") + "</body></html>"
+  #return '<html>' + get_style_sheet() + '<head><title>test</title></head><body>' + newString.replace("\n","<BR/>").replace("ė","&#275;").replace("Ė","&#274;") + "</body></html>"
   
+  # do some final replacements:
+  # -) replace the surrogate characters used for those not found on the Apple keyboard by their HTML codes
+  # -) replace the double quote character '"' bei &quot; so that the resultsing string can be used in JS.
+  return newString.replace("\n","<BR/>").replace("ė","&#275;").replace("Ė","&#274;").replace('"','&quot;')
+    
   
 def add_missing_attributes(object, template):
   
@@ -116,7 +125,7 @@ def add_missing_attributes(object, template):
   return changes
   
 def test():
-  print get_html_body("Zwei šBären","Eine Bäršin", True)
+  print get_html_content("Zwei šBären","Eine Bäršin", True)
   
 if __name__ == '__main__':
   test()

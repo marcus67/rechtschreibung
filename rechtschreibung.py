@@ -157,8 +157,10 @@ class main_view_controller ( ui_util.view_controller ) :
       compareText = self.previousSampleText
     else:
       compareText = self.referenceSampleText
-    html_text = util.get_html_body(compareText, self.currentSampleText, self.highlightingMode and not self.suppressShowChanges)
-    webview.load_html(html_text)
+    html_content = util.get_html_content(compareText, self.currentSampleText, self.highlightingMode and not self.suppressShowChanges)
+    
+    webview.eval_js('document.getElementById("content").innerHTML = "%s"' % html_content)
+    
     if self.autoHide and self.highlightingMode and not self.suppressShowChanges:
       self.activate_hide_timer()
     self.update_views()
@@ -247,6 +249,11 @@ def main():
   view_controller_layout.load('view_layout')
 
   my_main_view_controller.set_model(default_mode)
+  
+  # Set the empty html page for displaying the sample text. The actual content will be set in
+  # method "update_sample_text".
+  text_view = my_main_view_controller.find_subview_by_name('webview_text_view')
+  text_view.load_html(util.get_html_page())
   
   my_main_view_controller.update_sample_text()
   my_main_view_controller.present('fullscreen')
