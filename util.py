@@ -19,27 +19,6 @@ def set_container_value(container, name, value):
   else:
     print "ERROR: name '%s' not found in container '%s'" % (name, type(container).__name__)
     
-    
-def get_style_sheet():
-  return '''
-<style>
-html {
-      font-size: 120%;
-}
-span#ins {
-    background-color: #C8FFD1;
-}
-
-span#del {
-    background-color: #C0C0C0; text-decoration: line-through;
-}
-
-span#ch {
-    bg-color: yellow;
-}  
-</style>
-'''
-
 def get_change_control_strings(oldString, newString):
 
     enhancedString = unicode( oldString )
@@ -78,13 +57,6 @@ def get_multi_token_change_control_strings(oldString, newString):
     return (enhancedString, controlString)
   else:  
     return get_change_control_strings(oldString, newString)  
-
-def get_html_page():
-  # return an HTML page template. The paragraph with id "content" will be filled using java script.
-  return '<html>' + get_style_sheet() + '<body><p id="content">TO BE FILLED</p></body></html>'
-#  return '<html><link rel="stylesheet" type="text/css" href="etc/styles.css"><body><p id="content">TO BE FILLED</p></body></html>'
-  
-  
   
 def get_html_content(oldString, newString, show_changes):
   
@@ -104,10 +76,6 @@ def get_html_content(oldString, newString, show_changes):
       elif c == DIFF_DELETE:
         newString = newString + '<span id=''del''>' + enhancedNewString[i] + '</span>'
       i = i + 1
-  
-  # ''
-  # get_style_sheet()
-  #return '<html>' + get_style_sheet() + '<head><title>test</title></head><body>' + newString.replace("\n","<BR/>").replace("ė","&#275;").replace("Ė","&#274;") + "</body></html>"
   
   # do some final replacements:
   # -) replace the surrogate characters used for those not found on the Apple keyboard by their HTML codes

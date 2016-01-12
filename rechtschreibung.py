@@ -8,6 +8,7 @@ import ui
 import speech
 import threading
 import copy
+import os
 
 import view_punctuation
 import spelling_mode
@@ -251,13 +252,15 @@ def main():
   my_main_view_controller.set_model(default_mode)
   
   # Set the empty html page for displaying the sample text. The actual content will be set in
-  # method "update_sample_text".
+  # method "update_sample_text". We use an absolute path to load the page so that the relative
+  # path reference to the style sheet can be derrived by the browser.
   text_view = my_main_view_controller.find_subview_by_name('webview_text_view')
-  text_view.load_html(util.get_html_page())
+  absolute_page_path = 'file:' + os.path.abspath('etc/text_page.html')
+  logger.info('Loading HTML page at %s' % absolute_page_path)
+  text_view.load_url(absolute_page_path)
   
   my_main_view_controller.update_sample_text()
   my_main_view_controller.present('fullscreen')
     
 if __name__ == '__main__':
   main()
-

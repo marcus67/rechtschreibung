@@ -1,1 +1,219 @@
-[{"class":"View","attributes":{"name":"Harmonisierung","background_color":"RGBA(1.000000,1.000000,1.000000,1.000000)","tint_color":"RGBA(0.000000,0.478000,1.000000,1.000000)","enabled":true,"border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","flex":""},"frame":"{{0, 0}, {390, 354}}","nodes":[{"class":"ScrollView","attributes":{"enabled":true,"flex":"","content_width":380,"name":"scrollview_harmonization","content_height":372,"border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","uuid":"0621FB8A-9BDF-4E32-AA4C-A9DA6A39BEF0"},"frame":"{{6, 6}, {378, 334.5}}","nodes":[{"class":"SegmentedControl","attributes":{"name":"segmented_control_harmonization_elongation","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","uuid":"302AF1C3-E8E1-4FC7-B9D2-484EEF769F1A","enabled":true,"segments":"Standard|keine|\"e\"|\"h\"|Dopplung|Makron","flex":"LR"},"frame":"{{16, 46}, {356, 29}}","nodes":[]},{"class":"Label","attributes":{"font_size":17,"enabled":true,"text":"Vokaldehnung","flex":"","name":"label1","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","text_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","alignment":"left","uuid":"24E931E2-FF5B-47CE-B269-806C695629EC"},"frame":"{{6, 6}, {150, 32}}","nodes":[]},{"class":"Label","attributes":{"font_size":17,"enabled":true,"text":"Homophonie...","flex":"","name":"label2","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","text_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","alignment":"left","uuid":"B26944E8-8C3D-463C-A016-DF9C9B37F272"},"frame":"{{6, 110.5}, {290, 32}}","nodes":[]},{"class":"Switch","attributes":{"enabled":true,"flex":"","name":"switch_harmonization_homophony_terminating_consonants","value":false,"action":"self.handle_action","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","uuid":"13B693A8-AF2A-4F96-A5E0-CD62DAA7C64D"},"frame":"{{323.5, 150}, {51, 31}}","nodes":[]},{"class":"Label","attributes":{"font_size":14,"enabled":true,"text":"Konsonanten n. kurzen Vokalen doppeln","flex":"","name":"label3","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","text_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","alignment":"left","uuid":"B26C05AE-3140-40CA-BB73-284F09F9D86F"},"frame":"{{14.5, 150.5}, {270.5, 32}}","nodes":[]},{"class":"Label","attributes":{"font_size":17,"enabled":true,"text":"Lange Vokale explizit dehnen","flex":"","name":"label4","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","text_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","alignment":"left","uuid":"E9F4C23A-9154-4457-B30B-E9F4481B373B"},"frame":"{{14.5, 190.5}, {270.5, 32}}","nodes":[]},{"class":"Switch","attributes":{"enabled":true,"flex":"","name":"switch_harmonization_homophony_elongated_vowels","value":false,"action":"self.handle_action","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","uuid":"DCAA6225-5F8C-40F8-8490-69BE4CD513DC"},"frame":"{{323.5, 189.5}, {51, 31}}","nodes":[]},{"class":"Button","attributes":{"font_size":15,"enabled":true,"flex":"","font_bold":false,"name":"info_harmonization_homophony_elongated_vowels","uuid":"89B0C401-BC27-4667-80FF-FFB635520631","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","action":"self.handle_action","image_name":"ionicons-ios7-information-outline-32","title":""},"frame":"{{283.5, 190.5}, {32, 32}}","nodes":[]},{"class":"Button","attributes":{"font_size":15,"enabled":true,"flex":"","font_bold":false,"name":"info_harmonization_homophony_terminating_consonants","uuid":"70124CC9-85EE-4E89-9E6E-1AC2433397F1","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","action":"self.handle_action","image_name":"ionicons-ios7-information-outline-32","title":""},"frame":"{{283, 150}, {32, 32}}","nodes":[]},{"class":"Button","attributes":{"font_size":15,"enabled":true,"flex":"","font_bold":false,"name":"info_elongation","title":"","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","action":"self.handle_action","image_name":"ionicons-ios7-information-outline-32","uuid":"9FD9B152-C7B9-4A83-A8AD-E87098340093"},"frame":"{{148, 6}, {32, 32}}","nodes":[]}]}]}]
+[
+  {
+    "selected" : false,
+    "frame" : "{{0, 0}, {390, 354}}",
+    "class" : "View",
+    "nodes" : [
+      {
+        "selected" : true,
+        "frame" : "{{6, 6}, {378, 334.5}}",
+        "class" : "ScrollView",
+        "nodes" : [
+          {
+            "selected" : false,
+            "frame" : "{{14.5, 46}, {356, 29}}",
+            "class" : "SegmentedControl",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "LR",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "name" : "segmented_control_harmonization_elongation",
+              "segments" : "Standard|keine|\"e\"|\"h\"|Dopplung|Makron",
+              "uuid" : "302AF1C3-E8E1-4FC7-B9D2-484EEF769F1A"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{6, 6}, {150, 32}}",
+            "class" : "Label",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "text" : "Vokaldehnung",
+              "alignment" : "left",
+              "uuid" : "24E931E2-FF5B-47CE-B269-806C695629EC",
+              "font_size" : 17,
+              "name" : "label1"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{6, 110.5}, {290, 32}}",
+            "class" : "Label",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "text" : "Homophonie...",
+              "alignment" : "left",
+              "uuid" : "B26944E8-8C3D-463C-A016-DF9C9B37F272",
+              "font_size" : 17,
+              "name" : "label2"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{323.5, 150}, {51, 31}}",
+            "class" : "Switch",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "uuid" : "13B693A8-AF2A-4F96-A5E0-CD62DAA7C64D",
+              "value" : false,
+              "name" : "switch_harmonization_homophony_terminating_consonants"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{14.5, 150.5}, {270.5, 32}}",
+            "class" : "Label",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "text" : "Konsonanten n. kurzen Vokalen doppeln",
+              "alignment" : "left",
+              "uuid" : "B26C05AE-3140-40CA-BB73-284F09F9D86F",
+              "font_size" : 14,
+              "name" : "label3"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{14.5, 190.5}, {270.5, 32}}",
+            "class" : "Label",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "text" : "Lange Vokale explizit dehnen",
+              "alignment" : "left",
+              "uuid" : "E9F4C23A-9154-4457-B30B-E9F4481B373B",
+              "font_size" : 17,
+              "name" : "label4"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{323.5, 189.5}, {51, 31}}",
+            "class" : "Switch",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "uuid" : "DCAA6225-5F8C-40F8-8490-69BE4CD513DC",
+              "value" : false,
+              "name" : "switch_harmonization_homophony_elongated_vowels"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{283.5, 190.5}, {32, 32}}",
+            "class" : "Button",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "image_name" : "ionicons-ios7-information-outline-32",
+              "title" : "",
+              "uuid" : "89B0C401-BC27-4667-80FF-FFB635520631",
+              "font_bold" : false,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "font_size" : 15,
+              "name" : "info_harmonization_homophony_elongated_vowels"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{283, 150}, {32, 32}}",
+            "class" : "Button",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "image_name" : "ionicons-ios7-information-outline-32",
+              "title" : "",
+              "uuid" : "70124CC9-85EE-4E89-9E6E-1AC2433397F1",
+              "font_bold" : false,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "font_size" : 15,
+              "name" : "info_harmonization_homophony_terminating_consonants"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{148, 6}, {32, 32}}",
+            "class" : "Button",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "image_name" : "ionicons-ios7-information-outline-32",
+              "title" : "",
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "font_bold" : false,
+              "uuid" : "9FD9B152-C7B9-4A83-A8AD-E87098340093",
+              "font_size" : 15,
+              "name" : "info_elongation"
+            }
+          }
+        ],
+        "attributes" : {
+          "flex" : "",
+          "enabled" : true,
+          "content_width" : 380,
+          "content_height" : 372,
+          "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+          "uuid" : "0621FB8A-9BDF-4E32-AA4C-A9DA6A39BEF0",
+          "name" : "scrollview_harmonization"
+        }
+      }
+    ],
+    "attributes" : {
+      "flex" : "",
+      "enabled" : true,
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "name" : "Harmonisierung",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+    }
+  }
+]
