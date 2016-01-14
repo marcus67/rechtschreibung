@@ -1,6 +1,7 @@
 #coding: utf-8
 
 import string
+
 import spelling_mode
 
 reload(spelling_mode)
@@ -393,4 +394,3 @@ def z(c=C_NONE):
     return t(c) + s()
   else:
     return capitalize("z", c)
-

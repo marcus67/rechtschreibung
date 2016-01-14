@@ -1,8 +1,5 @@
 #coding: utf-8
 
-
-#pycologne?
-
 import string
 import ui
 import speech
@@ -10,6 +7,7 @@ import threading
 import copy
 import os
 
+import log
 import view_punctuation
 import spelling_mode
 import rulesets
@@ -20,11 +18,11 @@ import ui_util
 import sample_text
 import popup
 import infos
-import log
 import mode_manager
 import mode_selector
 import mode_saver
 
+reload(log)
 reload(ui_util)
 reload(view_punctuation)
 reload(spelling_mode)
@@ -35,14 +33,11 @@ reload(util)
 reload(sample_text)  
 reload(popup)
 reload(infos)
-reload(log)
 reload(mode_manager)
 reload(mode_selector)
 reload(mode_saver)
 
 global logger
-
-logger = log.open_logging()
 
 HIGHLIGHT_OFF = 0
 HIGHLIGHT_DELTA = 1
@@ -218,7 +213,11 @@ class main_view_controller ( ui_util.view_controller ) :
 ##### MAIN ######################
     
 def main():
-    
+  
+  global logger
+  
+  logger = log.open_logging('rechtschreibung')
+  logger.info("Start application")
   default_mode = spelling_mode.spelling_mode()
   rulesets.set_default_mode(default_mode)
   
@@ -261,6 +260,7 @@ def main():
   
   my_main_view_controller.update_sample_text()
   my_main_view_controller.present('fullscreen')
+  logger.info("Terminate application")
     
 if __name__ == '__main__':
   main()

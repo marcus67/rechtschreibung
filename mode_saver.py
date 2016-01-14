@@ -2,21 +2,22 @@
 
 import ui
 import console
-import log
 import copy
 
+import log
 import defaults
 import ui_util
 import spelling_mode
 import mode_manager
 
+reload(log)
 reload(defaults)
 reload(ui_util)
 reload(spelling_mode)
 reload(mode_manager)
 
 global logger
-logger = log.open_logging()
+logger = log.open_logging(__name__)
 
 class TextFieldDelegate (object):
   

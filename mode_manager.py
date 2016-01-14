@@ -19,12 +19,11 @@ MODE_FILE_EXTENSION_PATTERN = u'(.+)' + MODE_FILE_EXTENSION.replace(u'.', u'\.')
 
 global logger
 
-logger = log.open_logging()
+logger = log.open_logging(__name__)
 
 def get_mode_filename(modeName):
   
   return os.path.join(MODE_FILE_DIRECTORY, u"%s%s" % ( modeName, MODE_FILE_EXTENSION))
-  
   
 def read_mode(modeName):
   
@@ -84,4 +83,3 @@ def test():
         
 if __name__ == '__main__':
   test()
-

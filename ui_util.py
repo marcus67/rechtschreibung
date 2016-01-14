@@ -1,13 +1,12 @@
 import ui
 import logging
 
+import log
 import util
 import spelling_mode
-import log
 
 reload(util)
 reload(spelling_mode)
-reload(log)
 
 SWITCH_PREFIX = "switch_"
 BITSWITCH_PREFIX = "bitswitch_"
@@ -17,7 +16,7 @@ MAX_BITS = 8
 
 global logger
 
-logger = log.open_logging()
+logger = log.open_logging(__name__)
 
 def store_in_model(sender, model):
   
@@ -193,4 +192,3 @@ if __name__ == '__main__':
 
 
 ###########################
-

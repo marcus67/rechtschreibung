@@ -1,14 +1,15 @@
 # coding: utf-8
 
 import ui
-import log
 
+import log
 import defaults
 import ui_util
 import popup
 import predefined_modes
 import spelling_mode
 
+reload(log)
 reload(defaults)
 reload(ui_util)
 reload(popup)
@@ -16,7 +17,7 @@ reload(predefined_modes)
 reload(spelling_mode)
 
 global logger
-logger = log.open_logging()
+logger = log.open_logging(__name__)
 
 class SpellingModeSelector(ui_util.view_controller):
   
