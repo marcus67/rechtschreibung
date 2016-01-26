@@ -14,7 +14,7 @@ from rulesets import *
 
 DEFAULT_TITLE = 'Zusätzliche Info'
 
-class PopupViewController ( ui_util.view_controller ) :
+class PopupViewController ( ui_util.ViewController ) :
 
   def __init__(self):
     

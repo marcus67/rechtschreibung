@@ -43,11 +43,13 @@ HIGHLIGHT_OFF = 0
 HIGHLIGHT_DELTA = 1
 HIGHLIGHT_REFERENCE = 2
 
-class main_view_controller ( ui_util.view_controller ) :
+VIEW_NAME_TOP_NAVIGATION = 'Regeln'
+
+class MainViewController ( ui_util.ViewController ) :
 
   def __init__(self):
     
-    ui_util.view_controller.__init__(self)
+    super(MainViewController, self).__init__()
     self.previousSampleText = None
     self.currentSampleText = None
     self.highlightingMode = HIGHLIGHT_DELTA
@@ -100,6 +102,15 @@ class main_view_controller ( ui_util.view_controller ) :
     elif sender.name == 'button_save_mode':
       self.save_mode_start()
     
+    elif sender.name == 'button_open_app_control_view':
+      self.open_app_control_view()
+
+    elif sender.name == 'button_open_top_navigation_view':
+      self.open_top_navigation_view()
+
+    elif sender.name == 'button_close_top_navigation_view':
+      self.close_top_navigation_view()
+
     elif sender.name == 'segmented_control_highlighting_mode':
       self.highlightingMode = sender.selected_index
       self.update_sample_text()
@@ -112,7 +123,8 @@ class main_view_controller ( ui_util.view_controller ) :
       child_view = self.find_subview_by_name(view_name)
       #child_view = self.view['top_navigation_view'][view_name]
       if child_view != None:
-        self.view['top_navigation_view'].push_view(child_view)
+        view = self.find_subview_by_name(VIEW_NAME_TOP_NAVIGATION)
+        view.push_view(child_view)
         return 1
       else:
         logger.warning("cannot find subview '%s" % view_name)
@@ -133,6 +145,21 @@ class main_view_controller ( ui_util.view_controller ) :
       print "WARNING: action '%s' not handled!" % sender.name
       
     return 0
+    
+  def open_top_navigation_view(self):
+    
+    view = self.find_subview_by_name('Regeln')
+    view.present(style='sheet') # , hide_title_bar=True
+    
+  def close_top_navigation_view(self):
+    
+    view = self.find_subview_by_name('Regeln')
+    view.close()
+    
+  def open_app_control_view(self):
+    
+    view = self.find_subview_by_name('App-Konfiguration')
+    view.present(style='sheet')
     
   def activate_hide_timer(self):
     #print "activate timer"
@@ -221,31 +248,49 @@ def main():
   default_mode = spelling_mode.spelling_mode()
   rulesets.set_default_mode(default_mode)
   
-  my_main_view_controller = main_view_controller()
-  my_main_view_controller.load('rechtschreibung')
+  my_main_view_controller = MainViewController()
   
+  top_navigation_vc = ui_util.ViewController(my_main_view_controller)
+  top_navigation_vc.load('top_navigation')
+  top_navigation_vc.view.x = 0
+  
+  if ui_util.is_iphone():
+    my_main_view_controller.load('rechtschreibung_iphone')
+    app_control_vc = ui_util.ViewController(my_main_view_controller)
+    app_control_vc.load('rechtschreibung_app_control_iphone')
+
+    my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_open_app_control_view', ui.ButtonItem(title="Kontrolle"))
+    my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_open_top_navigation_view', ui.ButtonItem(title="Regeln"))
+  else:
+    my_main_view_controller.load('rechtschreibung')
+    container_view = my_main_view_controller.find_subview_by_name('view_container_navigation')
+    container_view.add_subview(top_navigation_vc.view)
+    my_main_view_controller.add_child_controller('top_navigation', top_navigation_vc)
+    top_navigation_vc.view.width = container_view.width
+    navigation_view = my_main_view_controller.find_subview_by_name('Regeln')
+    navigation_view.width = container_view.width
+    
   view = my_main_view_controller.find_subview_by_name('segmented_control_highlighting_mode')
   view.action = my_main_view_controller.handle_action
-  
 
-  view_controller_capitalization = ui_util.view_controller(my_main_view_controller)
+  view_controller_capitalization = ui_util.ViewController(my_main_view_controller)
   view_controller_capitalization.load('view_capitalization')
   
-  view_controller_harmonization = ui_util.view_controller(my_main_view_controller)
+  view_controller_harmonization = ui_util.ViewController(my_main_view_controller)
   view_controller_harmonization.load('view_harmonization')
   view = my_main_view_controller.find_subview_by_name('segmented_control_harmonization_elongation')
   view.action = my_main_view_controller.handle_action
   
-  view_controller_combinations_simplification = ui_util.view_controller(my_main_view_controller)
+  view_controller_combinations_simplification = ui_util.ViewController(my_main_view_controller)
   view_controller_combinations_simplification.load('view_combinations_simplification')
   
-  view_controller_punctuation = ui_util.view_controller(my_main_view_controller) 
+  view_controller_punctuation = ui_util.ViewController(my_main_view_controller) 
   view_controller_punctuation.load('view_punctuation')
   
-  view_controller_legacy = ui_util.view_controller(my_main_view_controller) 
+  view_controller_legacy = ui_util.ViewController(my_main_view_controller) 
   view_controller_legacy.load('view_legacy')
   
-  view_controller_layout = ui_util.view_controller(my_main_view_controller) 
+  view_controller_layout = ui_util.ViewController(my_main_view_controller) 
   view_controller_layout.load('view_layout')
 
   my_main_view_controller.set_model(default_mode)

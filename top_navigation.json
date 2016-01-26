@@ -1,0 +1,163 @@
+[
+  {
+    "selected" : false,
+    "frame" : "{{0, 0}, {320, 480}}",
+    "class" : "View",
+    "nodes" : [
+      {
+        "selected" : false,
+        "frame" : "{{0, 0}, {320, 480}}",
+        "class" : "NavigationView",
+        "nodes" : [
+          {
+            "selected" : false,
+            "frame" : "{{0, 0}, {320, 32}}",
+            "class" : "Button",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "W",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "border_width" : 0,
+              "title" : "Großschreibung >>>",
+              "uuid" : "E269DB7D-841B-45DB-A91F-56BBF5027F68",
+              "font_bold" : true,
+              "corner_radius" : 0,
+              "background_color" : "RGBA(0.731429,1.000000,0.714286,1.000000)",
+              "font_size" : 15,
+              "name" : "button_view_capitalization"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{0, 32}, {320, 32}}",
+            "class" : "Button",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "border_width" : 0,
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "flex" : "W",
+              "title" : "Lautkombinationen (Vereinfachung) >>>",
+              "uuid" : "F7BAD7A6-3F12-4620-9D4D-33FEF34891AC",
+              "corner_radius" : 0,
+              "background_color" : "RGBA(1.000000,0.925197,0.500000,1.000000)",
+              "font_bold" : true,
+              "font_size" : 15,
+              "name" : "button_view_combinations_simplification"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{0, 64}, {320, 32}}",
+            "class" : "Button",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "border_width" : 0,
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "flex" : "W",
+              "title" : "Zeichensetzung >>>",
+              "uuid" : "D7C1DB5F-3179-41A2-8D85-8148ADF8190B",
+              "corner_radius" : 0,
+              "background_color" : "RGBA(1.000000,0.800000,0.700000,1.000000)",
+              "font_bold" : true,
+              "font_size" : 15,
+              "name" : "button_view_punctuation"
+            }=
+          },
+          {
+            "selected" : false,
+            "frame" : "{{0, 96}, {320, 32}}",
+            "class" : "Button",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "W",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "border_width" : 0,
+              "title" : "Layout >>>",
+              "uuid" : "8C47D3F1-D88E-4911-A8C8-CA2D67D3A682",
+              "font_bold" : true,
+              "background_color" : "RGBA(0.566667,0.855556,1.000000,1.000000)",
+              "corner_radius" : 0,
+              "font_size" : 15,
+              "name" : "button_view_layout"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{0, 128}, {320, 32}}",
+            "class" : "Button",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "uuid" : "AD4382CC-19B5-44CC-8528-2BF3A89C0DCA",
+              "flex" : "W",
+              "corner_radius" : 0,
+              "background_color" : "RGBA(0.777778,0.666667,1.000000,1.000000)",
+              "border_width" : 0,
+              "title" : "Alte Rechtschreibung >>>",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "alpha" : 1,
+              "font_bold" : true,
+              "name" : "button_view_legacy",
+              "font_size" : 15
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{0, 160}, {320, 32}}",
+            "class" : "Button",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "W",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "border_width" : 0,
+              "title" : "Harmonisierung >>>",
+              "uuid" : "0B4058F9-1A1E-4237-8F6E-CF404738F6F4",
+              "font_bold" : true,
+              "corner_radius" : 0,
+              "background_color" : "RGBA(1.000000,0.666667,0.888889,1.000000)",
+              "font_size" : 15,
+              "name" : "button_view_harmonization"
+            }
+          }
+        ],
+        "attributes" : {
+          "flex" : "WH",
+          "title_bar_color" : "RGBA(0.857143,0.857143,0.857143,1.000000)",
+          "enabled" : true,
+          "border_width" : 0,
+          "title_color" : "RGBA(0.330000,0.330000,0.330000,1.000000)",
+          "uuid" : "B1481ACC-A120-4CAC-8766-4FA702B98726",
+          "corner_radius" : 0,
+          "background_color" : "RGBA(0.928571,0.928571,0.928571,1.000000)",
+          "name" : "Regeln",
+          "root_view_name" : "Übersicht"
+        }
+      }
+    ],
+    "attributes" : {
+      "flex" : "",
+      "enabled" : true,
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "name" : "view_top_navigation",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)"
+    }
+  }
+]

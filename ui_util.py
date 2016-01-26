@@ -18,6 +18,9 @@ global logger
 
 logger = log.open_logging(__name__)
 
+def is_iphone():
+  return ui.get_screen_size().width < 768
+
 def store_in_model(sender, model):
   
   switch_name = sender.name
@@ -40,7 +43,20 @@ def store_in_model(sender, model):
 
   return 1
 
-class view_controller (object):
+class ButtonItemAction(object):
+  
+  def __init__(self, view_controller, view_name, name):
+    
+    self.view_controller = view_controller
+    self.view_name = view_name
+    self.name = name
+    
+  def handle_action(self, sender):
+    
+    self.view_controller.handle_action(self)
+    
+
+class ViewController (object):
   
   def __init__(self, parent_view=None):
     
@@ -55,6 +71,25 @@ class view_controller (object):
     
     self.child_controllers[name] = child_controller
     self.subview_map[name] = child_controller.get_view()
+    
+    
+  def add_right_button_item(self, view_name, button_name, button_item):
+    
+    global logger
+    
+    view = self.find_subview_by_name(view_name)
+    if view == None:
+      logger.warning("add_right_button_item: cannot find view %s" % view_name)
+      return
+    
+    button_item.action = ButtonItemAction(self, view_name, button_name).handle_action
+    if view.right_button_items == None:
+      view.right_button_items = [ button_item ]
+    else:
+      new_list = list(view.right_button_items)
+      new_list.append(button_item)
+      view.right_button_items = new_list
+    
     
   def load(self, view_name):
     
@@ -184,7 +219,7 @@ class nagivation_view_controller:
 def test():
   
   model = spelling_mode.spelling_mode()
-  vc = view_controller()
+  vc = ViewController()
   vc.set_model(model)
     
 if __name__ == '__main__':

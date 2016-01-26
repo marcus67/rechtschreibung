@@ -1,41 +1,23 @@
 [
   {
     "selected" : false,
-    "frame" : "{{0, 0}, {1024, 768}}",
+    "frame" : "{{0, 0}, {320, 480}}",
     "class" : "View",
     "nodes" : [
       {
         "selected" : false,
-        "frame" : "{{0, 0}, {605, 762}}",
-        "class" : "WebView",
-        "nodes" : [
-
-        ],
-        "attributes" : {
-          "flex" : "WHR",
-          "border_width" : 0,
-          "enabled" : true,
-          "alpha" : 1,
-          "uuid" : "5353A67C-5CDA-4E56-B74E-D449F4191102",
-          "corner_radius" : 0,
-          "background_color" : "RGBA(0.964623,0.932469,0.932469,1.000000)",
-          "name" : "webview_text_view"
-        }
-      },
-      {
-        "selected" : false,
-        "frame" : "{{604, 525}, {421, 243}}",
+        "frame" : "{{0, 0}, {320, 486}}",
         "class" : "View",
         "nodes" : [
           {
             "selected" : false,
-            "frame" : "{{358.5, 8}, {51, 31}}",
+            "frame" : "{{257, 50}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
             ],
             "attributes" : {
-              "flex" : "",
+              "flex" : "RB",
               "action" : "self.handle_action",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
@@ -52,7 +34,7 @@
 
             ],
             "attributes" : {
-              "flex" : "",
+              "flex" : "RB",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
@@ -64,8 +46,8 @@
             }
           },
           {
-            "selected" : false,
-            "frame" : "{{231, 47}, {32, 32}}",
+            "selected" : true,
+            "frame" : "{{231, 116}, {32, 32}}",
             "class" : "Button",
             "nodes" : [
 
@@ -73,7 +55,7 @@
             "attributes" : {
               "uuid" : "C1DA37DE-0F04-4080-B3A8-8ADFC83F7202",
               "name" : "button_stop_speech",
-              "flex" : "",
+              "flex" : "RB",
               "corner_radius" : 2,
               "border_color" : "RGBA(1.000000,0.000000,0.000000,1.000000)",
               "border_width" : 1,
@@ -87,7 +69,7 @@
           },
           {
             "selected" : false,
-            "frame" : "{{191, 47}, {32, 32}}",
+            "frame" : "{{191, 116}, {32, 32}}",
             "class" : "Button",
             "nodes" : [
 
@@ -95,7 +77,7 @@
             "attributes" : {
               "uuid" : "612091FB-CE42-462A-92A5-C8B68C15ABA7",
               "name" : "button_start_speech",
-              "flex" : "",
+              "flex" : "RB",
               "corner_radius" : 2,
               "border_color" : "RGBA(0.070714,0.785714,0.000000,1.000000)",
               "border_width" : 1,
@@ -109,13 +91,13 @@
           },
           {
             "selected" : false,
-            "frame" : "{{6, 47}, {162.5, 32}}",
+            "frame" : "{{6, 116}, {162.5, 32}}",
             "class" : "Label",
             "nodes" : [
 
             ],
             "attributes" : {
-              "flex" : "",
+              "flex" : "RB",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
@@ -128,13 +110,13 @@
           },
           {
             "selected" : false,
-            "frame" : "{{6, 87}, {81, 32}}",
+            "frame" : "{{6, 180}, {81, 32}}",
             "class" : "Label",
             "nodes" : [
 
             ],
             "attributes" : {
-              "flex" : "",
+              "flex" : "RB",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
@@ -147,13 +129,13 @@
           },
           {
             "selected" : false,
-            "frame" : "{{95, 127}, {240, 32}}",
+            "frame" : "{{6, 320}, {308, 32}}",
             "class" : "TextField",
             "nodes" : [
 
             ],
             "attributes" : {
-              "flex" : "",
+              "flex" : "WB",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_style" : 3,
@@ -166,13 +148,13 @@
           },
           {
             "selected" : false,
-            "frame" : "{{343, 127}, {32, 32}}",
+            "frame" : "{{95, 280}, {32, 31}}",
             "class" : "Button",
             "nodes" : [
 
             ],
             "attributes" : {
-              "flex" : "",
+              "flex" : "RB",
               "action" : "self.handle_action",
               "enabled" : true,
               "image_name" : "ionicons-ios7-upload-outline-32",
@@ -186,13 +168,13 @@
           },
           {
             "selected" : false,
-            "frame" : "{{119, 10}, {195, 29}}",
+            "frame" : "{{6, 50}, {195, 29}}",
             "class" : "SegmentedControl",
             "nodes" : [
 
             ],
             "attributes" : {
-              "flex" : "LR",
+              "flex" : "RB",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "name" : "segmented_control_highlighting_mode",
@@ -202,7 +184,7 @@
           },
           {
             "selected" : false,
-            "frame" : "{{320, 8}, {30.5, 32}}",
+            "frame" : "{{209, 50}, {32, 29}}",
             "class" : "Button",
             "nodes" : [
 
@@ -221,13 +203,13 @@
           },
           {
             "selected" : false,
-            "frame" : "{{95, 87}, {240, 32}}",
+            "frame" : "{{6, 220}, {308, 32}}",
             "class" : "TextField",
             "nodes" : [
 
             ],
             "attributes" : {
-              "flex" : "",
+              "flex" : "WB",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_style" : 3,
@@ -240,13 +222,13 @@
           },
           {
             "selected" : false,
-            "frame" : "{{6, 127}, {81, 32}}",
+            "frame" : "{{6, 280}, {81, 32}}",
             "class" : "Label",
             "nodes" : [
 
             ],
             "attributes" : {
-              "flex" : "",
+              "flex" : "B",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
@@ -259,16 +241,15 @@
           },
           {
             "selected" : false,
-            "frame" : "{{343, 87}, {32, 32}}",
+            "frame" : "{{95, 180}, {32, 32}}",
             "class" : "Button",
             "nodes" : [
 
             ],
             "attributes" : {
-              "flex" : "",
+              "flex" : "B",
               "action" : "self.handle_action",
               "enabled" : true,
-              "image_name" : "ionicons-ios7-upload-outline-32",
               "title" : "",
               "uuid" : "03AE0157-4598-4046-9C0F-7A6B7C40FAA3",
               "font_bold" : false,
@@ -279,13 +260,13 @@
           },
           {
             "selected" : false,
-            "frame" : "{{6, 166.5}, {81, 32}}",
+            "frame" : "{{6, 380}, {81, 32}}",
             "class" : "Label",
             "nodes" : [
 
             ],
             "attributes" : {
-              "flex" : "",
+              "flex" : "RB",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
@@ -298,13 +279,13 @@
           },
           {
             "selected" : false,
-            "frame" : "{{96, 166}, {318.5, 32}}",
+            "frame" : "{{6, 420}, {308, 32}}",
             "class" : "TextField",
             "nodes" : [
 
             ],
             "attributes" : {
-              "flex" : "",
+              "flex" : "WB",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_style" : 3,
@@ -317,13 +298,13 @@
           },
           {
             "selected" : false,
-            "frame" : "{{377.5, 126}, {32, 32}}",
+            "frame" : "{{136.5, 280}, {32, 32}}",
             "class" : "Button",
             "nodes" : [
 
             ],
             "attributes" : {
-              "flex" : "",
+              "flex" : "RB",
               "action" : "self.handle_action",
               "enabled" : true,
               "image_name" : "ionicons-ios7-download-outline-32",
@@ -337,38 +318,24 @@
           }
         ],
         "attributes" : {
-          "flex" : "T",
-          "border_width" : 0,
+          "flex" : "WH",
+          "border_width" : 2,
           "enabled" : true,
-          "uuid" : "045303CA-03B8-4F0D-8E81-D97F1FA57E2B",
+          "border_color" : "RGBA(0.381378,0.928571,0.198980,1.000000)",
           "corner_radius" : 0,
-          "background_color" : "RGBA(0.933333,1.000000,0.933333,1.000000)",
-          "name" : "view_app_control"
-        }
-      },
-      {
-        "selected" : false,
-        "frame" : "{{604, 0}, {421, 527}}",
-        "class" : "View",
-        "nodes" : [
-
-        ],
-        "attributes" : {
-          "flex" : "HL",
-          "frame" : "{{462, 286}, {100, 100}}",
-          "class" : "View",
-          "name" : "view_container_navigation",
-          "uuid" : "B8D4E01E-C807-4EC8-9E54-2B8DDD032A4F"
+          "uuid" : "045303CA-03B8-4F0D-8E81-D97F1FA57E2B",
+          "background_color" : "RGBA(0.938679,0.938679,0.938679,1.000000)",
+          "name" : "App-Konfiguration"
         }
       }
     ],
     "attributes" : {
       "flex" : "",
       "enabled" : true,
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "name" : "App-Konfiguration",
       "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
-      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
-      "name" : "Rechtschreibung",
-      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)"
     }
   }
 ]

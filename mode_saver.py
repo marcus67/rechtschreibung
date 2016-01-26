@@ -30,7 +30,7 @@ class TextFieldDelegate (object):
     self.vc.handle_action(self)
 
 
-class SpellingModeSaver(ui_util.view_controller):
+class SpellingModeSaver(ui_util.ViewController):
   
   def __init__(self, parent_vc=None):
     

@@ -19,7 +19,7 @@ reload(spelling_mode)
 global logger
 logger = log.open_logging(__name__)
 
-class SpellingModeSelector(ui_util.view_controller):
+class SpellingModeSelector(ui_util.ViewController):
   
   def __init__(self, parent_vc=None):
     
