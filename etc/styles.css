@@ -1,5 +1,12 @@
 html {
-      font-size: 120%;
+}
+body {
+    /* background: url(../lib/background_r_small.png) no-repeat fixed 100% 100%; */
+    background-image: url(../lib/background_r_small.png);
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    background-position: center center;
+    font-size: 120%;
 }
 span#ins {
     background-color: #C8FFD1;
@@ -12,4 +19,3 @@ span#del {
 span#ch {
     bg-color: yellow;
 }  
-

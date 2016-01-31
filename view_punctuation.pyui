@@ -1,1 +1,178 @@
-[{"class":"View","attributes":{"name":"Zeichensetzung","tint_color":"RGBA(0.000000,0.478000,1.000000,1.000000)","background_color":"RGBA(1.000000,1.000000,1.000000,1.000000)","enabled":true,"border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","flex":""},"frame":"{{0, 0}, {373, 555}}","nodes":[{"class":"ScrollView","attributes":{"enabled":true,"flex":"","content_width":320,"name":"scrollview_punctuation","content_height":320,"border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","uuid":"D5B343FB-0B0F-4F5E-9E9D-45608562EB65"},"frame":"{{6, 6}, {357.5, 536.5}}","nodes":[{"class":"Label","attributes":{"font_size":17,"enabled":true,"text":"Punkt am Satzende","flex":"","name":"label1","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","text_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","alignment":"left","uuid":"624B5364-7793-4619-8C1D-AB4DCA9D6A24"},"frame":"{{6, 6}, {227, 32}}","nodes":[]},{"class":"Switch","attributes":{"enabled":true,"flex":"","name":"switch_punctuation_full_stop","value":true,"action":"self.handle_action","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","uuid":"5C6FAA6E-D07C-43B1-A464-9A84F3EF1258"},"frame":"{{263, 7}, {51, 31}}","nodes":[]},{"class":"Label","attributes":{"font_size":17,"enabled":true,"text":"Komma bei Nebensätzen","flex":"","name":"label2","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","text_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","alignment":"left","uuid":"D1AAD1EE-D576-4C5A-A0CB-7BBE14DB280E"},"frame":"{{6, 84}, {227, 32}}","nodes":[]},{"class":"Switch","attributes":{"enabled":true,"flex":"","name":"switch_punctuation_comma_sub_clause","value":true,"action":"self.handle_action","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","uuid":"B8BEEFEF-344D-4356-A141-0ACDB61037F7"},"frame":"{{263, 83}, {51, 31}}","nodes":[]},{"class":"Label","attributes":{"font_size":17,"enabled":true,"text":"Semikolon","flex":"","name":"label3","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","text_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","alignment":"left","uuid":"23FEBCE2-8C97-4DD6-B8C0-23A9015501D7"},"frame":"{{6, 124}, {227, 32}}","nodes":[]},{"class":"Switch","attributes":{"enabled":true,"flex":"","name":"switch_punctuation_colon","value":true,"action":"self.handle_action","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","uuid":"4FF2B8E7-8D9D-46D3-89A1-4B30013B117E"},"frame":"{{263, 125}, {51, 31}}","nodes":[]},{"class":"Label","attributes":{"font_size":17,"enabled":true,"text":"Punkt bei Abkürzungen","flex":"","name":"label4","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","text_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","alignment":"left","uuid":"6CEF7B3A-9434-493B-AE58-50E96F3B25D4"},"frame":"{{6, 44}, {227, 32}}","nodes":[]},{"class":"Switch","attributes":{"enabled":true,"flex":"","name":"switch_punctuation_dot_abbr","value":true,"action":"self.handle_action","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","uuid":"B4249E35-6D37-4360-B53C-BC99A6100BB3"},"frame":"{{263, 44}, {51, 31}}","nodes":[]}]}]}]
+[
+  {
+    "selected" : false,
+    "frame" : "{{0, 0}, {320, 480}}",
+    "class" : "View",
+    "nodes" : [
+      {
+        "selected" : true,
+        "frame" : "{{0, 0}, {320, 480}}",
+        "class" : "ScrollView",
+        "nodes" : [
+          {
+            "selected" : false,
+            "frame" : "{{6, 6}, {227, 32}}",
+            "class" : "Label",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "text" : "Punkt am Satzende",
+              "alignment" : "left",
+              "uuid" : "624B5364-7793-4619-8C1D-AB4DCA9D6A24",
+              "font_size" : 17,
+              "name" : "label1"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{268, 6}, {51, 31}}",
+            "class" : "Switch",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "L",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "uuid" : "5C6FAA6E-D07C-43B1-A464-9A84F3EF1258",
+              "value" : true,
+              "name" : "switch_punctuation_full_stop"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{6, 78}, {227, 32}}",
+            "class" : "Label",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "text" : "Komma bei Nebensätzen",
+              "alignment" : "left",
+              "uuid" : "D1AAD1EE-D576-4C5A-A0CB-7BBE14DB280E",
+              "font_size" : 17,
+              "name" : "label2"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{268, 78}, {51, 31}}",
+            "class" : "Switch",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "L",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "uuid" : "B8BEEFEF-344D-4356-A141-0ACDB61037F7",
+              "value" : true,
+              "name" : "switch_punctuation_comma_sub_clause"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{6, 114}, {227, 32}}",
+            "class" : "Label",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "text" : "Semikolon",
+              "alignment" : "left",
+              "uuid" : "23FEBCE2-8C97-4DD6-B8C0-23A9015501D7",
+              "font_size" : 17,
+              "name" : "label3"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{268, 114}, {51, 31}}",
+            "class" : "Switch",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "uuid" : "4FF2B8E7-8D9D-46D3-89A1-4B30013B117E",
+              "value" : true,
+              "name" : "switch_punctuation_colon"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{6, 42}, {227, 32}}",
+            "class" : "Label",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "text" : "Punkt bei Abkürzungen",
+              "alignment" : "left",
+              "uuid" : "6CEF7B3A-9434-493B-AE58-50E96F3B25D4",
+              "font_size" : 17,
+              "name" : "label4"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{268, 42}, {51, 31}}",
+            "class" : "Switch",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "L",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "uuid" : "B4249E35-6D37-4360-B53C-BC99A6100BB3",
+              "value" : true,
+              "name" : "switch_punctuation_dot_abbr"
+            }
+          }
+        ],
+        "attributes" : {
+          "flex" : "WH",
+          "enabled" : true,
+          "content_width" : 320,
+          "content_height" : 480,
+          "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+          "uuid" : "D5B343FB-0B0F-4F5E-9E9D-45608562EB65",
+          "custom_attributes" : "{ 'background_color' : defaults.COLOR_LIGHT_ORANGE }",
+          "name" : "scrollview_punctuation"
+        }
+      }
+    ],
+    "attributes" : {
+      "flex" : "",
+      "enabled" : true,
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "name" : "Zeichensetzung"
+    }
+  }
+]

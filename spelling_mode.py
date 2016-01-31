@@ -59,7 +59,7 @@ class spelling_mode:
     self.isReference = False
     
     # customization mode switches
-    self.bitswitch_capitalization = C_NOUN | C_NAME | C_BOS | C_ADDRESSING
+    self.bitswitch_capitalization = C_NOUN | C_NAME | C_BOS | C_ADDRESSING | C_BOS_AC
     self.switch_capitalization_all_capital = False
     self.switch_capitalization_expand_sz = True
     self.switch_simplification_double_consonants = False

@@ -4,3 +4,6 @@ test.pyui
 view_harmonization.py
 view_capitalization.py
 view_layout.py
+top_navigation_new.pyui
+navigation.pyui
+*.json

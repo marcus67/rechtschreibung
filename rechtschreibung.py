@@ -6,8 +6,10 @@ import speech
 import threading
 import copy
 import os
+import webbrowser as wb
 
 import log
+import defaults
 import view_punctuation
 import spelling_mode
 import rulesets
@@ -43,7 +45,14 @@ HIGHLIGHT_OFF = 0
 HIGHLIGHT_DELTA = 1
 HIGHLIGHT_REFERENCE = 2
 
-VIEW_NAME_TOP_NAVIGATION = 'Regeln'
+DEFAULT_SPEECH_SPEED = 0.5
+
+NAME_NAVIGATION_VIEW = 'top_navigation_view'
+NAME_NAVIGATION_VIEW_TOP_LEVEL = 'Regeln'
+
+IMAGE_URL_RECHTSCHREIBUNG = 'lib/rechtschreibung_32.png'
+
+GITHUB_URL_RECHTSCHREIBUNG = 'https://github.com/marcus67/rechtschreibung'
 
 class MainViewController ( ui_util.ViewController ) :
 
@@ -91,7 +100,7 @@ class MainViewController ( ui_util.ViewController ) :
       self.save_mode_finish()  
       
     elif sender.name == 'button_start_speech':
-      speech.say(sample_text.get_sample_text(), 'de', 0.15)
+      speech.say(sample_text.get_sample_text(), 'de', DEFAULT_SPEECH_SPEED)
       
     elif sender.name == 'button_stop_speech':
       speech.stop()
@@ -111,6 +120,9 @@ class MainViewController ( ui_util.ViewController ) :
     elif sender.name == 'button_close_top_navigation_view':
       self.close_top_navigation_view()
 
+    elif sender.name == 'button_icon_rechtschreibung':
+      self.button_icon_rechtschreibung()
+
     elif sender.name == 'segmented_control_highlighting_mode':
       self.highlightingMode = sender.selected_index
       self.update_sample_text()
@@ -121,9 +133,8 @@ class MainViewController ( ui_util.ViewController ) :
     elif sender.name.startswith(BUTTON_PREFIX):
       view_name = sender.name[len(BUTTON_PREFIX):]
       child_view = self.find_subview_by_name(view_name)
-      #child_view = self.view['top_navigation_view'][view_name]
       if child_view != None:
-        view = self.find_subview_by_name(VIEW_NAME_TOP_NAVIGATION)
+        view = self.find_subview_by_name(NAME_NAVIGATION_VIEW)
         view.push_view(child_view)
         return 1
       else:
@@ -148,12 +159,19 @@ class MainViewController ( ui_util.ViewController ) :
     
   def open_top_navigation_view(self):
     
-    view = self.find_subview_by_name('Regeln')
-    view.present(style='sheet') # , hide_title_bar=True
+    global logger
+    
+    view = self.find_subview_by_name(NAME_NAVIGATION_VIEW)
+    if not view:
+      logger.warning("open_top_navigation_view: cannot find view %s" % NAME_NAVIGATION_VIEW)
+      return
+      
+    view.height = ui_util.PORTRAIT_SMALL_VIEW_HEIGHT + ui_util.NAVIGATION_VIEW_TITLE_HEIGHT
+    view.present(style='sheet' , hide_title_bar=True)
     
   def close_top_navigation_view(self):
     
-    view = self.find_subview_by_name('Regeln')
+    view = self.find_subview_by_name(NAME_NAVIGATION_VIEW)
     view.close()
     
   def open_app_control_view(self):
@@ -237,38 +255,52 @@ class MainViewController ( ui_util.ViewController ) :
       self.loadedMode = copy.copy(selectedMode)
       self.handle_change_in_mode()
 
+  def button_icon_rechtschreibung(self):
+    
+    global logger
+    
+    logger.info("Opening URL %s" % GITHUB_URL_RECHTSCHREIBUNG)
+    wb.open(GITHUB_URL_RECHTSCHREIBUNG, modal=True)
+    
+    
 ##### MAIN ######################
     
 def main():
   
   global logger
   
-  logger = log.open_logging('rechtschreibung')
+  logger = log.open_logging('rechtschreibung', reload=True)
   logger.info("Start application")
   default_mode = spelling_mode.spelling_mode()
   rulesets.set_default_mode(default_mode)
   
+  image_rechtschreibung = ui.Image.named(IMAGE_URL_RECHTSCHREIBUNG).with_rendering_mode(ui.RENDERING_MODE_ORIGINAL)
   my_main_view_controller = MainViewController()
   
   top_navigation_vc = ui_util.ViewController(my_main_view_controller)
-  top_navigation_vc.load('top_navigation')
-  top_navigation_vc.view.x = 0
+  navigation_vc = ui_util.ViewController(top_navigation_vc)
+  navigation_vc.load('top_navigation')
+  
+  top_navigation_view = ui.NavigationView(navigation_vc.view, title_bar_color = defaults.COLOR_GREY)
+  top_navigation_view.title_bar_color = defaults.COLOR_LIGHT_GREY
+  top_navigation_vc.view = top_navigation_view
+  my_main_view_controller.add_child_controller(NAME_NAVIGATION_VIEW, top_navigation_vc)
+  top_navigation_view.name = NAME_NAVIGATION_VIEW
   
   if ui_util.is_iphone():
     my_main_view_controller.load('rechtschreibung_iphone')
     app_control_vc = ui_util.ViewController(my_main_view_controller)
     app_control_vc.load('rechtschreibung_app_control_iphone')
+    my_main_view_controller.add_left_button_item(NAME_NAVIGATION_VIEW_TOP_LEVEL, 'button_close_top_navigation_view', ui.ButtonItem(image=ui.Image.named('iob:ios7_close_outline_32')))
+        
+    my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_icon_rechtschreibung', ui.ButtonItem(image=image_rechtschreibung))    
+    my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_open_app_control_view', ui.ButtonItem(image=ui.Image.named('ionicons-gear-a-32')))
+    my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_open_top_navigation_view', ui.ButtonItem(image=ui.Image.named('ionicons-levels-32')))
 
-    my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_open_app_control_view', ui.ButtonItem(title="Kontrolle"))
-    my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_open_top_navigation_view', ui.ButtonItem(title="Regeln"))
   else:
     my_main_view_controller.load('rechtschreibung')
-    container_view = my_main_view_controller.find_subview_by_name('view_container_navigation')
-    container_view.add_subview(top_navigation_vc.view)
-    my_main_view_controller.add_child_controller('top_navigation', top_navigation_vc)
-    top_navigation_vc.view.width = container_view.width
-    navigation_view = my_main_view_controller.find_subview_by_name('Regeln')
-    navigation_view.width = container_view.width
+    my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_icon_rechtschreibung', ui.ButtonItem(image=image_rechtschreibung))
+    my_main_view_controller.add_subview('view_container_navigation', top_navigation_vc.view)
     
   view = my_main_view_controller.find_subview_by_name('segmented_control_highlighting_mode')
   view.action = my_main_view_controller.handle_action
@@ -304,7 +336,8 @@ def main():
   text_view.load_url(absolute_page_path)
   
   my_main_view_controller.update_sample_text()
-  my_main_view_controller.present('fullscreen')
+  my_main_view_controller.present('fullscreen', title_bar_color=defaults.COLOR_GREY)
+  speech.stop()
   logger.info("Terminate application")
     
 if __name__ == '__main__':

@@ -1,1 +1,70 @@
-[{"class":"View","attributes":{"name":"Alte Rechtschreibung","background_color":"RGBA(1.000000,1.000000,1.000000,1.000000)","tint_color":"RGBA(0.000000,0.478000,1.000000,1.000000)","enabled":true,"border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","flex":""},"frame":"{{0, 0}, {348, 332}}","nodes":[{"class":"ScrollView","attributes":{"enabled":true,"flex":"","content_width":320,"name":"scrollview_legacy","content_height":320,"border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","uuid":"741152D7-D037-4BA9-B9B8-FAC551AC4A66"},"frame":"{{0, 6}, {344, 320}}","nodes":[{"class":"Label","attributes":{"font_size":17,"enabled":true,"text":"\"ß\" auch nach kurzen Vokalen","flex":"","name":"label1","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","text_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","alignment":"left","uuid":"9EF97047-36D3-4C8B-880D-F7BE1EECF23A"},"frame":"{{6, 6}, {242, 32}}","nodes":[]},{"class":"Switch","attributes":{"enabled":true,"flex":"","name":"switch_legacy_sz","value":false,"action":"self.handle_action","border_color":"RGBA(0.000000,0.000000,0.000000,1.000000)","uuid":"8F6D518F-5478-44C0-8379-4C959BDD333C"},"frame":"{{263, 7}, {51, 31}}","nodes":[]}]}]}]
+[
+  {
+    "selected" : false,
+    "frame" : "{{0, 0}, {320, 480}}",
+    "class" : "View",
+    "nodes" : [
+      {
+        "selected" : true,
+        "frame" : "{{0, 0}, {320, 480}}",
+        "class" : "ScrollView",
+        "nodes" : [
+          {
+            "selected" : false,
+            "frame" : "{{6, 6}, {242, 32}}",
+            "class" : "Label",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "text" : "\"ß\" auch nach kurzen Vokalen",
+              "alignment" : "left",
+              "uuid" : "9EF97047-36D3-4C8B-880D-F7BE1EECF23A",
+              "font_size" : 17,
+              "name" : "label1"
+            }
+          },
+          {
+            "selected" : true,
+            "frame" : "{{268, 7}, {51, 31}}",
+            "class" : "Switch",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "L",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "uuid" : "8F6D518F-5478-44C0-8379-4C959BDD333C",
+              "value" : false,
+              "name" : "switch_legacy_sz"
+            }
+          }
+        ],
+        "attributes" : {
+          "flex" : "WH",
+          "enabled" : true,
+          "content_width" : 320,
+          "content_height" : 480,
+          "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+          "uuid" : "741152D7-D037-4BA9-B9B8-FAC551AC4A66",
+          "custom_attributes" : "{ 'background_color' : defaults.COLOR_LIGHT_PURPLE }",
+          "name" : "scrollview_legacy"
+        }
+      }
+    ],
+    "attributes" : {
+      "flex" : "",
+      "enabled" : true,
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "name" : "Alte Rechtschreibung"
+    }
+  }
+]

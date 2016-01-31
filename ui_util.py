@@ -1,9 +1,11 @@
 import ui
 import logging
+import gc
 
 import log
 import util
 import spelling_mode
+import defaults
 
 reload(util)
 reload(spelling_mode)
@@ -13,6 +15,8 @@ BITSWITCH_PREFIX = "bitswitch_"
 SEGMENTED_CONTROL_PREFIX = "segmented_control_"
 SPLIT_CHAR = "|"
 MAX_BITS = 8
+NAVIGATION_VIEW_TITLE_HEIGHT = 64
+PORTRAIT_SMALL_VIEW_HEIGHT = 480
 
 global logger
 
@@ -20,7 +24,21 @@ logger = log.open_logging(__name__)
 
 def is_iphone():
   return ui.get_screen_size().width < 768
+  #return True
 
+# see https://forum.omz-software.com/topic/2371/sub-views-of-navigationview-are-not-accessible
+def get_navigationview_root(nv):
+  return None
+  o=[v for v in gc.get_objects() if hasattr(v,'navigation_view') and v.navigation_view==nv and not v.superview]
+  print "view %s has %d subviews" % (nv.name, len(o))
+  return o[0] if len(o) > 0 else None
+
+def get_navigationview_subviews(nv):
+  return None
+  o=[v for v in gc.get_objects() if hasattr(v,'superview') and v.superview==nv]
+  print "view %s has %d subviews" % (nv.name, len(o))
+  return o
+      
 def store_in_model(sender, model):
   
   switch_name = sender.name
@@ -58,19 +76,55 @@ class ButtonItemAction(object):
 
 class ViewController (object):
   
-  def __init__(self, parent_view=None):
+  def __init__(self, parent_vc=None):
     
-    self.parent_view = parent_view
+    self.parent_vc = parent_vc
     self.model = None
     self.child_controllers = {}
     self.view = None
     self.subview_map = {}
     self.warningWorkaroundIssued = False
     
-  def add_child_controller(self, name, child_controller):
+  def add_child_controller(self, view_name, child_controller):
     
-    self.child_controllers[name] = child_controller
-    self.subview_map[name] = child_controller.get_view()
+    self.child_controllers[view_name] = child_controller
+    view = child_controller.get_view()
+    self.subview_map[view_name] = child_controller.get_view()
+    
+  def add_subview(self, parent_view_name, subview):
+    
+    global logger
+    
+    container_view = self.find_subview_by_name(parent_view_name)
+    
+    if not container_view:
+      logger.warning("add_subview: cannot find parent view '%s'" % parent_view_name)
+      return
+      
+    container_view.add_subview(subview)
+    subview.width = container_view.width
+    subview.height = container_view.height
+    if type(subview).__name__ == 'NavigationView':
+      subview.height = subview.height - NAVIGATION_VIEW_TITLE_HEIGHT
+      
+    container_view.add_subview(subview)    
+    
+  def add_left_button_item(self, view_name, button_name, button_item):
+    
+    global logger
+    
+    view = self.find_subview_by_name(view_name)
+    if view == None:
+      logger.warning("add_left_button_item: cannot find view %s" % view_name)
+      return
+    
+    button_item.action = ButtonItemAction(self, view_name, button_name).handle_action
+    if view.left_button_items == None:
+      view.left_button_items = [ button_item ]
+    else:
+      new_list = list(view.left_button_items)
+      new_list.append(button_item)
+      view.left_button_items = new_list
     
     
   def add_right_button_item(self, view_name, button_name, button_item):
@@ -90,12 +144,11 @@ class ViewController (object):
       new_list.append(button_item)
       view.right_button_items = new_list
     
-    
   def load(self, view_name):
     
     self.view = ui.load_view(view_name)    
-    if self.parent_view:
-      self.parent_view.add_child_controller(view_name, self)
+    if self.parent_vc:
+      self.parent_vc.add_child_controller(view_name, self)
     
   def get_view(self):
     
@@ -135,8 +188,12 @@ class ViewController (object):
             logger.warning("find_subview_by_name2: WORKAROUND: skipping iteration over subviews of SegmentedControl '%s'" % view.name)
             self.warningWorkaroundIssued = True
         else:
-          if view.subviews:
-            for subview in view.subviews:
+          if type(view).__name__ == 'NavigationView':
+            subviews = get_navigationview_subviews(view)
+          else:
+            subviews = view.subviews
+          if subviews:
+            for subview in subviews:
               if not name:
                 continue
               descendent_view = self.find_subview_by_name2(subview, name)
@@ -147,16 +204,16 @@ class ViewController (object):
 
   def handle_action(self, sender):
           
-    if self.parent_view:
-      return self.parent_view.handle_action(sender)
+    if self.parent_vc:
+      return self.parent_vc.handle_action(sender)
     else:
       return 0
       
-  def present(self, mode='popover'):
+  def present(self, mode='popover', orientations=(), title_bar_color=None):
     
     global logger
     
-    self.view.present(style=mode)
+    self.view.present(style=mode, orientations=orientations, title_bar_color=title_bar_color)
     try:
       
       self.view.wait_modal()
@@ -210,11 +267,11 @@ class ViewController (object):
     if retrieve:
       self.retrieve_from_model()
 
-class nagivation_view_controller:
+class NavigationViewController(ViewController):
   
-  def __init__(self, parent_view):
+  def __init__(self, parent_vc):
     
-    super(navigation_view_controller, self).__init__()
+    super(NavigationViewController, self).__init__(parent_vc)
 
 def test():
   
