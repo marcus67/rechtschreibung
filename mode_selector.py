@@ -78,7 +78,7 @@ class SpellingModeSelector(ui_util.ViewController):
 
     self.present(style)
     
-    if not self.parent_view:
+    if not self.parent_vc:
       self.view.wait_modal()
     
     
@@ -102,8 +102,8 @@ class SpellingModeSelector(ui_util.ViewController):
       
     if close:
       self.view.close()
-      if self.parent_view:
-        self.parent_view.handle_action(self)
+      if self.parent_vc:
+        self.parent_vc.handle_action(self)
         
   def handle_accessory(self, sender):
     

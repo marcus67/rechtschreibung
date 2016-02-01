@@ -63,14 +63,18 @@ class MainViewController ( ui_util.ViewController ) :
     self.currentSampleText = None
     self.highlightingMode = HIGHLIGHT_DELTA
     self.autoHide = True
-    self.autoHideSeconds = 3
+    self.autoHideSeconds = 5
     self.suppressShowChanges = False
     self.selectModeVC = mode_selector.SpellingModeSelector(self)
     self.selectModeForSaveVC = mode_saver.SpellingModeSaver(self)
     self.info_popup = popup.PopupViewController()
     self.set_reference_mode(filter(lambda m:m.isReference, mode_manager.get_available_modes())[0])
     self.loadedMode = spelling_mode.spelling_mode()
-    
+    if ui_util.is_iphone():
+      self.orientations = ( 'portrait', )
+    else:
+      self.orientations = ( 'landscape', )
+      
   def handle_change_in_mode(self):
     self.previousSampleText = self.currentSampleText
     self.suppressShowChanges = False
@@ -167,7 +171,7 @@ class MainViewController ( ui_util.ViewController ) :
       return
       
     view.height = ui_util.PORTRAIT_SMALL_VIEW_HEIGHT + ui_util.NAVIGATION_VIEW_TITLE_HEIGHT
-    view.present(style='sheet' , hide_title_bar=True)
+    view.present(style='sheet' , hide_title_bar=True, orientations=self.orientations)
     
   def close_top_navigation_view(self):
     
@@ -177,7 +181,7 @@ class MainViewController ( ui_util.ViewController ) :
   def open_app_control_view(self):
     
     view = self.find_subview_by_name('App-Konfiguration')
-    view.present(style='sheet')
+    view.present(style='sheet', orientations=self.orientations)
     
   def activate_hide_timer(self):
     #print "activate timer"
@@ -296,7 +300,7 @@ def main():
     my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_icon_rechtschreibung', ui.ButtonItem(image=image_rechtschreibung))    
     my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_open_app_control_view', ui.ButtonItem(image=ui.Image.named('ionicons-gear-a-32')))
     my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_open_top_navigation_view', ui.ButtonItem(image=ui.Image.named('ionicons-levels-32')))
-
+    
   else:
     my_main_view_controller.load('rechtschreibung')
     my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_icon_rechtschreibung', ui.ButtonItem(image=image_rechtschreibung))
