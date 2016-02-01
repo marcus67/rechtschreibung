@@ -80,7 +80,7 @@ class SpellingModeSaver(ui_util.ViewController):
 
     self.present(style)
     
-    if not self.parent_view:
+    if not self.parent_vc:
       self.view.wait_modal()
       
   def get_selected_mode(self):
@@ -117,8 +117,8 @@ class SpellingModeSaver(ui_util.ViewController):
 
     if close:
       self.view.close()
-      if self.parent_view:
-        self.parent_view.handle_action(self)
+      if self.parent_vc:
+        self.parent_vc.handle_action(self)
 
   def update_controls(self):
     index = 0
