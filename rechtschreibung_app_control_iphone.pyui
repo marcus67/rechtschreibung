@@ -5,7 +5,7 @@
     "class" : "View",
     "nodes" : [
       {
-        "selected" : false,
+        "selected" : true,
         "frame" : "{{0, 0}, {320, 486}}",
         "class" : "View",
         "nodes" : [
@@ -35,18 +35,18 @@
             ],
             "attributes" : {
               "flex" : "RB",
-              "name" : "label1",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Änderungen",
               "alignment" : "left",
               "uuid" : "7F8A3C7F-A6D0-4874-9DBC-92ABD8305C1C",
-              "font_size" : 17,
+              "name" : "label1",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
           {
-            "selected" : true,
+            "selected" : false,
             "frame" : "{{231, 116}, {32, 32}}",
             "class" : "Button",
             "nodes" : [
@@ -98,13 +98,13 @@
             ],
             "attributes" : {
               "flex" : "RB",
-              "name" : "label3",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Vorlesen des Textes",
               "alignment" : "left",
               "uuid" : "2B79540D-7DC1-4E0E-80A4-B1A58F93E7F0",
-              "font_size" : 17,
+              "name" : "label3",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -117,13 +117,13 @@
             ],
             "attributes" : {
               "flex" : "RB",
-              "name" : "label4",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Referenz",
               "alignment" : "left",
               "uuid" : "1AC816D0-69FB-42F4-9AD3-6782F87D013F",
-              "font_size" : 17,
+              "name" : "label4",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -136,13 +136,13 @@
             ],
             "attributes" : {
               "flex" : "WB",
-              "name" : "textfield_current_mode_name",
+              "font_size" : 17,
               "enabled" : true,
               "border_style" : 3,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "uuid" : "DED27E41-DF20-4AE7-A38B-C391D8A210EC",
               "alignment" : "left",
-              "font_size" : 17,
+              "name" : "textfield_current_mode_name",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -157,12 +157,12 @@
               "flex" : "RB",
               "action" : "self.handle_action",
               "enabled" : true,
-              "name" : "button_load_mode",
+              "font_size" : 15,
               "title" : "",
               "uuid" : "862C3245-4D6A-4861-8DC5-49EC44A0DD63",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "font_size" : 15,
+              "name" : "button_load_mode",
               "image_name" : "ionicons-ios7-upload-outline-32"
             }
           },
@@ -191,13 +191,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "button_icon_autohide",
+              "font_size" : 15,
               "enabled" : true,
               "title" : "",
               "uuid" : "F790B788-7C77-4B9C-AE08-4A74FA7F42A2",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "font_size" : 15,
+              "name" : "button_icon_autohide",
               "image_name" : "ionicons-clock-32"
             }
           },
@@ -210,13 +210,13 @@
             ],
             "attributes" : {
               "flex" : "WB",
-              "name" : "textfield_reference_mode_name",
+              "font_size" : 17,
               "enabled" : true,
               "border_style" : 3,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "uuid" : "7F2B07CC-FD34-4189-AD4E-5D03C65A2A98",
               "alignment" : "left",
-              "font_size" : 17,
+              "name" : "textfield_reference_mode_name",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -229,18 +229,18 @@
             ],
             "attributes" : {
               "flex" : "B",
-              "name" : "label2",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Aktuell",
               "alignment" : "left",
               "uuid" : "1DACB246-E257-46E2-A418-E894AEAA5387",
-              "font_size" : 17,
+              "name" : "label2",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
           {
-            "selected" : false,
+            "selected" : true,
             "frame" : "{{95, 180}, {32, 32}}",
             "class" : "Button",
             "nodes" : [
@@ -250,12 +250,13 @@
               "flex" : "B",
               "action" : "self.handle_action",
               "enabled" : true,
+              "name" : "button_load_reference_mode",
               "title" : "",
               "uuid" : "03AE0157-4598-4046-9C0F-7A6B7C40FAA3",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "font_size" : 15,
-              "name" : "button_load_reference_mode"
+              "image_name" : "ionicons-ios7-upload-outline-32"
             }
           },
           {
@@ -267,13 +268,13 @@
             ],
             "attributes" : {
               "flex" : "RB",
-              "name" : "label5",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Statistik",
               "alignment" : "left",
               "uuid" : "1FE8591B-A844-4430-A650-A9E5FC968532",
-              "font_size" : 17,
+              "name" : "label5",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -286,13 +287,13 @@
             ],
             "attributes" : {
               "flex" : "WB",
-              "name" : "textfield_mode_statistics",
+              "font_size" : 12,
               "enabled" : true,
               "border_style" : 3,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "uuid" : "CE0644B4-274F-40B5-9764-65A12A378B73",
               "alignment" : "left",
-              "font_size" : 12,
+              "name" : "textfield_mode_statistics",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -307,12 +308,12 @@
               "flex" : "RB",
               "action" : "self.handle_action",
               "enabled" : true,
-              "name" : "button_save_mode",
+              "font_size" : 15,
               "title" : "",
               "uuid" : "2632E468-9F03-4024-97A4-0E652C6DB255",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "font_size" : 15,
+              "name" : "button_save_mode",
               "image_name" : "ionicons-ios7-download-outline-32"
             }
           }
@@ -321,19 +322,19 @@
           "flex" : "WH",
           "border_width" : 0,
           "enabled" : true,
-          "corner_radius" : 0,
           "uuid" : "045303CA-03B8-4F0D-8E81-D97F1FA57E2B",
+          "corner_radius" : 0,
           "background_color" : "RGBA(0.938679,0.938679,0.938679,1.000000)",
           "name" : "App-Konfiguration"
         }
       }
     ],
     "attributes" : {
-      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "enabled" : true,
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
       "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
       "name" : "App-Konfiguration",
-      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "flex" : ""
     }
   }
