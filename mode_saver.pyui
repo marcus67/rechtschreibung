@@ -35,13 +35,13 @@
         ],
         "attributes" : {
           "flex" : "R",
-          "name" : "label1",
+          "font_size" : 17,
           "enabled" : true,
           "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
           "text" : "Kommentar (optional)",
           "alignment" : "left",
           "uuid" : "44E1B36D-D936-4F83-AC70-A76AC201A4B2",
-          "font_size" : 17,
+          "name" : "label1",
           "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
         }
       },
@@ -54,13 +54,13 @@
         ],
         "attributes" : {
           "flex" : "R",
-          "name" : "label2",
+          "font_size" : 17,
           "enabled" : true,
           "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
           "text" : "Name des Regelsatzes (max. 32 Zeichen)",
           "alignment" : "left",
           "uuid" : "0D91A29C-8707-4F01-89BC-6CD3EF06A2BC",
-          "font_size" : 17,
+          "name" : "label2",
           "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
         }
       },
@@ -73,13 +73,13 @@
         ],
         "attributes" : {
           "flex" : "W",
-          "name" : "textfield_mode_name",
+          "font_size" : 17,
           "enabled" : true,
           "border_style" : 3,
           "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
           "uuid" : "FD1C1E7D-1F62-41EB-BDBA-4802A21AF6F0",
           "alignment" : "left",
-          "font_size" : 17,
+          "name" : "textfield_mode_name",
           "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
         }
       },
@@ -127,7 +127,7 @@
         }
       },
       {
-        "selected" : true,
+        "selected" : false,
         "frame" : "{{0, 292}, {320, 75}}",
         "class" : "TextView",
         "nodes" : [
@@ -135,14 +135,14 @@
         ],
         "attributes" : {
           "flex" : "W",
-          "name" : "textview_comment",
+          "font_size" : 17,
           "enabled" : true,
           "editable" : true,
           "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
           "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
           "alignment" : "left",
           "uuid" : "50404519-97B8-4830-9F0D-7323D7193A00",
-          "font_size" : 17,
+          "name" : "textview_comment",
           "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
         }
       }
@@ -151,6 +151,7 @@
       "flex" : "",
       "enabled" : true,
       "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "custom_class" : "enhanced_view.EnhancedView",
       "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
       "corner_radius" : 0,
       "background_color" : "RGBA(0.928571,0.928571,0.928571,1.000000)",

@@ -6,9 +6,12 @@ import log
 import util
 import spelling_mode
 import defaults
+import enhanced_view
 
 reload(util)
 reload(spelling_mode)
+reload(defaults)
+reload(enhanced_view)
 
 SWITCH_PREFIX = "switch_"
 BITSWITCH_PREFIX = "bitswitch_"
