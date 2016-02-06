@@ -2,7 +2,16 @@
 import ui
 import scene
 
+import ui_util
+import log
+
+#reload(ui_util)
+
 STATUS_ROW_HEIGHT = 20
+
+global logger
+
+logger = log.open_logging(__name__)
 
 def get_absolute_y(view):
   """
@@ -63,6 +72,24 @@ class EnhancedView(ui.View):
     
     self.subviews_enhanced = False
     self.current_text_element = None
+    self.saved_right_button_items = None
+    #if ui_util.is_iphone():
+    if True:
+      self.keyboard_button_items = [ ui.ButtonItem(image=ui.Image.named('iob:ios7_keypad_outline_32'), action=self.handle_action) ]
+    else:
+      self.keyboard_button_items = None
+    
+    
+  def present(self, style='default', animated=True, popover_location=None, hide_title_bar=False, title_bar_color=None, title_color=None, orientations=None):
+
+    self.enhance_subviews()    
+    self.saved_right_button_items = self.right_button_items
+    super(EnhancedView, self).present(style=style, animated=animated, hide_title_bar=hide_title_bar, title_bar_color=title_bar_color, title_color=title_color)          
+
+  def handle_action(self, sender):
+    if self.current_text_element:
+      self.current_text_element.end_editing()
+    
     
   def did_begin_editing(self, text_element):
     self.current_text_element = text_element
@@ -94,18 +121,31 @@ class EnhancedView(ui.View):
   
   def keyboard_frame_did_change(self, frame):
     
-    self.enhance_subviews()    
+    global logger
+    
     kb_y = frame[1]
     kb_height = frame[3]
     
     if kb_y == 0 or not self.current_text_element:
       # keyboard inactive
-        self.bounds = scene.Rect(self.bounds[0], 0, self.bounds[2], self.bounds[3])    
+      delta_y = 0
     else:
       # keyboard active
-      top_y = get_absolute_y(self.current_text_element) + STATUS_ROW_HEIGHT
+      top_y = get_absolute_y(self.current_text_element)
+      if not ui_util.is_iphone():
+        top_y = top_y + STATUS_ROW_HEIGHT
       lower_y = top_y + self.current_text_element.frame[3]
       delta_y = lower_y - kb_y
+      if delta_y < 0:
+        delta_y = 0
+    
+    if self.keyboard_button_items:
       if delta_y > 0:
-        self.bounds = scene.Rect(self.bounds[0], delta_y, self.bounds[2], self.bounds[3])    
-        
+        self.right_button_items = self.keyboard_button_items
+      elif self.saved_right_button_items:
+        self.right_button_items = self.saved_right_button_items
+      else:
+        self.right_button_items = []
+
+    self.bounds = scene.Rect(self.bounds[0], delta_y, self.bounds[2], self.bounds[3])   
+    logger.debug("keyboard_frame_did_change: frame=%s, delta_y=%d" % (str(frame), delta_y) )         

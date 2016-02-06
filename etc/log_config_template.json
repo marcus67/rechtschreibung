@@ -12,7 +12,7 @@
     "handlers": {
         "console": {
             "class": "logging.StreamHandler",
-            "level": "DEBUG",
+            "level": "INFO",
             "formatter": "simple",
             "stream": "ext://sys.stdout"
         },
@@ -32,6 +32,11 @@
             "propagate": 0
         },
         "mode_manager": {
+            "level": "INFO",
+            "handlers": ["console", "file"],
+            "propagate": 0
+        },        
+        "enhanced_view": {
             "level": "INFO",
             "handlers": ["console", "file"],
             "propagate": 0

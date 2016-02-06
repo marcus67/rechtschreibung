@@ -78,7 +78,7 @@ class SpellingModeSaver(ui_util.ViewController):
     self.set_model(self.current_mode)
     self.update_controls()
 
-    self.present(style)
+    self.present(style, orientations=('portrait', ))
     
     if not self.parent_vc:
       self.view.wait_modal()

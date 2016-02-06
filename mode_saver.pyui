@@ -5,7 +5,7 @@
     "class" : "View",
     "nodes" : [
       {
-        "selected" : false,
+        "selected" : true,
         "frame" : "{{0, 0}, {320, 251}}",
         "class" : "TableView",
         "nodes" : [
@@ -13,7 +13,7 @@
         ],
         "attributes" : {
           "uuid" : "D5F632AF-C622-422A-B884-AC3843DF5B81",
-          "flex" : "WH",
+          "data_source_action" : "self.handle_action",
           "background_color" : "RGBA(0.928571,0.928571,0.928571,1.000000)",
           "data_source_items" : "Row 1\nRow 2 >\nRow 3 (i)",
           "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
@@ -23,7 +23,7 @@
           "data_source_font_size" : 18,
           "row_height" : 44,
           "name" : "tableview_mode_selector",
-          "data_source_action" : "self.handle_action"
+          "flex" : "WHB"
         }
       },
       {
@@ -35,14 +35,14 @@
         ],
         "attributes" : {
           "flex" : "R",
-          "font_size" : 17,
+          "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
           "enabled" : true,
           "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
           "text" : "Kommentar (optional)",
           "alignment" : "left",
           "uuid" : "44E1B36D-D936-4F83-AC70-A76AC201A4B2",
           "name" : "label1",
-          "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+          "font_size" : 17
         }
       },
       {
@@ -54,14 +54,14 @@
         ],
         "attributes" : {
           "flex" : "R",
-          "font_size" : 17,
+          "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
           "enabled" : true,
           "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
           "text" : "Name des Regelsatzes (max. 32 Zeichen)",
           "alignment" : "left",
           "uuid" : "0D91A29C-8707-4F01-89BC-6CD3EF06A2BC",
           "name" : "label2",
-          "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+          "font_size" : 17
         }
       },
       {
@@ -73,19 +73,19 @@
         ],
         "attributes" : {
           "flex" : "W",
-          "font_size" : 17,
+          "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
           "enabled" : true,
           "border_style" : 3,
           "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
           "uuid" : "FD1C1E7D-1F62-41EB-BDBA-4802A21AF6F0",
           "alignment" : "left",
           "name" : "textfield_mode_name",
-          "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+          "font_size" : 17
         }
       },
       {
         "selected" : false,
-        "frame" : "{{171, 438}, {149, 41}}",
+        "frame" : "{{165, 434}, {149, 40}}",
         "class" : "Button",
         "nodes" : [
 
@@ -106,14 +106,14 @@
       },
       {
         "selected" : false,
-        "frame" : "{{0, 438}, {147, 42}}",
+        "frame" : "{{6, 434}, {147, 40}}",
         "class" : "Button",
         "nodes" : [
 
         ],
         "attributes" : {
           "uuid" : "CC639CBA-8446-45D2-9A5B-616AB74ED6D6",
-          "font_size" : 15,
+          "flex" : "RT",
           "corner_radius" : 15,
           "background_color" : "RGBA(0.857143,0.857143,0.857143,1.000000)",
           "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
@@ -123,7 +123,7 @@
           "font_bold" : false,
           "alpha" : 1,
           "name" : "button_cancel",
-          "flex" : "RT"
+          "font_size" : 15
         }
       },
       {
@@ -135,7 +135,7 @@
         ],
         "attributes" : {
           "flex" : "W",
-          "font_size" : 17,
+          "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
           "enabled" : true,
           "editable" : true,
           "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
@@ -143,7 +143,7 @@
           "alignment" : "left",
           "uuid" : "50404519-97B8-4830-9F0D-7323D7193A00",
           "name" : "textview_comment",
-          "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+          "font_size" : 17
         }
       }
     ],
@@ -155,7 +155,7 @@
       "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
       "corner_radius" : 0,
       "background_color" : "RGBA(0.928571,0.928571,0.928571,1.000000)",
-      "name" : "Speichern des Regelsatzes"
+      "name" : "Regelsatz speichern"
     }
   }
 ]
