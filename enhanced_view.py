@@ -20,7 +20,11 @@ def get_absolute_y(view):
   if view.superview:
     return get_absolute_y(view.superview) + view.frame[1]
   else:
-    return view.frame[1]
+      
+    point_in_system_coordinates = ui.convert_point(point=(0, 0), from_view=view, to_view=None)
+#    print point_in_system_coordinates[1]
+#    return view.frame[1]
+    return point_in_system_coordinates[1]
       
 class EnhancedTextFieldDelegate (object):
   
@@ -132,8 +136,8 @@ class EnhancedView(ui.View):
     else:
       # keyboard active
       top_y = get_absolute_y(self.current_text_element)
-      if not ui_util.is_iphone():
-        top_y = top_y + STATUS_ROW_HEIGHT
+      #if not ui_util.is_iphone():
+      #  top_y = top_y + STATUS_ROW_HEIGHT
       lower_y = top_y + self.current_text_element.frame[3]
       delta_y = lower_y - kb_y
       if delta_y < 0:
