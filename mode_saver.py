@@ -1,4 +1,5 @@
 # coding: utf-8
+# This file is part of https://github.com/marcus67/rechtschreibung
 
 import ui
 import console
@@ -66,8 +67,8 @@ class SpellingModeSaver(ui_util.ViewController):
 
     for mode in modes:
       
-      logger.debug("add mode '%s' to list" % mode.name)
-      entry_map = { 'title' : mode.name }
+      logger.debug("add mode '%s' to list" % mode.control.name)
+      entry_map = { 'title' : mode.control.name }
 
       items.append(entry_map)
       
@@ -75,7 +76,7 @@ class SpellingModeSaver(ui_util.ViewController):
     self.list_data_source.highlight_color = defaults.COLOR_LIGHT_GREEN
     self.tableview_mode_selector.data_source = self.list_data_source
     
-    self.set_model(self.current_mode)
+    self.set_model(self.current_mode.combination)
     self.update_controls()
 
     self.present(style, orientations=('portrait', ))
@@ -111,8 +112,8 @@ class SpellingModeSaver(ui_util.ViewController):
     elif sender.name == 'button_save':
       logger.debug("handle_action from save button")
       
-      self.current_mode.comment = self.text_view_comment.text
-      self.current_mode.name = self.text_field_mode_name.text
+      self.current_mode.control.comment = self.text_view_comment.text
+      self.current_mode.control.name = self.text_field_mode_name.text
       close = True    
 
     if close:
@@ -125,7 +126,7 @@ class SpellingModeSaver(ui_util.ViewController):
     found = False
     for aMode in self.modes:
         
-      if self.text_field_mode_name.text == aMode.name:
+      if self.text_field_mode_name.text == aMode.control.name:
           found = True
           break
       index = index + 1
@@ -144,8 +145,8 @@ class SpellingModeSaver(ui_util.ViewController):
 
   def fill_model(self, mode):
     
-    self.text_view_comment.text = mode.comment
-    self.text_field_mode_name.text = mode.name
+    self.text_view_comment.text = mode.control.comment
+    self.text_field_mode_name.text = mode.control.name
     self.update_controls()
       
     
@@ -161,7 +162,7 @@ def test():
   result = saver.get_selected_mode()
   
   if result:
-    logger.info("selected_mode='%s' comment='%s'" % (result.name, result.comment))
+    logger.info("selected_mode='%s' comment='%s'" % (result.control.name, result.control.comment))
   else:
     logger.info("selection cancelled")
   logger.info("Test finished")

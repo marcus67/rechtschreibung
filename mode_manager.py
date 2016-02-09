@@ -1,3 +1,6 @@
+# coding: utf-8
+# This file is part of https://github.com/marcus67/rechtschreibung
+
 import os
 import io
 import re
@@ -34,7 +37,7 @@ def read_mode(modeName):
   logger.info("read mode file '%s'" % filename)
   mode = pickle.load(file)
   file.close()
-  changes = util.add_missing_attributes(mode, spelling_mode.spelling_mode())
+  changes = util.add_missing_attributes(mode.combination, spelling_mode.spelling_mode().combination)
   if changes > 0:
     logger.info("mode file '%s' is lacking %d attributes; filling up" % (filename, changes))
     write_mode(mode)
@@ -44,7 +47,7 @@ def write_mode(mode):
   
   global logger
   
-  filename = unicode(get_mode_filename(mode.name))
+  filename = unicode(get_mode_filename(mode.control.name))
   logger.info("write mode file '%s'" % filename)
   file = io.open(filename, "wb")
   pickle.dump(mode, file)
@@ -61,14 +64,12 @@ def get_available_modes(includePredefinedModes = True):
   
   for file in os.listdir(MODE_FILE_DIRECTORY):
     match = filePattern.match(file)
-    if (match):
-      
+    
+    if (match):  
       modeName = match.group(1)
-      
       mode = read_mode(modeName)
       modes.append(mode)    
     
-  
   return modes
   
 
@@ -76,9 +77,9 @@ def test():
   
   modes = get_available_modes()
   for mode in modes:
-    if mode.isImmutable:
-      mode.name = mode.name + u' (pickled)'
-      mode.isImmutable = False
+    if mode.control.isImmutable:
+      mode.control.name = mode.control.name + u' (pickled)'
+      mode.control.isImmutable = False
       write_mode(mode)
         
 if __name__ == '__main__':

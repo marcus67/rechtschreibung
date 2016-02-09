@@ -1,3 +1,6 @@
+# coding: utf-8
+# This file is part of https://github.com/marcus67/rechtschreibung
+
 import ui
 import logging
 import gc
@@ -45,14 +48,12 @@ def get_navigationview_subviews(nv):
 def store_in_model(sender, model):
   
   switch_name = sender.name
-  #print "switch_name=", switch_name
   
   if switch_name.startswith(SWITCH_PREFIX):
     util.set_container_value(model, switch_name, sender.value)
 
   elif switch_name.startswith(BITSWITCH_PREFIX):
     (switch_name, bit_value) = switch_name.split(SPLIT_CHAR)
-      #print "mode='%s' value='%s'" % (mode_name, bit_value)
     old_value = int(getattr(model, switch_name, None))
     util.set_container_value(model, switch_name, util.compute_bit_value(sender.value, old_value, int(bit_value)))
         
@@ -149,18 +150,14 @@ class ViewController (object):
       view.right_button_items = new_list
     
   def load(self, view_name):
-    
     self.view = ui.load_view(view_name)    
     if self.parent_vc:
       self.parent_vc.add_child_controller(view_name, self)
     
   def get_view(self):
-    
     return self.view
     
-    
   def find_subview_by_name(self, name):
-    
     global logger
     
     if name in self.subview_map:
@@ -179,7 +176,6 @@ class ViewController (object):
         self.subview_map[name] = descendant_view
         return descendant_view
     logger.debug("find_subview_by_name: view '%s' not found!" % name)
-    #self.subview_map[name] = None
     return None
     
   def find_subview_by_name2(self, view, name):
@@ -214,24 +210,20 @@ class ViewController (object):
       return 0
       
   def present(self, mode='popover', orientations=None, title_bar_color=None):
-    
     global logger
     
     self.view.present(style=mode, title_bar_color=title_bar_color, orientations=orientations if orientations else self.orientations)
-    try:
-      
+    
+    try:  
       self.view.wait_modal()
       
     except Exception as e:
-      
       logger.error("Exception '%s' caught" % str(e))
       self.view.close()
     
   def retrieve_from_model(self):
-    
     global logger
     
-    #print "retrieve_from_model"  
     for att in self.model.__dict__:
     
       if att.startswith(SWITCH_PREFIX):

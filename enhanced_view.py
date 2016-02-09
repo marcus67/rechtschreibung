@@ -1,11 +1,11 @@
 # coding: utf-8
+# This file is part of https://github.com/marcus67/rechtschreibung
+
 import ui
 import scene
 
 import ui_util
 import log
-
-#reload(ui_util)
 
 STATUS_ROW_HEIGHT = 20
 
@@ -20,10 +20,9 @@ def get_absolute_y(view):
   if view.superview:
     return get_absolute_y(view.superview) + view.frame[1]
   else:
-      
+
+    # see https://forum.omz-software.com/topic/2701/keyboard-hiding-textview      
     point_in_system_coordinates = ui.convert_point(point=(0, 0), from_view=view, to_view=None)
-#    print point_in_system_coordinates[1]
-#    return view.frame[1]
     return point_in_system_coordinates[1]
       
 class EnhancedTextFieldDelegate (object):
@@ -133,11 +132,10 @@ class EnhancedView(ui.View):
     if kb_y == 0 or not self.current_text_element:
       # keyboard inactive
       delta_y = 0
+
     else:
       # keyboard active
       top_y = get_absolute_y(self.current_text_element)
-      #if not ui_util.is_iphone():
-      #  top_y = top_y + STATUS_ROW_HEIGHT
       lower_y = top_y + self.current_text_element.frame[3]
       delta_y = lower_y - kb_y
       if delta_y < 0:
@@ -153,3 +151,4 @@ class EnhancedView(ui.View):
 
     self.bounds = scene.Rect(self.bounds[0], delta_y, self.bounds[2], self.bounds[3])   
     logger.debug("keyboard_frame_did_change: frame=%s, delta_y=%d" % (str(frame), delta_y) )         
+    

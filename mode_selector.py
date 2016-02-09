@@ -1,4 +1,5 @@
 # coding: utf-8
+# This file is part of https://github.com/marcus67/rechtschreibung
 
 import ui
 
@@ -40,11 +41,12 @@ class SpellingModeSelector(ui_util.ViewController):
     
     return sender == self
     
-  def select(self, modes, cancel_label=defaults.DEFAULT_CANCEL_LABEL, close_label=defaults.DEFAULT_CLOSE_LABEL, style='sheet'):
+  def select(self, modes, cancel_label=defaults.DEFAULT_CANCEL_LABEL, 
+              close_label=defaults.DEFAULT_CLOSE_LABEL, style='sheet'):
 
     global logger
         
-    self.modes = sorted(modes, spelling_mode.compare_spelling_modes)
+    self.modes = sorted(modes, spelling_mode.compare_spelling_mode_combination_controls)
     self.cancel_label = cancel_label
     self.close_label = close_label
     
@@ -52,23 +54,22 @@ class SpellingModeSelector(ui_util.ViewController):
 
     for mode in self.modes:
      
-      logger.debug("add mode '%s' to list" % mode.name)
-      entryMap = { 'title' : mode.name }
+      logger.debug("add mode '%s' to list" % mode.control.name)
+      entryMap = { 'title' : mode.control.name }
 
-      if mode.isImmutable: 
+      if mode.control.isImmutable: 
         entryMap['image'] = 'ionicons-ios7-locked-32'
       else:
         entryMap['image'] = 'ionicons-ios7-unlocked-outline-32'
         
-      if len(mode.comment) > 0:
+      if len(mode.control.comment) > 0:
         entryMap['accessory_type'] = 'detail_button'
-        logger.debug("add accessory for mode '%s'" % mode.name)
+        logger.debug("add accessory for mode '%s'" % mode.control.name)
         
       items.append(entryMap)
         
     self.list_data_source = ui.ListDataSource(items)
     self.list_data_source.highlight_color = defaults.COLOR_LIGHT_GREEN
-#    self.list_data_source.tableview_accessory_button_tapped = lambda tableview, section, row:self.tableview_accessory_button_tapped(row)
     self.selected_index = None
     self.tableview_spelling_mode_selector = self.find_subview_by_name('tableview_spelling_mode_selector')
     self.tableview_spelling_mode_selector.data_source = self.list_data_source
@@ -80,12 +81,7 @@ class SpellingModeSelector(ui_util.ViewController):
     
     if not self.parent_vc:
       self.view.wait_modal()
-    
-    
-#  def tableview_accessory_button_tapped(self, row):
-#    
-#    print str(row)
-    
+        
   def handle_action(self, sender):
     
     global logger
@@ -106,11 +102,14 @@ class SpellingModeSelector(ui_util.ViewController):
         self.parent_vc.handle_action(self)
         
   def handle_accessory(self, sender):
+    """
+    :type sender: ui.ListDataSource
+    """
     
     global logger
     
     logger.debug("handle_accessory row=%d" % sender.tapped_accessory_row)
-    comment = self.modes[sender.tapped_accessory_row].comment
+    comment = self.modes[sender.tapped_accessory_row].control.comment
          
     if not self.popup_vc:
       self.popup_vc = popup.PopupViewController()
@@ -129,7 +128,7 @@ def test():
   result = selector.get_selected_mode()
   
   if result:
-    logger.info("selected_mode='%s'" % result.name)
+    logger.info("selected_mode='%s'" % result.control.name)
   else:
     logger.info("selection cancelled")
   logger.info("Test finished")

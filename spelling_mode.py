@@ -1,4 +1,5 @@
-#coding: utf-8
+# coding: utf-8
+# This file is part of https://github.com/marcus67/rechtschreibung
 
 # usage modes
 VOWEL=1
@@ -29,12 +30,6 @@ ELONGATION_MODE_H=3
 ELONGATION_MODE_DOUBLE=4
 ELONGATION_MODE_MACRON=5
 
-# Maß 
-# Nuss
-# Nuß
-# Masse
-# 
-
 SZ_MODE_DEFAULT = 0
 SZ_MODE_OLD_SPELLING = 1
 SZ_MODE_NEW_SPELLING = 2
@@ -48,16 +43,19 @@ C_BOS=4 # beginning of sentence
 C_ADDRESSING=8
 C_BOS_AC=16 # beginning of sentence after colon
 
-      
-class spelling_mode:
+class SpellingModeCombinationControl(object):
   
   def __init__(self):
-    
+
     self.name = u'[unbenannt]'
     self.comment = ''
     self.isImmutable = False
     self.isReference = False
-    
+
+class SpellingModeCombination(object):
+
+  def __init__(self):
+        
     # customization mode switches
     self.bitswitch_capitalization = C_NOUN | C_NAME | C_BOS | C_ADDRESSING | C_BOS_AC
     self.switch_capitalization_all_capital = False
@@ -100,6 +98,31 @@ class spelling_mode:
     
     return self.__dict__ == other.__dict__
     
-def compare_spelling_modes(mode1, mode2):
-  return cmp(mode1.name.lower(), mode2.name.lower())
+        
+class spelling_mode(object):
+  
+  def __init__(self):
+    
+    self.combination = SpellingModeCombination()
+    self.control = SpellingModeCombinationControl()
+    
+  def __eq__(self, other):
+    """
+    :type other: spelling_mode
+    """
+    return self.combination == other.combination  
+    
+def compare_spelling_mode_combination_controls(mode1, mode2):
+  """
+  :type mode1: spelling_mode
+  :type mode2: spelling_mode
+  """
+  return cmp(mode1.control.name.lower(), mode2.control.name.lower())
+  
+def test():
+  
+  mode = spelling_mode()
+        
+if __name__ == '__main__':
+  test()
   

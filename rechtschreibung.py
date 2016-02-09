@@ -1,4 +1,5 @@
-#coding: utf-8
+# coding: utf-8
+# This file is part of https://github.com/marcus67/rechtschreibung
 
 import string
 import ui
@@ -51,7 +52,6 @@ NAME_NAVIGATION_VIEW = 'top_navigation_view'
 NAME_NAVIGATION_VIEW_TOP_LEVEL = 'Regeln'
 
 IMAGE_URL_RECHTSCHREIBUNG = 'lib/rechtschreibung_32.png'
-
 GITHUB_URL_RECHTSCHREIBUNG = 'https://github.com/marcus67/rechtschreibung'
 
 class MainViewController ( ui_util.ViewController ) :
@@ -68,8 +68,9 @@ class MainViewController ( ui_util.ViewController ) :
     self.selectModeVC = mode_selector.SpellingModeSelector(self)
     self.selectModeForSaveVC = mode_saver.SpellingModeSaver(self)
     self.info_popup = popup.PopupViewController()
-    self.set_reference_mode(filter(lambda m:m.isReference, mode_manager.get_available_modes())[0])
+    self.set_reference_mode(filter(lambda m:m.control.isReference, mode_manager.get_available_modes())[0])
     self.loadedMode = spelling_mode.spelling_mode()
+    self.currentMode = spelling_mode.spelling_mode()
     if ui_util.is_iphone():
       self.orientations = ( 'portrait', )
     else:
@@ -81,22 +82,18 @@ class MainViewController ( ui_util.ViewController ) :
     self.update_sample_text()
 
   def set_reference_mode(self, mode):
-    
     self.referenceMode = mode
     tempStoreMode = rulesets.get_default_mode()
-    rulesets.set_default_mode(self.referenceMode)
+    rulesets.set_default_mode(self.referenceMode.combination)
     self.referenceSampleText = sample_text.get_sample_text()
     rulesets.set_default_mode(tempStoreMode)
   
   def handle_action(self, sender):
-    
     global logger
     
     BUTTON_PREFIX = 'button_'
     INFO_PREFIX = 'info_'
-    
-    #print "handle_action: %s" % sender.name
-    
+        
     if self.selectModeVC.is_my_action(sender):    
       self.load_mode_finish()  
     
@@ -150,19 +147,18 @@ class MainViewController ( ui_util.ViewController ) :
       if info_name in info_messages:
         self.info_popup.present(info_messages[info_name], close_label=words.schlieszen(c=rulesets.C_BOS))
       else:
-        print "ERROR: cannot find info text for %s" % info_name
+        logger.error("cannot find info text for %s" % info_name)
       
     elif ui_util.store_in_model(sender, self.model):
       self.handle_change_in_mode()
       return 1
       
     else:
-      print "WARNING: action '%s' not handled!" % sender.name
+      logger.warning("action '%s' not handled!" % sender.name)
       
     return 0
     
   def open_top_navigation_view(self):
-    
     global logger
     
     view = self.find_subview_by_name(NAME_NAVIGATION_VIEW)
@@ -174,28 +170,22 @@ class MainViewController ( ui_util.ViewController ) :
     view.present(style='sheet' , hide_title_bar=True, orientations=self.orientations)
     
   def close_top_navigation_view(self):
-    
     view = self.find_subview_by_name(NAME_NAVIGATION_VIEW)
     view.close()
     
   def open_app_control_view(self):
-    
     view = self.find_subview_by_name('App-Konfiguration')
     view.present(style='sheet', orientations=self.orientations)
     
   def activate_hide_timer(self):
-    #print "activate timer"
     self.hideTimer = threading.Timer(self.autoHideSeconds, lambda x:x.handle_hide_timer(), [ self ] )
     self.hideTimer.start()
     
   def handle_hide_timer(self):
-    #print "in handle timer"
     self.suppressShowChanges = True
     self.update_sample_text()
     
-  def update_sample_text(self):
-    #print "update_sample_text"
-      
+  def update_sample_text(self):      
     self.currentSampleText = sample_text.get_sample_text()
     webview = self.view['webview_text_view']
     if self.highlightingMode == HIGHLIGHT_DELTA:
@@ -219,14 +209,13 @@ class MainViewController ( ui_util.ViewController ) :
     
     view = self.find_subview_by_name('textfield_reference_mode_name')
     view.enabled = False
-    view.text = self.referenceMode.name
+    view.text = self.referenceMode.control.name
     
     view = self.find_subview_by_name('textfield_current_mode_name')
     view.enabled = False
-    view.text = self.loadedMode.name
-#    logger.info("loadedMode = %s" & str(self.loadedMode))
-#    logger.info("model = %s" & str(model))
-    if self.loadedMode == self.model:
+    view.text = self.loadedMode.control.name
+
+    if self.loadedMode == self.currentMode:
       view.text_color = '#000000'
     else:
       view.text_color = '#A0A0A0'
@@ -240,15 +229,16 @@ class MainViewController ( ui_util.ViewController ) :
     
     selectedMode = self.selectModeVC.get_selected_mode()
     if selectedMode != None:
-      logger.info("Set mode '%s'" % selectedMode.name)
-      self.set_model(selectedMode)
-      rulesets.set_default_mode(selectedMode)
+      logger.info("Set mode '%s'" % selectedMode.control.name)
+      rulesets.set_default_mode(selectedMode.combination)
       self.loadedMode = copy.copy(selectedMode)
+      self.currentMode = copy.copy(selectedMode)
+      self.set_model(self.currentMode.combination)
       self.handle_change_in_mode()
     
   def save_mode_start(self):
     
-    self.selectModeForSaveVC.select(mode_manager.get_available_modes(), self.model, cancel_label=words.abbrechen(c=rulesets.C_BOS), save_label=words.speichern(c=rulesets.C_BOS), overwrite_label=words.ueberschreiben(c=rulesets.C_BOS), style='sheet')
+    self.selectModeForSaveVC.select(mode_manager.get_available_modes(), self.currentMode, cancel_label=words.abbrechen(c=rulesets.C_BOS), save_label=words.speichern(c=rulesets.C_BOS), overwrite_label=words.ueberschreiben(c=rulesets.C_BOS), style='sheet')
     
     
   def save_mode_finish(self):
@@ -276,7 +266,7 @@ def main():
   logger = log.open_logging('rechtschreibung', reload=True)
   logger.info("Start application")
   default_mode = spelling_mode.spelling_mode()
-  rulesets.set_default_mode(default_mode)
+  rulesets.set_default_mode(default_mode.combination)
   
   image_rechtschreibung = ui.Image.named(IMAGE_URL_RECHTSCHREIBUNG).with_rendering_mode(ui.RENDERING_MODE_ORIGINAL)
   my_main_view_controller = MainViewController()
@@ -295,11 +285,11 @@ def main():
     my_main_view_controller.load('rechtschreibung_iphone')
     app_control_vc = ui_util.ViewController(my_main_view_controller)
     app_control_vc.load('rechtschreibung_app_control_iphone')
-    my_main_view_controller.add_left_button_item(NAME_NAVIGATION_VIEW_TOP_LEVEL, 'button_close_top_navigation_view', ui.ButtonItem(image=ui.Image.named('iob:ios7_close_outline_32')))
+    my_main_view_controller.add_left_button_item(NAME_NAVIGATION_VIEW_TOP_LEVEL, 'button_close_top_navigation_view', ui.ButtonItem(image=ui.Image.named('iob:close_round_32')))
         
     my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_icon_rechtschreibung', ui.ButtonItem(image=image_rechtschreibung))    
     my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_open_app_control_view', ui.ButtonItem(image=ui.Image.named('ionicons-gear-a-32')))
-    my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_open_top_navigation_view', ui.ButtonItem(image=ui.Image.named('ionicons-levels-32')))
+    my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_open_top_navigation_view', ui.ButtonItem(image=ui.Image.named('lib/ios7_toggle_outline_32.png')))
     
   else:
     my_main_view_controller.load('rechtschreibung')
