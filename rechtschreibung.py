@@ -319,7 +319,7 @@ def main():
   view_controller_layout = ui_util.ViewController(my_main_view_controller) 
   view_controller_layout.load('view_layout')
 
-  my_main_view_controller.set_model(default_mode)
+  my_main_view_controller.set_model(default_mode.combination)
   
   # Set the empty html page for displaying the sample text. The actual content will be set in
   # method "update_sample_text". We use an absolute path to load the page so that the relative
