@@ -57,6 +57,9 @@ NAME_NAVIGATION_VIEW_TOP_LEVEL = 'Regeln'
 IMAGE_URL_RECHTSCHREIBUNG = 'lib/rechtschreibung_32.png'
 GITHUB_URL_RECHTSCHREIBUNG = 'https://github.com/marcus67/rechtschreibung'
 
+LOAD_MODE_RULESET = 1
+LOAD_MODE_REFERENCE = 2
+
 class MainViewController ( ui_util.ViewController ) :
 
   def __init__(self):
@@ -75,6 +78,7 @@ class MainViewController ( ui_util.ViewController ) :
     self.loadedMode = spelling_mode.spelling_mode()
     self.currentMode = spelling_mode.spelling_mode()
     self.delay_show_changes = False
+    self.load_mode_type = LOAD_MODE_RULESET
     if ui_util.is_iphone():
       self.orientations = ( 'portrait', )
     else:
@@ -98,6 +102,9 @@ class MainViewController ( ui_util.ViewController ) :
     BUTTON_PREFIX = 'button_'
     INFO_PREFIX = 'info_'
         
+    if 'name' in sender.__dict__:
+      logger.debug("handle_action: sender.name=%s" % sender.name)
+      
     if self.selectModeVC.is_my_action(sender):    
       self.load_mode_finish()  
     
@@ -111,7 +118,10 @@ class MainViewController ( ui_util.ViewController ) :
       speech.stop()
     
     elif sender.name == 'button_load_mode':
-      self.load_mode_start()
+      self.load_mode_start(LOAD_MODE_RULESET)
+    
+    elif sender.name == 'button_load_reference_mode':
+      self.load_mode_start(LOAD_MODE_REFERENCE)
     
     elif sender.name == 'button_save_mode':
       self.save_mode_start()
@@ -237,22 +247,31 @@ class MainViewController ( ui_util.ViewController ) :
     else:
       view.text_color = '#A0A0A0'
     
-  def load_mode_start(self):
-    
-    self.selectModeVC.select(mode_manager.get_available_modes(), cancel_label=words.abbrechen(c=rulesets.C_BOS), close_label=words.schlieszen(c=rulesets.C_BOS))
+  def load_mode_start(self, load_mode_type):
+    self.load_mode_type = load_mode_type
+    self.selectModeVC.select(
+        mode_manager.get_available_modes(), cancel_label=words.abbrechen(c=rulesets.C_BOS), 
+        close_label=words.schlieszen(c=rulesets.C_BOS),
+        title = 'Regelsatz laden' if load_mode_type == LOAD_MODE_RULESET else 'Referenz laden')
     
     
   def load_mode_finish(self):
-    
     selectedMode = self.selectModeVC.get_selected_mode()
     if selectedMode != None:
-      logger.info("Set mode '%s'" % selectedMode.control.name)
-      rulesets.set_default_mode(selectedMode.combination)
-      self.loadedMode = copy.copy(selectedMode)
-      self.currentMode = copy.copy(selectedMode)
-      self.set_model(self.currentMode.combination)
-      self.handle_change_in_mode()
-    
+      if self.load_mode_type == LOAD_MODE_RULESET:
+        logger.info("Set working mode '%s'" % selectedMode.control.name)
+        rulesets.set_default_mode(selectedMode.combination)
+        self.loadedMode = copy.copy(selectedMode)
+        self.currentMode = copy.copy(selectedMode)
+        self.set_model(self.currentMode.combination)
+        self.handle_change_in_mode()
+      
+      else:
+        logger.info("Set reference mode '%s'" % selectedMode.control.name)
+        self.set_reference_mode(copy.copy(selectedMode))
+        self.update_sample_text()
+        self.update_views()
+        
   def save_mode_start(self):
     
     self.selectModeForSaveVC.select(mode_manager.get_available_modes(), self.currentMode, cancel_label=words.abbrechen(c=rulesets.C_BOS), save_label=words.speichern(c=rulesets.C_BOS), overwrite_label=words.ueberschreiben(c=rulesets.C_BOS), style='sheet')

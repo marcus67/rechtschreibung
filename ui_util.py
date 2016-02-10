@@ -209,10 +209,10 @@ class ViewController (object):
     else:
       return 0
       
-  def present(self, mode='popover', orientations=None, title_bar_color=None):
+  def present(self, style='popover', title=None, orientations=None, title_bar_color=None):
     global logger
     
-    self.view.present(style=mode, title_bar_color=title_bar_color, orientations=orientations if orientations else self.orientations)
+    self.view.present(style=style, title_bar_color=title_bar_color, orientations=orientations if orientations else self.orientations)
     
     try:  
       self.view.wait_modal()
