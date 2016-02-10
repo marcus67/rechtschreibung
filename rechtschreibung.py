@@ -2,11 +2,13 @@
 # This file is part of https://github.com/marcus67/rechtschreibung
 
 import string
+import console
 import ui
 import speech
 import threading
 import copy
 import os
+import time
 import webbrowser as wb
 
 import log
@@ -47,6 +49,7 @@ HIGHLIGHT_DELTA = 1
 HIGHLIGHT_REFERENCE = 2
 
 DEFAULT_SPEECH_SPEED = 0.5
+INITIAL_UPDATE_SAMPLE_TEXT_DELAY = 0.5 # [seconds]
 
 NAME_NAVIGATION_VIEW = 'top_navigation_view'
 NAME_NAVIGATION_VIEW_TOP_LEVEL = 'Regeln'
@@ -71,6 +74,7 @@ class MainViewController ( ui_util.ViewController ) :
     self.set_reference_mode(filter(lambda m:m.control.isReference, mode_manager.get_available_modes())[0])
     self.loadedMode = spelling_mode.spelling_mode()
     self.currentMode = spelling_mode.spelling_mode()
+    self.delay_show_changes = False
     if ui_util.is_iphone():
       self.orientations = ( 'portrait', )
     else:
@@ -130,6 +134,9 @@ class MainViewController ( ui_util.ViewController ) :
     
     elif sender.name == 'switch_auto_hide':
       self.autoHide = sender.value
+      self.suppressShowChanges = self.autoHide
+      self.update_sample_text()
+        
 
     elif sender.name.startswith(BUTTON_PREFIX):
       view_name = sender.name[len(BUTTON_PREFIX):]
@@ -165,17 +172,24 @@ class MainViewController ( ui_util.ViewController ) :
     if not view:
       logger.warning("open_top_navigation_view: cannot find view %s" % NAME_NAVIGATION_VIEW)
       return
-      
+    
+    self.delay_show_changes = True
     view.height = ui_util.PORTRAIT_SMALL_VIEW_HEIGHT + ui_util.NAVIGATION_VIEW_TITLE_HEIGHT
     view.present(style='sheet' , hide_title_bar=True, orientations=self.orientations)
     
   def close_top_navigation_view(self):
     view = self.find_subview_by_name(NAME_NAVIGATION_VIEW)
     view.close()
+    self.delay_show_changes = False
+    self.update_sample_text()
     
   def open_app_control_view(self):
     view = self.find_subview_by_name('App-Konfiguration')
     view.present(style='sheet', orientations=self.orientations)
+    
+  def check_activate_hide_timer(self):
+    if self.autoHide and self.highlightingMode and not (self.suppressShowChanges or self.delay_show_changes):
+      self.activate_hide_timer()
     
   def activate_hide_timer(self):
     self.hideTimer = threading.Timer(self.autoHideSeconds, lambda x:x.handle_hide_timer(), [ self ] )
@@ -186,6 +200,9 @@ class MainViewController ( ui_util.ViewController ) :
     self.update_sample_text()
     
   def update_sample_text(self):      
+    """
+    :type webview: ui.View
+    """
     self.currentSampleText = sample_text.get_sample_text()
     webview = self.view['webview_text_view']
     if self.highlightingMode == HIGHLIGHT_DELTA:
@@ -195,9 +212,9 @@ class MainViewController ( ui_util.ViewController ) :
     html_content = util.get_html_content(compareText, self.currentSampleText, self.highlightingMode and not self.suppressShowChanges)
     
     webview.eval_js('document.getElementById("content").innerHTML = "%s"' % html_content)
+    webview.set_needs_display()
     
-    if self.autoHide and self.highlightingMode and not self.suppressShowChanges:
-      self.activate_hide_timer()
+    self.check_activate_hide_timer()
     self.update_views()
     
   def update_views(self):
@@ -263,6 +280,7 @@ def main():
   
   global logger
   
+  console.clear()
   logger = log.open_logging('rechtschreibung', reload=True)
   logger.info("Start application")
   default_mode = spelling_mode.spelling_mode()
@@ -328,7 +346,9 @@ def main():
   absolute_page_path = 'file:' + os.path.abspath('etc/text_page.html')
   logger.info('Loading HTML page at %s' % absolute_page_path)
   text_view.load_url(absolute_page_path)
-  
+  # Wait for a fraction of a second so that load_url() above (which seems to be aynchronous)
+  # has a chance to load the page before update_sample_text() below sets the initial content.
+  time.sleep(INITIAL_UPDATE_SAMPLE_TEXT_DELAY)
   my_main_view_controller.update_sample_text()
   my_main_view_controller.present('fullscreen', title_bar_color=defaults.COLOR_GREY)
   speech.stop()
