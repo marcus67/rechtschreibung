@@ -23,14 +23,12 @@ logger = log.open_logging(__name__)
 class SpellingModeSelector(ui_util.ViewController):
   
   def __init__(self, parent_vc=None):
-    
     super(SpellingModeSelector, self).__init__(parent_vc)
     self.selected_index = None
     self.popup_vc = None
     self.load('mode_selector')
          
   def get_selected_mode(self):
-    
     if self.selected_index == None:
       return None
       
@@ -38,11 +36,10 @@ class SpellingModeSelector(ui_util.ViewController):
       return self.modes[self.selected_index]
 
   def is_my_action(self, sender):
-    
     return sender == self
     
   def select(self, modes, cancel_label=defaults.DEFAULT_CANCEL_LABEL, 
-              close_label=defaults.DEFAULT_CLOSE_LABEL, style='sheet'):
+              close_label=defaults.DEFAULT_CLOSE_LABEL, style='sheet', title='Regelsatz laden'):
 
     global logger
         
@@ -76,14 +73,14 @@ class SpellingModeSelector(ui_util.ViewController):
     
     self.button_view_cancel = self.find_subview_by_name('button_cancel')
     self.button_view_cancel.title = self.cancel_label
+    self.view.name = title
 
-    self.present(style)
+    self.present(style=style)
     
     if not self.parent_vc:
       self.view.wait_modal()
         
   def handle_action(self, sender):
-    
     global logger
     
     close = False
@@ -105,7 +102,6 @@ class SpellingModeSelector(ui_util.ViewController):
     """
     :type sender: ui.ListDataSource
     """
-    
     global logger
     
     logger.debug("handle_accessory row=%d" % sender.tapped_accessory_row)
