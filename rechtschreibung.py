@@ -347,6 +347,9 @@ def main():
   view_controller_combinations_simplification = ui_util.ViewController(my_main_view_controller)
   view_controller_combinations_simplification.load('view_combinations_simplification')
   
+  view_controller_combinations_simplification_vowels = ui_util.ViewController(my_main_view_controller)
+  view_controller_combinations_simplification_vowels.load('view_combinations_simplification_vowels')
+  
   view_controller_punctuation = ui_util.ViewController(my_main_view_controller) 
   view_controller_punctuation.load('view_punctuation')
   
@@ -355,6 +358,9 @@ def main():
   
   view_controller_layout = ui_util.ViewController(my_main_view_controller) 
   view_controller_layout.load('view_layout')
+
+  view_controller_misc_rules = ui_util.ViewController(my_main_view_controller) 
+  view_controller_misc_rules.load('view_misc_rules')
 
   my_main_view_controller.set_model(default_mode.combination)
   

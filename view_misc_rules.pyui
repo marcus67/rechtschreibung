@@ -1,0 +1,88 @@
+[
+  {
+    "selected" : false,
+    "frame" : "{{0, 0}, {320, 480}}",
+    "class" : "View",
+    "nodes" : [
+      {
+        "selected" : false,
+        "frame" : "{{0, 0}, {320, 480}}",
+        "class" : "ScrollView",
+        "nodes" : [
+          {
+            "selected" : false,
+            "frame" : "{{6, 6}, {230, 32}}",
+            "class" : "Label",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "name" : "label1",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "text" : "Verwendung von Tremas",
+              "alignment" : "left",
+              "uuid" : "9EF97047-36D3-4C8B-880D-F7BE1EECF23A",
+              "font_size" : 17,
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+            }
+          },
+          {
+            "selected" : true,
+            "frame" : "{{268, 7}, {51, 31}}",
+            "class" : "Switch",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "L",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "uuid" : "8F6D518F-5478-44C0-8379-4C959BDD333C",
+              "value" : false,
+              "name" : "switch_misc_trema"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{236, 6}, {32, 32}}",
+            "class" : "Button",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "action" : "self.handle_action",
+              "flex" : "L",
+              "frame" : "{{120, 224}, {80, 32}}",
+              "title" : "i",
+              "class" : "Button",
+              "uuid" : "3AB710AB-6A8A-49E8-9749-5CEFC626D8B3",
+              "font_size" : 15,
+              "name" : "info_misc_trema"
+            }
+          }
+        ],
+        "attributes" : {
+          "flex" : "WH",
+          "enabled" : true,
+          "content_width" : 320,
+          "content_height" : 480,
+          "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+          "uuid" : "741152D7-D037-4BA9-B9B8-FAC551AC4A66",
+          "custom_attributes" : "{ 'background_color' : defaults.COLOR_LIGHT_YELLOW_GREEN }",
+          "name" : "scrollview_misc_rules"
+        }
+      }
+    ],
+    "attributes" : {
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "enabled" : true,
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "name" : "Sonstige Regeln",
+      "flex" : ""
+    }
+  }
+]

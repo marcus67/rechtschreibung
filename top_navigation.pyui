@@ -13,7 +13,7 @@
         ],
         "attributes" : {
           "uuid" : "E4F60B1C-AB3F-4DB3-A0A0-E5748CA180F8",
-          "flex" : "W",
+          "font_size" : 15,
           "corner_radius" : 0,
           "background_color" : "RGBA(0.731429,1.000000,0.714286,1.000000)",
           "frame" : "{{120, 224}, {80, 32}}",
@@ -25,43 +25,43 @@
           "font_bold" : true,
           "class" : "Button",
           "name" : "button_view_capitalization",
-          "font_size" : 15
+          "flex" : "W"
         }
       },
       {
         "selected" : false,
-        "frame" : "{{0, 33}, {320, 32}}",
+        "frame" : "{{0, 32}, {320, 32}}",
         "class" : "Button",
         "nodes" : [
 
         ],
         "attributes" : {
           "uuid" : "BA05A8BF-602A-4F7E-A07D-B8370E96C7A2",
-          "flex" : "W",
+          "font_size" : 15,
           "corner_radius" : 0,
           "background_color" : "RGBA(1.000000,0.925197,0.500000,1.000000)",
           "frame" : "{{120, 224}, {80, 32}}",
           "border_width" : 0,
           "custom_attributes" : "{ 'background_color' : defaults.COLOR_LIGHT_YELLOW }",
-          "title" : "Lautkombinationen (Vereinfachung) >>>",
+          "title" : "Vereinfachung (Konsonanten) >>>",
           "action" : "self.handle_action",
           "enabled" : true,
           "font_bold" : true,
           "class" : "Button",
           "name" : "button_view_combinations_simplification",
-          "font_size" : 15
+          "flex" : "W"
         }
       },
       {
         "selected" : false,
-        "frame" : "{{0, 64}, {320, 32}}",
+        "frame" : "{{0, 96}, {320, 32}}",
         "class" : "Button",
         "nodes" : [
 
         ],
         "attributes" : {
           "uuid" : "A706CD89-C509-48F9-95DD-756BE19C1987",
-          "flex" : "W",
+          "font_size" : 15,
           "corner_radius" : 0,
           "background_color" : "RGBA(1.000000,0.800000,0.700000,1.000000)",
           "frame" : "{{120, 224}, {80, 32}}",
@@ -73,19 +73,19 @@
           "font_bold" : true,
           "class" : "Button",
           "name" : "button_view_punctuation",
-          "font_size" : 15
+          "flex" : "W"
         }
       },
       {
         "selected" : false,
-        "frame" : "{{0, 96}, {320, 32}}",
+        "frame" : "{{0, 128}, {320, 32}}",
         "class" : "Button",
         "nodes" : [
 
         ],
         "attributes" : {
           "uuid" : "4A8E9C6C-E743-4414-9A58-27081A6ABC23",
-          "flex" : "W",
+          "font_size" : 15,
           "corner_radius" : 0,
           "background_color" : "RGBA(0.566667,0.855556,1.000000,1.000000)",
           "frame" : "{{120, 224}, {80, 32}}",
@@ -97,19 +97,19 @@
           "font_bold" : true,
           "class" : "Button",
           "name" : "button_view_layout",
-          "font_size" : 15
+          "flex" : "W"
         }
       },
       {
         "selected" : false,
-        "frame" : "{{0, 128}, {320, 32}}",
+        "frame" : "{{0, 160}, {320, 32}}",
         "class" : "Button",
         "nodes" : [
 
         ],
         "attributes" : {
           "uuid" : "DCBFA043-E92E-4A9E-A949-EF4785DBD3C9",
-          "font_size" : 15,
+          "flex" : "W",
           "corner_radius" : 0,
           "background_color" : "RGBA(0.777778,0.666667,1.000000,1.000000)",
           "frame" : "{{120, 224}, {80, 32}}",
@@ -122,19 +122,19 @@
           "font_bold" : true,
           "class" : "Button",
           "name" : "button_view_legacy",
-          "flex" : "W"
+          "font_size" : 15
         }
       },
       {
         "selected" : false,
-        "frame" : "{{0, 160}, {320, 32}}",
+        "frame" : "{{0, 192}, {320, 32}}",
         "class" : "Button",
         "nodes" : [
 
         ],
         "attributes" : {
           "uuid" : "B0434F56-A718-468B-808F-3C698146C476",
-          "flex" : "W",
+          "font_size" : 15,
           "corner_radius" : 0,
           "background_color" : "RGBA(1.000000,0.666667,0.888889,1.000000)",
           "frame" : "{{120, 224}, {80, 32}}",
@@ -146,33 +146,65 @@
           "font_bold" : true,
           "class" : "Button",
           "name" : "button_view_harmonization",
+          "flex" : "W"
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{0, 224}, {320, 32}}",
+        "class" : "Button",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "uuid" : "0AE2A4A5-0B42-462E-B01C-8B20047EC4CE",
+          "flex" : "W",
+          "corner_radius" : 0,
+          "background_color" : "RGBA(0.833333,1.000000,0.500000,1.000000)",
+          "frame" : "{{120, 224}, {80, 32}}",
+          "border_width" : 0,
+          "custom_attributes" : "{ 'background_color' : defaults.COLOR_LIGHT_YELLOW_GREEN }",
+          "title" : "Sonstiges >>>",
+          "action" : "self.handle_action",
+          "enabled" : true,
+          "font_bold" : true,
+          "class" : "Button",
+          "name" : "button_view_misc_rules",
           "font_size" : 15
         }
       },
       {
         "selected" : true,
-        "frame" : "{{0, 192}, {320, 288}}",
-        "class" : "View",
+        "frame" : "{{0, 64}, {320, 32}}",
+        "class" : "Button",
         "nodes" : [
 
         ],
         "attributes" : {
-          "name" : "view1",
-          "frame" : "{{110, 190}, {100, 100}}",
-          "uuid" : "E812C9A0-79DB-4B17-8207-8E69D04C2773",
-          "custom_attributes" : "{ 'background_color' : defaults.COLOR_LIGHT_GREY }",
-          "class" : "View",
-          "flex" : "WH"
+          "uuid" : "84086970-E798-4651-8E72-510A26F07BAA",
+          "flex" : "W",
+          "corner_radius" : 0,
+          "background_color" : "RGBA(1.000000,1.000000,0.533333,1.000000)",
+          "frame" : "{{120, 224}, {80, 32}}",
+          "border_width" : 0,
+          "custom_attributes" : "{ 'background_color' : defaults.COLOR_LIGHT_YELLOW_2 }",
+          "title" : "Vereinfachung (Vokale) >>>",
+          "action" : "self.handle_action",
+          "enabled" : true,
+          "font_bold" : true,
+          "class" : "Button",
+          "name" : "button_view_combinations_simplification_vowels",
+          "font_size" : 15
         }
       }
     ],
     "attributes" : {
-      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "flex" : "",
       "enabled" : true,
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
       "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
       "name" : "Regeln",
-      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
-      "flex" : ""
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)"
     }
   }
 ]

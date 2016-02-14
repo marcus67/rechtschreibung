@@ -185,8 +185,10 @@ def d(c=C_NONE, m=VOICEFULL):
     return capitalize("d", c)
 
 def e(c=C_NONE, m=0):
-  if default_mode.switch_harmonization_homophony_elongated_vowels and (m == ACTUALLY_ELONGATED):
-    return eh(c)
+  if default_mode.switch_harmonization_homophony_elongated_vowels and (m & ACTUALLY_ELONGATED):
+    return e(c, m & ~ACTUALLY_ELONGATED) + h(c)
+  elif default_mode.switch_misc_trema and (m & TREMA):
+    return capitalize("ë", c)
   else:
     return capitalize("e", c)
 
@@ -226,8 +228,11 @@ def h(c=C_NONE, m=0):
   else:
     return capitalize("h", c)
 
-def i(c=C_NONE):
-  return capitalize("i", c)
+def i(c=C_NONE, m=0):
+  if default_mode.switch_misc_trema and (m & TREMA):
+    return capitalize("ï", c)
+  else:
+    return capitalize("i", c)
   
 def ie(c=C_NONE):
   return elongation(i, c, ELONGATION_MODE_E)

@@ -92,11 +92,10 @@ def wendy(c=0):
   return w(c=C_NAME|c)+e()+n()+d()+y(m=Y_I)
   
 def test():
-  rulesets.set_default_mode(rulesets.spelling_mode())
+  rulesets.set_default_mode(rulesets.spelling_mode().combination)
   print casimir()+das()+der()+die()+ist()+sind()+und()+wendy()
   
 if __name__ == '__main__':
   test()
 
   
-

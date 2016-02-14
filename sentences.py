@@ -13,7 +13,7 @@ from words import *
 
 # Biologie in Theorie und Praxis.
 def sentence1():
-  return b(c=C_NOUN|C_BOS)+i()+o()+l()+o()+g()+ie()+space()+i()+n()+space()+th(c=C_NOUN)+e()+o()+r()+ie()+space()+u()+n()+d()+space()+p(c=C_NOUN)+r()+a()+x()+i()+s()+fs()+para() 
+  return b(c=C_NOUN|C_BOS)+i()+o()+l()+o()+g()+ie()+space()+b()+e()+i(m=TREMA)+n()+h()+a()+l()+t()+e()+t()+space()+th(c=C_NOUN)+e()+o()+r()+ie()+space()+u()+n()+d()+space()+p(c=C_NOUN)+r()+a()+x()+i()+s()+fs()+para() 
        
 # Physik ist schwer. Chemie ist dumm.
 def sentence2():
@@ -118,9 +118,8 @@ def sentence021():
   return au(c=C_NOUN)+ch()+space()+n(c=C_NOUN)+i()+ch()+t()+m()+u()+tt()+er()+sp()+r()+a()+ch()+l()+e()+r()+space()+w()+uuml()+r()+d()+e()+n()+space()+d()+a()+v()+o()+n()+space()+p()+r()+o()+f()+i()+t()+ie()+r()+e()+n()+fs()  
     
 def test():
-  rulesets.set_default_mode(rulesets.spelling_mode())
+  rulesets.set_default_mode(rulesets.spelling_mode().combination)
   print sentence001() + space()+ sentence002() + space() + sentence003() + space() + sentence004() + space() + sentence005() + space() + sentence006() + space() + sentence007() + space() + sentence008() + space() + sentence009() + space() + sentence010() + space() + sentence011() + space() + sentence012() + space() + sentence013() + space() + sentence014() + space() + sentence015() + space() + sentence016() + space() + sentence017() + space() + sentence018() + space() + sentence019() + space() + sentence020() + space() + sentence021() + space() + sentence4() + space() + sentence5() 
   
 if __name__ == '__main__':
   test()
-
