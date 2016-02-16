@@ -21,10 +21,10 @@ CH_CK=16
 CH_K=17
 
 # MODES WHICH CAN BE COMBINED
-ACTUALLY_SHORT=1
-ACTUALLY_ELONGATED=2
-UNSTRESSED=4
-TREMA=8
+ACTUALLY_SHORT=8
+ACTUALLY_ELONGATED=16
+UNSTRESSED=32
+TREMA=64
 
 ELONGATION_MODE_DEFAULT=0
 ELONGATION_MODE_NONE=1
@@ -32,6 +32,7 @@ ELONGATION_MODE_E=2
 ELONGATION_MODE_H=3
 ELONGATION_MODE_DOUBLE=4
 ELONGATION_MODE_MACRON=5
+ELONGATION_MODE_MASK= 7
 
 SZ_MODE_DEFAULT = 0
 SZ_MODE_OLD_SPELLING = 1
@@ -86,6 +87,8 @@ class SpellingModeCombination(object):
     self.switch_simplification_suppress_mute_h = False
     self.switch_simplification_d_t = False
     self.switch_simplification_er_a = False
+    self.switch_simplification_dt_tt = False
+    self.switch_simplification_tion_zion = False
     self.switch_layout_word_separation = True
     self.switch_layout_paragraph_separation = True
     self.switch_punctuation_full_stop = True

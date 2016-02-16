@@ -94,13 +94,15 @@ def dot_abbr():
     return ""
 
 def elongation(l, c, m):
-  if default_mode.segmented_control_harmonization_elongation == ELONGATION_MODE_NONE:
+  default_elongation_mode = m & ELONGATION_MODE_MASK
+  current_mode = default_mode.segmented_control_harmonization_elongation
+  if current_mode == ELONGATION_MODE_NONE or (current_mode == ELONGATION_MODE_DEFAULT and default_elongation_mode == ELONGATION_MODE_NONE):
     return l(c)
-  elif default_mode.segmented_control_harmonization_elongation == ELONGATION_MODE_E or (default_mode.segmented_control_harmonization_elongation == ELONGATION_MODE_DEFAULT and m == ELONGATION_MODE_E):
+  elif current_mode == ELONGATION_MODE_E or (current_mode == ELONGATION_MODE_DEFAULT and default_elongation_mode == ELONGATION_MODE_E):
     return l(c) + capitalize("e")
-  elif default_mode.segmented_control_harmonization_elongation == ELONGATION_MODE_H or (default_mode.segmented_control_harmonization_elongation == ELONGATION_MODE_DEFAULT and m == ELONGATION_MODE_H):
+  elif current_mode == ELONGATION_MODE_H or (current_mode == ELONGATION_MODE_DEFAULT and default_elongation_mode == ELONGATION_MODE_H):
     return l(c) + capitalize("h")
-  elif default_mode.segmented_control_harmonization_elongation == ELONGATION_MODE_MACRON or (default_mode.segmented_control_harmonization_elongation == ELONGATION_MODE_DEFAULT and m == ELONGATION_MODE_MACRON):
+  elif current_mode == ELONGATION_MODE_MACRON or (current_mode == ELONGATION_MODE_DEFAULT and default_elongation_mode == ELONGATION_MODE_MACRON):
     if (l == a):
       return capitalize("ā")
     elif (l == e):
@@ -131,11 +133,17 @@ def ah(c=C_NONE):
 def au(c=C_NONE):
   return capitalize("a", c) + capitalize("u")
 
-def auml(c=C_NONE):
+def _auml(c=C_NONE):
+  return capitalize("ä", c)
+
+def auml(c=C_NONE, m=0):
   if default_mode.switch_simplification_expand_umlaut:
     return capitalize("a", c) + capitalize("e")
   else:
-    return capitalize("ä", c)
+    if (m & ACTUALLY_ELONGATED) > 0 and default_mode.switch_harmonization_homophony_elongated_vowels:
+      return elongation(_auml, c, m & ELONGATION_MODE_MASK)
+    else:
+      return _auml(c)
   
 def aumlu(c=C_NONE):
   if default_mode.switch_simplification_aumlu_oi:
@@ -184,9 +192,18 @@ def d(c=C_NONE, m=VOICEFULL):
   else:
     return capitalize("d", c)
 
+def dt(c=C_NONE, m=0):
+  if default_mode.switch_simplification_dt_tt:
+    if m == ACTUALLY_ELONGATED:
+      return t(c)
+    else:
+      return tt()
+  else:
+    return d(c) + t() 
+
 def e(c=C_NONE, m=0):
   if default_mode.switch_harmonization_homophony_elongated_vowels and (m & ACTUALLY_ELONGATED):
-    return e(c, m & ~ACTUALLY_ELONGATED) + h(c)
+    return elongation(e, c, m & ~ACTUALLY_ELONGATED)
   elif default_mode.switch_misc_trema and (m & TREMA):
     return capitalize("ë", c)
   else:
@@ -336,6 +353,12 @@ def t(c=C_NONE, m=0):
     return tt()
   else:
     return capitalize("t", c)
+
+def tion(c=C_NONE):
+  if default_mode.switch_simplification_tion_zion:
+    return z(c)+i()+o()+n()
+  else:
+    return t(c)+i()+o()+n()
 
 def tsch(c=C_NONE):
   if default_mode.switch_simplification_tsch_c:

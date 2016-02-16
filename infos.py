@@ -10,7 +10,11 @@ info_messages =  {
                   
                   'elongation':'Dieser Schalter regelt die Darstellung eines langen Vokals. Es gibt sechs Varianten: ' + chr(10) + chr(10) + 'Standard: wählt die derzeit gültige Variante (dies ist uneinheitlich!),' + chr(10) + chr(10) + 'keine: stellt lange Vokale einfach, d.h. wie kurze dar,' + chr(10) + chr(10) + '"e": hängt an Vokale ein "e" an,' + chr(10) + chr(10) + '"h": hängt an Vokale ein "h" an,' + chr(10) + chr(10) + 'Dopplung: verdoppelt den Vokal,' + chr(10) + chr(10) + 'Makron: setzt einen Strich (Makron) als Akzent über den Vokal. Hinweis: Es ist zur Zeit unklar, wie das Makron mit dem Umlautzeichen kombiniert werden kann. Deswegen wird bei Umlauten die Dopplung verwendet.',
                   
-                  'misc_trema':'Dieser Schalter aktiviert die Verwendung von Tremas, wie sie im Französischen üblich sind. Vokale ("e" und "i") mit Trema, werden nicht mehr mit dem vorangehenden Laut zusammengezogen, sondern für sich gesprochen. Beispiel: "beïnhalten" statt "beinhalten", denn man hält schließlich kein Bein. Auch der Kalauer "Urïnstinkt" hätte dadurch an Amüsanz verloren, wobei Letzteres fast schade ist.'
+                  'misc_trema':'Dieser Schalter aktiviert die Verwendung von Tremas, wie sie im Französischen üblich sind. Vokale ("e" und "i") mit Trema, werden nicht mehr mit dem vorangehenden Laut zusammengezogen, sondern für sich gesprochen. Beispiel: "beïnhalten" statt "beinhalten", denn man hält schließlich kein Bein. Auch der Kalauer "Urïnstinkt" hätte dadurch an Amüsanz verloren, wobei Letzteres fast schade ist.',
+                  
+                  'simplification_dt_tt' : 'Das "dt" kommt sowohl hinter kurzen als auch langen Vokalen vor. Deswegen ist seine Funktion als Doppelkonsonant, der einen kurzen Vokal andeuten würde, fraglich. Dieser Modus wandet den Laut in "tt" nach kurzen Vokalen bzw. "t" nach langen Vokalen um. Es ist zu beachten, dass in letzteren Fällen auch eine explizite Dehnung des Vokals sinnvoll sein kann. Dazu gibt es eine eigene Regel.',
+                  
+                  'simplification_tion_zion' : 'Das "t" in "tion" hat den Lautwert eines "z". Diese Vereinheitlichung ist nur in sofern ungünstig, weil dadurch die Nation sehr nah an den Nazi heranrückt.'
 } 
 
 def get_info_messages():

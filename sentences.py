@@ -31,6 +31,10 @@ def sentence4():
 def sentence5():
   return der(c=C_BOS)+space()+c(c=C_NOUN, m=C_TSCH)+e()+ll()+i()+s()+t()+space()+b()+e()+g()+l()+ei()+t()+e()+t()+space()+den()+space()+ch(m=CH_K, c=C_NOUN)+o()+r()+space()+fuer()+space()+ein()+space()+p()+aa()+r()+space()+c(c=C_NOUN, m=C_S)+e()+n()+t()+space()+i()+m()+space()+c(c=C_NOUN)+a()+s()+i()+n()+o()+space()+bei()+space()+"5"+space()+g(c=C_NOUN)+r()+a()+d(m=VOICELESS)+space()+c(c=C_NOUN, m=C_Z)+e()+l()+s()+i()+u()+s()+fs()
 
+# Statt nur eine Stätte in einer Stadt eines Staates oder einer Nation sollte man viele Stätten in vielen Städten vieler Staaten oder vieler Nationen bauen.
+def sentence6():
+  return s(c=C_BOS)+t()+a()+tt()+space()+n()+u()+r()+space()+ei()+n()+e()+space()+s(c=C_NOUN)+t()+auml()+tt()+e()+space()+i()+n()+space()+ei()+n()+e()+r()+space()+s(c=C_NOUN)+t()+a()+dt()+space()+ei()+n()+e()+s()+space()+s(c=C_NOUN)+t()+aa()+t()+e()+s()+space()+o()+d()+e()+r()+space()+ei()+n()+e()+r()+space()+n(c=C_NOUN)+a()+tion()+space()+s()+o()+ll()+t()+e()+space()+man()+space()+v()+ie()+l()+e()+space()+s(c=C_NOUN)+t()+auml()+tt()+e()+n()+space()+i()+n()+space()+v()+ie()+l()+e()+n()+space()+s(c=C_NOUN)+t()+auml(m=ACTUALLY_ELONGATED|ELONGATION_MODE_H)+dt(m=ACTUALLY_ELONGATED)+e()+n()+space()+v()+ie()+l()+e()+r()+space()+s(c=C_NOUN)+t()+aa()+t()+e()+n()+space()+o()+d()+e()+r()+space()+v()+ie()+l()+e()+r()+space()+n(c=C_NOUN)+a()+tion()+e()+n()+space()+b()+au()+e()+n()+fs()
+
 # Casimir und Wendy sind zwei durchschnittliche Deutsche.
 def sentence001():
   return casimir(c=C_BOS)+space()+und()+space()+wendy()+space()+sind()+space()+z()+w()+ei()+space()+d()+u()+r()+ch()+sch()+n()+i()+tt()+l()+i()+ch()+e()+space()+d(c=C_NOUN)+eu()+t()+sch()+e()+fs()
@@ -119,7 +123,7 @@ def sentence021():
     
 def test():
   rulesets.set_default_mode(rulesets.spelling_mode().combination)
-  print sentence001() + space()+ sentence002() + space() + sentence003() + space() + sentence004() + space() + sentence005() + space() + sentence006() + space() + sentence007() + space() + sentence008() + space() + sentence009() + space() + sentence010() + space() + sentence011() + space() + sentence012() + space() + sentence013() + space() + sentence014() + space() + sentence015() + space() + sentence016() + space() + sentence017() + space() + sentence018() + space() + sentence019() + space() + sentence020() + space() + sentence021() + space() + sentence4() + space() + sentence5() 
+  print sentence001() + space()+ sentence002() + space() + sentence003() + space() + sentence004() + space() + sentence005() + space() + sentence006() + space() + sentence007() + space() + sentence008() + space() + sentence009() + space() + sentence010() + space() + sentence011() + space() + sentence012() + space() + sentence013() + space() + sentence014() + space() + sentence015() + space() + sentence016() + space() + sentence017() + space() + sentence018() + space() + sentence019() + space() + sentence020() + space() + sentence021() + space() + sentence4() + space() + sentence5() + space() + sentence6()
   
 if __name__ == '__main__':
   test()

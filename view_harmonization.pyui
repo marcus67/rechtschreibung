@@ -5,12 +5,12 @@
     "class" : "View",
     "nodes" : [
       {
-        "selected" : true,
+        "selected" : false,
         "frame" : "{{0, 0}, {320, 480}}",
         "class" : "ScrollView",
         "nodes" : [
           {
-            "selected" : true,
+            "selected" : false,
             "frame" : "{{0, 46}, {320, 29}}",
             "class" : "SegmentedControl",
             "nodes" : [
@@ -117,8 +117,8 @@
               "text" : "...Lange Vokale explizit dehnen",
               "alignment" : "left",
               "uuid" : "E9F4C23A-9154-4457-B30B-E9F4481B373B",
-              "font_size" : 17,
-              "name" : "label4"
+              "name" : "label4",
+              "font_size" : 17
             }
           },
           {
@@ -129,7 +129,7 @@
 
             ],
             "attributes" : {
-              "flex" : "",
+              "flex" : "L",
               "action" : "self.handle_action",
               "enabled" : true,
               "image_name" : "ionicons-ios7-information-outline-32",
@@ -137,8 +137,8 @@
               "uuid" : "89B0C401-BC27-4667-80FF-FFB635520631",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "font_size" : 15,
-              "name" : "info_harmonization_homophony_elongated_vowels"
+              "name" : "info_harmonization_homophony_elongated_vowels",
+              "font_size" : 15
             }
           },
           {
@@ -149,7 +149,7 @@
 
             ],
             "attributes" : {
-              "flex" : "",
+              "flex" : "L",
               "action" : "self.handle_action",
               "enabled" : true,
               "image_name" : "ionicons-ios7-information-outline-32",
@@ -157,8 +157,8 @@
               "uuid" : "70124CC9-85EE-4E89-9E6E-1AC2433397F1",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "font_size" : 15,
-              "name" : "info_harmonization_homophony_terminating_consonants"
+              "name" : "info_harmonization_homophony_terminating_consonants",
+              "font_size" : 15
             }
           },
           {
@@ -177,8 +177,8 @@
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "font_bold" : false,
               "uuid" : "9FD9B152-C7B9-4A83-A8AD-E87098340093",
-              "font_size" : 15,
-              "name" : "info_elongation"
+              "name" : "info_elongation",
+              "font_size" : 15
             }
           },
           {
@@ -214,10 +214,10 @@
     "attributes" : {
       "flex" : "",
       "enabled" : true,
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
       "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
       "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
-      "name" : "Harmonisierung",
-      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+      "name" : "Harmonisierung"
     }
   }
 ]
