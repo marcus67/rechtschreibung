@@ -1,0 +1,12 @@
+[rechtschreibung]
+# Set the delay  in [milliseconds] before the sample text is loaded for the first time.
+# The value should be as small as possible to minimize the time with an empty screen but
+# large enough to allow the page to be loaded asynchronously. The value 500 should work
+# on most systems.
+initial_update_sample_text_delay = 500 
+
+# Set the delay in [seconds] before changes between rulesets are hidden automatically.
+auto_hide_delay = 5
+
+# Set the speed of the speech playback. The value range is between 0 (slowest) and 100 (fastest).
+speech_speed = 50

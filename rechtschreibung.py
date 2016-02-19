@@ -26,6 +26,8 @@ import infos
 import mode_manager
 import mode_selector
 import mode_saver
+import config
+import app_config
 
 reload(log)
 reload(ui_util)
@@ -41,6 +43,8 @@ reload(infos)
 reload(mode_manager)
 reload(mode_selector)
 reload(mode_saver)
+reload(config)
+reload(app_config)
 
 global logger
 
@@ -48,8 +52,8 @@ HIGHLIGHT_OFF = 0
 HIGHLIGHT_DELTA = 1
 HIGHLIGHT_REFERENCE = 2
 
-DEFAULT_SPEECH_SPEED = 0.5
-INITIAL_UPDATE_SAMPLE_TEXT_DELAY = 0.5 # [seconds]
+CONFIG_FILE = 'etc/rechtschreibung_config.txt'
+SAMPLE_CONFIG_FILE = 'etc/sample_rechtschreibung_config.txt'
 
 NAME_NAVIGATION_VIEW = 'top_navigation_view'
 NAME_NAVIGATION_VIEW_TOP_LEVEL = 'Regeln'
@@ -62,14 +66,14 @@ LOAD_MODE_REFERENCE = 2
 
 class MainViewController ( ui_util.ViewController ) :
 
-  def __init__(self):
+  def __init__(self, conf):
     
     super(MainViewController, self).__init__()
+    self.conf = conf
     self.previousSampleText = None
     self.currentSampleText = None
     self.highlightingMode = HIGHLIGHT_DELTA
     self.autoHide = True
-    self.autoHideSeconds = 5
     self.suppressShowChanges = False
     self.selectModeVC = mode_selector.SpellingModeSelector(self)
     self.selectModeForSaveVC = mode_saver.SpellingModeSaver(self)
@@ -112,7 +116,7 @@ class MainViewController ( ui_util.ViewController ) :
       self.save_mode_finish()  
       
     elif sender.name == 'button_start_speech':
-      speech.say(sample_text.get_sample_text(), 'de', DEFAULT_SPEECH_SPEED)
+      speech.say(sample_text.get_sample_text(), 'de', 1.0 * self.conf.rechtschreibung.speech_speed / 100.0)
       
     elif sender.name == 'button_stop_speech':
       speech.stop()
@@ -202,7 +206,7 @@ class MainViewController ( ui_util.ViewController ) :
       self.activate_hide_timer()
     
   def activate_hide_timer(self):
-    self.hideTimer = threading.Timer(self.autoHideSeconds, lambda x:x.handle_hide_timer(), [ self ] )
+    self.hideTimer = threading.Timer(self.conf.rechtschreibung.auto_hide_delay, lambda x:x.handle_hide_timer(), [ self ] )
     self.hideTimer.start()
     
   def handle_hide_timer(self):
@@ -305,8 +309,11 @@ def main():
   default_mode = spelling_mode.spelling_mode()
   rulesets.set_default_mode(default_mode.combination)
   
+  config_handler = config.ConfigHandler(app_config.AppConfig())
+  conf = config_handler.read_config_file(CONFIG_FILE, SAMPLE_CONFIG_FILE)
+  
   image_rechtschreibung = ui.Image.named(IMAGE_URL_RECHTSCHREIBUNG).with_rendering_mode(ui.RENDERING_MODE_ORIGINAL)
-  my_main_view_controller = MainViewController()
+  my_main_view_controller = MainViewController(conf)
   
   top_navigation_vc = ui_util.ViewController(my_main_view_controller)
   navigation_vc = ui_util.ViewController(top_navigation_vc)
@@ -371,9 +378,11 @@ def main():
   absolute_page_path = 'file:' + os.path.abspath('etc/text_page.html')
   logger.info('Loading HTML page at %s' % absolute_page_path)
   text_view.load_url(absolute_page_path)
+  
   # Wait for a fraction of a second so that load_url() above (which seems to be aynchronous)
   # has a chance to load the page before update_sample_text() below sets the initial content.
-  time.sleep(INITIAL_UPDATE_SAMPLE_TEXT_DELAY)
+  time.sleep(1.0 * conf.rechtschreibung.initial_update_sample_text_delay / 1000.0)
+  
   my_main_view_controller.update_sample_text()
   my_main_view_controller.present('fullscreen', title_bar_color=defaults.COLOR_GREY)
   speech.stop()

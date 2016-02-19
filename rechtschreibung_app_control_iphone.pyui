@@ -46,7 +46,7 @@
             }
           },
           {
-            "selected" : false,
+            "selected" : true,
             "frame" : "{{231, 116}, {32, 32}}",
             "class" : "Button",
             "nodes" : [
@@ -54,7 +54,7 @@
             ],
             "attributes" : {
               "uuid" : "C1DA37DE-0F04-4080-B3A8-8ADFC83F7202",
-              "image_name" : "ionicons-ios7-pause-32",
+              "image_name" : "iob:stop_32",
               "font_size" : 15,
               "corner_radius" : 2,
               "border_color" : "RGBA(1.000000,0.000000,0.000000,1.000000)",
@@ -163,7 +163,7 @@
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "font_size" : 15,
-              "image_name" : "ionicons-ios7-upload-outline-32"
+              "image_name" : "iob:ios7_folder_outline_32"
             }
           },
           {
@@ -240,7 +240,7 @@
             }
           },
           {
-            "selected" : true,
+            "selected" : false,
             "frame" : "{{95, 180}, {32, 32}}",
             "class" : "Button",
             "nodes" : [
@@ -256,7 +256,7 @@
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "name" : "button_load_reference_mode",
-              "image_name" : "ionicons-ios7-upload-outline-32"
+              "image_name" : "iob:ios7_folder_outline_32"
             }
           },
           {
@@ -314,7 +314,7 @@
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "font_size" : 15,
-              "image_name" : "ionicons-ios7-download-outline-32"
+              "image_name" : "iob:archive_32"
             }
           }
         ],
@@ -330,11 +330,11 @@
       }
     ],
     "attributes" : {
-      "name" : "App-Konfiguration",
-      "enabled" : true,
-      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "enabled" : true,
       "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "name" : "App-Konfiguration",
       "flex" : ""
     }
   }
