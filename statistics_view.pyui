@@ -1,0 +1,83 @@
+[
+  {
+    "selected" : false,
+    "frame" : "{{0, 0}, {830, 600}}",
+    "class" : "View",
+    "nodes" : [
+      {
+        "selected" : false,
+        "frame" : "{{10, 46}, {400, 400}}",
+        "class" : "ImageView",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "flex" : "",
+          "frame" : "{{350, 250}, {100, 100}}",
+          "class" : "ImageView",
+          "name" : "imageview_plot1",
+          "uuid" : "0BF791CD-59D1-4EB8-8BE8-F2BD15990DAE"
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{420, 46}, {400, 400}}",
+        "class" : "ImageView",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "flex" : "WH",
+          "frame" : "{{365, 250}, {100, 100}}",
+          "class" : "ImageView",
+          "name" : "imageview_plot2",
+          "uuid" : "05BA71E0-C962-4332-A6F7-1D51AAC07E79"
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{10, 4}, {400, 32}}",
+        "class" : "Label",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "font_size" : 18,
+          "frame" : "{{340, 284}, {150, 32}}",
+          "uuid" : "D89A9C60-9C98-49E8-B000-7F51C541F062",
+          "text" : "Referenz",
+          "alignment" : "center",
+          "class" : "Label",
+          "name" : "label1",
+          "font_name" : "<System>"
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{420, 4}, {400, 32}}",
+        "class" : "Label",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "font_size" : 18,
+          "frame" : "{{340, 284}, {150, 32}}",
+          "uuid" : "5244BCC5-79F9-4319-B9F5-38E0F888C450",
+          "text" : "Aktueller Regelsatz",
+          "alignment" : "center",
+          "class" : "Label",
+          "name" : "label2",
+          "font_name" : "<System>"
+        }
+      }
+    ],
+    "attributes" : {
+      "flex" : "",
+      "enabled" : true,
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "name" : "Statistik",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+    }
+  }
+]

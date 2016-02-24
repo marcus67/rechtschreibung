@@ -1,4 +1,5 @@
 #coding: utf-8
+# This file is part of https://github.com/marcus67/rechtschreibung
 
 import string
 
@@ -18,36 +19,41 @@ def get_default_mode():
   global default_mode
   return default_mode
 
-      
+def to_upper(l):
+  if l == 'ü':
+    return 'Ü'
+  elif l == 'ä':
+    return 'Ä'
+  elif l == 'ö':
+    return 'Ö'
+  elif l == 'š':
+    return 'Š'
+  elif l == 'č':
+    return 'Č'
+  elif l == 'ā':
+    return 'Ā'
+  elif l == 'ė':
+    return 'Ė'
+  elif l == 'ī':
+    return 'Ī'
+  elif l == 'ō':
+    return 'Ō'
+  elif l == 'ū':
+    return 'Ū'
+  elif l == 'ß':
+    return 'ß'
+  else:
+    return string.upper(l)
+    
 def capitalize(l, c=C_NONE):
   if default_mode.switch_capitalization_all_capital or(c & default_mode.bitswitch_capitalization):
-    if l == 'ü':
-      return 'Ü'
-    elif l == 'ä':
-      return 'Ä'
-    elif l == 'ö':
-      return 'Ö'
-    elif l == 'š':
-      return 'Š'
-    elif l == 'č':
-      return 'Č'
-    elif l == 'ā':
-      return 'Ā'
-    elif l == 'ė':
-      return 'Ė'
-    elif l == 'ī':
-      return 'Ī'
-    elif l == 'ō':
-      return 'Ō'
-    elif l == 'ū':
-      return 'Ū'
-    elif l == 'ß':
+    if l == 'ß':
       if default_mode.switch_capitalization_expand_sz:
         return 'SS'
       else:
         return 'ß'
     else:
-      return string.upper(l)
+      return to_upper(l)
   else:
     return l
     

@@ -26,6 +26,7 @@ import infos
 import mode_manager
 import mode_selector
 import mode_saver
+import statistics_view
 import config
 import app_config
 
@@ -43,6 +44,7 @@ reload(infos)
 reload(mode_manager)
 reload(mode_selector)
 reload(mode_saver)
+reload(statistics_view)
 reload(config)
 reload(app_config)
 
@@ -77,6 +79,7 @@ class MainViewController ( ui_util.ViewController ) :
     self.suppressShowChanges = False
     self.selectModeVC = mode_selector.SpellingModeSelector(self)
     self.selectModeForSaveVC = mode_saver.SpellingModeSaver(self)
+    self.statistics_view_vc = statistics_view.StatisticsViewController(self)
     self.info_popup = popup.PopupViewController()
     self.set_reference_mode(filter(lambda m:m.control.isReference, mode_manager.get_available_modes())[0])
     self.loadedMode = spelling_mode.spelling_mode()
@@ -135,6 +138,9 @@ class MainViewController ( ui_util.ViewController ) :
 
     elif sender.name == 'button_open_top_navigation_view':
       self.open_top_navigation_view()
+
+    elif sender.name == 'button_open_statistics_view':
+      self.open_statistics_view()
 
     elif sender.name == 'button_close_top_navigation_view':
       self.close_top_navigation_view()
@@ -200,6 +206,9 @@ class MainViewController ( ui_util.ViewController ) :
   def open_app_control_view(self):
     view = self.find_subview_by_name('App-Konfiguration')
     view.present(style='sheet', orientations=self.orientations)
+    
+  def open_statistics_view(self):
+    self.statistics_view_vc.present(self.referenceSampleText, self.currentSampleText)
     
   def check_activate_hide_timer(self):
     if self.autoHide and self.highlightingMode and not (self.suppressShowChanges or self.delay_show_changes):
@@ -333,7 +342,7 @@ def main():
         
     my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_icon_rechtschreibung', ui.ButtonItem(image=image_rechtschreibung))    
     my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_open_app_control_view', ui.ButtonItem(image=ui.Image.named('ionicons-gear-a-32')))
-    my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_open_top_navigation_view', ui.ButtonItem(image=ui.Image.named('lib/ios7_toggle_outline_32.png')))
+    my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_open_top_navigation_view', ui.ButtonItem(image=ui.Image.named('lib/ios7_toggle_32.png')))
     
   else:
     my_main_view_controller.load('rechtschreibung')

@@ -16,19 +16,19 @@
           "border_width" : 0,
           "enabled" : true,
           "alpha" : 1,
-          "corner_radius" : 0,
           "uuid" : "5353A67C-5CDA-4E56-B74E-D449F4191102",
+          "corner_radius" : 0,
           "name" : "webview_text_view"
         }
       }
     ],
     "attributes" : {
-      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "flex" : "",
       "enabled" : true,
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
       "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "name" : "Rechtschreibung",
-      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
-      "flex" : ""
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)"
     }
   }
 ]
