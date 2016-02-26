@@ -5,79 +5,108 @@
     "class" : "View",
     "nodes" : [
       {
-        "selected" : false,
-        "frame" : "{{10, 46}, {400, 400}}",
-        "class" : "ImageView",
+        "selected" : true,
+        "frame" : "{{0, 0}, {830, 600}}",
+        "class" : "ScrollView",
         "nodes" : [
+          {
+            "selected" : true,
+            "frame" : "{{10, 52}, {400, 400}}",
+            "class" : "ImageView",
+            "nodes" : [
 
+            ],
+            "attributes" : {
+              "uuid" : "0BF791CD-59D1-4EB8-8BE8-F2BD15990DAE",
+              "frame" : "{{350, 250}, {100, 100}}",
+              "class" : "ImageView",
+              "name" : "imageview_plot1",
+              "flex" : ""
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{420, 52}, {400, 400}}",
+            "class" : "ImageView",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "uuid" : "05BA71E0-C962-4332-A6F7-1D51AAC07E79",
+              "frame" : "{{365, 250}, {100, 100}}",
+              "class" : "ImageView",
+              "name" : "imageview_plot2",
+              "flex" : "WH"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{10, 10}, {400, 32}}",
+            "class" : "Label",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "font_name" : "<System>",
+              "frame" : "{{340, 284}, {150, 32}}",
+              "uuid" : "D89A9C60-9C98-49E8-B000-7F51C541F062",
+              "text" : "Referenz",
+              "alignment" : "center",
+              "class" : "Label",
+              "name" : "label1",
+              "font_size" : 18
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{420, 10}, {400, 32}}",
+            "class" : "Label",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "font_name" : "<System>",
+              "frame" : "{{340, 284}, {150, 32}}",
+              "uuid" : "5244BCC5-79F9-4319-B9F5-38E0F888C450",
+              "text" : "Aktueller Regelsatz",
+              "alignment" : "center",
+              "class" : "Label",
+              "name" : "label2",
+              "font_size" : 18
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{10, 460}, {810, 334}}",
+            "class" : "ImageView",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "frame" : "{{365, 350}, {100, 100}}",
+              "class" : "ImageView",
+              "name" : "imageview_plot3",
+              "uuid" : "27001AB6-B779-42B9-B4E2-5D1F5F64CD39"
+            }
+          }
         ],
         "attributes" : {
-          "flex" : "",
-          "frame" : "{{350, 250}, {100, 100}}",
-          "class" : "ImageView",
-          "name" : "imageview_plot1",
-          "uuid" : "0BF791CD-59D1-4EB8-8BE8-F2BD15990DAE"
-        }
-      },
-      {
-        "selected" : false,
-        "frame" : "{{420, 46}, {400, 400}}",
-        "class" : "ImageView",
-        "nodes" : [
-
-        ],
-        "attributes" : {
-          "flex" : "WH",
-          "frame" : "{{365, 250}, {100, 100}}",
-          "class" : "ImageView",
-          "name" : "imageview_plot2",
-          "uuid" : "05BA71E0-C962-4332-A6F7-1D51AAC07E79"
-        }
-      },
-      {
-        "selected" : false,
-        "frame" : "{{10, 4}, {400, 32}}",
-        "class" : "Label",
-        "nodes" : [
-
-        ],
-        "attributes" : {
-          "font_size" : 18,
-          "frame" : "{{340, 284}, {150, 32}}",
-          "uuid" : "D89A9C60-9C98-49E8-B000-7F51C541F062",
-          "text" : "Referenz",
-          "alignment" : "center",
-          "class" : "Label",
-          "name" : "label1",
-          "font_name" : "<System>"
-        }
-      },
-      {
-        "selected" : false,
-        "frame" : "{{420, 4}, {400, 32}}",
-        "class" : "Label",
-        "nodes" : [
-
-        ],
-        "attributes" : {
-          "font_size" : 18,
-          "frame" : "{{340, 284}, {150, 32}}",
-          "uuid" : "5244BCC5-79F9-4319-B9F5-38E0F888C450",
-          "text" : "Aktueller Regelsatz",
-          "alignment" : "center",
-          "class" : "Label",
-          "name" : "label2",
-          "font_name" : "<System>"
+          "content_width" : 830,
+          "frame" : "{{255, 140}, {320, 320}}",
+          "content_height" : 800,
+          "class" : "ScrollView",
+          "name" : "scrollview1",
+          "uuid" : "F22CD7C4-633C-4292-B164-07DB27BB7B9C"
         }
       }
     ],
     "attributes" : {
       "flex" : "",
       "enabled" : true,
-      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
-      "name" : "Statistik",
       "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
-      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "name" : "Statistik"
     }
   }
 ]

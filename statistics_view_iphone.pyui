@@ -74,12 +74,26 @@
               "name" : "label2",
               "font_name" : "<System>"
             }
+          },
+          {
+            "selected" : true,
+            "frame" : "{{0, 718}, {320, 176}}",
+            "class" : "ImageView",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "frame" : "{{110, 392}, {100, 100}}",
+              "class" : "ImageView",
+              "name" : "imageview_plot3",
+              "uuid" : "175F7013-65B8-41BA-8A39-9BA348C50CAB"
+            }
           }
         ],
         "attributes" : {
           "uuid" : "1E228C50-16B3-4D3E-8153-27FCBA206A6F",
           "frame" : "{{255, 140}, {320, 320}}",
-          "content_height" : 884,
+          "content_height" : 900,
           "class" : "ScrollView",
           "name" : "scrollview_statistics_view",
           "content_width" : 320
@@ -87,11 +101,11 @@
       }
     ],
     "attributes" : {
-      "name" : "Statistik",
-      "enabled" : true,
-      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "enabled" : true,
       "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "name" : "Statistik",
       "flex" : ""
     }
   }
