@@ -339,11 +339,14 @@ def main():
     app_control_vc = ui_util.ViewController(my_main_view_controller)
     app_control_vc.load('rechtschreibung_app_control_iphone')
     my_main_view_controller.add_left_button_item(NAME_NAVIGATION_VIEW_TOP_LEVEL, 'button_close_top_navigation_view', ui.ButtonItem(image=ui.Image.named('iob:close_round_32')))
-        
-    my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_icon_rechtschreibung', ui.ButtonItem(image=image_rechtschreibung))    
-    my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_open_app_control_view', ui.ButtonItem(image=ui.Image.named('ionicons-gear-a-32')))
-    my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_open_top_navigation_view', ui.ButtonItem(image=ui.Image.named('lib/ios7_toggle_32.png')))
     
+    button_item_list = [
+      ui.ButtonItem(image=ui.Image.named('lib/ios7_toggle_32.png'), action=my_main_view_controller.handle_action, title='button_open_top_navigation_view'),  
+      ui.ButtonItem(image=ui.Image.named('ionicons-gear-a-32'), action=my_main_view_controller.handle_action, title='button_open_app_control_view'),
+      ui.ButtonItem(image=image_rechtschreibung, action=my_main_view_controller.handle_action, title='button_icon_rechtschreibung'),
+    ]
+    my_main_view_controller.set_right_button_item_list('Rechtschreibung', button_item_list)
+        
   else:
     my_main_view_controller.load('rechtschreibung')
     my_main_view_controller.add_right_button_item('Rechtschreibung', 'button_icon_rechtschreibung', ui.ButtonItem(image=image_rechtschreibung))

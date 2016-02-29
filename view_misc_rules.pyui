@@ -5,7 +5,7 @@
     "class" : "View",
     "nodes" : [
       {
-        "selected" : false,
+        "selected" : true,
         "frame" : "{{0, 0}, {320, 480}}",
         "class" : "ScrollView",
         "nodes" : [
@@ -18,18 +18,18 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label1",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Verwendung von Tremas",
               "alignment" : "left",
               "uuid" : "9EF97047-36D3-4C8B-880D-F7BE1EECF23A",
-              "font_size" : 17,
+              "name" : "label1",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
           {
-            "selected" : true,
+            "selected" : false,
             "frame" : "{{268, 7}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
@@ -55,12 +55,13 @@
             "attributes" : {
               "action" : "self.handle_action",
               "flex" : "L",
+              "name" : "info_misc_trema",
               "frame" : "{{120, 224}, {80, 32}}",
-              "title" : "i",
+              "title" : "",
               "class" : "Button",
               "uuid" : "3AB710AB-6A8A-49E8-9749-5CEFC626D8B3",
               "font_size" : 15,
-              "name" : "info_misc_trema"
+              "image_name" : "iob:ios7_information_outline_32"
             }
           }
         ],
@@ -77,11 +78,11 @@
       }
     ],
     "attributes" : {
-      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "name" : "Sonstige Regeln",
       "enabled" : true,
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
       "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
       "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
-      "name" : "Sonstige Regeln",
       "flex" : ""
     }
   }

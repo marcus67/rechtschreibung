@@ -5,7 +5,7 @@
     "class" : "View",
     "nodes" : [
       {
-        "selected" : false,
+        "selected" : true,
         "frame" : "{{0, 0}, {320, 480}}",
         "class" : "ScrollView",
         "nodes" : [
@@ -44,8 +44,8 @@
               "text" : "... \"y\" zu \"ü\" bzw. \"j\" bzw. \"i\"",
               "alignment" : "left",
               "uuid" : "F2D69A9A-6032-43B9-8B7E-C86FFFF52A24",
-              "font_size" : 17,
-              "name" : "label10"
+              "name" : "label10",
+              "font_size" : 17
             }
           },
           {
@@ -80,8 +80,8 @@
               "text" : "... \"ei\" zu \"ai\"",
               "alignment" : "left",
               "uuid" : "EFB17D2E-E1E5-4510-A20F-C9FDA4FCB35B",
-              "font_size" : 17,
-              "name" : "label18"
+              "name" : "label18",
+              "font_size" : 17
             }
           },
           {
@@ -116,8 +116,8 @@
               "text" : "... \"eu\" zu \"oi\"",
               "alignment" : "left",
               "uuid" : "02D30D7B-CE17-485C-8AE9-39E5776225B8",
-              "font_size" : 17,
-              "name" : "label19"
+              "name" : "label19",
+              "font_size" : 17
             }
           },
           {
@@ -152,8 +152,8 @@
               "text" : "... \"äu\" zu \"oi\"",
               "alignment" : "left",
               "uuid" : "D88BC87E-DB9B-4F97-8A8C-7AF22BAE8A1E",
-              "font_size" : 17,
-              "name" : "label22"
+              "name" : "label22",
+              "font_size" : 17
             }
           },
           {
@@ -188,8 +188,8 @@
               "text" : "... unbetontes \"er\" zu \"a\"",
               "alignment" : "left",
               "uuid" : "9DD727E1-D013-455C-862D-1388DB517B8A",
-              "font_size" : 17,
-              "name" : "label25"
+              "name" : "label25",
+              "font_size" : 17
             }
           },
           {
@@ -225,9 +225,9 @@
       "flex" : "",
       "enabled" : true,
       "background_color" : "RGBA(1.000000,0.925000,0.500000,1.000000)",
+      "name" : "Vereinfachung (Vokale)",
       "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
-      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-      "name" : "Vereinfachung (Vokale)"
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
     }
   }
 ]

@@ -7,6 +7,16 @@ from objc_util import *
 DEFAULT_X_SPACING = 8
 DEFAULT_HEIGHT = 44
 
+class ButtonItemAction (object):
+  
+  def __init__(self, name, action):
+    self.name = name
+    self.action = action
+    
+  def handle_action(self, sender):
+    print self.name
+    self.action(self)
+    
 class ButtonItemCondenser (object):
   
   def __init__(self, button_item_list, x_spacing=DEFAULT_X_SPACING):
@@ -29,7 +39,7 @@ class ButtonItemCondenser (object):
     for button_item in self.button_item_list:
       btn = ui.Button(image=button_item.image)
       self.buttons.append(btn)
-      btn.action = button_item.action
+      btn.action = ButtonItemAction(button_item.title, button_item.action).handle_action
       width = button_item.image.size[0]
       btn.frame = (x, 0, width, DEFAULT_HEIGHT)
       x = x + width + self.x_spacing
@@ -38,12 +48,12 @@ class ButtonItemCondenser (object):
       
     x = x - self.x_spacing
     self.btn_container.frame = (0, 0, x , DEFAULT_HEIGHT)
-    self.btn_item = ui.ButtonItem()
+    btn_item = ui.ButtonItem()
     # see https://forum.omz-software.com/topic/2724/spacing-of-buttonitem-s
-    self.btn_item_objc = ObjCInstance(self.btn_item)
-    self.custom_view = ObjCInstance(self.btn_container)
-    self.btn_item_objc.customView = self.custom_view
-    self.condensed_list = [self.btn_item]
+    btn_item_objc = ObjCInstance(btn_item)
+    custom_view = ObjCInstance(self.btn_container)
+    btn_item_objc.customView = custom_view
+    self.condensed_list = [btn_item]
     return self.condensed_list
   
 def handle_action(sender):
@@ -62,6 +72,10 @@ def test():
   normal_item = ui.ButtonItem(image=ui.Image.named('iob:checkmark_32'), action=handle_action)
   condensed_list.append(normal_item)
   v.right_button_items = condensed_list
+  
+  # The following assignment prevents the instance of ButtonItemCondenser to be garbage collected
+  # see https://forum.omz-software.com/topic/2724/spacing-of-buttonitem-s
+  v.condenser = condenser
   v.present('sheet')
   
 if __name__ == '__main__':

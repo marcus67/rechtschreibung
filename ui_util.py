@@ -10,11 +10,14 @@ import util
 import spelling_mode
 import defaults
 import enhanced_view
+import button_item_condenser
 
+reload(log)
 reload(util)
 reload(spelling_mode)
 reload(defaults)
 reload(enhanced_view)
+reload(button_item_condenser)
 
 SWITCH_PREFIX = "switch_"
 BITSWITCH_PREFIX = "bitswitch_"
@@ -46,7 +49,6 @@ def get_navigationview_subviews(nv):
   return o
       
 def store_in_model(sender, model):
-  
   switch_name = sender.name
   
   if switch_name.startswith(SWITCH_PREFIX):
@@ -68,13 +70,11 @@ def store_in_model(sender, model):
 class ButtonItemAction(object):
   
   def __init__(self, view_controller, view_name, name):
-    
     self.view_controller = view_controller
     self.view_name = view_name
     self.name = name
     
   def handle_action(self, sender):
-    
     self.view_controller.handle_action(self)
     
 
@@ -133,7 +133,6 @@ class ViewController (object):
     
     
   def add_right_button_item(self, view_name, button_name, button_item):
-    
     global logger
     
     view = self.find_subview_by_name(view_name)
@@ -148,6 +147,17 @@ class ViewController (object):
       new_list = list(view.right_button_items)
       new_list.append(button_item)
       view.right_button_items = new_list
+      
+  def set_right_button_item_list(self, view_name, button_item_list):
+    global logger
+    
+    view = self.find_subview_by_name(view_name)
+    if view == None:
+      logger.warning("add_right_button_item: cannot find view %s" % view_name)
+      return
+    
+    self.condenser = button_item_condenser.ButtonItemCondenser(button_item_list)
+    view.right_button_items = self.condenser.get_condensed_list()
     
   def load(self, view_name):
     self.view = ui.load_view(view_name)    

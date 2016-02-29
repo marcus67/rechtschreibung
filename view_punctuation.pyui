@@ -24,8 +24,8 @@
               "text" : "Punkt am Satzende",
               "alignment" : "left",
               "uuid" : "624B5364-7793-4619-8C1D-AB4DCA9D6A24",
-              "font_size" : 17,
-              "name" : "label1"
+              "name" : "label1",
+              "font_size" : 17
             }
           },
           {
@@ -60,8 +60,8 @@
               "text" : "Komma bei Nebensätzen",
               "alignment" : "left",
               "uuid" : "D1AAD1EE-D576-4C5A-A0CB-7BBE14DB280E",
-              "font_size" : 17,
-              "name" : "label2"
+              "name" : "label2",
+              "font_size" : 17
             }
           },
           {
@@ -96,19 +96,19 @@
               "text" : "Semikolon",
               "alignment" : "left",
               "uuid" : "23FEBCE2-8C97-4DD6-B8C0-23A9015501D7",
-              "font_size" : 17,
-              "name" : "label3"
+              "name" : "label3",
+              "font_size" : 17
             }
           },
           {
-            "selected" : false,
+            "selected" : true,
             "frame" : "{{268, 114}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
             ],
             "attributes" : {
-              "flex" : "",
+              "flex" : "L",
               "action" : "self.handle_action",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
@@ -132,8 +132,8 @@
               "text" : "Punkt bei Abkürzungen",
               "alignment" : "left",
               "uuid" : "6CEF7B3A-9434-493B-AE58-50E96F3B25D4",
-              "font_size" : 17,
-              "name" : "label4"
+              "name" : "label4",
+              "font_size" : 17
             }
           },
           {
@@ -170,9 +170,9 @@
       "flex" : "",
       "enabled" : true,
       "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "name" : "Zeichensetzung",
       "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
-      "name" : "Zeichensetzung"
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)"
     }
   }
 ]

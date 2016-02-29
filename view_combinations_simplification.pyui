@@ -38,13 +38,13 @@
             ],
             "attributes" : {
               "flex" : "R",
-              "font_size" : 17,
+              "name" : "label2",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"ph\" zu \"f\"",
               "alignment" : "left",
               "uuid" : "4C33549E-F2B6-47F8-8D32-5EE6E2C83712",
-              "name" : "label2",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -74,13 +74,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label3",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"ck\" zu \"kk\"",
               "alignment" : "left",
               "uuid" : "E983E302-0E68-4DF3-A27C-FC308AD73B4B",
-              "name" : "label3",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -110,13 +110,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label4",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"qu\" zu \"kw\"",
               "alignment" : "left",
               "uuid" : "0EA91D3D-8C91-4B4B-AB00-2381821CA94B",
-              "name" : "label4",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -146,13 +146,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label5",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"v\" zu \"f\" bzw. \"w\"",
               "alignment" : "left",
               "uuid" : "D3478510-0130-4AC7-ACDA-6E00B50F353A",
-              "name" : "label5",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -182,13 +182,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label6",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"z\" zu \"ts\"",
               "alignment" : "left",
               "uuid" : "ABDBC18A-2B4A-48C0-8963-33B27DC6A0B1",
-              "name" : "label6",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -255,13 +255,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label11",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"th\" zu \"t\"",
               "alignment" : "left",
               "uuid" : "9DD5F311-840E-4306-AE94-23C0823A9294",
-              "name" : "label11",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -291,13 +291,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label12",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"ch\" (griechisch) zu \"sch\"",
               "alignment" : "left",
               "uuid" : "992F0FF9-2046-4041-8C10-84C69CD28DAA",
-              "name" : "label12",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -327,13 +327,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label13",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"x\" zu \"ks\"",
               "alignment" : "left",
               "uuid" : "4CBD11DA-8EC7-43B9-BD68-297567105AED",
-              "name" : "label13",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -363,13 +363,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label14",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"ß\" zu \"ss\"",
               "alignment" : "left",
               "uuid" : "6F362180-C678-46AC-B3CD-A70A425E2DE8",
-              "name" : "label14",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -399,13 +399,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label15",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"c\" zu \"k\" \/ \"z\" \/ \"s\" \/ \"tsch\"",
               "alignment" : "left",
               "uuid" : "9B88E112-381F-48C3-B3FD-9DD67D8767D0",
-              "name" : "label15",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -474,13 +474,13 @@
               "flex" : "L",
               "action" : "self.handle_action",
               "enabled" : true,
-              "font_size" : 15,
+              "name" : "info_simplification_sch_s",
               "title" : "",
               "uuid" : "5D99558B-A48B-4574-8DB5-840645AFBA20",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "name" : "info_simplification_sch_s",
-              "image_name" : "ionicons-ios7-information-outline-24"
+              "font_size" : 15,
+              "image_name" : "iob:ios7_information_outline_32"
             }
           },
           {
@@ -492,13 +492,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label17",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Unterdrücke stumme \"h\"",
               "alignment" : "left",
               "uuid" : "8B22D23B-615E-4684-936C-2FCA05B7A13F",
-              "name" : "label17",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -528,13 +528,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label18",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"dt\" zu \"tt\" bzw. \"t\"",
               "alignment" : "left",
               "uuid" : "EFB17D2E-E1E5-4510-A20F-C9FDA4FCB35B",
-              "name" : "label18",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -564,13 +564,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label19",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"tion\" zu \"zion\"",
               "alignment" : "left",
               "uuid" : "02D30D7B-CE17-485C-8AE9-39E5776225B8",
-              "name" : "label19",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -600,13 +600,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label20",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"d\" als Endlaut zu \"t\"",
               "alignment" : "left",
               "uuid" : "34A02E75-CF2C-44D9-BBAA-9D61B26E5D26",
-              "name" : "label20",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -636,13 +636,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label21",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"ch\" vor \"s\" zu \"ck\"",
               "alignment" : "left",
               "uuid" : "B97DB9DE-BE07-433D-B45E-F129C42B44D3",
-              "name" : "label21",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -672,13 +672,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label23",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"tsch\" zu \"č\"",
               "alignment" : "left",
               "uuid" : "651BB43A-8DB2-4D9B-A409-A2367951BA41",
-              "name" : "label23",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -710,13 +710,13 @@
               "flex" : "L",
               "action" : "self.handle_action",
               "enabled" : true,
-              "font_size" : 15,
+              "name" : "info_simplification_tsch_c",
               "title" : "",
               "uuid" : "4EC58823-B8A3-4D9F-B99E-C9C85F8871E4",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "name" : "info_simplification_tsch_c",
-              "image_name" : "ionicons-ios7-information-outline-24"
+              "font_size" : 15,
+              "image_name" : "iob:ios7_information_outline_32"
             }
           },
           {
@@ -728,13 +728,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label24",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"ch\" zu \"k\"",
               "alignment" : "left",
               "uuid" : "DDA0D993-AA3D-45BB-AD51-36A7933204D2",
-              "name" : "label24",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -765,12 +765,13 @@
             "attributes" : {
               "flex" : "L",
               "action" : "self.handle_action",
+              "name" : "info_simplification_dt_tt",
               "frame" : "{{120, 432}, {80, 32}}",
-              "title" : "i",
+              "title" : "",
               "class" : "Button",
               "uuid" : "93F106A3-4B20-445E-BE52-8B08887CB7EB",
               "font_size" : 15,
-              "name" : "info_simplification_dt_tt"
+              "image_name" : "iob:ios7_information_outline_32"
             }
           },
           {
@@ -783,12 +784,13 @@
             "attributes" : {
               "flex" : "L",
               "action" : "self.handle_action",
+              "name" : "info_simplification_tion_zion",
               "frame" : "{{120, 432}, {80, 32}}",
-              "title" : "i",
+              "title" : "",
               "class" : "Button",
               "uuid" : "47FCEA7E-CA79-48F6-AF9D-BFC5A80946EB",
               "font_size" : 15,
-              "name" : "info_simplification_tion_zion"
+              "image_name" : "iob:ios7_information_outline_32"
             }
           }
         ],
@@ -804,11 +806,11 @@
       }
     ],
     "attributes" : {
-      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "enabled" : true,
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
       "background_color" : "RGBA(1.000000,0.925000,0.500000,1.000000)",
       "name" : "Vereinfachung (Konsonanten)",
-      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "flex" : ""
     }
   }
