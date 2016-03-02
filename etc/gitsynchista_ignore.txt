@@ -1,3 +1,4 @@
 log_config.json
 rechtschreibung_config.txt
 gitsynchista_config.txt
+gitsynchista_config
