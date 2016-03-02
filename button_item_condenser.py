@@ -9,13 +9,17 @@ DEFAULT_HEIGHT = 44
 
 class ButtonItemAction (object):
   
-  def __init__(self, name, action):
-    self.name = name
-    self.action = action
+  def __init__(self, buttonItem):
+    '''
+    :type buttonItem: ui.ButtonItem
+    '''
+    self.buttonItem = buttonItem
     
   def handle_action(self, sender):
-    print self.name
-    self.action(self)
+    '''
+    :type sender: ui.ButtonItem
+    '''
+    self.buttonItem.action(self.buttonItem)
     
 class ButtonItemCondenser (object):
   
@@ -39,7 +43,7 @@ class ButtonItemCondenser (object):
     for button_item in self.button_item_list:
       btn = ui.Button(image=button_item.image)
       self.buttons.append(btn)
-      btn.action = ButtonItemAction(button_item.title, button_item.action).handle_action
+      btn.action = ButtonItemAction(button_item).handle_action
       width = button_item.image.size[0]
       btn.frame = (x, 0, width, DEFAULT_HEIGHT)
       x = x + width + self.x_spacing
@@ -49,33 +53,34 @@ class ButtonItemCondenser (object):
     x = x - self.x_spacing
     self.btn_container.frame = (0, 0, x , DEFAULT_HEIGHT)
     btn_item = ui.ButtonItem()
-    # see https://forum.omz-software.com/topic/2724/spacing-of-buttonitem-s
+    
+    # The followinf ObjCInstance calls allow access to the container view of the ButtonItem.
+    # It will be replaced by the view containing the Buttons instead.
+    # See https://forum.omz-software.com/topic/2724/spacing-of-buttonitem-s
     btn_item_objc = ObjCInstance(btn_item)
     custom_view = ObjCInstance(self.btn_container)
     btn_item_objc.customView = custom_view
+    
     self.condensed_list = [btn_item]
     return self.condensed_list
   
-def handle_action(sender):
-  print str(sender)
+def test_handle_action(sender):
+  print ("sender=%s" % str(sender))
+  print ("sender.title=%s" % sender.title)
     
 def test():
-  
   icon_names = [ 'iob:beaker_32', 'iob:beer_32', 'iob:bag_32' ]
-  
-  button_item_list = map(lambda name : ui.ButtonItem(image=ui.Image.named(name), action=handle_action), icon_names)
+  button_item_list = map(lambda name : ui.ButtonItem(image=ui.Image.named(name), action=test_handle_action, title=name), icon_names)
   condenser = ButtonItemCondenser(button_item_list)
-  
   v = ui.View(frame=(0, 0, 400, 400), name='Demo')
   v.background_color = 'white'  
   condensed_list = condenser.get_condensed_list()
-  normal_item = ui.ButtonItem(image=ui.Image.named('iob:checkmark_32'), action=handle_action)
-  condensed_list.append(normal_item)
   v.right_button_items = condensed_list
   
-  # The following assignment prevents the instance of ButtonItemCondenser to be garbage collected
-  # see https://forum.omz-software.com/topic/2724/spacing-of-buttonitem-s
+  # The following assignment prevents the instance of ButtonItemCondenser to be garbage collected.
+  # See https://forum.omz-software.com/topic/2724/spacing-of-buttonitem-s
   v.condenser = condenser
+  
   v.present('sheet')
   
 if __name__ == '__main__':

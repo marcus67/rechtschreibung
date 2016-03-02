@@ -18,15 +18,15 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label1",
+              "font_size" : 17,
               "enabled" : true,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "font_name" : "<System-Bold>",
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Vereinfache...",
               "alignment" : "left",
               "uuid" : "CCC8C88C-BA1C-4B67-AD5D-69FBC69F9008",
-              "font_size" : 17,
-              "font_name" : "<System-Bold>"
+              "name" : "label1",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
           {
@@ -38,14 +38,14 @@
             ],
             "attributes" : {
               "flex" : "",
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"y\" zu \"ü\" bzw. \"j\" bzw. \"i\"",
               "alignment" : "left",
               "uuid" : "F2D69A9A-6032-43B9-8B7E-C86FFFF52A24",
               "name" : "label10",
-              "font_size" : 17
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
           {
@@ -74,14 +74,14 @@
             ],
             "attributes" : {
               "flex" : "",
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"ei\" zu \"ai\"",
               "alignment" : "left",
               "uuid" : "EFB17D2E-E1E5-4510-A20F-C9FDA4FCB35B",
               "name" : "label18",
-              "font_size" : 17
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
           {
@@ -110,14 +110,14 @@
             ],
             "attributes" : {
               "flex" : "",
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"eu\" zu \"oi\"",
               "alignment" : "left",
               "uuid" : "02D30D7B-CE17-485C-8AE9-39E5776225B8",
               "name" : "label19",
-              "font_size" : 17
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
           {
@@ -146,14 +146,14 @@
             ],
             "attributes" : {
               "flex" : "",
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"äu\" zu \"oi\"",
               "alignment" : "left",
               "uuid" : "D88BC87E-DB9B-4F97-8A8C-7AF22BAE8A1E",
               "name" : "label22",
-              "font_size" : 17
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
           {
@@ -182,14 +182,14 @@
             ],
             "attributes" : {
               "flex" : "",
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... unbetontes \"er\" zu \"a\"",
               "alignment" : "left",
               "uuid" : "9DD727E1-D013-455C-862D-1388DB517B8A",
               "name" : "label25",
-              "font_size" : 17
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
           {
@@ -208,6 +208,47 @@
               "value" : false,
               "name" : "switch_simplification_er_a"
             }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{0, 240}, {268, 32}}",
+            "class" : "Label",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "uuid" : "F641F35E-8F53-4B07-8E4E-1E9EEB6E4B65",
+              "flex" : "",
+              "frame" : "{{85, 224}, {150, 32}}",
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "alignment" : "left",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "enabled" : true,
+              "text" : "... \"ä\", \"ö\", \"ü\" zu \"ae\", \"oe\", \"ue\"",
+              "font_name" : "<System>",
+              "class" : "Label",
+              "name" : "label2",
+              "font_size" : 17
+            }
+          },
+          {
+            "selected" : true,
+            "frame" : "{{270, 240}, {51, 31}}",
+            "class" : "Switch",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "L",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "frame" : "{{135, 225}, {51, 31}}",
+              "class" : "Switch",
+              "uuid" : "E051D16C-E7A7-42C7-95E3-49C21AED5C76",
+              "value" : false,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "name" : "switch_simplification_expand_umlaut"
+            }
           }
         ],
         "attributes" : {
@@ -222,12 +263,12 @@
       }
     ],
     "attributes" : {
-      "flex" : "",
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
       "enabled" : true,
       "background_color" : "RGBA(1.000000,0.925000,0.500000,1.000000)",
       "name" : "Vereinfachung (Vokale)",
       "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
-      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+      "flex" : ""
     }
   }
 ]

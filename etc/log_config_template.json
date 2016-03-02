@@ -46,6 +46,11 @@
             "handlers": ["console", "file"],
             "propagate": 0
         },
+        "ui_util": {
+            "level": "INFO",
+            "handlers": ["console", "file"],
+            "propagate": 0
+        },
         "config": {
             "level": "INFO",
             "handlers": ["console", "file"],

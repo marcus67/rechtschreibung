@@ -20,16 +20,6 @@ reload(mode_manager)
 global logger
 logger = log.open_logging(__name__)
 
-class TextFieldDelegate (object):
-  
-  def __init__(self, vc, name):
-    self.vc = vc
-    self.name = name
-    
-  def textfield_did_change(self, textview):
-    self.action = 'textfield_did_change'
-    self.vc.handle_action(self)
-
 
 class SpellingModeSaver(ui_util.ViewController):
   
@@ -39,7 +29,7 @@ class SpellingModeSaver(ui_util.ViewController):
     self.load('mode_saver')
     
     self.text_field_mode_name = self.find_subview_by_name('textfield_mode_name')
-    self.text_field_mode_name.delegate = TextFieldDelegate(self, 'textfield_mode_name')
+    self.text_field_mode_name.delegate = ui_util.TextFieldDelegate(self, 'textfield_mode_name')
     self.text_field_mode_name.action = self.handle_action
     
     self.text_view_comment = self.find_subview_by_name('textview_comment')
@@ -47,7 +37,7 @@ class SpellingModeSaver(ui_util.ViewController):
     self.button_view_save = self.find_subview_by_name('button_save')
     self.tableview_mode_selector = self.find_subview_by_name('tableview_mode_selector')
 
-    self.selectedIndex = None
+    self.selected_index = None
     self.listDataSource = None
          
   def is_my_action(self, sender):
@@ -76,7 +66,7 @@ class SpellingModeSaver(ui_util.ViewController):
     self.list_data_source.highlight_color = defaults.COLOR_LIGHT_GREEN
     self.tableview_mode_selector.data_source = self.list_data_source
     
-    self.set_model(self.current_mode.combination)
+    self.set_model(self.current_mode.control)
     self.update_controls()
 
     self.present(style, orientations=('portrait', ))
@@ -85,42 +75,32 @@ class SpellingModeSaver(ui_util.ViewController):
       self.view.wait_modal()
       
   def get_selected_mode(self):
-    
     return self.current_mode
         
-  def handle_action(self, sender):
-    
-    global logger
-    
-    close = False
-    save = False
-    if type(sender).__name__ == 'ListDataSource':
-      self.selectedIndex = sender.selected_row
-      logger.debug("handle_action from ListDataSource: selectedIndex=%d" % self.selectedIndex)
-      
-      self.fill_model(self.modes[self.selectedIndex])
-              
-    elif sender.name == 'textfield_mode_name' and sender.action == 'textfield_did_change':
-      logger.debug("handle_action from textfield")
-      self.update_controls()
+  def handle_list_data_source_action(self, sender):
+    self.selected_index = sender.selected_row    
+    self.fill_model(self.modes[self.selected_index])
 
-    elif sender.name == 'button_cancel':
-      logger.debug("handle_action from cancel button")
+  def handle_button_action(self, name, sender):
+    if sender.name == 'button_cancel':
       self.current_mode = None
-      close =True
       
     elif sender.name == 'button_save':
-      logger.debug("handle_action from save button")
-      
       self.current_mode.control.comment = self.text_view_comment.text
       self.current_mode.control.name = self.text_field_mode_name.text
-      close = True    
 
-    if close:
-      self.view.close()
-      if self.parent_vc:
-        self.parent_vc.handle_action(self)
-
+    else:
+      super(SpellingModeSaver, self).handle_button_action(name, sender)
+      
+    self.view.close()    
+    self.handle_named_action('save_mode_finish')
+      
+  def handle_textfield_action(self, sender):
+    if sender.name == 'textfield_mode_name' and sender.action == 'textfield_did_change':
+      self.update_controls()    
+    else:
+      super(SpellingModeSaver, self).handle_textfield_action(sender)
+        
   def update_controls(self):
     index = 0
     found = False
@@ -144,7 +124,6 @@ class SpellingModeSaver(ui_util.ViewController):
       self.list_data_source.selected_row = -1
 
   def fill_model(self, mode):
-    
     self.text_view_comment.text = mode.control.comment
     self.text_field_mode_name.text = mode.control.name
     self.update_controls()

@@ -69,14 +69,25 @@ def store_in_model(sender, model):
 
 class ButtonItemAction(object):
   
-  def __init__(self, view_controller, view_name, name):
+  def __init__(self, view_controller, button_item):
     self.view_controller = view_controller
-    self.view_name = view_name
-    self.name = name
+    self.button_item = button_item
     
   def handle_action(self, sender):
-    self.view_controller.handle_action(self)
+    self.view_controller.handle_action(self.button_item)
     
+
+class TextFieldDelegate (object):
+  
+  def __init__(self, vc, name):
+    self.vc = vc
+    self.name = name
+    
+  def textfield_did_change(self, textfield):
+    self.action = 'textfield_did_change'
+    self.textfield = textfield
+    self.vc.handle_action(self)
+
 
 class ViewController (object):
   
@@ -89,6 +100,7 @@ class ViewController (object):
     self.subview_map = {}
     self.warningWorkaroundIssued = False
     self.orientations = None
+    self.button_items= {}
     
   def add_child_controller(self, view_name, child_controller):
     
@@ -114,7 +126,7 @@ class ViewController (object):
       
     container_view.add_subview(subview)    
     
-  def add_left_button_item(self, view_name, button_name, button_item):
+  def add_left_button_item(self, view_name, name, button_item):
     
     global logger
     
@@ -123,7 +135,8 @@ class ViewController (object):
       logger.warning("add_left_button_item: cannot find view %s" % view_name)
       return
     
-    button_item.action = ButtonItemAction(self, view_name, button_name).handle_action
+    button_item.action = ButtonItemAction(self, button_item).handle_action
+    self.button_items[str(button_item)] = name 
     if view.left_button_items == None:
       view.left_button_items = [ button_item ]
     else:
@@ -132,7 +145,7 @@ class ViewController (object):
       view.left_button_items = new_list
     
     
-  def add_right_button_item(self, view_name, button_name, button_item):
+  def add_right_button_item(self, view_name, name, button_item):
     global logger
     
     view = self.find_subview_by_name(view_name)
@@ -140,7 +153,8 @@ class ViewController (object):
       logger.warning("add_right_button_item: cannot find view %s" % view_name)
       return
     
-    button_item.action = ButtonItemAction(self, view_name, button_name).handle_action
+    button_item.action = ButtonItemAction(self, button_item).handle_action
+    self.button_items[str(button_item)] = name 
     if view.right_button_items == None:
       view.right_button_items = [ button_item ]
     else:
@@ -156,7 +170,7 @@ class ViewController (object):
       logger.warning("add_right_button_item: cannot find view %s" % view_name)
       return
     
-    self.condenser = button_item_condenser.ButtonItemCondenser(button_item_list)
+    self.condenser = button_item_condenser.ButtonItemCondenser(button_item_list,x_spacing=0)
     view.right_button_items = self.condenser.get_condensed_list()
     
   def load(self, view_name):
@@ -213,11 +227,97 @@ class ViewController (object):
 
 
   def handle_action(self, sender):
-          
-    if self.parent_vc:
-      return self.parent_vc.handle_action(sender)
+    global logger
+    
+    if type(sender).__name__ == 'ListDataSource':
+      fmt = "handle_action: ListDataSource: %s"
+      logger.debug(fmt % str(sender))
+      return self.handle_list_data_source_action(sender)
+      
+    elif type(sender).__name__ == 'Button':
+      fmt = "handle_action: Button: %s"
+      logger.debug(fmt % sender.name)
+      return self.handle_button_action(sender.name, sender)
+      
+    elif type(sender).__name__ == 'Switch':
+      fmt = "handle_action: Switch: %s"
+      logger.debug(fmt % sender.name)
+      return self.handle_switch_action(sender)
+      
+    elif type(sender).__name__ == 'SegmentedControl':
+      fmt = "handle_action: SegmentedControl: %s"
+      logger.debug(fmt % sender.name)
+      return self.handle_segmented_control_action(sender)
+      
+    elif type(sender).__name__ == 'TextFieldDelegate':
+      fmt = "handle_action: TextFieldDelegate: %s"
+      logger.debug(fmt % sender.name)
+      return self.handle_textfield_action(sender)
+      
+    elif type(sender).__name__ == 'ButtonItem':
+      if str(sender) in self.button_items:
+        fmt = "handle_action: ButtonItem: %s"
+        name = self.button_items[str(sender)]
+        logger.debug(fmt % name)
+        return self.handle_button_action(name, sender)
+    
+      elif sender.title:
+        fmt = "handle_action: ButtonItem: %s"
+        name = sender.title
+        logger.debug(fmt % name)
+        return self.handle_button_action(name, sender)      
+      
+      else:
+        fmt = "handle_action: ButtonItem: unknown class instance '%s'" 
+        logger.warning(fmt % str(sender))        
+      
     else:
-      return 0
+      fmt = "handle_action: unknown class '%s'" 
+      logger.warning(fmt % type(sender).__name__)
+  
+    return 0  
+      
+  def handle_named_action(self, name):
+
+    if self.parent_vc:
+      return self.parent_vc.handle_named_action(name)
+      
+    fmt = "handle_named_action: action '%s' not handled" 
+    logger.warning(fmt % name)    
+    
+  def handle_button_action(self, name, sender):
+    global logger 
+    
+    if self.parent_vc:
+      return self.parent_vc.handle_button_action(name, sender)
+      
+    fmt = "handle_button_action: button '%s' not handled" 
+    logger.warning(fmt % name)
+
+  def handle_switch_action(self, sender):
+    global logger 
+    
+    if self.parent_vc:
+      return self.parent_vc.handle_switch_action(sender)
+      
+    fmt = "handle_switch_action: switch '%s' not handled" 
+    logger.warning(fmt % sender.name)
+
+  def handle_list_data_source_action(self, sender):
+
+    if self.parent_vc:
+      return self.parent_vc.handle_list_data_source_action(sender)
+      
+    fmt = "handle_list_data_source_action: not handled" 
+    logger.warning(fmt)
+    
+  def handle_textfield_action(self, sender):
+
+    if self.parent_vc:
+      return self.parent_vc.handle_textfield_action(sender)
+      
+    fmt = "handle_textfield_action: not handled" 
+    logger.warning(fmt)    
       
   def present(self, style='popover', title=None, orientations=None, title_bar_color=None):
     global logger

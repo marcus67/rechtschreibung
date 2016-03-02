@@ -36,7 +36,8 @@ class SpellingModeSelector(ui_util.ViewController):
       return self.modes[self.selected_index]
 
   def is_my_action(self, sender):
-    return sender == self
+    print "is_my_action=", str(sender), str(self.list_data_source)
+    return sender == self.list_data_source
     
   def select(self, modes, cancel_label=defaults.DEFAULT_CANCEL_LABEL, 
               close_label=defaults.DEFAULT_CLOSE_LABEL, style='sheet', title='Regelsatz laden'):
@@ -80,24 +81,17 @@ class SpellingModeSelector(ui_util.ViewController):
     if not self.parent_vc:
       self.view.wait_modal()
         
-  def handle_action(self, sender):
-    global logger
+  def handle_button_action(self, name, sender):
+    if name == 'button_cancel':
+      self.view.close()    
+    else:
+      super(SpellingModeSelector, self).handle_button_action(name, sender)
     
-    close = False
-    if type(sender).__name__ == 'ListDataSource':
-      self.selected_index = sender.selected_row
-      logger.debug("handle_action from ListDataSource: selected_index=%d" % self.selected_index)
-      close = True
-        
-    elif sender.name == 'button_cancel':
-      logger.debug("handle_action from cancel button")
-      close =True
-      
-    if close:
-      self.view.close()
-      if self.parent_vc:
-        self.parent_vc.handle_action(self)
-        
+  def handle_list_data_source_action(self, sender):
+    self.selected_index = sender.selected_row    
+    self.view.close()    
+    self.handle_named_action('load_mode_finish')
+    
   def handle_accessory(self, sender):
     """
     :type sender: ui.ListDataSource

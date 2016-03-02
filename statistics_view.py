@@ -2,6 +2,7 @@
 # This file is part of https://github.com/marcus67/rechtschreibung
 
 import ui
+import console
 
 import defaults
 import ui_util
@@ -66,6 +67,7 @@ class StatisticsViewController ( ui_util.ViewController ) :
       return 0
 
   def present(self, reference_text, working_text, style='sheet'):
+    console.show_activity()
     self.prepare_histogram_image_view(reference_text, PLOT1_FILENAME)
     self.imageview_plot1.image = ui.Image.named(PLOT1_FILENAME).with_rendering_mode(ui.RENDERING_MODE_ORIGINAL)
     
@@ -79,6 +81,7 @@ class StatisticsViewController ( ui_util.ViewController ) :
     else:
       self.imageview_plot3.hidden = True  
     
+    console.hide_activity()
     super(StatisticsViewController, self).present(style)
     
     

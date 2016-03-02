@@ -102,64 +102,44 @@ class MainViewController ( ui_util.ViewController ) :
     rulesets.set_default_mode(self.referenceMode.combination)
     self.referenceSampleText = sample_text.get_sample_text()
     rulesets.set_default_mode(tempStoreMode)
-  
-  def handle_action(self, sender):
-    global logger
+      
+  def handle_button_action(self, name, sender):
     
     BUTTON_PREFIX = 'button_'
     INFO_PREFIX = 'info_'
-        
-    if 'name' in sender.__dict__:
-      logger.debug("handle_action: sender.name=%s" % sender.name)
-      
-    if self.selectModeVC.is_my_action(sender):    
-      self.load_mode_finish()  
     
-    elif self.selectModeForSaveVC.is_my_action(sender):    
-      self.save_mode_finish()  
-      
-    elif sender.name == 'button_start_speech':
+    if name == 'button_start_speech':
       speech.say(sample_text.get_sample_text(), 'de', 1.0 * self.conf.rechtschreibung.speech_speed / 100.0)
       
-    elif sender.name == 'button_stop_speech':
+    elif name == 'button_stop_speech':
       speech.stop()
     
-    elif sender.name == 'button_load_mode':
+    elif name == 'button_load_mode':
       self.load_mode_start(LOAD_MODE_RULESET)
     
-    elif sender.name == 'button_load_reference_mode':
+    elif name == 'button_load_reference_mode':
       self.load_mode_start(LOAD_MODE_REFERENCE)
     
-    elif sender.name == 'button_save_mode':
+    elif name == 'button_save_mode':
       self.save_mode_start()
     
-    elif sender.name == 'button_open_app_control_view':
+    elif name == 'button_open_app_control_view':
       self.open_app_control_view()
 
-    elif sender.name == 'button_open_top_navigation_view':
+    elif name == 'button_open_top_navigation_view':
       self.open_top_navigation_view()
 
-    elif sender.name == 'button_open_statistics_view':
+    elif name == 'button_open_statistics_view':
       self.open_statistics_view()
 
-    elif sender.name == 'button_close_top_navigation_view':
+    elif name == 'button_close_top_navigation_view':
       self.close_top_navigation_view()
 
-    elif sender.name == 'button_icon_rechtschreibung':
+    elif name == 'button_icon_rechtschreibung':
       self.button_icon_rechtschreibung()
 
-    elif sender.name == 'segmented_control_highlighting_mode':
-      self.highlightingMode = sender.selected_index
-      self.update_sample_text()
-    
-    elif sender.name == 'switch_auto_hide':
-      self.autoHide = sender.value
-      self.suppressShowChanges = self.autoHide
-      self.update_sample_text()
-        
-
-    elif sender.name.startswith(BUTTON_PREFIX):
-      view_name = sender.name[len(BUTTON_PREFIX):]
+    elif name.startswith(BUTTON_PREFIX):
+      view_name = name[len(BUTTON_PREFIX):]
       child_view = self.find_subview_by_name(view_name)
       if child_view != None:
         view = self.find_subview_by_name(NAME_NAVIGATION_VIEW)
@@ -168,23 +148,44 @@ class MainViewController ( ui_util.ViewController ) :
       else:
         logger.warning("cannot find subview '%s" % view_name)
       
-    elif sender.name.startswith(INFO_PREFIX):
-      info_name = sender.name[len(INFO_PREFIX):]
+    elif name.startswith(INFO_PREFIX):
+      info_name = name[len(INFO_PREFIX):]
       info_messages = infos.get_info_messages()
       if info_name in info_messages:
         self.info_popup.present(info_messages[info_name], close_label=words.schlieszen(c=rulesets.C_BOS))
       else:
         logger.error("cannot find info text for %s" % info_name)
-      
+        
+    else:  
+      super(MainViewController, self).handle_button_action(name, sender)
+        
+        
+  def handle_switch_action(self, sender):
+    if sender.name == 'switch_auto_hide':
+      self.autoHide = sender.value
+      self.suppressShowChanges = self.autoHide
+      self.update_sample_text()
+        
     elif ui_util.store_in_model(sender, self.model):
       self.handle_change_in_mode()
-      return 1
-      
-    else:
-      logger.warning("action '%s' not handled!" % sender.name)
-      
-    return 0
     
+  def handle_segmented_control_action(self, sender):
+    if sender.name == 'segmented_control_highlighting_mode':
+      self.highlightingMode = sender.selected_index
+      self.update_sample_text()
+    else:
+      super(MainViewController, self).handle_segmented_control_action(sender)
+  
+  def handle_named_action(self, name):
+    if name == 'load_mode_finish':    
+      self.load_mode_finish()  
+    
+    elif name == 'save_mode_finish':    
+      self.save_mode_finish()  
+    
+    else:
+      super(MainViewController, self).handle_named_action(name)
+      
   def open_top_navigation_view(self):
     global logger
     

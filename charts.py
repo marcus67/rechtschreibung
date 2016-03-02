@@ -54,7 +54,6 @@ def plot_frequency_change_bars(plot_file, changes, width, height):
     
   labels = map(lambda x:x[0], changes)
   colors = map(lambda x:defaults.COLOR_LIGHT_RED if x[1] > 0 else defaults.COLOR_LIGHT_GREEN, changes)
-  print "y=",y
   fig = plot.gcf()
   fig.clear()  
   plot.bar(left=x, height=y, width=bar_width, color=colors)
