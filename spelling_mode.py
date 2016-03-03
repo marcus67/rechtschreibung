@@ -50,7 +50,6 @@ C_BOS_AC=16 # beginning of sentence after colon
 class SpellingModeCombinationControl(object):
   
   def __init__(self):
-
     self.name = u'[unbenannt]'
     self.comment = ''
     self.isImmutable = False
@@ -59,7 +58,6 @@ class SpellingModeCombinationControl(object):
 class SpellingModeCombination(object):
 
   def __init__(self):
-        
     # customization mode switches
     self.bitswitch_capitalization = C_NOUN | C_NAME | C_BOS | C_ADDRESSING | C_BOS_AC
     self.switch_capitalization_all_capital = False
@@ -102,14 +100,12 @@ class SpellingModeCombination(object):
     self.switch_harmonization_homophony_elongated_vowels = False
 
   def __eq__(self, other):
-    
     return self.__dict__ == other.__dict__
     
         
 class spelling_mode(object):
   
   def __init__(self):
-    
     self.combination = SpellingModeCombination()
     self.control = SpellingModeCombinationControl()
     
@@ -127,7 +123,6 @@ def compare_spelling_mode_combination_controls(mode1, mode2):
   return cmp(mode1.control.name.lower(), mode2.control.name.lower())
   
 def test():
-  
   mode = spelling_mode()
         
 if __name__ == '__main__':

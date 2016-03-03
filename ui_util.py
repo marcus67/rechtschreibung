@@ -303,6 +303,15 @@ class ViewController (object):
     fmt = "handle_switch_action: switch '%s' not handled" 
     logger.warning(fmt % sender.name)
 
+  def handle_segmented_control_action(self, sender):
+    global logger 
+    
+    if self.parent_vc:
+      return self.parent_vc.handle_segmented_control_action(sender)
+      
+    fmt = "handle_segmented_control_action: control '%s' not handled" 
+    logger.warning(fmt % sender.name)
+
   def handle_list_data_source_action(self, sender):
 
     if self.parent_vc:

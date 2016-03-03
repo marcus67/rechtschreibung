@@ -92,6 +92,10 @@ def add_missing_attributes(object, template):
       changes = changes + 1
   return changes
   
+def count_differences_in_dicts(dict1, dict2):
+  common_keys = set(dict1.keys()).intersection(dict2.keys())
+  return sum([1 if dict1[key] != dict2[key] else 0 for key in common_keys])
+  
 def test():
   print get_html_content("Zwei šBären","Eine Bäršin", True)
   

@@ -29,6 +29,7 @@ import mode_saver
 import statistics_view
 import config
 import app_config
+import statistics
 
 reload(log)
 reload(ui_util)
@@ -47,6 +48,7 @@ reload(mode_saver)
 reload(statistics_view)
 reload(config)
 reload(app_config)
+reload(statistics)
 
 global logger
 
@@ -104,7 +106,6 @@ class MainViewController ( ui_util.ViewController ) :
     rulesets.set_default_mode(tempStoreMode)
       
   def handle_button_action(self, name, sender):
-    
     BUTTON_PREFIX = 'button_'
     INFO_PREFIX = 'info_'
     
@@ -145,6 +146,7 @@ class MainViewController ( ui_util.ViewController ) :
         view = self.find_subview_by_name(NAME_NAVIGATION_VIEW)
         view.push_view(child_view)
         return 1
+        
       else:
         logger.warning("cannot find subview '%s" % view_name)
       
@@ -153,6 +155,7 @@ class MainViewController ( ui_util.ViewController ) :
       info_messages = infos.get_info_messages()
       if info_name in info_messages:
         self.info_popup.present(info_messages[info_name], close_label=words.schlieszen(c=rulesets.C_BOS))
+        
       else:
         logger.error("cannot find info text for %s" % info_name)
         
@@ -168,11 +171,18 @@ class MainViewController ( ui_util.ViewController ) :
         
     elif ui_util.store_in_model(sender, self.model):
       self.handle_change_in_mode()
+
+    else:
+      super(MainViewController, self).handle_switch_action(sender)
     
   def handle_segmented_control_action(self, sender):
     if sender.name == 'segmented_control_highlighting_mode':
       self.highlightingMode = sender.selected_index
       self.update_sample_text()
+      
+    elif ui_util.store_in_model(sender, self.model):
+      self.handle_change_in_mode()
+
     else:
       super(MainViewController, self).handle_segmented_control_action(sender)
   
@@ -190,6 +200,7 @@ class MainViewController ( ui_util.ViewController ) :
     global logger
     
     view = self.find_subview_by_name(NAME_NAVIGATION_VIEW)
+    
     if not view:
       logger.warning("open_top_navigation_view: cannot find view %s" % NAME_NAVIGATION_VIEW)
       return
@@ -242,7 +253,6 @@ class MainViewController ( ui_util.ViewController ) :
     self.update_views()
     
   def update_views(self):
-    
     global logger
 
     view = self.find_subview_by_name('segmented_control_highlighting_mode')
@@ -256,10 +266,20 @@ class MainViewController ( ui_util.ViewController ) :
     view.enabled = False
     view.text = self.loadedMode.control.name
 
-    if self.loadedMode == self.currentMode:
-      view.text_color = '#000000'
+    if self.loadedMode.combination == self.currentMode.combination:
+      view.text_color = defaults.COLOR_BLACK
+      
     else:
-      view.text_color = '#A0A0A0'
+      view.text_color = defaults.COLOR_GREY
+    
+    difference_count_in_rules = util.count_differences_in_dicts(self.referenceMode.combination.__dict__, self.currentMode.combination.__dict__)
+    view = self.find_subview_by_name('textview_mode_statistics')
+    fmt = u"Regelabweichungen zur Referenz: %d\nAnzahl Zeichen:%d (Referenz:%d)\nAnzahl verschiedener Zeichen:%d (Referenz:%d)"
+    reference_text = rulesets.to_upper(unicode(self.referenceSampleText))
+    reference_letter_histogram = statistics.get_letter_histogram(reference_text)
+    current_text = rulesets.to_upper(unicode(self.currentSampleText))
+    current_letter_histogram = statistics.get_letter_histogram(current_text)    
+    view.text = fmt % ( difference_count_in_rules, len(current_text), len(reference_text), len(current_letter_histogram), len(reference_letter_histogram) )
     
   def load_mode_start(self, load_mode_type):
     self.load_mode_type = load_mode_type
@@ -271,28 +291,27 @@ class MainViewController ( ui_util.ViewController ) :
     
   def load_mode_finish(self):
     selectedMode = self.selectModeVC.get_selected_mode()
+    
     if selectedMode != None:
       if self.load_mode_type == LOAD_MODE_RULESET:
         logger.info("Set working mode '%s'" % selectedMode.control.name)
         rulesets.set_default_mode(selectedMode.combination)
-        self.loadedMode = copy.copy(selectedMode)
+        self.loadedMode = copy.deepcopy(selectedMode)
         self.currentMode = copy.copy(selectedMode)
         self.set_model(self.currentMode.combination)
+        rulesets.set_default_mode(self.currentMode.combination)
         self.handle_change_in_mode()
       
       else:
         logger.info("Set reference mode '%s'" % selectedMode.control.name)
-        self.set_reference_mode(copy.copy(selectedMode))
+        self.set_reference_mode(copy.deepcopy(selectedMode))
         self.update_sample_text()
         self.update_views()
         
   def save_mode_start(self):
-    
     self.selectModeForSaveVC.select(mode_manager.get_available_modes(), self.currentMode, cancel_label=words.abbrechen(c=rulesets.C_BOS), save_label=words.speichern(c=rulesets.C_BOS), overwrite_label=words.ueberschreiben(c=rulesets.C_BOS), style='sheet')
     
-    
   def save_mode_finish(self):
-    
     selectedMode = self.selectModeForSaveVC.get_selected_mode()
     if selectedMode != None:
       mode_manager.write_mode(selectedMode)
@@ -300,7 +319,6 @@ class MainViewController ( ui_util.ViewController ) :
       self.handle_change_in_mode()
 
   def button_icon_rechtschreibung(self):
-    
     global logger
     
     logger.info("Opening URL %s" % GITHUB_URL_RECHTSCHREIBUNG)

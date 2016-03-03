@@ -1,5 +1,6 @@
 #coding: utf-8
 
+COLOR_BLACK = '#000000'
 COLOR_GREY = '#DDDDDD'
 COLOR_LIGHT_GREY = '#eeeeee'
 COLOR_LIGHT_RED = '#FF8080'

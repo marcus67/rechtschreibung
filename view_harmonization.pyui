@@ -111,13 +111,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label4",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "...Lange Vokale explizit dehnen",
               "alignment" : "left",
               "uuid" : "E9F4C23A-9154-4457-B30B-E9F4481B373B",
-              "name" : "label4",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -132,12 +132,12 @@
               "flex" : "L",
               "action" : "self.handle_action",
               "enabled" : true,
-              "font_size" : 15,
+              "name" : "info_harmonization_homophony_elongated_vowels",
               "title" : "",
               "uuid" : "89B0C401-BC27-4667-80FF-FFB635520631",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "name" : "info_harmonization_homophony_elongated_vowels",
+              "font_size" : 15,
               "image_name" : "ionicons-ios7-information-outline-32"
             }
           },
@@ -152,12 +152,12 @@
               "flex" : "L",
               "action" : "self.handle_action",
               "enabled" : true,
-              "font_size" : 15,
+              "name" : "info_harmonization_homophony_terminating_consonants",
               "title" : "",
               "uuid" : "70124CC9-85EE-4E89-9E6E-1AC2433397F1",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "name" : "info_harmonization_homophony_terminating_consonants",
+              "font_size" : 15,
               "image_name" : "ionicons-ios7-information-outline-32"
             }
           },
@@ -172,12 +172,12 @@
               "flex" : "",
               "action" : "self.handle_action",
               "enabled" : true,
-              "font_size" : 15,
+              "name" : "info_elongation",
               "title" : "",
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "font_bold" : false,
               "uuid" : "9FD9B152-C7B9-4A83-A8AD-E87098340093",
-              "name" : "info_elongation",
+              "font_size" : 15,
               "image_name" : "ionicons-ios7-information-outline-32"
             }
           },
@@ -197,6 +197,42 @@
               "value" : false,
               "name" : "switch_harmonization_homophony_elongated_vowels"
             }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{0, 212}, {268, 32}}",
+            "class" : "Label",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "text" : "... \"d\" als Endlaut zu \"t\"",
+              "alignment" : "left",
+              "uuid" : "34A02E75-CF2C-44D9-BBAA-9D61B26E5D26",
+              "name" : "label20",
+              "font_size" : 17
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{270, 212}, {51, 31}}",
+            "class" : "Switch",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "L",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "uuid" : "8558CA75-769A-4BAE-9F5A-B746CAE8F8A0",
+              "value" : false,
+              "name" : "switch_simplification_d_t"
+            }
           }
         ],
         "attributes" : {
@@ -212,11 +248,11 @@
       }
     ],
     "attributes" : {
-      "name" : "Harmonisierung",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "enabled" : true,
       "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "name" : "Harmonisierung",
       "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
-      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "flex" : ""
     }
   }

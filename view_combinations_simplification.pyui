@@ -5,7 +5,7 @@
     "class" : "View",
     "nodes" : [
       {
-        "selected" : true,
+        "selected" : false,
         "frame" : "{{0, 0}, {320, 480}}",
         "class" : "ScrollView",
         "nodes" : [
@@ -18,15 +18,15 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label1",
               "enabled" : true,
-              "font_name" : "<System-Bold>",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Vereinfache...",
               "alignment" : "left",
               "uuid" : "CCC8C88C-BA1C-4B67-AD5D-69FBC69F9008",
-              "name" : "label1",
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "font_size" : 17,
+              "font_name" : "<System-Bold>"
             }
           },
           {
@@ -38,19 +38,19 @@
             ],
             "attributes" : {
               "flex" : "R",
-              "name" : "label2",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"ph\" zu \"f\"",
               "alignment" : "left",
               "uuid" : "4C33549E-F2B6-47F8-8D32-5EE6E2C83712",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label2",
+              "font_size" : 17
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 60}, {51, 31}}",
+            "frame" : "{{275, 60}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -74,19 +74,19 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label3",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"ck\" zu \"kk\"",
               "alignment" : "left",
               "uuid" : "E983E302-0E68-4DF3-A27C-FC308AD73B4B",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label3",
+              "font_size" : 17
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 96}, {51, 31}}",
+            "frame" : "{{275, 96}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -110,19 +110,19 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label4",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"qu\" zu \"kw\"",
               "alignment" : "left",
               "uuid" : "0EA91D3D-8C91-4B4B-AB00-2381821CA94B",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label4",
+              "font_size" : 17
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 132}, {51, 31}}",
+            "frame" : "{{275, 132}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -146,19 +146,19 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label5",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"v\" zu \"f\" bzw. \"w\"",
               "alignment" : "left",
               "uuid" : "D3478510-0130-4AC7-ACDA-6E00B50F353A",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label5",
+              "font_size" : 17
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 168}, {51, 31}}",
+            "frame" : "{{275, 168}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -182,19 +182,19 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label6",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"z\" zu \"ts\"",
               "alignment" : "left",
               "uuid" : "ABDBC18A-2B4A-48C0-8963-33B27DC6A0B1",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label6",
+              "font_size" : 17
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 204}, {51, 31}}",
+            "frame" : "{{275, 204}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -211,27 +211,27 @@
           },
           {
             "selected" : false,
-            "frame" : "{{0, 816}, {268, 32}}",
+            "frame" : "{{0, 660}, {268, 32}}",
             "class" : "Label",
             "nodes" : [
 
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label9",
+              "font_size" : 16,
               "enabled" : true,
-              "font_name" : "<System>",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Unterdrücke doppelte Konsonanten",
               "alignment" : "left",
               "uuid" : "BBE03A69-98F2-41D6-8D72-4F8166B24503",
-              "font_size" : 16,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label9",
+              "font_name" : "<System>"
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 816}, {51, 31}}",
+            "frame" : "{{275, 660}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -255,19 +255,19 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label11",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"th\" zu \"t\"",
               "alignment" : "left",
               "uuid" : "9DD5F311-840E-4306-AE94-23C0823A9294",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label11",
+              "font_size" : 17
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 276}, {51, 31}}",
+            "frame" : "{{275, 276}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -291,19 +291,19 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label12",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"ch\" (griechisch) zu \"sch\"",
               "alignment" : "left",
               "uuid" : "992F0FF9-2046-4041-8C10-84C69CD28DAA",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label12",
+              "font_size" : 17
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 312}, {51, 31}}",
+            "frame" : "{{275, 312}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -320,26 +320,26 @@
           },
           {
             "selected" : false,
-            "frame" : "{{0, 744}, {268, 32}}",
+            "frame" : "{{0, 240}, {268, 32}}",
             "class" : "Label",
             "nodes" : [
 
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label13",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"x\" zu \"ks\"",
               "alignment" : "left",
               "uuid" : "4CBD11DA-8EC7-43B9-BD68-297567105AED",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label13",
+              "font_size" : 17
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 744}, {51, 31}}",
+            "frame" : "{{275, 240}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -363,19 +363,19 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label14",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"ß\" zu \"ss\"",
               "alignment" : "left",
               "uuid" : "6F362180-C678-46AC-B3CD-A70A425E2DE8",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label14",
+              "font_size" : 17
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 384}, {51, 31}}",
+            "frame" : "{{275, 384}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -399,19 +399,19 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label15",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"c\" zu \"k\" \/ \"z\" \/ \"s\" \/ \"tsch\"",
               "alignment" : "left",
               "uuid" : "9B88E112-381F-48C3-B3FD-9DD67D8767D0",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label15",
+              "font_size" : 17
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 420}, {51, 31}}",
+            "frame" : "{{275, 420}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -435,20 +435,20 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label7",
+              "font_size" : 16,
               "enabled" : true,
-              "font_name" : "<System>",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"sch\" zu \"š\" u. \"st\/p\" zu \"št\/p\"",
               "alignment" : "left",
               "uuid" : "E20738FE-4329-4D1E-8844-ACA86C149BA3",
-              "font_size" : 16,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label7",
+              "font_name" : "<System>"
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 492}, {51, 31}}",
+            "frame" : "{{275, 492}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -465,7 +465,7 @@
           },
           {
             "selected" : false,
-            "frame" : "{{236, 492}, {32, 32}}",
+            "frame" : "{{241, 492}, {32, 32}}",
             "class" : "Button",
             "nodes" : [
 
@@ -474,37 +474,37 @@
               "flex" : "L",
               "action" : "self.handle_action",
               "enabled" : true,
-              "name" : "info_simplification_sch_s",
+              "image_name" : "iob:ios7_information_outline_32",
               "title" : "",
               "uuid" : "5D99558B-A48B-4574-8DB5-840645AFBA20",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "font_size" : 15,
-              "image_name" : "iob:ios7_information_outline_32"
+              "name" : "info_simplification_sch_s",
+              "font_size" : 15
             }
           },
           {
             "selected" : false,
-            "frame" : "{{0, 852}, {268, 32}}",
+            "frame" : "{{0, 696}, {268, 32}}",
             "class" : "Label",
             "nodes" : [
 
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label17",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Unterdrücke stumme \"h\"",
               "alignment" : "left",
               "uuid" : "8B22D23B-615E-4684-936C-2FCA05B7A13F",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label17",
+              "font_size" : 17
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 852}, {51, 31}}",
+            "frame" : "{{275, 696}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -528,19 +528,19 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label18",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"dt\" zu \"tt\" bzw. \"t\"",
               "alignment" : "left",
               "uuid" : "EFB17D2E-E1E5-4510-A20F-C9FDA4FCB35B",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label18",
+              "font_size" : 17
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 528}, {51, 31}}",
+            "frame" : "{{275, 528}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -564,19 +564,19 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label19",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"tion\" zu \"zion\"",
               "alignment" : "left",
               "uuid" : "02D30D7B-CE17-485C-8AE9-39E5776225B8",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label19",
+              "font_size" : 17
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 564}, {51, 31}}",
+            "frame" : "{{275, 564}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -593,62 +593,26 @@
           },
           {
             "selected" : false,
-            "frame" : "{{0, 636}, {268, 32}}",
+            "frame" : "{{0, 600}, {268, 32}}",
             "class" : "Label",
             "nodes" : [
 
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label20",
-              "enabled" : true,
-              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "text" : "... \"d\" als Endlaut zu \"t\"",
-              "alignment" : "left",
-              "uuid" : "34A02E75-CF2C-44D9-BBAA-9D61B26E5D26",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
-            }
-          },
-          {
-            "selected" : false,
-            "frame" : "{{270, 636}, {51, 31}}",
-            "class" : "Switch",
-            "nodes" : [
-
-            ],
-            "attributes" : {
-              "flex" : "L",
-              "action" : "self.handle_action",
-              "enabled" : true,
-              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "uuid" : "8558CA75-769A-4BAE-9F5A-B746CAE8F8A0",
-              "value" : false,
-              "name" : "switch_simplification_d_t"
-            }
-          },
-          {
-            "selected" : false,
-            "frame" : "{{0, 672}, {268, 32}}",
-            "class" : "Label",
-            "nodes" : [
-
-            ],
-            "attributes" : {
-              "flex" : "",
-              "name" : "label21",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"ch\" vor \"s\" zu \"ck\"",
               "alignment" : "left",
               "uuid" : "B97DB9DE-BE07-433D-B45E-F129C42B44D3",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label21",
+              "font_size" : 17
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 672}, {51, 31}}",
+            "frame" : "{{275, 600}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -672,19 +636,19 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label23",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"tsch\" zu \"č\"",
               "alignment" : "left",
               "uuid" : "651BB43A-8DB2-4D9B-A409-A2367951BA41",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label23",
+              "font_size" : 17
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 456}, {51, 31}}",
+            "frame" : "{{275, 456}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -701,7 +665,7 @@
           },
           {
             "selected" : false,
-            "frame" : "{{236, 456}, {32, 32}}",
+            "frame" : "{{241, 456}, {32, 32}}",
             "class" : "Button",
             "nodes" : [
 
@@ -710,13 +674,13 @@
               "flex" : "L",
               "action" : "self.handle_action",
               "enabled" : true,
-              "name" : "info_simplification_tsch_c",
+              "image_name" : "iob:ios7_information_outline_32",
               "title" : "",
               "uuid" : "4EC58823-B8A3-4D9F-B99E-C9C85F8871E4",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "font_size" : 15,
-              "image_name" : "iob:ios7_information_outline_32"
+              "name" : "info_simplification_tsch_c",
+              "font_size" : 15
             }
           },
           {
@@ -728,19 +692,19 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label24",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"ch\" zu \"k\"",
               "alignment" : "left",
               "uuid" : "DDA0D993-AA3D-45BB-AD51-36A7933204D2",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label24",
+              "font_size" : 17
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 348}, {51, 31}}",
+            "frame" : "{{275, 348}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -757,7 +721,7 @@
           },
           {
             "selected" : false,
-            "frame" : "{{236, 528}, {32, 32}}",
+            "frame" : "{{241, 528}, {32, 32}}",
             "class" : "Button",
             "nodes" : [
 
@@ -765,18 +729,18 @@
             "attributes" : {
               "flex" : "L",
               "action" : "self.handle_action",
-              "name" : "info_simplification_dt_tt",
+              "image_name" : "iob:ios7_information_outline_32",
               "frame" : "{{120, 432}, {80, 32}}",
               "title" : "",
               "class" : "Button",
               "uuid" : "93F106A3-4B20-445E-BE52-8B08887CB7EB",
-              "font_size" : 15,
-              "image_name" : "iob:ios7_information_outline_32"
+              "name" : "info_simplification_dt_tt",
+              "font_size" : 15
             }
           },
           {
             "selected" : false,
-            "frame" : "{{236, 564}, {32, 32}}",
+            "frame" : "{{241, 564}, {32, 32}}",
             "class" : "Button",
             "nodes" : [
 
@@ -784,21 +748,21 @@
             "attributes" : {
               "flex" : "L",
               "action" : "self.handle_action",
-              "name" : "info_simplification_tion_zion",
+              "image_name" : "iob:ios7_information_outline_32",
               "frame" : "{{120, 432}, {80, 32}}",
               "title" : "",
               "class" : "Button",
               "uuid" : "47FCEA7E-CA79-48F6-AF9D-BFC5A80946EB",
-              "font_size" : 15,
-              "image_name" : "iob:ios7_information_outline_32"
+              "name" : "info_simplification_tion_zion",
+              "font_size" : 15
             }
           }
         ],
         "attributes" : {
           "flex" : "WH",
           "enabled" : true,
-          "content_width" : 320,
-          "content_height" : 895,
+          "content_width" : 325,
+          "content_height" : 760,
           "uuid" : "05833C97-8DE9-4796-9723-B480E04DF112",
           "custom_attributes" : "{ 'background_color' : defaults.COLOR_LIGHT_YELLOW }",
           "name" : "scrollview_combinations_simplification"
@@ -806,12 +770,12 @@
       }
     ],
     "attributes" : {
-      "background_color" : "RGBA(1.000000,0.925000,0.500000,1.000000)",
+      "flex" : "",
       "enabled" : true,
-      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
-      "name" : "Vereinfachung (Konsonanten)",
       "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-      "flex" : ""
+      "name" : "Vereinfachung (Konsonanten)",
+      "background_color" : "RGBA(1.000000,0.925000,0.500000,1.000000)",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)"
     }
   }
 ]
