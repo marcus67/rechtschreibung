@@ -8,14 +8,14 @@ Da Wendy sich mit Software-Entwicklung auskennt, hatte sie die Idee, eine Applik
 
 Thematisch kann man die vorhandenen Konfigurationsmöglichkeiten in verschiedene Gruppen einteilen, wobei die Zuordnung der einzelnen Regeln zu den Gruppen nicht in allen Fällen eindeutig ist.
 
-*) Klein- und Großschreibung:
-*) Regeln zur Vereinfachung der Rechtschreibung durch andere Schreibweise von Lautkombinationen:
-*) Regeln zur Zeichensetzung:
-*) Regeln zum Layout:
-*) Regeln zur (partiellen) Reaktivierung der Rechtschreibung vor der Reform:
-*) Regeln zur Harmonisierung (Vereinheitlichung) der Rechtschreibung:
+*) Regeln zur Klein- und Großschreibung
+*) Regeln zur Vereinfachung der Rechtschreibung durch andere Schreibweise von Lautkombinationen
+*) Regeln zur Zeichensetzung
+*) Regeln zum Layout
+*) Regeln zur (partiellen) Reaktivierung der Rechtschreibung vor der Reform
+*) Regeln zur Harmonisierung (Vereinheitlichung) der Rechtschreibung
 
-Für jede der Gruppen gibt es einen Unterdialog in der Applikation, um die zugehörigen Regeln ein- und auszuschalten.
+Für jede der Gruppen gibt es einen Unterdialog in der Applikation, um die zugehörigen Regeln ein- und auszuschalten. Die Regeln zur Vereinfachung ist in zwei Untergruppen geteilt, wobei sich die eine auf die Konsonanten und die andere auf die Vokale konzentriert.
 
 Im folgenden sollen nun einige Beispiele herausgegriffen werden:
 
@@ -27,4 +27,9 @@ Viele Leute plädieren daher dafür, normale Substantive zur Vereinfachung klein
 
 *) Lautgetreue Schreibweise bei Doppellauten
 
-Im deutschen gibt es sechs Doppellaute: "au", "äu", "ai", "ei", "eu", "oi". Der letzte ("oi") wird normalerweise in Lehnworten aus dem Französischen verwendet. Das eigenartige ist, das drei der sechs nicht den Laut repräsentieren, der tatsächlich gesprochen wird: "äu" wird zu "oi", "ei" wird zu "ai", "eu" wird zu "oi" und "oi" wird zu "oa". Das ist für einen Sprachanfänger höchst verwirrend.
+Im deutschen gibt es sechs Doppellaute: "au", "äu", "ai", "ei", "eu", "oi". Der letzte Doppellaut ("oi") wird normalerweise in Lehnworten aus dem Französischen verwendet. Das eigenartige ist, das drei der sechs nicht den Laut repräsentieren, der tatsächlich gesprochen wird: "äu" wird zu "oi", "ei" wird zu "ai", "eu" wird zu "oi" und "oi" wird zu "oa". Das ist für einen Sprachanfänger höchst verwirrend. Casimir argumentiert, dass bei den Kombinationen "au" und "äu" zumindest die ursprüngliche Intention deutlich ist: "äu" geht bei der Pluralbildung aus "au" hervor ("Haus" -> "Häuser"). Er muss jedoch eingestehen, dass bei den anderen Kombinationen jedoch kaum eine Ursache für die ungünstige Lautwahl erkennbar ist.
+
+*) Weiches "d" am Wortende
+
+Im Gegensatz zum Englischen, wo es einen Unterschied zwischen einem weichen "d" (z.B. "had") und einem harten "t" (z.B. "hat") am Wortende gibt, der auch von den Sprechern beachtet wird, gibt es in der deutschen Aussprache nur das harte "t" am Wortende. Im Schriftbild wird jedoch Rücksicht auf diejenigen Formen des Wortes genommen, die sich durch Verlängerung (z.B. Pluralbildung) ergeben. Wird in den verlängerten Formen ein "d" gesprochen, so wird es auch in der kurzen Form so geschrieben ("Hände" -> "Hand"). Für "t" gilt das Entsprechende ("Scheite" -> "Scheit"). Wendy hat dazu eine Regel in der Gruppe "Harmonisierung" definiert, in der Laut "t" am Wortende immer auch als solcher geschrieben wird.
+
