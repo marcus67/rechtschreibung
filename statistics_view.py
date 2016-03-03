@@ -57,10 +57,11 @@ class StatisticsViewController ( ui_util.ViewController ) :
     reference_histogram = statistics.get_letter_histogram(normalized_reference_text)
     working_histogram = statistics.get_letter_histogram(normalized_working_text)
     changes = statistics.compute_changes(reference_histogram, working_histogram)
+    summary_small_changes = statistics.summarize_small_changes(changes, 0.05)
     actual_changes = statistics.keep_actual_changes(changes, 0.05)
     
     if len(actual_changes) > 0:
-      charts.plot_frequency_change_bars(plot_file, actual_changes, width, height)    
+      charts.plot_frequency_change_bars(plot_file, actual_changes, width, height, summary_small_changes)    
       return 1
       
     else:

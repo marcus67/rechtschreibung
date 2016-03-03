@@ -39,30 +39,32 @@ def plot_letter_histogram(plot_file, histogram, width, height):
   fig.savefig(plot_file, bbox_inches='tight', pad_inches=0.0)
   
   
-def plot_frequency_change_bars(plot_file, changes, width, height):
+def plot_frequency_change_bars(plot_file, changes, width, height, legend=None):
   x = np.arange(len(changes))
   bar_width = 0.7
-  y = map(lambda x:100.0 * x[1], changes)
+  y = map(lambda entry:100.0 * entry[1], changes)
   min_y = min(y)
   max_y = max(y)
   axis_min_y = -100
   axis_max_y = 100
-  if min_y < -1:
-    axis_min_y = 50 * int(1.0 / 50.0 * min_y)
-  if max_y > 1:
-    axis_max_y = 50 * int(1.0 / 50.0 * max_y)
+  if min_y < -100:
+    axis_min_y = 50 * int(1.0 / 50.0 * min_y - 1.0)
+  if max_y > 100:
+    axis_max_y = 50 * int(1.0 / 50.0 * max_y + 1.0)
     
-  labels = map(lambda x:x[0], changes)
-  colors = map(lambda x:defaults.COLOR_LIGHT_RED if x[1] > 0 else defaults.COLOR_LIGHT_GREEN, changes)
+  labels = map(lambda entry:entry[0], changes)
+  colors = map(lambda entry:defaults.COLOR_LIGHT_RED if entry[1] > 0 else defaults.COLOR_LIGHT_GREEN, changes)
   fig = plot.gcf()
   fig.clear()  
-  plot.bar(left=x, height=y, width=bar_width, color=colors)
-  plot.hlines((0,), 0, len(changes))
+  bar_plot = plot.bar(left=x, height=y, width=bar_width, color=colors)
+  plot.hlines((0,), 0, len(changes) )
 
   plot.ylabel(u'Änderung [%]')
   plot.title(u'Relative Änderung der Buchstabenhäufigkeit')
   plot.xticks(x + bar_width / 2.0, labels )
   plot.yticks(np.arange(axis_min_y, axis_max_y + 1, 50))
+  if legend:
+    plot.legend((bar_plot[0],), (legend,), loc=2)
   fig.set_size_inches(3.0 * width / PIXELS_PER_INCH, 3.0 * height / PIXELS_PER_INCH)
   fig.savefig(plot_file, bbox_inches='tight', pad_inches=0.0)
   
@@ -82,9 +84,10 @@ def test():
   histogram2 = statistics.get_letter_histogram(new_text)
 
   changes = statistics.compute_changes(histogram, histogram2)
+  summary_small_changes = statistics.summarize_small_changes(changes, 0.05)
   actual_changes = statistics.keep_actual_changes(changes,0.05)  
   
-  plot_frequency_change_bars(TMP_PLOT_FILE, actual_changes, 600, 200)
+  plot_frequency_change_bars(TMP_PLOT_FILE, actual_changes, 600, 200, summary_small_changes)
   console.show_image(TMP_PLOT_FILE)  
   
 if __name__ == '__main__':

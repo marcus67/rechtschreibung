@@ -55,6 +55,14 @@ def keep_actual_changes(changes, threshold = 0.0):
   filtered = [entry for entry in changes if abs(entry[1]) >= threshold]
   return sorted(filtered, key=lambda x:x[1])
   
+def summarize_small_changes(changes, threshold):
+  
+  change_list = ",".join("'%s'" % entry[0] for entry in changes if abs(entry[1]) < threshold and entry[1] != 0.0)
+  if change_list:
+    return u"Delta<%2.0f%% in %s" % ( 100.0 * threshold, change_list )
+  else:
+    return u"Alle Änderungen im Graphen sichtbar"
+  
 def test():
   histogram = get_letter_histogram(rulesets.to_upper('Dies ist ein Test!'))
   print histogram
@@ -66,8 +74,10 @@ def test():
   
   changes = compute_changes(histogram, histogram4)
   print changes
-  actual_changes = keep_actual_changes(changes)
+  summary = summarize_small_changes(changes, 0.5)
+  actual_changes = keep_actual_changes(changes, 0.5)
   print actual_changes
+  print summary
   
 if __name__ == '__main__':
   test()
