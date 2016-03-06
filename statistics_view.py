@@ -68,7 +68,7 @@ class StatisticsViewController ( ui_util.ViewController ) :
       return 0
 
   def present(self, reference_text, working_text, style='sheet'):
-    console.show_activity()
+    console.show_activity('Aufbereiten der Graphik')
     self.prepare_histogram_image_view(reference_text, PLOT1_FILENAME)
     self.imageview_plot1.image = ui.Image.named(PLOT1_FILENAME).with_rendering_mode(ui.RENDERING_MODE_ORIGINAL)
     

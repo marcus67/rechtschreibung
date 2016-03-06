@@ -1,0 +1,74 @@
+{
+  "rules" :
+  [ 
+    {
+      "id" : "SIMP_01",
+      "attr" : "simplification_aumlu_oi",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"äu\" durch \"oi\"."
+    },
+    {
+      "id" : "SIMP_02",
+      "attr" : "simplification_ei_ai",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"ei\" durch \"ai\"."
+    },
+    {
+      "id" : "SIMP_10",
+      "attr" : "simplification_sch_s",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt \"sch\" durch \"š\".",
+      "info" : "In slavischen Sprachen wird zum Teil der Buchstabe \"š\" verwendet, um den Laut des deutschen \"sch\" zu repräsentieren. Wegen der Kürze liegt eine Ersetzung nahe. Auch in den Buchstabenkombinationen \"sp\" und \"st\" ist zum Teil der gleiche Laut enthalten und wird daher entsprechend ersetzt. Dadurch wird dem Leser ermöglicht, zwischen den beiden vorkommenden Sprechweisen zu unterscheiden: \"st\" als Laut \"s\"+\"t\" bleibt gleich, wohingegen \"st\" als Laut \"scht\" zu \"št\" wird. Entsprechendes gilt für \"sp\"."
+    },      
+    {
+      "id" : "SIMP_11",
+      "attr" : "simplification_tsch_c",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt \"tsch\" durch \"č\".",
+      "info" : "In slavischen Sprachen wird zum Teil der Buchstabe \"č\" verwendet, um den Laut des deutschen \"tsch\" zu repräsentieren. Wegen der Kürze liegt eine Ersetzung nahe."
+    },           
+    {
+      "id" : "SIMP_12",
+      "attr" : "simplification_dt_tt",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt \"dt\" durch \"tt\" nach kurzen und \"t\" nach langen Vokalen.",
+      "info" : "Das \"dt\" kommt sowohl hinter kurzen als auch langen Vokalen vor. Deswegen ist seine Funktion als Doppelkonsonant, der einen kurzen Vokal andeuten würde, fraglich. Dieser Modus wandet den Laut in \"tt\" nach kurzen Vokalen bzw. \"t\" nach langen Vokalen um. Es ist zu beachten, dass in letzteren Fällen auch eine explizite Dehnung des Vokals sinnvoll sein kann. Dazu gibt es eine eigene Regel."
+    },
+    {
+      "id" : "SIMP_13",
+      "attr" : "simplification_tion_zion",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt den Suffix \"tion\" durch \"zion\".",
+      "info" : "Das \"t\" in \"tion\" hat den Lautwert eines \"z\". Diese Vereinheitlichung ist nur in sofern ungünstig, weil dadurch die Nation sehr nah an den Nazi heranrückt."      
+    },
+    {
+      "id" : "HARM_01",
+      "attr" : "harmonization_homophony_elongated_vowels",
+      "type" : "Harmonisierung",
+      "desc" : "Aktiviert das explizite Dehnen von langen Vokalen, die im Schriftbild als kurze Vokale erscheinen (z.B. \"dem\" -> \"deem\").",
+      "info" :  "In manchen Fällen wird bewusst darauf verzichtet, lange Vokale exlizit zu denen. Das tritt vor allem in einfachen einsilbigen Worten auf. Zum Beispiel wird \"dem\" mit einfachem \"e\" geschrieben, wohingegen das gleichklingende \"Lehm\" mit Dehnung geschrieben wird. Diese Regel sorgt dafür, dass in all diesen Fällen die gewählte Vokaldehnung (standardmäßig über \"h\") verwendet wird."
+    },               
+    {
+      "id" : "HARM_02",
+      "attr" : "harmonization_homophony_terminating_consonants",
+      "type" : "Harmonisierung",
+      "desc" : "Verdoppelt Konsonanten am Wortende nach kurzen Vokalen.",
+      "info" : "In manchen Fällen wird bewusst darauf verzichtet, Konsonanten nach kurzen Vokalen am Ende von Worten zu verdoppeln. Dies tritt besonders bei bei einfachen einsilbigen Worten auf. Zum Beispiel wird \"tritt\" mit Dopplung geschrieben, wohingegen das gleichklingende \"mit\" mit einfachem Konsonant geschrieben wird.<BR><BR>Diese Regel sorgt dafür, dass in all diesen Fällen die Verdopplung der Konsonanten aktiviert wird, außer die Konsonantendopplung wurde global abgeschaltet (siehe \"Vereinfachung\")."
+    },
+    {
+      "id" : "HARM_03",
+      "attr" : "elongation",
+      "type" : "Harmonisierung",
+      "desc" : "Legt fest, wie lange Vokale dargestellt werden.",
+      "info" : "Dieser Schalter regelt die Darstellung eines langen Vokals. Es gibt sechs Varianten:<BR><BR>Standard: wählt die derzeit gültige Variante (dies ist uneinheitlich!),<BR><BR>keine: stellt lange Vokale einfach, d.h. wie kurze dar,<BR><BR>\"e\": hängt an Vokale ein \"e\" an,<BR><BR>\"h\": hängt an Vokale ein \"h\" an,<BR><BR>Dopplung: verdoppelt den Vokal,<BR><BR>Makron: setzt einen Strich (Makron) als Akzent über den Vokal. Hinweis: Es ist zur Zeit unklar, wie das Makron mit dem Umlautzeichen kombiniert werden kann. Deswegen wird bei Umlauten die Dopplung verwendet."
+    },            
+    {
+      "id" : "MISC_01",
+      "attr" : "misc_trema",
+      "type" : "Verschiedenes",
+      "desc" : "Aktiviert die Verwendung eines Tremas bei Vokalen, die nicht Teil eines Doppellauts sind.",
+      "info" : "Dieser Schalter aktiviert die Verwendung von Tremas, wie sie im Französischen üblich sind. Vokale (\"e\" und \"i\") mit Trema, werden nicht mehr mit dem vorangehenden Laut zusammengezogen, sondern für sich gesprochen. Beispiel: \"beïnhalten\" statt \"beinhalten\", denn man hält schließlich kein Bein. Auch der Kalauer \"Urïnstinkt\" hätte dadurch an Amüsanz verloren, wobei Letzteres fast schade ist."
+    }  
+  ]
+}
+

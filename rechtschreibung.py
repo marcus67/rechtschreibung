@@ -22,7 +22,6 @@ import util
 import ui_util
 import sample_text
 import popup
-import infos
 import mode_manager
 import mode_selector
 import mode_saver
@@ -30,6 +29,7 @@ import statistics_view
 import config
 import app_config
 import statistics
+import rules_doc_manager
 
 reload(log)
 reload(ui_util)
@@ -41,7 +41,6 @@ reload(sentences)
 reload(util)
 reload(sample_text)  
 reload(popup)
-reload(infos)
 reload(mode_manager)
 reload(mode_selector)
 reload(mode_saver)
@@ -49,6 +48,7 @@ reload(statistics_view)
 reload(config)
 reload(app_config)
 reload(statistics)
+reload(rules_doc_manager)
 
 global logger
 
@@ -79,6 +79,7 @@ class MainViewController ( ui_util.ViewController ) :
     self.highlightingMode = HIGHLIGHT_DELTA
     self.autoHide = True
     self.suppressShowChanges = False
+    self.rule_doc_manager = rules_doc_manager.RulesDocManager(rules_doc_manager.RULE_DOC_FILE)
     self.selectModeVC = mode_selector.SpellingModeSelector(self)
     self.selectModeForSaveVC = mode_saver.SpellingModeSaver(self)
     self.statistics_view_vc = statistics_view.StatisticsViewController(self)
@@ -152,9 +153,10 @@ class MainViewController ( ui_util.ViewController ) :
       
     elif name.startswith(INFO_PREFIX):
       info_name = name[len(INFO_PREFIX):]
-      info_messages = infos.get_info_messages()
-      if info_name in info_messages:
-        self.info_popup.present(info_messages[info_name], close_label=words.schlieszen(c=rulesets.C_BOS))
+      rule_info = self.rule_doc_manager.get_rule_info_by_attr_name(info_name)
+      
+      if rule_info:
+        self.info_popup.present(rule_info, close_label=words.schlieszen(c=rulesets.C_BOS))
         
       else:
         logger.error("cannot find info text for %s" % info_name)
