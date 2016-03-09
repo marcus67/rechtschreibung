@@ -44,6 +44,8 @@ Casimir and Wendy there are especially designed sample sentences showing the dif
 
 The spelling rules are organized in currently six sections (see upper right navigation area in screen shot above). Actually, the term "spelling" is a little wider than just the correct use of letters for words. The rule sets also contain aspects of punctuation ("Zeichensetzung") and layout.
 
+There is a [summary](doc/rules.html) of all rules in German.
+
 ##### App Control View
 
 The App Control view in the lower right corner shows some setting influencing the behaviour of the app.
@@ -55,9 +57,9 @@ The App Control view in the lower right corner shows some setting influencing th
 ##### Highlighting of Changes
 There are three modes for highlighting the changes after an applied rule change:
 
- * The highlighting is off ("aus").
- * The highlighting is done compared to the immediately previous rule set ("Delta").
- * The highlighting is done compared to the reference rule set ("Referenz"). The initial reference rule set is the currently valid spelling rule set as proposed by the book "Duden". It can be changed by loading other rule sets (see below).
+ + The highlighting is off ("aus").
+ + The highlighting is done compared to the immediately previous rule set ("Delta").
+ + The highlighting is done compared to the reference rule set ("Referenz"). The initial reference rule set is the currently valid spelling rule set as proposed by the book "Duden". It can be changed by loading other rule sets (see below).
 
 The switch next to the clock icon enables the "auto off" mode for highlighting of changes. When set to "on" the highlighting will automatically disappear after a certain time delay. If set to "off" the highlighting will remain active indefinitely.
 
@@ -94,8 +96,31 @@ The second icon next to the "Aktuell" rule set will open a view to save the work
 
 The user will have to choose a name (if not already present) and optionally a comment. Tapping on a list entry will fetch the name and the comment of the chosen rule set for overwriting. The button will show "Überschreiben" if a saved rule set with the given name exists or "Speichern" otherwise. Note: The labels of the button will be adapted to the current rule set! :-)
 
-##### Statistics
+#### Statistics
 
-NOT IMPLEMENTED YET.
+At the bottom of the control view
+
+<CENTER>
+<IMG SRC="https://raw.githubusercontent.com/marcus67/rechtschreibung/master/doc/stat_text.png" WIDTH="320px">
+</CENTER>
+
+the user has access to both a statistical summary of the current rule set with respect to the reference rule set and a graphical output containing three charts.
+
+##### Pie Charts Showing the Letter Usage
+
+The first two charts show a comparison of the letter usage for the reference and the current rule sets.
+
+<CENTER>
+<IMG SRC="https://raw.githubusercontent.com/marcus67/rechtschreibung/master/doc/stat_view_1.png" WIDTH="320px">
+</CENTER>
+ 
+##### Bar Chart Showing the Relative Changes in Letter Usage
+
+The third chart shows the relative change of the letter usage of the current rule set with respect to the reference rule sets. Changes over a threshold (usually 5%) are shown as bars. Smaller changes are just mentioned in the legend.
+
+<CENTER>
+<IMG SRC="https://raw.githubusercontent.com/marcus67/rechtschreibung/master/doc/stat_view_2.png" WIDTH="320px">
+</CENTER>
+ 
 
 Have fun!

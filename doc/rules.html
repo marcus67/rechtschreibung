@@ -1,0 +1,100 @@
+<HTML>
+<HEAD><TITLE>Konfigurierbare Regeln</TITLE></HEAD>
+<BODY>
+<STYLE type="text/css">
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	vertical-align: top;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+</STYLE> 
+
+<P>
+Die folgende Tabelle enthält alle zur Zeit in der <A HREF="https://github.com/marcus67/rechtschreibung"> iOS App "Rechtschreibung"</A> konfigurierbaren Regeln. 
+</P>
+<P>
+<TABLE CLASS="gridtable">
+<TR><TH>Schlüssel</TH><TH>Typ</TH><TH>Beschreibung</TH><TH>Zusätzliche Informationen</TH></TR>
+	<TR><TD>Alte Rechtschreibung</TD><TD>HISTORISCH_01</TD><TD>Aktiviert die Verwendung des "ß" wie vor der Rechtschreibreform.</TD><TD></TD></TR>
+	<TR><TD>Harmonisierung</TD><TD>HARMONISIERUNG_01</TD><TD>Aktiviert das explizite Dehnen von langen Vokalen, die im Schriftbild als kurze Vokale erscheinen (z.B. "dem" -> "deem").</TD><TD>In manchen Fällen wird bewusst darauf verzichtet, lange Vokale exlizit zu denen. Das tritt vor allem in einfachen einsilbigen Worten auf. Zum Beispiel wird "dem" mit einfachem "e" geschrieben, wohingegen das gleichklingende "Lehm" mit Dehnung geschrieben wird. Diese Regel sorgt dafür, dass in all diesen Fällen die gewählte Vokaldehnung (standardmäßig über "h") verwendet wird.</TD></TR>
+	<TR><TD>Harmonisierung</TD><TD>HARMONISIERUNG_02</TD><TD>Verdoppelt Konsonanten am Wortende nach kurzen Vokalen.</TD><TD>In manchen Fällen wird bewusst darauf verzichtet, Konsonanten nach kurzen Vokalen am Ende von Worten zu verdoppeln. Dies tritt besonders bei bei einfachen einsilbigen Worten auf. Zum Beispiel wird "tritt" mit Dopplung geschrieben, wohingegen das gleichklingende "mit" mit einfachem Konsonant geschrieben wird.
+
+Diese Regel sorgt dafür, dass in all diesen Fällen die Verdopplung der Konsonanten aktiviert wird, außer die Konsonantendopplung wurde global abgeschaltet (siehe "Vereinfachung").</TD></TR>
+	<TR><TD>Harmonisierung</TD><TD>HARMONISIERUNG_03</TD><TD>Legt fest, wie lange Vokale dargestellt werden.</TD><TD>Dieser Schalter regelt die Darstellung eines langen Vokals. Es gibt sechs Varianten:
+
+Standard: wählt die derzeit gültige Variante (dies ist uneinheitlich!),
+
+keine: stellt lange Vokale einfach, d.h. wie kurze dar,
+
+"e": hängt an Vokale ein "e" an,
+
+"h": hängt an Vokale ein "h" an,
+
+Dopplung: verdoppelt den Vokal,
+
+Makron: setzt einen Strich (Makron) als Akzent über den Vokal. Hinweis: Es ist zur Zeit unklar, wie das Makron mit dem Umlautzeichen kombiniert werden kann. Deswegen wird bei Umlauten die Dopplung verwendet.</TD></TR>
+	<TR><TD>Kleingroßschreibung</TD><TD>GROSSSCHREIBUNG_01</TD><TD>Aktiviert die Großschreibung am Anfang von Substantiven.</TD><TD></TD></TR>
+	<TR><TD>Kleingroßschreibung</TD><TD>GROSSSCHREIBUNG_02</TD><TD>Aktiviert die Großschreibung am Anfang von Eigennamen.</TD><TD></TD></TR>
+	<TR><TD>Kleingroßschreibung</TD><TD>GROSSSCHREIBUNG_03</TD><TD>Aktiviert die Großschreibung am Satzanfang.</TD><TD></TD></TR>
+	<TR><TD>Kleingroßschreibung</TD><TD>GROSSSCHREIBUNG_04</TD><TD>Aktiviert die Großschreibung bei Anreden.</TD><TD></TD></TR>
+	<TR><TD>Kleingroßschreibung</TD><TD>GROSSSCHREIBUNG_05</TD><TD>Aktiviert die Großschreibung am Satzanfang nach Doppelpunkt.</TD><TD></TD></TR>
+	<TR><TD>Kleingroßschreibung</TD><TD>GROSSSCHREIBUNG_10</TD><TD>Aktiviert die generelle Großschreibung.</TD><TD></TD></TR>
+	<TR><TD>Kleingroßschreibung</TD><TD>GROSSSCHREIBUNG_11</TD><TD>Expandiert ein "ß" zu "SS" bei Großschreibung.</TD><TD></TD></TR>
+	<TR><TD>Layout</TD><TD>LAYOUT_01</TD><TD>Aktiviert die Trennung von Wörtern durch Leerzeichen.</TD><TD></TD></TR>
+	<TR><TD>Layout</TD><TD>LAYOUT_02</TD><TD>Aktiviert die Trennung von Absätzen.</TD><TD></TD></TR>
+	<TR><TD>Sonstiges</TD><TD>SONSTIGES_01</TD><TD>Aktiviert die Verwendung des Tremas zur Abgrenzung von eigenständig gesprochenen Vokalen (wie im Französischen).</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_01</TD><TD>Ersetzt alle Auftreten von "äu" durch "oi".</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_02</TD><TD>Ersetzt alle Auftreten von "ei" durch "ai".</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_03</TD><TD>Ersetzt alle Auftreten von "eu" durch "oi".</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_10</TD><TD>Ersetzt "sch" durch "š".</TD><TD>In slavischen Sprachen wird zum Teil der Buchstabe "š" verwendet, um den Laut des deutschen "sch" zu repräsentieren. Wegen der Kürze liegt eine Ersetzung nahe. Auch in den Buchstabenkombinationen "sp" und "st" ist zum Teil der gleiche Laut enthalten und wird daher entsprechend ersetzt. Dadurch wird dem Leser ermöglicht, zwischen den beiden vorkommenden Sprechweisen zu unterscheiden: "st" als Laut "s"+"t" bleibt gleich, wohingegen "st" als Laut "scht" zu "št" wird. Entsprechendes gilt für "sp".</TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_11</TD><TD>Ersetzt "tsch" durch "č".</TD><TD>In slavischen Sprachen wird zum Teil der Buchstabe "č" verwendet, um den Laut des deutschen "tsch" zu repräsentieren. Wegen der Kürze liegt eine Ersetzung nahe.</TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_12</TD><TD>Ersetzt "dt" durch "tt" nach kurzen und "t" nach langen Vokalen.</TD><TD>Das "dt" kommt sowohl hinter kurzen als auch langen Vokalen vor. Deswegen ist seine Funktion als Doppelkonsonant, der einen kurzen Vokal andeuten würde, fraglich. Dieser Modus wandet den Laut in "tt" nach kurzen Vokalen bzw. "t" nach langen Vokalen um. Es ist zu beachten, dass in letzteren Fällen auch eine explizite Dehnung des Vokals sinnvoll sein kann. Dazu gibt es eine eigene Regel.</TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_13</TD><TD>Ersetzt den Suffix "tion" durch "zion".</TD><TD>Das "t" in "tion" hat den Lautwert eines "z". Diese Vereinheitlichung ist nur in sofern ungünstig, weil dadurch die Nation sehr nah an den Nazi heranrückt.</TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_14</TD><TD>Ersetzt alle Auftreten von "ei" durch "ai".</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_15</TD><TD>Ersetzt alle Auftreten Doppelkonsonanten durch einfache Konsonanten.</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_16</TD><TD>Ersetzt alle Auftreten von "c" durch "z", "k", "s" oder "tsch". Beachte auch ein anschließend ausgewertetes VEREINFACHUNG_11.</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_17</TD><TD>Ersetzt alle Auftreten von "ch" mit Lautwert "sch" durch "sch".</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_18</TD><TD>Ersetzt alle Auftreten von "ch" mit Lautwert "k" durch "k".</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_19</TD><TD>Ersetzt alle Auftreten von "ck" durch "kk". Beachte auch ein anschließend ausgeführtes VEREINFACHUNG_15.</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_20</TD><TD>Ersetzt alle Auftreten von "th" durch "t".</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_21</TD><TD>Ersetzt alle Auftreten von "ph" durch "f".</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_22</TD><TD>Ersetzt alle Auftreten von "qu" durch "kw".</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_23</TD><TD>Ersetzt alle Auftreten von "v" durch "f" oder "w".</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_24</TD><TD>Ersetzt alle Auftreten von "x" durch "ks".</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_25</TD><TD>Ersetzt alle Auftreten von "y" durch "ü" oder "j".</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_26</TD><TD>Ersetzt alle Auftreten von "z" durch "ts".</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_27</TD><TD>Ersetzt alle Auftreten von "ß" durch "ss". Beachte auch ein anschließend ausgeführtes VEREINFACHUNG_15.</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_28</TD><TD>Ersetzt alle Auftreten von "ch" mit Lautwert "k" durch "ck". Beachte auch ein anschließend ausgeführtes VEREINFACHUNG_19.</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_29</TD><TD>Ersetzt alle Auftreten von Umlauten durch ihre expandierte Schreibweise mit "e".</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_30</TD><TD>Unterdrückt alle Auftreten von stummen "h" (kein Dehnungs-h!) am Silbenende.</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_31</TD><TD>Ersetzt alle Auftreten von "d" mit Lautwert "t" am Wortende durch "t".</TD><TD></TD></TR>
+	<TR><TD>Vereinfachung</TD><TD>VEREINFACHUNG_32</TD><TD>Ersetzt alle unbetonten Auftreten von "er" am Wortende mit durch "a".</TD><TD></TD></TR>
+	<TR><TD>Verschiedenes</TD><TD>MISC_01</TD><TD>Aktiviert die Verwendung eines Tremas bei Vokalen, die nicht Teil eines Doppellauts sind.</TD><TD>Dieser Schalter aktiviert die Verwendung von Tremas, wie sie im Französischen üblich sind. Vokale ("e" und "i") mit Trema, werden nicht mehr mit dem vorangehenden Laut zusammengezogen, sondern für sich gesprochen. Beispiel: "beïnhalten" statt "beinhalten", denn man hält schließlich kein Bein. Auch der Kalauer "Urïnstinkt" hätte dadurch an Amüsanz verloren, wobei Letzteres fast schade ist.</TD></TR>
+	<TR><TD>Zeichensetzung</TD><TD>ZEICHENSETZUNG_01</TD><TD>Aktiviert den Punkt am Satzende.</TD><TD></TD></TR>
+	<TR><TD>Zeichensetzung</TD><TD>ZEICHENSETZUNG_02</TD><TD>Aktiviert den Punkt bei Abkürzungen.</TD><TD></TD></TR>
+	<TR><TD>Zeichensetzung</TD><TD>ZEICHENSETZUNG_03</TD><TD>Aktiviert das Komma als Trennung, zwischen Haupt- und Nebensätzen.</TD><TD></TD></TR>
+	<TR><TD>Zeichensetzung</TD><TD>ZEICHENSETZUNG_04</TD><TD>Aktiviert den Doppelpunkt.</TD><TD></TD></TR>
+</TABLE>
+</P>
+</BODY>
+</HTML>
+
+

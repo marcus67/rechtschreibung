@@ -2,8 +2,8 @@
 import json
 
 RULE_DOC_FILE = 'etc/rules.json'
-MD_RULE_OVERVIEW_TEMPLATE_FILE = 'etc/rules_template.md'
-MD_RULE_OVERVIEW_FILE = 'doc/rules.md'
+MD_RULE_OVERVIEW_TEMPLATE_FILE = 'etc/rules_template.html'
+MD_RULE_OVERVIEW_FILE = 'doc/rules.html'
 
 TEMPLATE_TABLE_PATTERN = '[TABLE]'
 TEMPLATE_NEWLINE_PATTERN = '<BR>'
@@ -17,7 +17,7 @@ class RulesDocManager(object):
     
   def generate_md_rule_overview(self, temlate_md_file, md_file):
     sorted_rules = sorted(self.repository['rules'], key=lambda entry : entry['type'] + entry['id'])
-    lines = '\n'.join("\t<TR><TD>%s</TD><TD>%s</TD><TD>%s</TD></TR>" % (entry['type'], entry['id'], entry['desc']) for entry in sorted_rules)
+    lines = '\n'.join("\t<TR><TD>%s</TD><TD>%s</TD><TD>%s</TD><TD>%s</TD></TR>" % (entry['type'], entry['id'], entry['desc'], entry['info'] if 'info' in entry else '') for entry in sorted_rules)
     template = open(temlate_md_file).read()
     target = template.replace(TEMPLATE_TABLE_PATTERN, lines).replace(TEMPLATE_NEWLINE_PATTERN,'\n')
     with open(md_file, "w") as file:

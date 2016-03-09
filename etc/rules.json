@@ -2,61 +2,270 @@
   "rules" :
   [ 
     {
-      "id" : "SIMP_01",
+      "id" : "VEREINFACHUNG_01",
       "attr" : "simplification_aumlu_oi",
       "type" : "Vereinfachung",
       "desc" : "Ersetzt alle Auftreten von \"äu\" durch \"oi\"."
     },
     {
-      "id" : "SIMP_02",
+      "id" : "VEREINFACHUNG_02",
       "attr" : "simplification_ei_ai",
       "type" : "Vereinfachung",
       "desc" : "Ersetzt alle Auftreten von \"ei\" durch \"ai\"."
     },
     {
-      "id" : "SIMP_10",
+      "id" : "VEREINFACHUNG_03",
+      "attr" : "simplification_eu_oi",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"eu\" durch \"oi\"."
+    },
+    {
+      "id" : "VEREINFACHUNG_10",
       "attr" : "simplification_sch_s",
       "type" : "Vereinfachung",
       "desc" : "Ersetzt \"sch\" durch \"š\".",
       "info" : "In slavischen Sprachen wird zum Teil der Buchstabe \"š\" verwendet, um den Laut des deutschen \"sch\" zu repräsentieren. Wegen der Kürze liegt eine Ersetzung nahe. Auch in den Buchstabenkombinationen \"sp\" und \"st\" ist zum Teil der gleiche Laut enthalten und wird daher entsprechend ersetzt. Dadurch wird dem Leser ermöglicht, zwischen den beiden vorkommenden Sprechweisen zu unterscheiden: \"st\" als Laut \"s\"+\"t\" bleibt gleich, wohingegen \"st\" als Laut \"scht\" zu \"št\" wird. Entsprechendes gilt für \"sp\"."
     },      
     {
-      "id" : "SIMP_11",
+      "id" : "VEREINFACHUNG_11",
       "attr" : "simplification_tsch_c",
       "type" : "Vereinfachung",
       "desc" : "Ersetzt \"tsch\" durch \"č\".",
       "info" : "In slavischen Sprachen wird zum Teil der Buchstabe \"č\" verwendet, um den Laut des deutschen \"tsch\" zu repräsentieren. Wegen der Kürze liegt eine Ersetzung nahe."
     },           
     {
-      "id" : "SIMP_12",
+      "id" : "VEREINFACHUNG_12",
       "attr" : "simplification_dt_tt",
       "type" : "Vereinfachung",
       "desc" : "Ersetzt \"dt\" durch \"tt\" nach kurzen und \"t\" nach langen Vokalen.",
       "info" : "Das \"dt\" kommt sowohl hinter kurzen als auch langen Vokalen vor. Deswegen ist seine Funktion als Doppelkonsonant, der einen kurzen Vokal andeuten würde, fraglich. Dieser Modus wandet den Laut in \"tt\" nach kurzen Vokalen bzw. \"t\" nach langen Vokalen um. Es ist zu beachten, dass in letzteren Fällen auch eine explizite Dehnung des Vokals sinnvoll sein kann. Dazu gibt es eine eigene Regel."
     },
     {
-      "id" : "SIMP_13",
+      "id" : "VEREINFACHUNG_13",
       "attr" : "simplification_tion_zion",
       "type" : "Vereinfachung",
       "desc" : "Ersetzt den Suffix \"tion\" durch \"zion\".",
       "info" : "Das \"t\" in \"tion\" hat den Lautwert eines \"z\". Diese Vereinheitlichung ist nur in sofern ungünstig, weil dadurch die Nation sehr nah an den Nazi heranrückt."      
     },
     {
-      "id" : "HARM_01",
+      "id" : "VEREINFACHUNG_14",
+      "attr" : "simplification_ei_ai",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"ei\" durch \"ai\"."
+    },
+    {
+      "id" : "VEREINFACHUNG_15",
+      "attr" : "simplification_double_consonants",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten Doppelkonsonanten durch einfache Konsonanten."
+    },
+    {
+      "id" : "VEREINFACHUNG_16",
+      "attr" : "simplification_c_kz",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"c\" durch \"z\", \"k\", \"s\" oder \"tsch\". Beachte auch ein anschließend ausgewertetes VEREINFACHUNG_11."
+    },
+    {
+      "id" : "VEREINFACHUNG_17",
+      "attr" : "simplification_ch_sch",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"ch\" mit Lautwert \"sch\" durch \"sch\"."
+    },
+    {
+      "id" : "VEREINFACHUNG_18",
+      "attr" : "simplification_ch_k",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"ch\" mit Lautwert \"k\" durch \"k\"."
+    },
+    {
+      "id" : "VEREINFACHUNG_19",
+      "attr" : "simplification_ck_kk",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"ck\" durch \"kk\". Beachte auch ein anschließend ausgeführtes VEREINFACHUNG_15."
+    },
+    {
+      "id" : "VEREINFACHUNG_20",
+      "attr" : "simplification_th_t",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"th\" durch \"t\"."
+    },
+    {
+      "id" : "VEREINFACHUNG_21",
+      "attr" : "simplification_ph_f",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"ph\" durch \"f\"."
+    },
+    {
+      "id" : "VEREINFACHUNG_22",
+      "attr" : "simplification_qu_kw",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"qu\" durch \"kw\"."
+    },
+    {
+      "id" : "VEREINFACHUNG_23",
+      "attr" : "simplification_v_fw",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"v\" durch \"f\" oder \"w\"."
+    },
+    {
+      "id" : "VEREINFACHUNG_24",
+      "attr" : "simplification_x_ks",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"x\" durch \"ks\"."
+    },
+    {
+      "id" : "VEREINFACHUNG_25",
+      "attr" : "simplification_y_uej",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"y\" durch \"ü\" oder \"j\"."
+    },
+    {
+      "id" : "VEREINFACHUNG_26",
+      "attr" : "simplification_z_ts",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"z\" durch \"ts\"."
+    },
+    {
+      "id" : "VEREINFACHUNG_27",
+      "attr" : "simplification_sz_ss",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"ß\" durch \"ss\". Beachte auch ein anschließend ausgeführtes VEREINFACHUNG_15."
+    },
+    {
+      "id" : "VEREINFACHUNG_28",
+      "attr" : "simplification_ch_ck",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"ch\" mit Lautwert \"k\" durch \"ck\". Beachte auch ein anschließend ausgeführtes VEREINFACHUNG_19."
+    },
+    {
+      "id" : "VEREINFACHUNG_29",
+      "attr" : "simplification_expand_umlaut",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von Umlauten durch ihre expandierte Schreibweise mit \"e\"."
+    },
+    {
+      "id" : "VEREINFACHUNG_30",
+      "attr" : "simplification_suppress_mute_h",
+      "type" : "Vereinfachung",
+      "desc" : "Unterdrückt alle Auftreten von stummen \"h\" (kein Dehnungs-h!) am Silbenende."
+    },
+    {
+      "id" : "VEREINFACHUNG_31",
+      "attr" : "simplification_d_t",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle Auftreten von \"d\" mit Lautwert \"t\" am Wortende durch \"t\"."
+    },
+    {
+      "id" : "VEREINFACHUNG_32",
+      "attr" : "simplification_er_a",
+      "type" : "Vereinfachung",
+      "desc" : "Ersetzt alle unbetonten Auftreten von \"er\" am Wortende mit durch \"a\"."
+    },
+    {
+      "id" : "GROSSSCHREIBUNG_01",
+      "attr" : "capitalization|1",
+      "type" : "Kleingroßschreibung",
+      "desc" : "Aktiviert die Großschreibung am Anfang von Substantiven."
+    },
+    {
+      "id" : "GROSSSCHREIBUNG_02",
+      "attr" : "capitalization|2",
+      "type" : "Kleingroßschreibung",
+      "desc" : "Aktiviert die Großschreibung am Anfang von Eigennamen."
+    },
+    {
+      "id" : "GROSSSCHREIBUNG_03",
+      "attr" : "capitalization|4",
+      "type" : "Kleingroßschreibung",
+      "desc" : "Aktiviert die Großschreibung am Satzanfang."
+    },
+    {
+      "id" : "GROSSSCHREIBUNG_04",
+      "attr" : "capitalization|8",
+      "type" : "Kleingroßschreibung",
+      "desc" : "Aktiviert die Großschreibung bei Anreden."
+    },
+    {
+      "id" : "GROSSSCHREIBUNG_05",
+      "attr" : "capitalization|16",
+      "type" : "Kleingroßschreibung",
+      "desc" : "Aktiviert die Großschreibung am Satzanfang nach Doppelpunkt."
+    },
+    {
+      "id" : "GROSSSCHREIBUNG_10",
+      "attr" : "capitalization_all_capital",
+      "type" : "Kleingroßschreibung",
+      "desc" : "Aktiviert die generelle Großschreibung."
+    },
+    {
+      "id" : "GROSSSCHREIBUNG_11",
+      "attr" : "capitalization_expand_sz",
+      "type" : "Kleingroßschreibung",
+      "desc" : "Expandiert ein \"ß\" zu \"SS\" bei Großschreibung."
+    },
+    {
+      "id" : "LAYOUT_01",
+      "attr" : "layout_word_separation",
+      "type" : "Layout",
+      "desc" : "Aktiviert die Trennung von Wörtern durch Leerzeichen."
+    },
+    {
+      "id" : "LAYOUT_02",
+      "attr" : "layout_paragraph_separation",
+      "type" : "Layout",
+      "desc" : "Aktiviert die Trennung von Absätzen."
+    },
+    {
+      "id" : "ZEICHENSETZUNG_01",
+      "attr" : "punctuation_full_stop",
+      "type" : "Zeichensetzung",
+      "desc" : "Aktiviert den Punkt am Satzende."
+    },
+    {
+      "id" : "ZEICHENSETZUNG_02",
+      "attr" : "punctuation_dot_abbr",
+      "type" : "Zeichensetzung",
+      "desc" : "Aktiviert den Punkt bei Abkürzungen."
+    },
+    {
+      "id" : "ZEICHENSETZUNG_03",
+      "attr" : "punctuation_comma_sub_clause",
+      "type" : "Zeichensetzung",
+      "desc" : "Aktiviert das Komma als Trennung, zwischen Haupt- und Nebensätzen."
+    },
+    {
+      "id" : "ZEICHENSETZUNG_04",
+      "attr" : "punctuation_colon",
+      "type" : "Zeichensetzung",
+      "desc" : "Aktiviert den Doppelpunkt."
+    },
+    {
+      "id" : "HISTORISCH_01",
+      "attr" : "legacy_sz",
+      "type" : "Alte Rechtschreibung",
+      "desc" : "Aktiviert die Verwendung des \"ß\" wie vor der Rechtschreibreform."
+    },
+    {
+      "id" : "SONSTIGES_01",
+      "attr" : "misc_01",
+      "type" : "Sonstiges",
+      "desc" : "Aktiviert die Verwendung des Tremas zur Abgrenzung von eigenständig gesprochenen Vokalen (wie im Französischen)."
+    },    {
+      "id" : "HARMONISIERUNG_01",
       "attr" : "harmonization_homophony_elongated_vowels",
       "type" : "Harmonisierung",
       "desc" : "Aktiviert das explizite Dehnen von langen Vokalen, die im Schriftbild als kurze Vokale erscheinen (z.B. \"dem\" -> \"deem\").",
       "info" :  "In manchen Fällen wird bewusst darauf verzichtet, lange Vokale exlizit zu denen. Das tritt vor allem in einfachen einsilbigen Worten auf. Zum Beispiel wird \"dem\" mit einfachem \"e\" geschrieben, wohingegen das gleichklingende \"Lehm\" mit Dehnung geschrieben wird. Diese Regel sorgt dafür, dass in all diesen Fällen die gewählte Vokaldehnung (standardmäßig über \"h\") verwendet wird."
     },               
     {
-      "id" : "HARM_02",
+      "id" : "HARMONISIERUNG_02",
       "attr" : "harmonization_homophony_terminating_consonants",
       "type" : "Harmonisierung",
       "desc" : "Verdoppelt Konsonanten am Wortende nach kurzen Vokalen.",
       "info" : "In manchen Fällen wird bewusst darauf verzichtet, Konsonanten nach kurzen Vokalen am Ende von Worten zu verdoppeln. Dies tritt besonders bei bei einfachen einsilbigen Worten auf. Zum Beispiel wird \"tritt\" mit Dopplung geschrieben, wohingegen das gleichklingende \"mit\" mit einfachem Konsonant geschrieben wird.<BR><BR>Diese Regel sorgt dafür, dass in all diesen Fällen die Verdopplung der Konsonanten aktiviert wird, außer die Konsonantendopplung wurde global abgeschaltet (siehe \"Vereinfachung\")."
     },
     {
-      "id" : "HARM_03",
+      "id" : "HARMONISIERUNG_03",
       "attr" : "elongation",
       "type" : "Harmonisierung",
       "desc" : "Legt fest, wie lange Vokale dargestellt werden.",
