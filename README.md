@@ -44,7 +44,7 @@ Casimir and Wendy there are especially designed sample sentences showing the dif
 
 The spelling rules are organized in currently six sections (see upper right navigation area in screen shot above). Actually, the term "spelling" is a little wider than just the correct use of letters for words. The rule sets also contain aspects of punctuation ("Zeichensetzung") and layout.
 
-There is a [summary](doc/rules.html) of all rules in German.
+There is a [summary](http://htmlpreview.github.com?https://raw.githubusercontent.com/marcus67/rechtschreibung/master/doc/rules.html) of all rules in German.
 
 ##### App Control View
 
@@ -111,7 +111,7 @@ the user has access to both a statistical summary of the current rule set with r
 The first two charts show a comparison of the letter usage for the reference and the current rule sets.
 
 <CENTER>
-<IMG SRC="https://raw.githubusercontent.com/marcus67/rechtschreibung/master/doc/stat_view_1.png" WIDTH="320px">
+<IMG SRC="https://raw.githubusercontent.com/marcus67/rechtschreibung/master/doc/stat_view_1.png" WIDTH="640px">
 </CENTER>
  
 ##### Bar Chart Showing the Relative Changes in Letter Usage
@@ -119,7 +119,7 @@ The first two charts show a comparison of the letter usage for the reference and
 The third chart shows the relative change of the letter usage of the current rule set with respect to the reference rule sets. Changes over a threshold (usually 5%) are shown as bars. Smaller changes are just mentioned in the legend.
 
 <CENTER>
-<IMG SRC="https://raw.githubusercontent.com/marcus67/rechtschreibung/master/doc/stat_view_2.png" WIDTH="320px">
+<IMG SRC="https://raw.githubusercontent.com/marcus67/rechtschreibung/master/doc/stat_view_2.png" WIDTH="640px">
 </CENTER>
  
 
