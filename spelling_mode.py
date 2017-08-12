@@ -48,83 +48,86 @@ C_ADDRESSING=8
 C_BOS_AC=16 # beginning of sentence after colon
 
 class SpellingModeCombinationControl(object):
-  
-  def __init__(self):
-    self.name = u'[unbenannt]'
-    self.comment = ''
-    self.isImmutable = False
-    self.isReference = False
 
+	def __init__(self):
+		self.name = u'[unbenannt]'
+		self.comment = ''
+		self.isImmutable = False
+		self.isReference = False
+		
 class SpellingModeCombination(object):
 
-  def __init__(self):
-    # customization mode switches
-    self.bitswitch_capitalization = C_NOUN | C_NAME | C_BOS | C_ADDRESSING | C_BOS_AC
-    self.switch_capitalization_all_capital = False # ok
-    self.switch_capitalization_expand_sz = True # ok
-    self.switch_simplification_double_consonants = False # ok
-    self.switch_simplification_c_kz = False # ok
-    self.switch_simplification_ch_sch = False # ok
-    self.switch_simplification_ch_k = False # ok
-    self.switch_simplification_ck_kk = False # ok 
-    self.switch_simplification_th_t = False # ok
-    self.switch_simplification_ph_f = False # ok
-    self.switch_simplification_qu_kw = False # ok
-    self.switch_simplification_v_fw = False # ok
-    self.switch_simplification_x_ks = False # ok
-    self.switch_simplification_y_uej = False # ok
-    self.switch_simplification_z_ts = False # ok
-    self.switch_simplification_sz_ss = False # ok
-    self.switch_simplification_tsch_c = False # ok
-    self.switch_simplification_sch_s = False # ok
-    self.switch_simplification_eu_oi = False # ok
-    self.switch_simplification_ei_ai = False # ok
-    self.switch_simplification_aumlu_oi = False # ok
-    self.switch_simplification_ch_ck = False # ok
-    self.switch_simplification_expand_umlaut = False # ok
-    self.switch_simplification_suppress_mute_h = False # ok
-    self.switch_simplification_d_t = False # ok
-    self.switch_simplification_er_a = False # ok
-    self.switch_simplification_dt_tt = False # ok
-    self.switch_simplification_tion_zion = False # ok
-    self.switch_layout_word_separation = True
-    self.switch_layout_paragraph_separation = True
-    self.switch_punctuation_full_stop = True
-    self.switch_punctuation_dot_abbr = True # Punkt bei Abkürzungen
-    self.switch_punctuation_comma_sub_clause = True
-    self.switch_punctuation_colon = True
-    self.switch_legacy_sz = False
-    self.switch_misc_trema = False # ok
-    self.segmented_control_harmonization_elongation = ELONGATION_MODE_DEFAULT # ok
-    self.switch_harmonization_homophony_terminating_consonants = False # ok
-    self.switch_harmonization_homophony_elongated_vowels = False # ok
-
-  def __eq__(self, other):
-    return self.__dict__ == other.__dict__
-    
-        
+	def __init__(self):
+		# customization mode switches
+		self.bitswitch_capitalization = C_NOUN | C_NAME | C_BOS | C_ADDRESSING | C_BOS_AC
+		self.switch_capitalization_all_capital = False # ok
+		self.switch_capitalization_expand_sz = True # ok
+		self.switch_simplification_double_consonants = False # ok
+		self.switch_simplification_c_kz = False # ok
+		self.switch_simplification_ch_sch = False # ok
+		self.switch_simplification_ch_k = False # ok
+		self.switch_simplification_ck_kk = False # ok
+		self.switch_simplification_th_t = False # ok
+		self.switch_simplification_ph_f = False # ok
+		self.switch_simplification_qu_kw = False # ok
+		self.switch_simplification_v_fw = False # ok
+		self.switch_simplification_x_ks = False # ok
+		self.switch_simplification_y_uej = False # ok
+		self.switch_simplification_z_ts = False # ok
+		self.switch_simplification_sz_ss = False # ok
+		self.switch_simplification_tsch_c = False # ok
+		self.switch_simplification_sch_s = False # ok
+		self.switch_simplification_eu_oi = False # ok
+		self.switch_simplification_ei_ai = False # ok
+		self.switch_simplification_aumlu_oi = False # ok
+		self.switch_simplification_ch_ck = False # ok
+		self.switch_simplification_expand_umlaut = False # ok
+		self.switch_simplification_suppress_mute_h = False # ok
+		self.switch_simplification_d_t = False # ok
+		self.switch_simplification_er_a = False # ok
+		self.switch_simplification_dt_tt = False # ok
+		self.switch_simplification_tion_zion = False # ok
+		self.switch_layout_word_separation = True
+		self.switch_layout_paragraph_separation = True
+		self.switch_punctuation_full_stop = True
+		self.switch_punctuation_dot_abbr = True # Punkt bei Abkürzungen
+		self.switch_punctuation_comma_sub_clause = True
+		self.switch_punctuation_colon = True
+		self.switch_legacy_sz = False
+		self.switch_misc_trema = False # ok
+		self.segmented_control_harmonization_elongation = ELONGATION_MODE_DEFAULT # ok
+		self.switch_harmonization_homophony_terminating_consonants = False # ok
+		self.switch_harmonization_homophony_elongated_vowels = False # ok
+		
+	def __eq__(self, other):
+		return self.__dict__ == other.__dict__
+		
+		
 class spelling_mode(object):
-  
-  def __init__(self):
-    self.combination = SpellingModeCombination()
-    self.control = SpellingModeCombinationControl()
-    
-  def __eq__(self, other):
-    """
-    :type other: spelling_mode
-    """
-    return self.combination == other.combination  
-    
-def compare_spelling_mode_combination_controls(mode1, mode2):
-  """
-  :type mode1: spelling_mode
-  :type mode2: spelling_mode
-  """
-  return cmp(mode1.control.name.lower(), mode2.control.name.lower())
-  
+
+	def __init__(self):
+		self.combination = SpellingModeCombination()
+		self.control = SpellingModeCombinationControl()
+		
+	def compare_key(self):
+		return self.control.name.lower()
+		
+	def __eq__(self, other):
+		"""
+		:type other: spelling_mode
+		"""
+		return self.combination == other.combination
+		
+#def compare_spelling_mode_combination_controls(mode1, mode2):
+#	"""
+#	:type mode1: spelling_mode
+#	:type mode2: spelling_mode
+#	"""
+#	return cmp(mode1.control.name.lower(), mode2.control.name.lower())
+	
 def test():
-  mode = spelling_mode()
-        
+	mode = spelling_mode()
+	
 if __name__ == '__main__':
-  test()
-  
+	test()
+

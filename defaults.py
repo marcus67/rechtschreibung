@@ -1,4 +1,5 @@
 #coding: utf-8
+# This file is part of https://github.com/marcus67/rechtschreibung
 
 COLOR_BLACK = '#000000'
 COLOR_GREY = '#DDDDDD'

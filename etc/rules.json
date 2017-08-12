@@ -255,7 +255,7 @@
       "attr" : "harmonization_homophony_elongated_vowels",
       "type" : "Harmonisierung",
       "desc" : "Aktiviert das explizite Dehnen von langen Vokalen, die im Schriftbild als kurze Vokale erscheinen (z.B. \"dem\" -> \"deem\").",
-      "info" :  "In manchen Fällen wird bewusst darauf verzichtet, lange Vokale exlizit zu denen. Das tritt vor allem in einfachen einsilbigen Worten auf. Zum Beispiel wird \"dem\" mit einfachem \"e\" geschrieben, wohingegen das gleichklingende \"Lehm\" mit Dehnung geschrieben wird. Diese Regel sorgt dafür, dass in all diesen Fällen die gewählte Vokaldehnung (standardmäßig über \"h\") verwendet wird."
+      "info" :  "In manchen Fällen wird bewusst darauf verzichtet, lange Vokale exlizit zu dehnen. Das tritt vor allem in einfachen einsilbigen Worten auf. Zum Beispiel wird \"dem\" mit einfachem \"e\" geschrieben, wohingegen das gleichklingende \"Lehm\" mit Dehnung geschrieben wird. Diese Regel sorgt dafür, dass in all diesen Fällen die gewählte Vokaldehnung (standardmäßig über \"h\") verwendet wird."
     },               
     {
       "id" : "HARMONISIERUNG_02",
