@@ -1,9 +1,13 @@
+#coding: utf-8
 # This file is part of https://github.com/marcus67/rechtschreibung
 
 import six
 
 import spelling_mode
 import rulesets
+import paragraph01
+import paragraph02
+import paragraph03
 import sentences
 
 if six.PY3:
@@ -12,12 +16,21 @@ if six.PY3:
 reload(spelling_mode)
 reload(rulesets)
 reload(sentences)
+reload(paragraph01)
+reload(paragraph02)
+reload(paragraph03)
 
-from sentences import *
 from rulesets import *
 
 def get_sample_text():
-	return sentence001() + space() + sentence002() + space()+ sentence003() + space()+ sentence004() + space()+ sentence005() + para() + sentence006() + space() + sentence007() + space() + sentence008() + space() + sentence009() + space() + sentence010() + space() + sentence011() + space() + para() + sentence012() + space() + sentence013() + space() + sentence014() + space() + sentence015() + space() + sentence016() + space() + sentence017() + space() + sentence018() + space() + sentence019() + space() + sentence020() + space() + sentence021() + para() + para() + sentence1() + sentence2() + sentence3() + para() + sentence4() + para() + sentence5() + para() + sentence6()
+	return (
+		paragraph01.paragraph() +
+		paragraph02.paragraph() +
+		paragraph03.paragraph() + para() + para() + 
+		sentences.sentence1() + sentences.sentence2() + sentences.sentence3() + para() + 
+		sentences.sentence4() + para() + 
+		sentences.sentence5() + para() + 
+		sentences.sentence6())
 	
 def test():
 	rulesets.set_default_mode(rulesets.spelling_mode().combination)

@@ -6,11 +6,14 @@ import string
 import shutil
 import os
 import six
-import configparser
 
 import log
 
-if six.PY3:
+if six.PY2:
+	from ConfigParser import ConfigParser
+
+else:
+	from configparser import ConfigParser
 	from importlib import reload
 	
 reload(log)
@@ -86,7 +89,7 @@ class ConfigHandler(object):
 	
 		global logger
 		
-		self.config_file = configparser.ConfigParser()
+		self.config_file = ConfigParser()
 		self.config_file.optionxform = str # make options case sensitive
 		config = copy.deepcopy(self.config_template)
 		
