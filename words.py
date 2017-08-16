@@ -52,6 +52,9 @@ def die(c=0):
 def ein(c=0):
 	return ei(c) + n()
 	
+def eine(c=0):
+	return ein(c) + e()
+	
 def end(c=0):
 	return e(c)+n()+d(m=VOICELESS)
 	

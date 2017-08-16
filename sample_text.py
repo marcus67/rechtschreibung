@@ -8,6 +8,7 @@ import rulesets
 import paragraph01
 import paragraph02
 import paragraph03
+import paragraph04
 import sentences
 
 if six.PY3:
@@ -19,6 +20,7 @@ reload(sentences)
 reload(paragraph01)
 reload(paragraph02)
 reload(paragraph03)
+reload(paragraph04)
 
 from rulesets import *
 
@@ -26,7 +28,9 @@ def get_sample_text():
 	return (
 		paragraph01.paragraph() +
 		paragraph02.paragraph() +
-		paragraph03.paragraph() + para() + para() + 
+		paragraph03.paragraph() + 
+		paragraph04.paragraph() + 
+		para() + para() + 
 		sentences.sentence1() + sentences.sentence2() + sentences.sentence3() + para() + 
 		sentences.sentence4() + para() + 
 		sentences.sentence5() + para() + 

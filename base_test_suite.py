@@ -6,6 +6,7 @@ import unittest
 import test_base_paragraph01
 import test_base_paragraph02
 import test_base_paragraph03
+import test_base_paragraph04
 
 class TestBaseSuite(unittest.TestSuite):
 
@@ -15,7 +16,8 @@ class TestBaseSuite(unittest.TestSuite):
 		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_paragraph01))
 		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_paragraph02))
 		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_paragraph03))
-			
+		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_paragraph04))
+					
 if __name__ == '__main__':
 	
 	test_suite = TestBaseSuite()
@@ -25,6 +27,10 @@ if __name__ == '__main__':
 	return_code = 0
 	for failure in test_result.failures:
 		print(failure[0], failure[1])
+		return_code = 1
+		
+	for error in test_result.errors:
+		print(error[0], error[1])
 		return_code = 1
 		
 	exit(return_code)

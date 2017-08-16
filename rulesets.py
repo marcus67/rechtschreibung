@@ -103,6 +103,9 @@ def dot_abbr():
 	else:
 		return ""
 		
+def hyphen():
+	return "-"
+		
 def elongation(l, c, m):
 	default_elongation_mode = m & ELONGATION_MODE_MASK
 	current_mode = default_mode.segmented_control_harmonization_elongation
@@ -219,6 +222,9 @@ def e(c=C_NONE, m=0):
 	else:
 		return capitalize("e", c)
 		
+def ee(c=C_NONE):
+	return elongation(e, c, ELONGATION_MODE_DOUBLE)
+	
 def eh(c=C_NONE):
 	return elongation(e, c, ELONGATION_MODE_H)
 	
@@ -315,6 +321,9 @@ def ph(c=C_NONE):
 	else:
 		return capitalize("p", c) + capitalize("h")
 		
+def pp():
+	return double_consonant("p")
+	
 def qu(c=C_NONE):
 	if default_mode.switch_simplification_qu_kw:
 		return capitalize("k", c) + capitalize("w")
