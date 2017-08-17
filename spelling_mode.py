@@ -84,6 +84,7 @@ class SpellingModeCombination(object):
 		self.switch_simplification_expand_umlaut = False # ok
 		self.switch_simplification_suppress_mute_h = False # ok
 		self.switch_simplification_d_t = False # ok
+		self.switch_simplification_b_p = False # ok
 		self.switch_simplification_er_a = False # ok
 		self.switch_simplification_dt_tt = False # ok
 		self.switch_simplification_tion_zion = False # ok

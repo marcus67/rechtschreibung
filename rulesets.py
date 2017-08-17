@@ -164,8 +164,11 @@ def aumlu(c=C_NONE):
 	else:
 		return capitalize("ä", c) + u()
 		
-def b(c=C_NONE):
-	return capitalize("b", c)
+def b(c=C_NONE, m=VOICEFULL):
+	if default_mode.switch_simplification_b_p and m == VOICELESS:
+		return p(c)
+	else:
+		return capitalize("b", c)
 	
 def bb():
 	return double_consonant("b")

@@ -5,7 +5,7 @@
     "class" : "View",
     "nodes" : [
       {
-        "selected" : false,
+        "selected" : true,
         "frame" : "{{0, 0}, {320, 480}}",
         "class" : "ScrollView",
         "nodes" : [
@@ -17,12 +17,12 @@
 
             ],
             "attributes" : {
-              "uuid" : "302AF1C3-E8E1-4FC7-B9D2-484EEF769F1A",
+              "flex" : "R",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "name" : "segmented_control_harmonization_elongation",
               "segments" : "Std|kein|\"e\"|\"h\"|Dopp.|Makr.",
-              "flex" : "R"
+              "uuid" : "302AF1C3-E8E1-4FC7-B9D2-484EEF769F1A"
             }
           },
           {
@@ -34,15 +34,15 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label1",
               "enabled" : true,
-              "font_name" : "<System-Bold>",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Vokaldehnung",
               "alignment" : "left",
               "uuid" : "24E931E2-FF5B-47CE-B269-806C695629EC",
-              "name" : "label1",
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "font_size" : 17,
+              "font_name" : "<System-Bold>"
             }
           },
           {
@@ -54,15 +54,15 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label2",
               "enabled" : true,
-              "font_name" : "<System-Bold>",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Homophonie...",
               "alignment" : "left",
               "uuid" : "B26944E8-8C3D-463C-A016-DF9C9B37F272",
-              "name" : "label2",
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "font_size" : 17,
+              "font_name" : "<System-Bold>"
             }
           },
           {
@@ -91,15 +91,15 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label3",
+              "font_size" : 12,
               "enabled" : true,
-              "font_name" : "<System>",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "...Konsonanten n. kurz. Vokalen doppeln",
               "alignment" : "left",
               "uuid" : "B26C05AE-3140-40CA-BB73-284F09F9D86F",
-              "font_size" : 12,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label3",
+              "font_name" : "<System>"
             }
           },
           {
@@ -111,14 +111,14 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label4",
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "...Lange Vokale explizit dehnen",
               "alignment" : "left",
               "uuid" : "E9F4C23A-9154-4457-B30B-E9F4481B373B",
-              "font_size" : 17,
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+              "name" : "label4",
+              "font_size" : 17
             }
           },
           {
@@ -132,13 +132,13 @@
               "flex" : "L",
               "action" : "self.handle_action",
               "enabled" : true,
-              "name" : "info_harmonization_homophony_elongated_vowels",
+              "image_name" : "ionicons-ios7-information-outline-32",
               "title" : "",
               "uuid" : "89B0C401-BC27-4667-80FF-FFB635520631",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "font_size" : 15,
-              "image_name" : "ionicons-ios7-information-outline-32"
+              "name" : "info_harmonization_homophony_elongated_vowels",
+              "font_size" : 15
             }
           },
           {
@@ -152,13 +152,13 @@
               "flex" : "L",
               "action" : "self.handle_action",
               "enabled" : true,
-              "name" : "info_harmonization_homophony_terminating_consonants",
+              "image_name" : "ionicons-ios7-information-outline-32",
               "title" : "",
               "uuid" : "70124CC9-85EE-4E89-9E6E-1AC2433397F1",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "font_size" : 15,
-              "image_name" : "ionicons-ios7-information-outline-32"
+              "name" : "info_harmonization_homophony_terminating_consonants",
+              "font_size" : 15
             }
           },
           {
@@ -172,13 +172,13 @@
               "flex" : "",
               "action" : "self.handle_action",
               "enabled" : true,
-              "name" : "info_elongation",
+              "image_name" : "ionicons-ios7-information-outline-32",
               "title" : "",
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "font_bold" : false,
               "uuid" : "9FD9B152-C7B9-4A83-A8AD-E87098340093",
-              "font_size" : 15,
-              "image_name" : "ionicons-ios7-information-outline-32"
+              "name" : "info_elongation",
+              "font_size" : 15
             }
           },
           {
@@ -200,26 +200,26 @@
           },
           {
             "selected" : false,
-            "frame" : "{{0, 212}, {268, 32}}",
+            "frame" : "{{0, 211}, {268, 32}}",
             "class" : "Label",
             "nodes" : [
 
             ],
             "attributes" : {
               "flex" : "",
-              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "... \"d\" als Endlaut zu \"t\"",
               "alignment" : "left",
               "uuid" : "34A02E75-CF2C-44D9-BBAA-9D61B26E5D26",
               "name" : "label20",
-              "font_size" : 17
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
           {
             "selected" : false,
-            "frame" : "{{270, 212}, {51, 31}}",
+            "frame" : "{{269, 212}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
 
@@ -232,6 +232,42 @@
               "uuid" : "8558CA75-769A-4BAE-9F5A-B746CAE8F8A0",
               "value" : false,
               "name" : "switch_simplification_d_t"
+            }
+          },
+          {
+            "selected" : false,
+            "frame" : "{{0, 246}, {268, 32}}",
+            "class" : "Label",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "",
+              "name" : "label20",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "text" : "... \"b\" als Endlaut zu \"p\"",
+              "alignment" : "left",
+              "uuid" : "34A02E75-CF2C-44D9-BBAA-9D61B26E5D26",
+              "font_size" : 17,
+              "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
+            }
+          },
+          {
+            "selected" : true,
+            "frame" : "{{269, 246}, {51, 31}}",
+            "class" : "Switch",
+            "nodes" : [
+
+            ],
+            "attributes" : {
+              "flex" : "L",
+              "action" : "self.handle_action",
+              "enabled" : true,
+              "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+              "uuid" : "8558CA75-769A-4BAE-9F5A-B746CAE8F8A0",
+              "value" : false,
+              "name" : "switch_simplification_b_p"
             }
           }
         ],
@@ -248,12 +284,12 @@
       }
     ],
     "attributes" : {
-      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "flex" : "",
       "enabled" : true,
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-      "name" : "Harmonisierung",
       "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
-      "flex" : ""
+      "name" : "Harmonisierung"
     }
   }
 ]

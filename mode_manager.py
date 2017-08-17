@@ -51,7 +51,7 @@ def write_mode(mode):
 
 	global logger
 	
-	filename = unicode(get_mode_filename(mode.control.name))
+	filename = get_mode_filename(mode.control.name)
 	logger.info("write mode file '%s'" % filename)
 	file = io.open(filename, "wb")
 	pickle.dump(mode, file)

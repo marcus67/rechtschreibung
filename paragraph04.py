@@ -44,7 +44,17 @@ def sentence002():
 	return (
 		"Es ist ein Unterschied, ob man über unterschiedliche Regelsätze nur redet oder "
 		"ob man sich die Auswirkungen auf einen Text direkt konkret anschauen kann.",
-		fs())
+		e(c=C_BOS)+s()+space()+ist()+space()+ein()+space()+
+		u(c=C_NOUN)+n()+t()+e()+r()+sch()+ie()+d()+comma_sc()+space()+
+		o()+b(m=VOICELESS)+space()+man()+space()+uuml()+b()+e()+r()+space()+
+		u()+n()+t()+e()+r()+sch()+ie()+d()+l()+i()+ch()+e()+space()+
+		r(c=C_NOUN)+e()+g()+e()+l()+s()+auml()+t()+z()+e()+space()+n()+u()+r()+space()+
+		r()+e()+d()+e()+t()+space()+o()+d()+e()+r()+space()+
+		o()+b(m=VOICELESS)+space()+man()+space()+sich()+space()+die()+space()+
+		au(c=C_NOUN)+s()+w()+i()+r()+k()+u()+n()+g()+e()+n()+space()+au()+f()+space()+
+		einen()+space()+t(c=C_NOUN)+e()+x()+t()+space()+d()+i()+r()+e()+k()+t()+space()+
+		k()+o()+n()+k()+r()+e()+t()+space()+a()+n()+sch()+au()+e()+n()+space()+k()+a()+nn()+fs()
+		)
 
 def sentence003():
 	return (

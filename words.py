@@ -55,6 +55,9 @@ def ein(c=0):
 def eine(c=0):
 	return ein(c) + e()
 	
+def einen(c=0):
+	return eine(c) + n()
+	
 def end(c=0):
 	return e(c)+n()+d(m=VOICELESS)
 	
