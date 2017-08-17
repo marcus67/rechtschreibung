@@ -24,7 +24,12 @@ from words import *
 sentence001_content = (
 	"Casimir und Wendy sind zwei durchschnittliche Deutsche.")
 def sentence001():
-	return casimir(c=C_BOS)+space()+und()+space()+wendy()+space()+sind()+space()+z()+w()+ei()+space()+d()+u()+r()+ch()+sch()+n()+i()+tt()+l()+i()+ch()+e()+space()+d(c=C_NOUN)+eu()+t()+sch()+e()+fs()
+	return (
+		casimir(c=C_BOS)+space()+und()+space()+wendy()+space()+
+		sind()+space()+z()+w()+ei()+space()+
+		d()+u()+r()+ch()+sch()+n()+i()+tt()+l()+i()+ch()+e()+space()+
+		d(c=C_NOUN)+eu()+t()+sch()+e()+fs())
+		
 	
 sentence002_content = (
 	"Sie haben viel gemeinsam, unterscheiden sich aber durch "
