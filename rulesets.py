@@ -5,7 +5,7 @@ import string
 import six
 
 import spelling_mode
-from rule_decorator import RuleDecorator
+from rule_decorator import *
 
 if six.PY3:
 	from importlib import reload
@@ -49,6 +49,36 @@ def to_upper(l):
 		return 'ß'
 	else:
 		return l.upper()
+
+def to_lower(l):
+	if l == 'Ü':
+		return 'ü'
+	elif l == 'Ä':
+		return 'ä'
+	elif l == 'Ö':
+		return 'ö'
+	elif l == 'Š':
+		return 'š'
+	elif l == 'Č':
+		return 'č'
+	elif l == 'Ā':
+		return 'ā'
+	elif l == 'Ė':
+		return 'ė'
+	elif l == 'Ī':
+		return 'ī'
+	elif l == 'Ō':
+		return 'ō'
+	elif l == 'Ū':
+		return 'ū'
+	elif l == 'ß':
+		return 'ß'
+	else:
+		return l.lower()
+
+def string_to_lower(s):
+	return "".join([ to_lower(c) for c in s])
+	
 		
 def capitalize(l, c=C_NONE):
 	if default_mode.switch_capitalization_all_capital or(c & default_mode.bitswitch_capitalization):
@@ -62,20 +92,6 @@ def capitalize(l, c=C_NONE):
 	else:
 		return l
 		
-@RuleDecorator(p_pattern = " ")		
-def space(c=C_NONE):
-	if default_mode.switch_layout_word_separation:
-		return " "
-	else:
-		return ""
-
-@RuleDecorator(p_pattern = ".")		
-def fs():
-	if default_mode.switch_punctuation_full_stop:
-		return "."
-	else:
-		return ""
-		
 def para():
 	if default_mode.switch_layout_paragraph_separation:
 		return "\n"
@@ -87,31 +103,6 @@ def double_consonant(l):
 		return capitalize(l)
 	else:
 		return capitalize(l+l)
-		
-@RuleDecorator(p_pattern = ",")		
-def comma_sc():
-	if default_mode.switch_punctuation_comma_sub_clause:
-		return ","
-	else:
-		return ""
-		
-@RuleDecorator(p_pattern = ":")		
-def colon():
-	if default_mode.switch_punctuation_colon:
-		return ":"
-	else:
-		return ""
-		
-@RuleDecorator(p_pattern = ".")		
-def dot_abbr():
-	if default_mode.switch_punctuation_dot_abbr:
-		return "."
-	else:
-		return ""
-		
-@RuleDecorator(p_pattern = "-")		
-def hyphen():
-	return "-"
 		
 def elongation(l, c, m):
 	default_elongation_mode = m & ELONGATION_MODE_MASK
@@ -138,6 +129,45 @@ def elongation(l, c, m):
 			
 	else:
 		return l(c) + l()
+				
+@RuleDecorator(p_pattern = " ", p_seperates_words = True)		
+def space(c=C_NONE):
+	if default_mode.switch_layout_word_separation:
+		return " "
+	else:
+		return ""
+
+@RuleDecorator(p_pattern = ".", p_seperates_words = True, p_conditions = COND_EOS)		
+def fs():
+	if default_mode.switch_punctuation_full_stop:
+		return "."
+	else:
+		return ""
+
+@RuleDecorator(p_pattern = ",", p_seperates_words = True)		
+def comma_sc():
+	if default_mode.switch_punctuation_comma_sub_clause:
+		return ","
+	else:
+		return ""
+		
+@RuleDecorator(p_pattern = ":", p_seperates_words = True)		
+def colon():
+	if default_mode.switch_punctuation_colon:
+		return ":"
+	else:
+		return ""
+		
+@RuleDecorator(p_pattern = ".", p_seperates_words = True)		
+def dot_abbr():
+	if default_mode.switch_punctuation_dot_abbr:
+		return "."
+	else:
+		return ""
+		
+@RuleDecorator(p_pattern = "-", p_seperates_words = True)		
+def hyphen():
+	return "-"
 		
 # ōūāī
 
@@ -177,7 +207,7 @@ def aumlu(c=C_NONE):
 	else:
 		return capitalize("ä", c) + u()
 		
-@RuleDecorator()		
+@RuleDecorator(p_check_voicefullness = True)		
 def b(c=C_NONE, m=VOICEFULL):
 	if default_mode.switch_simplification_b_p and m == VOICELESS:
 		return p(c)
@@ -220,7 +250,7 @@ def ck(c=C_NONE):
 	else:
 		return capitalize("c", c) + k()
 		
-@RuleDecorator()		
+@RuleDecorator(p_check_voicefullness = True)		
 def d(c=C_NONE, m=VOICEFULL):
 	if default_mode.switch_simplification_d_t and m == VOICELESS:
 		return t(c)

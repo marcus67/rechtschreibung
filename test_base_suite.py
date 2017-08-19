@@ -7,6 +7,8 @@ import test_base_paragraph01
 import test_base_paragraph02
 import test_base_paragraph03
 import test_base_paragraph04
+import test_base_sentence_parser
+import test_base_util
 
 class TestBaseSuite(unittest.TestSuite):
 
@@ -17,7 +19,10 @@ class TestBaseSuite(unittest.TestSuite):
 		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_paragraph02))
 		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_paragraph03))
 		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_paragraph04))
-					
+		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_sentence_parser))
+		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_util))
+		
+								
 if __name__ == '__main__':
 	
 	test_suite = TestBaseSuite()
@@ -34,3 +39,4 @@ if __name__ == '__main__':
 		return_code = 1
 		
 	exit(return_code)
+	

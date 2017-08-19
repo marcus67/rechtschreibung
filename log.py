@@ -1,3 +1,4 @@
+# coding: utf-8
 # This file is part of https://github.com/marcus67/rechtschreibung
 
 import logging
@@ -25,6 +26,7 @@ def open_logging(module_name, reload = False):
 			shutil.copyfile(LOGGING_TEMPLATE_FILENAME, LOGGING_FILENAME)
 		logging_config_json_file = open(LOGGING_FILENAME)
 		parsed_logging_data = json.load(logging_config_json_file)
+		logging_config_json_file.close()
 		logging.config.dictConfig(parsed_logging_data)
 		
 		logger = logging.getLogger('log')

@@ -21,7 +21,8 @@
             "level": "DEBUG",
             "formatter": "precise",
             "filename": "log/rechtschreibung.log",
-            "mode": "w"
+            "mode": "w",
+            "encoding": "utf-8"
         }
     },
 

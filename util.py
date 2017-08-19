@@ -16,6 +16,16 @@ def compute_bit_value(state, old_value, state_bit):
 	else:
 		return old_value
 		
+def count_bits(value):
+	count = 0
+	
+	while value > 0:
+		if value & 1 > 0:
+			count = count + 1
+		value = value >> 1
+		
+	return count
+		
 def set_container_value(container, name, value):
 	if getattr(container, name, None) != None:
 		setattr(container, name, value)

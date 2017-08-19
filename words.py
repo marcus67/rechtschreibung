@@ -9,7 +9,7 @@ import six
 
 import rulesets
 import spelling_mode
-from rule_decorator import RuleDecorator
+from rule_decorator import *
 
 if six.PY3:
 	from importlib import reload
@@ -76,7 +76,7 @@ def einen(c=0):
 def end(c=0):
 	return e(c)+n()+d(m=VOICELESS)
 	
-@RuleDecorator()		
+@RuleDecorator(p_pattern = "für")		
 def fuer(c=0):
 	return f()+uuml()+r()
 	
@@ -96,11 +96,11 @@ def man(c=0):
 def mit(c=0):
 	return m(c)+i()+t(m=ACTUALLY_SHORT)
 	
-@RuleDecorator()		
+@RuleDecorator(p_pattern = "schließen")
 def schlieszen(c):
 	return sch(c)+l()+ie()+sz()+e()+n()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)		
 def sich(c=0):
 	return s(c)+i()+ch()
 	
@@ -116,7 +116,7 @@ def sind(c=0):
 def speichern(c=0):
 	return sp(c)+ei()+ch()+e()+r()+n()
 	
-@RuleDecorator()		
+@RuleDecorator(p_pattern = "überschreiben")
 def ueberschreiben(c=0):
 	return uuml(c)+b()+er()+sch()+r()+ei()+b()+e()+n()
 	
