@@ -60,36 +60,79 @@ def sentence003():
 	return (
 		"Zu diesem Zweck haben sich beide einen Text überlegt, der viele der Phänomene "
 		"enthält, an denen sich die Unterschiede leicht erkennen lassen.",
-		fs())
+		z(c=C_BOS)+u()+space()+d()+ie()+s()+e()+m()+space()+z(c=C_NOUN)+w()+e()+ck()+space()+
+		h()+a()+b()+e()+n()+space()+sich()+space()+bei()+d()+e()+space()+einen()+space()+
+		t(c=C_NOUN)+e()+x()+t()+space()+uuml()+b()+er()+l()+e()+g()+t()+comma_sc()+space()+
+		der()+space()+viel()+e()+space()+der()+space()+
+		ph(c=C_NOUN)+auml()+n()+o()+m()+e()+n()+e()+space()+
+		e()+n()+th()+auml()+l()+t()+comma_sc()+space()+a()+n()+space()+
+		d()+e()+n()+e()+n()+space()+sich()+space()+die()+space()+
+		u(c=C_NOUN)+n()+t()+er()+sch()+ie()+d()+e()+space()+
+		l()+ei()+ch()+t()+space()+er()+k()+e()+nn()+e()+n()+space()+l()+a()+ss()+e()+n()+fs())
 		
 def sentence004():
 	return (
 		"Mithilfe von Schaltern lassen sich Regeln individuell aktivieren bzw. deaktivieren.",
-		fs())	
+		mit(c=C_BOS)+h()+i()+l()+f()+e()+space()+von()+space()+
+		sch(c=C_NOUN)+a()+l()+t()+er()+n()+space()+l()+a()+ss()+e()+n()+space()+
+		sich()+space()+r(c=C_NOUN)+e()+g()+e()+l()+n()+space()+
+		i()+n()+d()+i()+v()+i()+d()+u()+e()+ll()+space()+
+		a()+k()+t()+i()+v()+ie()+r()+e()+n()+space()+
+		b()+z()+w()+dot_abbr()+space()+d()+e()+a()+k()+t()+i()+v()+ie()+r()+e()+n()+fs())	
 		
 def sentence005():
 	return (
 		"Die daraus resultierende Schreibweise des gesamten Textes wird direkt in einem "
 		"Fenster dargestellt.",
-		fs())
+		die(c=C_BOS)+space()+d()+a()+r()+aus()+space()+
+		r()+e()+s()+u()+l()+t()+ie()+r()+e()+n()+d()+e()+space()+
+		sch(c=C_NOUN)+r()+ei()+b()+w()+ei()+s()+e()+space()+
+		d()+e()+s()+space()+g()+e()+s()+a()+m()+t()+e()+n()+space()+
+		t(c=C_NOUN)+e()+x()+t()+e()+s()+space()+w()+i()+r()+d(m=VOICELESS)+space()+
+		d()+i()+r()+e()+k()+t()+space()+i()+n()+space()+
+		ein()+e()+m()+space()+f(c=C_NOUN)+e()+n()+st()+er()+space()+
+		d()+a()+r()+g()+e()+st()+e()+ll()+t()+fs())
 		
 def sentence006():
 	return (
 		"Außerdem werden auf Wunsch, Unterschiede zum Stand vor dem Umschalten farblich "
 		"hervorgehoben.",
-		fs())
+		au(c=C_BOS)+sz()+er()+dem()+space()+w()+er()+den()+space()+
+		au()+f()+space()+w(c=C_NOUN)+u()+n()+sch()+comma_sc()+space()+
+		u(c=C_NOUN)+n()+t()+er()+sch()+ie()+d()+e()+space()+
+		z()+u()+m()+space()+st(c=C_NOUN)+a()+n()+d(m=VOICELESS)+space()+
+		v()+o()+r()+space()+dem()+space()+
+		u(c=C_NOUN)+m()+sch()+a()+l()+t()+e()+n()+space()+
+		f()+a()+r()+b()+l()+i()+ch()+space()+
+		h()+er()+v()+o()+r()+g()+eh()+o()+b()+e()+n()+fs())
 		
 def sentence007():
 	return (
 		"Wenn der Benutzer einen besonders interessanten Regelsatz gebaut hat, kann er "
-		"diesen zum späteren Gebrauch unter einem sprechenden Namen abspeichern. ",
-		fs())
+		"diesen zum späteren Gebrauch unter einem sprechenden Namen abspeichern.",
+		w(c=C_BOS)+e()+nn()+space()+der()+space()+
+		b(c=C_NOUN)+e()+n()+u()+t()+z()+er()+space()+
+		einen()+space()+b()+e()+s()+o()+n()+d()+er()+s()+space()+
+		i()+n()+t()+er()+e()+ss()+a()+n()+t()+e()+n()+space()+
+		r(c=C_NOUN)+e()+g()+e()+l()+s()+a()+t()+z()+space()+
+		g()+e()+b()+au()+t()+space()+hat()+comma_sc()+space()+
+		k()+a()+nn()+space()+er()+space()+d()+ie()+s()+e()+n()+space()+
+		z()+u()+m()+space()+sp()+auml()+t()+er()+e()+n()+space()+
+		g(c=C_NOUN)+e()+b()+r()+au()+ch()+space()+u()+n()+t()+er()+
+		space()+ein()+e()+m()+space()+sp()+r()+e()+ch()+e()+n()+den()+space()+
+		n(c=C_NOUN)+a()+m()+e()+n()+space()+a()+b()+speichern()+fs())
 		
 def sentence008():
 	return (
-		"Casimir ist ganz begeistert von der Idee und trägt durch eigene Ideen zum "
+		"Casimir ist ganz begeistert von der Idee und trägt durch eigene Vorschläge zum "
 		"Gelingen des Projektes bei.",
-		fs())
+		casimir(c=C_BOS|C_NAME)+space()+ist()+space()+g()+a()+n()+z()+space()+
+		b()+e()+g()+ei()+st()+er()+t()+space()+von()+space()+
+		der()+space()+i(c=C_NOUN)+d()+ee()+space()+und()+space()+
+		t()+r()+auml()+g()+t()+space()+d()+u()+r()+ch()+space()+
+		ei()+g()+e()+n()+e()+space()+v(c=C_NOUN)+o()+r()+sch()+l()+auml()+g()+e()+space()+
+		z()+u()+m()+space()+g(c=C_NOUN)+e()+l()+i()+n()+g()+e()+n()+space()+
+		d()+e()+s()+space()+p(c=C_NOUN)+r()+o()+j()+e()+k()+t()+e()+s()+space()+bei()+fs())
 		
 def paragraph():
 	return (
