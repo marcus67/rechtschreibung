@@ -33,5 +33,20 @@ class TestParser(unittest.TestCase):
 				"uuml(c=C_NOUN)+uuml()+space()+e()+sz()+fs()", 
 			sentence_parser.parse_string("Ää Öö Üü eß."))
 
+	def test_german_and_french_diphtongs(self):
+		self.assertEqual(
+			"ai(c=C_BOS)+space()+au()+space()+"
+			"aumlu()+space()+ei()+space()+"
+			"eu()+space()+oi()+fs()", 
+			sentence_parser.parse_string("ai au äu ei eu oi."))
+	
+	def test_word_seperation(self):
+		self.assertEqual(
+			"sich(c=C_BOS)+space()+s()+i()+ch()+e()+space()+e()+s()+i()+ch()+space()+"
+			"e()+end(m=VOICELESS)+space()+e()+n()+d()+e()+space()+"
+			"e()+e()+i()+n()+space()+ein()+e()+s()+fs()",
+			sentence_parser.parse_string("sich siche esich eend ende eein eines."))
+		
+
 if __name__ == '__main__':
 	unittest.main()

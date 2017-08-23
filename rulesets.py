@@ -184,6 +184,10 @@ def ah(c=C_NONE):
 	return elongation(a, c, ELONGATION_MODE_H)
 	
 @RuleDecorator()		
+def ai(c=C_NONE):
+	return a(c) + i()
+		
+@RuleDecorator()		
 def au(c=C_NONE):
 	return capitalize("a", c) + capitalize("u")
 	
@@ -377,7 +381,14 @@ def nn():
 @RuleDecorator()		
 def o(c=C_NONE):
 	return capitalize("o", c)
-	
+
+@RuleDecorator()		
+def oi(c=C_NONE):
+	if default_mode.switch_simplification_oi_oa:
+		return o(c) + a()
+	else:
+		return o(c) + i()
+		
 @RuleDecorator(p_pattern = 'ö')		
 def ouml(c=C_NONE):
 	if default_mode.switch_simplification_expand_umlaut:

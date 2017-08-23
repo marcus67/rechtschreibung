@@ -3,6 +3,7 @@
 
 import unittest
 
+import test_base_words
 import test_base_paragraph01
 import test_base_paragraph02
 import test_base_paragraph03
@@ -15,6 +16,7 @@ class TestBaseSuite(unittest.TestSuite):
 	def __init__(self):
 		
 		super(TestBaseSuite, self).__init__()
+		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_words))
 		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_paragraph01))
 		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_paragraph02))
 		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_paragraph03))

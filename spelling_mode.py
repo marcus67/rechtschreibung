@@ -79,6 +79,7 @@ class SpellingModeCombination(object):
 		self.switch_simplification_sch_s = False # ok
 		self.switch_simplification_eu_oi = False # ok
 		self.switch_simplification_ei_ai = False # ok
+		self.switch_simplification_oi_oa = False # ok
 		self.switch_simplification_aumlu_oi = False # ok
 		self.switch_simplification_ch_ck = False # ok
 		self.switch_simplification_expand_umlaut = False # ok

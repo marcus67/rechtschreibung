@@ -2,7 +2,9 @@
 # This file is part of https://github.com/marcus67/rechtschreibung
 
 """
-This module supplies shortcuts for frequently used words.
+This module supplies shortcuts for frequently used words. It's not really required anymore after
+the introduction of the sentence_parser.py module but most of the existing sentence functions rely
+on these shortcuts. It *may* eventually go away.
 """
 
 import six
@@ -20,123 +22,123 @@ reload(spelling_mode)
 from rulesets import *
 from spelling_mode import *
 
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)		
 def abbrechen(c=0):
-	return a(c)+bb()+r()+e()+ch()+e()+n()
+	return a(c)+b(m=VOICELESS)+b()+r()+e()+ch()+e()+n()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_BOW)
 def aus(c=0):
 	return au(c)+s()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_BOW)
 def bei(c=0):
 	return b(c)+ei()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)		
 def casimir(c=0):
 	return rulesets.c(c=C_NAME|c)+a()+s()+i()+m()+i()+r()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)	
 def dass(c=0):
 	return d(c)+a()+sz(m=EOW)
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)		
 def das(c=0):
 	return d(c)+a()+s(m=ACTUALLY_SHORT)
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)		
 def dem(c=0):
 	return d(c)+e(m=ACTUALLY_ELONGATED)+m()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)
 def den(c=0):
 	return d(c)+e(m=ACTUALLY_ELONGATED)+n()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)
 def der(c=0):
 	return d(c)+e()+r()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)
 def die(c=0):
 	return d(c)+ie()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_BOW)
 def ein(c=0):
 	return ei(c) + n()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)		
 def eine(c=0):
 	return ein(c) + e()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)
 def einen(c=0):
 	return eine(c) + n()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_EOW)
 def end(c=0):
 	return e(c)+n()+d(m=VOICELESS)
 	
-@RuleDecorator(p_pattern = "für")		
+@RuleDecorator(p_pattern = "für", p_conditions = COND_SEPERATED_WORD)		
 def fuer(c=0):
 	return f()+uuml()+r()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)		
 def ist(c=0):
 	return i(c)+s()+t()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)
 def hat(c=0):
 	return h(c)+a()+t()
 	
-#@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)		
 def man(c=0):
 	return m(c)+a()+n(m=ACTUALLY_SHORT)
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_BOW)
 def mit(c=0):
 	return m(c)+i()+t(m=ACTUALLY_SHORT)
 	
-@RuleDecorator(p_pattern = "schließen")
-def schlieszen(c):
+@RuleDecorator(p_pattern = "schließen", p_conditions = COND_EOW)
+def schlieszen(c=0):
 	return sch(c)+l()+ie()+sz()+e()+n()
 	
 @RuleDecorator(p_conditions = COND_SEPERATED_WORD)		
 def sich(c=0):
 	return s(c)+i()+ch()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)
 def sie(c=0):
 	return s(c)+ie()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)
 def sind(c=0):
 	return s(c)+i()+n()+d(m=VOICELESS)
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_EOW)
 def speichern(c=0):
 	return sp(c)+ei()+ch()+e()+r()+n()
 	
-@RuleDecorator(p_pattern = "überschreiben")
+@RuleDecorator(p_pattern = "überschreiben", p_conditions = COND_SEPERATED_WORD)
 def ueberschreiben(c=0):
 	return uuml(c)+b()+er()+sch()+r()+ei()+b()+e()+n()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)
 def und(c=0):
 	return u(c)+n()+d(m=VOICELESS)
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_BOW)
 def viel(c=0):
 	return v(c, m=VOICELESS)+ie()+l()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)		
 def von(c=0):
 	return v(c, m=VOICELESS)+o()+n()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)
 def wie(c=0):
 	return w(c)+ie()
 	
-@RuleDecorator()		
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)	
 def wendy(c=0):
 	return w(c=C_NAME|c)+e()+n()+d()+y(m=Y_I)
 	
