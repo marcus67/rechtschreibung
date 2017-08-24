@@ -43,9 +43,9 @@ class TestParser(unittest.TestCase):
 	def test_word_seperation(self):
 		self.assertEqual(
 			"sich(c=C_BOS)+space()+s()+i()+ch()+e()+space()+e()+s()+i()+ch()+space()+"
-			"e()+end(m=VOICELESS)+space()+e()+n()+d()+e()+space()+"
-			"e()+e()+i()+n()+space()+ein()+e()+s()+fs()",
-			sentence_parser.parse_string("sich siche esich eend ende eein eines."))
+			"b()+end()+space()+e()+n()+d()+e()+space()+"
+			"b()+ei()+n()+space()+ein()+e()+s()+fs()",
+			sentence_parser.parse_string("sich siche esich bend ende bein eines."))
 		
 
 if __name__ == '__main__':

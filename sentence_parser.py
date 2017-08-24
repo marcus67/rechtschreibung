@@ -74,6 +74,7 @@ def parse_string(p_string):
 							temp_cond = temp_cond | rule_decorator.COND_EOW
 					
 				temp_cond = temp_cond | cond
+				
 				compare_s = s[0:current_pattern_length]
 				first_letter = compare_s[0]
 				
@@ -101,19 +102,12 @@ def parse_string(p_string):
 		
 		else:
 			result.append(best_rule.build_string(best_cond))	
-			
-			previous_char = rulesets.to_lower(s[current_pattern_length-1])
-			previous_char_rule = single_char_pattern_map.get(previous_char)
-			
-			if next_char_rule is None:
-				fmt = "Character '%s' not found as pattern!" % next_char
-				logger.warn(fmt)
-							
-			elif next_char_rule.seperates_words:
-				temp_cond = temp_cond | rule_decorator.COND_BOW
+						
+			if best_rule.seperates_words:
+				cond = cond | rule_decorator.COND_BOW
 			
 			else:
-				temp_cond = temp_cond & ~rule_decorator.COND_BOW
+				cond = cond & ~rule_decorator.COND_BOW
 								
 			s = s[len(best_rule.pattern):]
 		

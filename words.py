@@ -30,7 +30,7 @@ def abbrechen(c=0):
 def aus(c=0):
 	return au(c)+s()
 	
-@RuleDecorator(p_conditions = COND_BOW)
+@RuleDecorator(p_conditions = COND_SEPERATED_WORD)
 def bei(c=0):
 	return b(c)+ei()
 	
