@@ -5,7 +5,6 @@ import inspect
 import importlib
 import words
 import rulesets
-import console
 
 import log
 import rule_decorator
@@ -126,7 +125,6 @@ def parse_string(p_string):
 def setup_logging():
 	global logger
 	
-	console.clear()
 	logger = log.open_logging('parser', reload=True)	
 
 def main():
