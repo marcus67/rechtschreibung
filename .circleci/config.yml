@@ -1,0 +1,9 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~
+    docker:
+      - image: python:3.6.0
+    steps:
+      - checkout
+      - run: python test_base_suite.py
