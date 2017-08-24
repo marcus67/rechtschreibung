@@ -132,10 +132,9 @@ def main():
 	
 	setup_logging()
 	logger.info("Start parser")
-	print_rules()
-	print(parse_string("Ob Ober."))
+	sentence = input("Enter sentence:")
+	print (parse_string(sentence))
 	logger.info("End parser")
-	
 	
 if __name__ == '__main__':
 	main()
