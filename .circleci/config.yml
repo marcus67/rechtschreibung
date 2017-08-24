@@ -6,4 +6,5 @@ jobs:
       - image: python:3.6.0
     steps:
       - checkout
+      - run: pip install six
       - run: python test_base_suite.py
