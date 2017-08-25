@@ -1,6 +1,13 @@
 <IMG SRC="https://raw.githubusercontent.com/marcus67/rechtschreibung/master/lib/rechtschreibung_64.png">
-#  rechtschreibung
+
+# rechtschreibung
 A little Python app to be used with Pythonista to test different rule sets for German spelling.
+
+## Source Code Status
+
+<IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung.svg?label=Python3%20master"> <IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung/dev-mr.svg?label=Python3%20dev_mr">
+
+Note that the status above only covers source code not relying on proprietary Pythonista packages.
 
 ## Requirements
 
