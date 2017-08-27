@@ -23,7 +23,9 @@ def get_single_char_pattern_map(p_rules):
 	
 	for rule in p_rules:
 		if len(rule.pattern) == 1:
-			if rule.pattern in map:
+			existing_rule = map.get(rule.pattern)
+			
+			if existing_rule is not None and existing_rule.seperates_words != rule.seperates_words:
 				fmt = "Pattern '%s' occors more than once! Ignoring %s." % ( rule.pattern, str(rule.name) )
 				logger.warning(fmt)
 				

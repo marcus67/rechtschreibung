@@ -3,11 +3,22 @@
 # rechtschreibung
 A little Python app to be used with Pythonista to test different rule sets for German spelling.
 
-## Source Code Status
+## CircleCI Continuous Integration Status
 
-<IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung.svg?label=Python3%20master"> <IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung/dev-mr.svg?label=Python3%20dev_mr">
+<IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung.svg?label=Python3%20master">
+<IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung/dev-mr.svg?label=Python3%20dev-mr">
+<IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung/dev-mr-python-1.svg?label=Python2%20dev-mr-python-2">
 
 Note that the status above only covers source code not relying on proprietary Pythonista packages.
+
+## GitHub Status
+
+<IMG SRC="https://img.shields.io/github/forks/marcus67/rechtschreibung.svg?label=forks">
+<IMG SRC="https://img.shields.io/github/stars/marcus67/rechtschreibung.svg?label=stars">
+<IMG SRC="https://img.shields.io/github/watchers/marcus67/rechtschreibung.svg?label=watchers">
+<IMG SRC="https://img.shields.io/github/issues/marcus67/rechtschreibung.svg">
+<IMG SRC="https://img.shields.io/github/issues-pr/marcus67/rechtschreibung.svg">
+
 
 ## Requirements
 
