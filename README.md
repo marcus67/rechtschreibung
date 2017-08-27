@@ -7,7 +7,7 @@ A little Python app to be used with Pythonista to test different rule sets for G
 
 <IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung.svg?label=Python3%20master">
 <IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung/dev-mr.svg?label=Python3%20dev-mr">
-<IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung/dev-mr-python-1.svg?label=Python2%20dev-mr-python-2">
+<IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung/dev-mr-python-2.svg?label=Python2%20dev-mr-python-2">
 
 Note that the status above only covers source code not relying on proprietary Pythonista packages.
 
