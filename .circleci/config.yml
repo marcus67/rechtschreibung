@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~
     docker:
-      - image: python:3.6.0
+      - image: python:2.7.0
     steps:
       - checkout
       - run: pip install six console
