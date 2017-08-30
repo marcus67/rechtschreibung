@@ -141,6 +141,7 @@ class ViewController (object):
 			
 		button_item.action = ButtonItemAction(self, button_item).handle_action
 		self.button_items[str(button_item)] = name
+		
 		if view.left_button_items == None:
 			view.left_button_items = [ button_item ]
 		else:
@@ -198,6 +199,7 @@ class ViewController (object):
 			if descendant_view != None:
 				self.subview_map[name] = descendant_view
 				return descendant_view
+				
 		for child in self.child_controllers.values():
 			descendant_view = child.find_subview_by_name(name)
 			if descendant_view != None:
@@ -344,15 +346,22 @@ class ViewController (object):
 			logger.error("Exception '%s' caught" % str(e))
 			self.view.close()
 			
-	def retrieve_from_model(self):
+	def retrieve_from_model(self, p_model = None):
 		global logger
 		
-		for att in self.model.__dict__:
+		if p_model is not None:
+			model = p_model
 		
+		else:
+			model = self.model
+
+		for att in model.__dict__:
+			
 			if att.startswith(SWITCH_PREFIX):
 				view = self.find_subview_by_name(att)
 				if view:
-					view.value = getattr(self.model, att)
+					view.value = getattr(model, att)
+
 				else:
 					logger.warning("retrieve_from_model: no view found for switch attribute '%s'" % att)
 					
@@ -363,7 +372,7 @@ class ViewController (object):
 					viewname = "%s|%d" % (att, bit)
 					view = self.find_subview_by_name(viewname)
 					if view != None:
-						view.value = bool(getattr(self.model, att) & bit)
+						view.value = bool(getattr(model, att) & bit)
 						found = True
 					bit = bit * 2
 				if not found:
@@ -372,7 +381,7 @@ class ViewController (object):
 			elif att.startswith(SEGMENTED_CONTROL_PREFIX):
 				view = self.find_subview_by_name(att)
 				if view != None:
-					view.selected_index = getattr(self.model, att)
+					view.selected_index = getattr(model, att)
 				else:
 					logger.warning("retrieve_from_model: no view found for segmented control attribute '%s'" % att)
 					

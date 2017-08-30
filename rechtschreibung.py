@@ -89,7 +89,7 @@ class MainViewController ( ui_util.ViewController ):
 	The view controller handles the top view of the Rechtschreibing application.
 	"""
 	
-	def __init__(self, p_conf):
+	def __init__(self):
 		"""
 		Create an instance of the MainViewCntroller
 		
@@ -98,9 +98,6 @@ class MainViewController ( ui_util.ViewController ):
 		"""	
 		
 		super(MainViewController, self).__init__()
-		
-		# Store the configuration instance
-		self.conf = p_conf
 		
 		# Store the text as it was before the most recent ruleset change. This text is used to derive
 		# the changes between the previous ruleset settings and the current ones.
@@ -112,12 +109,8 @@ class MainViewController ( ui_util.ViewController ):
 		# Active highlighting mode. See HIGHLIGHT_* enumeration above
 		self.highlighting_mode = HIGHLIGHT_DELTA
 		
-		# When 'auto_hide' is True the highlighted changes will be hidden after a certain time.
-		# Otherwise they will be visible indefinitely.
-		self.auto_hide = True
-		
 		# Variable which is true after the specific time in which the changes are visible. So this
-		# variable is only relevant for auto_hide=True.
+		# variable is only relevant for conf.state.switch_auto_hide=True.
 		self.suppress_highlight_changes = False
 		
 		# Temporary variable to postpone the instant highlighting of changes in the ruleset.
@@ -171,6 +164,14 @@ class MainViewController ( ui_util.ViewController ):
 			self.orientations = ( 'portrait', )
 		else:
 			self.orientations = ( 'landscape', )
+			
+	def load_config(self, p_config_handler):
+		
+		# Store the configuration instance
+		self._config_handler = p_config_handler
+		self.conf = self._config_handler.read_config_file(CONFIG_FILE, SAMPLE_CONFIG_FILE)
+	
+		self.retrieve_from_model(self.conf.state)
 			
 	def handle_change_in_mode(self):
 		self.previous_sample_text = self.current_sample_text
@@ -242,12 +243,19 @@ class MainViewController ( ui_util.ViewController ):
 		else:
 			super(MainViewController, self).handle_button_action(name, sender)
 			
-			
+	def handle_switch_auto_hide(self, p_value):
+		self.conf.state.switch_auto_hide = p_value
+		self._config_handler.mark_configuration_as_changed()
+		
+		# TEMPORARY!
+		self._config_handler.write_config_file()
+		
+		self.suppress_highlight_changes = self.conf.state.switch_auto_hide
+		self.update_sample_text()
+						
 	def handle_switch_action(self, sender):
 		if sender.name == 'switch_auto_hide':
-			self.auto_hide = sender.value
-			self.suppress_highlight_changes = self.auto_hide
-			self.update_sample_text()
+			self.handle_switch_auto_hide(p_value=sender.value)
 			
 		elif ui_util.store_in_model(sender, self.model):
 			self.handle_change_in_mode()
@@ -303,7 +311,7 @@ class MainViewController ( ui_util.ViewController ):
 		self.statistics_view_vc.present(self.referenceSampleText, self.current_sample_text)
 		
 	def check_activate_hide_timer(self):
-		if (self.auto_hide and self.highlighting_mode and not
+		if (self.conf.state.switch_auto_hide and self.highlighting_mode and not
 		(self.suppress_highlight_changes or self.delay_highlight_changes)):
 			self.activate_hide_timer()
 			
@@ -317,10 +325,14 @@ class MainViewController ( ui_util.ViewController ):
 		self.suppress_highlight_changes = True
 		self.update_sample_text()
 		
-	def update_sample_text(self):
+	def update_sample_text(self, p_initial_update = False):
 		"""
 		:type webview: ui.View
 		"""
+		# Wait for a fraction of a second so that load_url() above (which seems to be aynchronous)
+		# has a chance to load the page before update_sample_text() below sets the initial content.
+		time.sleep(1.0 * self.conf.rechtschreibung.initial_update_sample_text_delay / 1000.0)
+		
 		self.current_sample_text = sample_text.get_sample_text()
 		webview = self.view['webview_text_view']
 		if self.highlighting_mode == HIGHLIGHT_DELTA:
@@ -425,10 +437,9 @@ def main():
 	rulesets.set_default_mode(default_mode.combination)
 	
 	config_handler = config.ConfigHandler(app_config.AppConfig())
-	conf = config_handler.read_config_file(CONFIG_FILE, SAMPLE_CONFIG_FILE)
 	
 	image_rechtschreibung = ui.Image.named(IMAGE_URL_RECHTSCHREIBUNG).with_rendering_mode(ui.RENDERING_MODE_ORIGINAL)
-	my_main_view_controller = MainViewController(conf)
+	my_main_view_controller = MainViewController()
 	
 	top_navigation_vc = ui_util.ViewController(my_main_view_controller)
 	navigation_vc = ui_util.ViewController(top_navigation_vc)
@@ -489,6 +500,8 @@ def main():
 	
 	my_main_view_controller.set_model(default_mode.combination)
 	
+	my_main_view_controller.load_config(config_handler)
+	
 	# Set the empty html page for displaying the sample text. The actual content will be set in
 	# method "update_sample_text". We use an absolute path to load the page so that the relative
 	# path reference to the style sheet can be derrived by the browser.
@@ -497,11 +510,7 @@ def main():
 	logger.info('Loading HTML page at %s' % absolute_page_path)
 	text_view.load_url(absolute_page_path)
 	
-	# Wait for a fraction of a second so that load_url() above (which seems to be aynchronous)
-	# has a chance to load the page before update_sample_text() below sets the initial content.
-	time.sleep(1.0 * conf.rechtschreibung.initial_update_sample_text_delay / 1000.0)
-	
-	my_main_view_controller.update_sample_text()
+	my_main_view_controller.update_sample_text(p_initial_update = True)
 	my_main_view_controller.present('fullscreen', title_bar_color=defaults.COLOR_GREY)
 	speech.stop()
 	logger.info("Terminate application")

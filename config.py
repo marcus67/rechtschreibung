@@ -53,21 +53,26 @@ class ConfigHandler(object):
 
 	def __init__(self, config_template):
 		self.config_template = config_template
-		
+		self._changed = False
+		self._config_filename = None
 		
 	def scan_section(self, sectionName, model):
 		for option in self.config_file.options(sectionName):
 		
+			print (sectionName, option)
 			if not option in model.__dict__:
 				fmt = "configuration file contains invalid option '%s' in section '%s'"
 				raise Exception(fmt % (option, sectionName))
 				
 			if option in model.getBooleanAttributes():
 				optionValue = self.config_file.get(sectionName, option).upper()
+				
 				if optionValue in '1 TRUE YES WAHR JA J'.split():
 					setattr(model, option, True)
+				
 				elif optionValue in '0 FALSE NO FALSCH NEIN N'.split():
 					setattr(model, option, False)
+				
 				else:
 					fmt = "Invalid Boolean value '%s' in option '%s' of section '%s'"
 					raise Exception(fmt % (self.config_file.get(sectionName, option), option, sectionName))
@@ -91,7 +96,7 @@ class ConfigHandler(object):
 		
 		self.config_file = ConfigParser()
 		self.config_file.optionxform = str # make options case sensitive
-		config = copy.deepcopy(self.config_template)
+		self._config = copy.deepcopy(self.config_template)
 		
 		error_message = None
 		
@@ -123,13 +128,33 @@ class ConfigHandler(object):
 		for section_name in self.config_file.sections():
 		
 			if section_name in self.config_template.__dict__:
-				sub_config = getattr(config, section_name)
+				sub_config = getattr(self._config, section_name)
 				self.scan_section(section_name, sub_config)
 				
 			else:
 				raise Exception("Configuration file contains invalid section '%s'" % section_name)
-				
-		return config
+		
+		self._config_filename = filename		
+		return self._config
+	
+	def mark_configuration_as_changed(self):
+		self._changed = True
+		
+	def write_config_file(self):
+		if self._changed:		
+			
+			for section_name in self.config_template.__dict__:
+				sub_config = getattr(self._config, section_name)
+				for attr_name in sub_config.__dict__:
+					self.config_file.set(section_name, attr_name, str(getattr(sub_config, attr_name)))
+			
+			filename = self._config_filename # + ".test"
+			file = open(filename, "w", encoding = "UTF-8")
+			fmt = "Writing modified configuration to %s" % filename
+			logger.info(fmt)
+			self.config_file.write(file)
+			file.close()
+			self._changed = False
 		
 def test():
 	pass
