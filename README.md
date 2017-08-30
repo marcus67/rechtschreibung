@@ -5,20 +5,13 @@ A little Python app to be used with Pythonista to test different rule sets for G
 
 ## CircleCI Continuous Integration Status
 
-<IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung.svg?label=Python3%20master">
-<IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung/dev-mr.svg?label=Python3%20dev-mr">
-<IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung/dev-mr-python-2.svg?label=Python2%20dev-mr-python-2">
+<A HREF="https://circleci.com/gh/marcus67/rechtschreibung/tree/master"><IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung.svg?label=Python3%20master"></A> <A HREF="https://circleci.com/gh/marcus67/rechtschreibung/tree/dev-mr"><IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung/dev-mr.svg?label=Python3%20dev-mr"></A> <A HREF="https://circleci.com/gh/marcus67/rechtschreibung/tree/dev-mr-python-2"><IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung/dev-mr-python-2.svg?label=Python2%20dev-mr-python-2"></A>
 
 Note that the status above only covers source code not relying on proprietary Pythonista packages.
 
 ## GitHub Status
 
-<IMG SRC="https://img.shields.io/github/forks/marcus67/rechtschreibung.svg?label=forks">
-<IMG SRC="https://img.shields.io/github/stars/marcus67/rechtschreibung.svg?label=stars">
-<IMG SRC="https://img.shields.io/github/watchers/marcus67/rechtschreibung.svg?label=watchers">
-<IMG SRC="https://img.shields.io/github/issues/marcus67/rechtschreibung.svg">
-<IMG SRC="https://img.shields.io/github/issues-pr/marcus67/rechtschreibung.svg">
-
+<A HREF="https://github.com/marcus67/rechtschreibung"><IMG SRC="https://img.shields.io/github/forks/marcus67/rechtschreibung.svg?label=forks"></A> <A HREF="https://github.com/marcus67/rechtschreibung/stargazers"><IMG SRC="https://img.shields.io/github/stars/marcus67/rechtschreibung.svg?label=stars"></A> <A HREF="https://github.com/marcus67/rechtschreibung/watchers"><IMG SRC="https://img.shields.io/github/watchers/marcus67/rechtschreibung.svg?label=watchers"></A> <A HREF="https://github.com/marcus67/rechtschreibung/issues"><IMG SRC="https://img.shields.io/github/issues/marcus67/rechtschreibung.svg"></A> <A HREF="https://github.com/marcus67/rechtschreibung/pulls"><IMG SRC="https://img.shields.io/github/issues-pr/marcus67/rechtschreibung.svg"></A>
 
 ## Requirements
 
