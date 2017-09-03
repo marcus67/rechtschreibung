@@ -10,7 +10,7 @@
         "class" : "View",
         "nodes" : [
           {
-            "selected" : true,
+            "selected" : false,
             "frame" : "{{257, 50}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [
@@ -41,7 +41,7 @@
               "text" : "Änderungen",
               "alignment" : "left",
               "uuid" : "7F8A3C7F-A6D0-4874-9DBC-92ABD8305C1C",
-              "name" : "label1",
+              "name" : "label_changes",
               "font_size" : 17
             }
           },
@@ -104,7 +104,7 @@
               "text" : "Vorlesen des Textes",
               "alignment" : "left",
               "uuid" : "2B79540D-7DC1-4E0E-80A4-B1A58F93E7F0",
-              "name" : "label3",
+              "name" : "label_speak_text",
               "font_size" : 17
             }
           },
@@ -123,7 +123,7 @@
               "text" : "Referenz",
               "alignment" : "left",
               "uuid" : "1AC816D0-69FB-42F4-9AD3-6782F87D013F",
-              "name" : "label4",
+              "name" : "label_load_reference",
               "font_size" : 17
             }
           },
@@ -235,7 +235,7 @@
               "text" : "Aktuell",
               "alignment" : "left",
               "uuid" : "1DACB246-E257-46E2-A418-E894AEAA5387",
-              "name" : "label2",
+              "name" : "label_save_mode",
               "font_size" : 17
             }
           },
@@ -260,7 +260,7 @@
             }
           },
           {
-            "selected" : false,
+            "selected" : true,
             "frame" : "{{6, 336}, {81, 32}}",
             "class" : "Label",
             "nodes" : [
@@ -274,13 +274,13 @@
               "text" : "Statistik",
               "alignment" : "left",
               "uuid" : "1FE8591B-A844-4430-A650-A9E5FC968532",
-              "name" : "label5",
+              "name" : "label_statistics",
               "font_size" : 17
             }
           },
           {
             "selected" : false,
-            "frame" : "{{136.5, 244}, {32, 32}}",
+            "frame" : "{{135, 244}, {34, 32}}",
             "class" : "Button",
             "nodes" : [
 
@@ -354,9 +354,9 @@
     "attributes" : {
       "flex" : "",
       "enabled" : true,
-      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
       "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "name" : "App-Konfiguration"
     }
   }

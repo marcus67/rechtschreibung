@@ -186,30 +186,35 @@ class ViewController (object):
 	def get_view(self):
 		return self.view
 		
-	def find_subview_by_name(self, name):
+	def find_subview_by_name(self, name, first_level = True):
 		global logger
 		
 		if name in self.subview_map:
 			logger.debug("find_subview_by_name: found '%s' in cache" % name)
 			return self.subview_map[name]
 			
-		if self.view:
+		if self.view is not None:
 			logger.debug("find_subview_by_name: find %s in vc of view %s" % (name, self.view.name))
 			descendant_view = self.find_subview_by_name2(self.view, name)
-			if descendant_view != None:
+			if descendant_view is not None:
 				self.subview_map[name] = descendant_view
 				return descendant_view
 				
 		for child in self.child_controllers.values():
-			descendant_view = child.find_subview_by_name(name)
-			if descendant_view != None:
+			descendant_view = child.find_subview_by_name(name, first_level = False)
+			if descendant_view is not None:
 				self.subview_map[name] = descendant_view
 				return descendant_view
-		logger.debug("find_subview_by_name: view '%s' not found!" % name)
+		
+		if first_level:		
+			logger.warn("find_subview_by_name: view '%s' not found!" % name)
+			
 		return None
 		
 	def find_subview_by_name2(self, view, name):
-		if view != None:
+		if view is not None:
+			#if "label" in view.name:
+			#	print (view.name)
 			if view.name == name:
 				return view
 			else:
@@ -224,10 +229,10 @@ class ViewController (object):
 						subviews = view.subviews
 					if subviews:
 						for subview in subviews:
-							if not name:
-								continue
+							#if not name:
+							#	continue
 							descendent_view = self.find_subview_by_name2(subview, name)
-							if descendent_view != None:
+							if descendent_view is not None:
 								return descendent_view
 		return None
 		

@@ -10,7 +10,7 @@
         "class" : "ScrollView",
         "nodes" : [
           {
-            "selected" : false,
+            "selected" : true,
             "frame" : "{{0, 60}, {202.5, 32}}",
             "class" : "Label",
             "nodes" : [
@@ -18,13 +18,13 @@
             ],
             "attributes" : {
               "flex" : "R",
-              "name" : "label1",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "...durchgehend",
               "alignment" : "left",
               "uuid" : "511A8945-3EF7-4C2A-8F63-748A60AE6851",
-              "font_size" : 17,
+              "name" : "label_capitalization_all_capital",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -54,7 +54,7 @@
             ],
             "attributes" : {
               "flex" : "",
-              "name" : "label2",
+              "name" : "label_capitalization",
               "enabled" : true,
               "font_name" : "<System-Bold>",
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
@@ -74,13 +74,13 @@
             ],
             "attributes" : {
               "flex" : "R",
-              "name" : "label3",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "...am Satzanfang",
               "alignment" : "left",
               "uuid" : "5E4E9CFE-5B62-4F47-BFB2-F5037AB19B3E",
-              "font_size" : 17,
+              "name" : "label3",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -110,13 +110,13 @@
             ],
             "attributes" : {
               "flex" : "R",
-              "name" : "label4",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "....bei Substantiven",
               "alignment" : "left",
               "uuid" : "A0C2DE53-CA87-472C-951A-8C14E9453E3A",
-              "font_size" : 17,
+              "name" : "label4",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -129,13 +129,13 @@
             ],
             "attributes" : {
               "flex" : "R",
-              "name" : "label5",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "....bei Eigennamen",
               "alignment" : "left",
               "uuid" : "80B718D1-BA8C-4842-9EA6-5893EC6D097A",
-              "font_size" : 17,
+              "name" : "label5",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -148,13 +148,13 @@
             ],
             "attributes" : {
               "flex" : "R",
-              "name" : "label6",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "....bei Anreden",
               "alignment" : "left",
               "uuid" : "E22930CF-0AB9-47A9-8551-4588A613012E",
-              "font_size" : 17,
+              "name" : "label6",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -218,13 +218,13 @@
             ],
             "attributes" : {
               "flex" : "R",
-              "name" : "label7",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "....\"ß\" zu \"SS\"",
               "alignment" : "left",
               "uuid" : "AC5B836E-AF3A-44A4-B089-3FCF6E925E14",
-              "font_size" : 17,
+              "name" : "label7",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -237,13 +237,13 @@
             ],
             "attributes" : {
               "flex" : "R",
-              "name" : "label8",
+              "font_size" : 17,
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "...am Satzanfang nach \":\"",
               "alignment" : "left",
               "uuid" : "E9E7AA38-00ED-489C-83EA-F3331C0ED3BB",
-              "font_size" : 17,
+              "name" : "label8",
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -265,7 +265,7 @@
             }
           },
           {
-            "selected" : true,
+            "selected" : false,
             "frame" : "{{268, 240}, {51, 31}}",
             "class" : "Switch",
             "nodes" : [

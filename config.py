@@ -59,7 +59,6 @@ class ConfigHandler(object):
 	def scan_section(self, sectionName, model):
 		for option in self.config_file.options(sectionName):
 		
-			print (sectionName, option)
 			if not option in model.__dict__:
 				fmt = "configuration file contains invalid option '%s' in section '%s'"
 				raise Exception(fmt % (option, sectionName))
