@@ -17,6 +17,8 @@ HIGHLIGHT_OFF = 0        # do not highlight at all
 HIGHLIGHT_DELTA = 1      # highlight the changes compared the state just before the change of rules
 HIGHLIGHT_REFERENCE = 2  # hightight all changes compared to the initial reference ruleset
 
+DEFAULT_RULE_SET_NAME = "Aktuelle Auswahl"
+
 class RechtschreibungConfig(config.BaseConfig):
 
 	def __init__(self):
@@ -54,6 +56,9 @@ class StateConfig(config.BaseConfig):
 
 		# Active highlighting mode. See HIGHLIGHT_* enumeration above
 		self.highlighting_mode = HIGHLIGHT_DELTA
+		
+		# Name of the current rule set
+		self.current_rule_set_name = DEFAULT_RULE_SET_NAME
 				
 	def getIntAttributes(self):
 		return [ 'highlighting_mode' ]
