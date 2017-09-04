@@ -3,13 +3,11 @@
 import six
 
 import config
-import client
 
 if six.PY3:
 	from importlib import reload
 	
 reload(config)
-reload(client)
 
 # Enumeration for the different modes to temporarily highlight the differences in the text
 # (before vs. after) when the ruleset changes.
