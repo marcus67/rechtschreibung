@@ -1,6 +1,8 @@
 # coding: utf-8
 # This file is part of https://github.com/marcus67/rechtschreibung
 
+import app_config
+
 # usage modes
 VOWEL=1
 CONS=2
@@ -50,10 +52,11 @@ C_BOS_AC=16 # beginning of sentence after colon
 class SpellingModeCombinationControl(object):
 
 	def __init__(self):
-		self.name = u'[unbenannt]'
+		self.name = app_config.DEFAULT_RULE_SET_NAME
 		self.comment = ''
 		self.isImmutable = False
 		self.isReference = False
+		self.is_modified = False
 		
 class SpellingModeCombination(object):
 
@@ -113,6 +116,10 @@ class spelling_mode(object):
 		
 	def compare_key(self):
 		return self.control.name.lower()
+		
+	def mark_as_modified(self):
+		
+		self.control.is_modified = True
 		
 	def __eq__(self, other):
 		"""

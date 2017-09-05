@@ -258,7 +258,8 @@ class MainViewController ( ui_util.ViewController ):
 			
 		elif ui_util.store_in_model(sender, self.model):
 			self.handle_change_in_mode()
-			
+			self.current_mode.mark_as_modified()
+		
 		else:
 			super(MainViewController, self).handle_switch_action(sender)
 			
@@ -270,7 +271,8 @@ class MainViewController ( ui_util.ViewController ):
 			
 		elif ui_util.store_in_model(sender, self.model):
 			self.handle_change_in_mode()
-			
+			self.current_mode.mark_as_modified()
+		
 		else:
 			super(MainViewController, self).handle_segmented_control_action(sender)
 			
@@ -335,12 +337,24 @@ class MainViewController ( ui_util.ViewController ):
 		if self._config_handler is not None:
 			self._config_handler.write_config_file()		
 		
+	def check_write_current_rule_set(self):
+		if self.current_mode is not None:
+			if self.current_mode.control.is_modified:
+				mode_manager.write_mode(self.current_mode)
+		
 	def handle_save_timer(self):
 		try:
 			self.check_write_config_file()
 		
 		except Exception as e:
 			fmt = "Exception %s while writing status configuration" % str(e)
+			logger.error(fmt)
+		
+		try:
+			self.check_write_current_rule_set()
+		
+		except Exception as e:
+			fmt = "Exception %s while writing current rule set" % str(e)
 			logger.error(fmt)
 		
 		self.activate_save_timer()
@@ -405,19 +419,23 @@ class MainViewController ( ui_util.ViewController ):
 		close_label=words.schlieszen(c=rulesets.C_BOS),
 		title = 'Regelsatz laden' if load_mode_type == LOAD_MODE_RULESET else 'Referenz laden')
 		
-		
+	def activate_mode(self, new_mode):
+		logger.info("Set working mode '%s'" % new_mode.control.name)
+		rulesets.set_default_mode(new_mode.combination)
+		self.loaded_mode = copy.deepcopy(new_mode)
+		self.current_mode = copy.copy(new_mode)
+		self.set_model(self.current_mode.combination)
+		rulesets.set_default_mode(self.current_mode.combination)
+		self.handle_change_in_mode()
+		self.conf.state.current_rule_set_name = new_mode.control.name
+		self._config_handler.mark_configuration_as_changed()
+			
 	def load_mode_finish(self):
 		selectedMode = self.select_mode_vc.get_selected_mode()
 		
 		if selectedMode is not None:
 			if self.load_mode_type == LOAD_MODE_RULESET:
-				logger.info("Set working mode '%s'" % selectedMode.control.name)
-				rulesets.set_default_mode(selectedMode.combination)
-				self.loaded_mode = copy.deepcopy(selectedMode)
-				self.current_mode = copy.copy(selectedMode)
-				self.set_model(self.current_mode.combination)
-				rulesets.set_default_mode(self.current_mode.combination)
-				self.handle_change_in_mode()
+				self.activate_mode(new_mode = selectedMode)
 				
 			else:
 				logger.info("Set reference mode '%s'" % selectedMode.control.name)
@@ -458,11 +476,10 @@ class MainViewController ( ui_util.ViewController ):
 			self._save_timer.cancel()
 			self._save_timer = None
 				
-	"""
-	Deactivate the features of the full mode if the app is running in "light" mode	
-	"""			
 	def set_feature_mode(self):
-		
+		"""
+		Deactivate the features of the full mode if the app is running in "light" mode	
+		"""					
 		if self.conf.rechtschreibung.full_feature_mode:
 			fmt = "Running in full feature mode"
 			logger.info(fmt)
@@ -476,7 +493,19 @@ class MainViewController ( ui_util.ViewController ):
 				
 				if view is not None:
 					view.hidden = True
+					
 		
+	def load_current_rule_set(self):
+		
+		filename = mode_manager.get_mode_filename(modeName = self.conf.state.current_rule_set_name)
+		
+		if os.path.exists(filename):	
+			mode = mode_manager.read_mode(modeName = self.conf.state.current_rule_set_name)
+			
+		else:
+			mode = spelling_mode.spelling_mode()
+
+		self.activate_mode(new_mode = mode)
 		
 ##### MAIN ######################
 
@@ -487,6 +516,7 @@ def main():
 	console.clear()
 	logger = log.open_logging('rechtschreibung', reload=True)
 	logger.info("Start application")
+	
 	default_mode = spelling_mode.spelling_mode()
 	rulesets.set_default_mode(default_mode.combination)
 	
@@ -570,6 +600,7 @@ def main():
 	
 	my_main_view_controller.load_config(config_handler)
 	my_main_view_controller.set_feature_mode()
+	my_main_view_controller.load_current_rule_set()
 	
 	# Set the empty html page for displaying the sample text. The actual content will be set in
 	# method "update_sample_text". We use an absolute path to load the page so that the relative

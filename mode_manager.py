@@ -38,10 +38,11 @@ def read_mode(modeName):
 	
 	filename = get_mode_filename(modeName)
 	file = io.open(filename, "rb")
-	logger.debug("read mode file '%s'" % filename)
+	logger.info("read mode file '%s'" % filename)
 	mode = pickle.load(file)
 	file.close()
 	changes = util.add_missing_attributes(mode.combination, spelling_mode.spelling_mode().combination)
+	mode.control.is_modified = False
 	if changes > 0:
 		logger.info("mode file '%s' is lacking %d attributes; filling up" % (filename, changes))
 		write_mode(mode)
@@ -56,6 +57,7 @@ def write_mode(mode):
 	file = io.open(filename, "wb")
 	pickle.dump(mode, file)
 	file.close()
+	mode.control.is_modified = False
 	
 def get_available_modes(includePredefinedModes = True):
 
