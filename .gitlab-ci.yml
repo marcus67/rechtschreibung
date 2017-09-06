@@ -1,0 +1,12 @@
+image: python:3.5
+
+
+cache:
+  paths:
+    - .
+
+stage:
+  stage: test
+  script:
+    - 'python3 -c "print(123)"'
+
