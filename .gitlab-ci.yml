@@ -5,8 +5,7 @@ cache:
   paths:
     - .
 
-stage:
-  stage: test
-  script:
-    - 'python3 -c "print(123)"'
-
+test:
+    script:
+    - pip install six console
+    - python test_base_suite.py
