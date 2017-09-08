@@ -4,7 +4,6 @@
 import difflib
 import string
 import six
-import objc_util
 
 DIFF_INSERT = u'i'
 DIFF_DELETE = u'd'

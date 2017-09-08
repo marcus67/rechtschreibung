@@ -5,6 +5,7 @@ import six
 import ui
 import logging
 import gc
+import objc_util
 
 import log
 import util
