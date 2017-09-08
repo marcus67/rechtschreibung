@@ -178,7 +178,7 @@ class MainViewController ( ui_util.ViewController ):
 		self.conf = self._config_handler.read_config_file(conf_file, SAMPLE_CONFIG_FILE)
 		
 		if self.conf.rechtschreibung.on_target_device:
-			self._document_directory = util.get_document_directory()
+			self._document_directory = ui_util.get_document_directory()
 			fmt = "App is running on target device with document directory %s" % self._document_directory
 			logger.info(fmt)
 			

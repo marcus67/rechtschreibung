@@ -112,7 +112,5 @@ def count_differences_in_dicts(dict1, dict2):
 	common_keys = set(dict1.keys()).intersection(dict2.keys())
 	return sum([1 if dict1[key] != dict2[key] else 0 for key in common_keys])
 	
-def get_document_directory():
 	
-	f = objc_util.ObjCClass('NSFileManager').defaultManager()
-	return str(f.URLsForDirectory_inDomains_(9,1)[0].path())
+
