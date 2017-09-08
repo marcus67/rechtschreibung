@@ -35,6 +35,10 @@ class RechtschreibungConfig(config.BaseConfig):
 		# True if the app is running in full mode with all features enabled
 		self.full_feature_mode = True
 		
+		# True if the app is running on the target iOS device. False if the app is running
+		# in the Pythonista development environment.
+		self.on_target_device = False
+		
 	def getIntAttributes(self):
 		return [ 'initial_update_sample_text_delay', 
 							'auto_hide_delay', 
@@ -42,7 +46,7 @@ class RechtschreibungConfig(config.BaseConfig):
 							'save_interval' ]
 		
 	def getBooleanAttributes(self):
-		return [ 'full_feature_mode' ]
+		return [ 'full_feature_mode', 'on_target_device' ]
 		
 class StateConfig(config.BaseConfig):
 
