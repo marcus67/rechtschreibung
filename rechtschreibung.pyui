@@ -53,13 +53,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label1",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Änderungen",
               "alignment" : "left",
               "uuid" : "7F8A3C7F-A6D0-4874-9DBC-92ABD8305C1C",
-              "name" : "label1",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -116,13 +116,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label3",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Vorlesen des Textes",
               "alignment" : "left",
               "uuid" : "2B79540D-7DC1-4E0E-80A4-B1A58F93E7F0",
-              "name" : "label3",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -135,13 +135,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label4",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Referenz",
               "alignment" : "left",
               "uuid" : "1AC816D0-69FB-42F4-9AD3-6782F87D013F",
-              "name" : "label4",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -154,13 +154,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "textfield_current_mode_name",
               "enabled" : true,
               "border_style" : 3,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "uuid" : "DED27E41-DF20-4AE7-A38B-C391D8A210EC",
               "alignment" : "left",
-              "name" : "textfield_current_mode_name",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -175,12 +175,12 @@
               "flex" : "",
               "action" : "self.handle_action",
               "enabled" : true,
-              "font_size" : 15,
+              "name" : "button_load_mode",
               "title" : "",
               "uuid" : "862C3245-4D6A-4861-8DC5-49EC44A0DD63",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "name" : "button_load_mode",
+              "font_size" : 15,
               "image_name" : "iob:folder_32"
             }
           },
@@ -209,13 +209,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 15,
+              "name" : "button_icon_autohide",
               "enabled" : true,
               "title" : "",
               "uuid" : "F790B788-7C77-4B9C-AE08-4A74FA7F42A2",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "name" : "button_icon_autohide",
+              "font_size" : 15,
               "image_name" : "ionicons-clock-32"
             }
           },
@@ -228,18 +228,18 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "textfield_reference_mode_name",
               "enabled" : true,
               "border_style" : 3,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "uuid" : "7F2B07CC-FD34-4189-AD4E-5D03C65A2A98",
               "alignment" : "left",
-              "name" : "textfield_reference_mode_name",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
           {
-            "selected" : false,
+            "selected" : true,
             "frame" : "{{6, 127}, {81, 32}}",
             "class" : "Label",
             "nodes" : [
@@ -247,13 +247,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label_save_mode",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Aktuell",
               "alignment" : "left",
               "uuid" : "1DACB246-E257-46E2-A418-E894AEAA5387",
-              "name" : "label2",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -268,12 +268,12 @@
               "flex" : "",
               "action" : "self.handle_action",
               "enabled" : true,
-              "font_size" : 15,
+              "name" : "button_load_reference_mode",
               "title" : "",
               "uuid" : "03AE0157-4598-4046-9C0F-7A6B7C40FAA3",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "name" : "button_load_reference_mode",
+              "font_size" : 15,
               "image_name" : "iob:folder_32"
             }
           },
@@ -286,13 +286,13 @@
             ],
             "attributes" : {
               "flex" : "",
-              "font_size" : 17,
+              "name" : "label5",
               "enabled" : true,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
               "text" : "Statistik",
               "alignment" : "left",
               "uuid" : "1FE8591B-A844-4430-A650-A9E5FC968532",
-              "name" : "label5",
+              "font_size" : 17,
               "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
             }
           },
@@ -307,12 +307,12 @@
               "flex" : "",
               "action" : "self.handle_action",
               "enabled" : true,
-              "font_size" : 15,
+              "name" : "button_save_mode",
               "title" : "",
               "uuid" : "2632E468-9F03-4024-97A4-0E652C6DB255",
               "font_bold" : false,
               "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-              "name" : "button_save_mode",
+              "font_size" : 15,
               "image_name" : "iob:archive_32"
             }
           },
@@ -331,12 +331,12 @@
               "class" : "Button",
               "uuid" : "A56D95D1-0A0E-4B75-8080-023869044E9F",
               "background_color" : "RGBA(0.717506,0.872642,0.639937,1.000000)",
-              "font_size" : 15,
-              "name" : "button_open_statistics_view"
+              "name" : "button_open_statistics_view",
+              "font_size" : 15
             }
           },
           {
-            "selected" : true,
+            "selected" : false,
             "frame" : "{{95, 167}, {320, 70}}",
             "class" : "TextView",
             "nodes" : [
@@ -389,9 +389,9 @@
     "attributes" : {
       "name" : "Rechtschreibung",
       "enabled" : true,
-      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
       "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
       "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
       "flex" : ""
     }
   }

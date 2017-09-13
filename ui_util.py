@@ -5,6 +5,8 @@ import six
 import ui
 import logging
 import gc
+import objc_util
+import os
 
 import log
 import util
@@ -141,6 +143,7 @@ class ViewController (object):
 			
 		button_item.action = ButtonItemAction(self, button_item).handle_action
 		self.button_items[str(button_item)] = name
+		
 		if view.left_button_items == None:
 			view.left_button_items = [ button_item ]
 		else:
@@ -185,29 +188,35 @@ class ViewController (object):
 	def get_view(self):
 		return self.view
 		
-	def find_subview_by_name(self, name):
+	def find_subview_by_name(self, name, first_level = True):
 		global logger
 		
 		if name in self.subview_map:
 			logger.debug("find_subview_by_name: found '%s' in cache" % name)
 			return self.subview_map[name]
 			
-		if self.view:
+		if self.view is not None:
 			logger.debug("find_subview_by_name: find %s in vc of view %s" % (name, self.view.name))
 			descendant_view = self.find_subview_by_name2(self.view, name)
-			if descendant_view != None:
+			if descendant_view is not None:
 				self.subview_map[name] = descendant_view
 				return descendant_view
+				
 		for child in self.child_controllers.values():
-			descendant_view = child.find_subview_by_name(name)
-			if descendant_view != None:
+			descendant_view = child.find_subview_by_name(name, first_level = False)
+			if descendant_view is not None:
 				self.subview_map[name] = descendant_view
 				return descendant_view
-		logger.debug("find_subview_by_name: view '%s' not found!" % name)
+		
+		if first_level:		
+			logger.warn("find_subview_by_name: view '%s' not found!" % name)
+			
 		return None
 		
 	def find_subview_by_name2(self, view, name):
-		if view != None:
+		if view is not None:
+			#if "label" in view.name:
+			#	print (view.name)
 			if view.name == name:
 				return view
 			else:
@@ -222,10 +231,10 @@ class ViewController (object):
 						subviews = view.subviews
 					if subviews:
 						for subview in subviews:
-							if not name:
-								continue
+							#if not name:
+							#	continue
 							descendent_view = self.find_subview_by_name2(subview, name)
-							if descendent_view != None:
+							if descendent_view is not None:
 								return descendent_view
 		return None
 		
@@ -344,15 +353,22 @@ class ViewController (object):
 			logger.error("Exception '%s' caught" % str(e))
 			self.view.close()
 			
-	def retrieve_from_model(self):
+	def retrieve_from_model(self, p_model = None):
 		global logger
 		
-		for att in self.model.__dict__:
+		if p_model is not None:
+			model = p_model
 		
+		else:
+			model = self.model
+
+		for att in model.__dict__:
+			
 			if att.startswith(SWITCH_PREFIX):
 				view = self.find_subview_by_name(att)
 				if view:
-					view.value = getattr(self.model, att)
+					view.value = getattr(model, att)
+
 				else:
 					logger.warning("retrieve_from_model: no view found for switch attribute '%s'" % att)
 					
@@ -363,7 +379,7 @@ class ViewController (object):
 					viewname = "%s|%d" % (att, bit)
 					view = self.find_subview_by_name(viewname)
 					if view != None:
-						view.value = bool(getattr(self.model, att) & bit)
+						view.value = bool(getattr(model, att) & bit)
 						found = True
 					bit = bit * 2
 				if not found:
@@ -372,7 +388,7 @@ class ViewController (object):
 			elif att.startswith(SEGMENTED_CONTROL_PREFIX):
 				view = self.find_subview_by_name(att)
 				if view != None:
-					view.selected_index = getattr(self.model, att)
+					view.selected_index = getattr(model, att)
 				else:
 					logger.warning("retrieve_from_model: no view found for segmented control attribute '%s'" % att)
 					
@@ -392,8 +408,15 @@ class NavigationViewController(ViewController):
 	
 		super(NavigationViewController, self).__init__(parent_vc)
 		
+def get_document_directory():
+	
+	f = objc_util.ObjCClass('NSFileManager').defaultManager()
+	return str(f.URLsForDirectory_inDomains_(9,1)[0].path())
+		
 def test():
 
+	print(os.getcwd())
+	print(get_document_directory())
 	model = spelling_mode.spelling_mode()
 	vc = ViewController()
 	vc.set_model(model)

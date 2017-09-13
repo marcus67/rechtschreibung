@@ -3,11 +3,15 @@
 # rechtschreibung
 A little Python app to be used with Pythonista to test different rule sets for German spelling.
 
-## Source Code Status
+## CircleCI Continuous Integration Status
 
-<IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung.svg?label=Python3%20master"> <IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung/dev-mr.svg?label=Python3%20dev_mr">
+<A HREF="https://circleci.com/gh/marcus67/rechtschreibung/tree/master"><IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung.svg?label=Python3%20master"></A> <A HREF="https://circleci.com/gh/marcus67/rechtschreibung/tree/dev-mr"><IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung/dev-mr.svg?label=Python3%20dev-mr"></A> <A HREF="https://circleci.com/gh/marcus67/rechtschreibung/tree/dev-mr-python-2"><IMG SRC="https://img.shields.io/circleci/project/github/marcus67/rechtschreibung/dev-mr-python-2.svg?label=Python2%20dev-mr-python-2"></A>
 
 Note that the status above only covers source code not relying on proprietary Pythonista packages.
+
+## GitHub Status
+
+<A HREF="https://github.com/marcus67/rechtschreibung"><IMG SRC="https://img.shields.io/github/forks/marcus67/rechtschreibung.svg?label=forks"></A> <A HREF="https://github.com/marcus67/rechtschreibung/stargazers"><IMG SRC="https://img.shields.io/github/stars/marcus67/rechtschreibung.svg?label=stars"></A> <A HREF="https://github.com/marcus67/rechtschreibung/watchers"><IMG SRC="https://img.shields.io/github/watchers/marcus67/rechtschreibung.svg?label=watchers"></A> <A HREF="https://github.com/marcus67/rechtschreibung/issues"><IMG SRC="https://img.shields.io/github/issues/marcus67/rechtschreibung.svg"></A> <A HREF="https://github.com/marcus67/rechtschreibung/pulls"><IMG SRC="https://img.shields.io/github/issues-pr/marcus67/rechtschreibung.svg"></A>
 
 ## Requirements
 
@@ -35,7 +39,7 @@ The main view is shown upon start of the application. It looks different for sma
 <IMG SRC="https://raw.githubusercontent.com/marcus67/rechtschreibung/master/doc/main_screen.png" WIDTH="800px">
 </CENTER>
 
-On the left an especially designed text (see screenshot above) is displayed. It serves two purposes. The first purpose is to explain the motivation behind the app and introduce to fictional characters (Casimir and Wendy) representing the two opposing positions in the discussion about German spelling: Casimir is the conservative person trying to main the status quo and Wendy is the progressive person trying to change rules to make them easier and more consistent.
+On the left an especially designed text (see screenshot above) is displayed. It serves two purposes. The first purpose is to explain the motivation behind the app and introduce two fictional characters (Casimir and Wendy) representing the two opposing positions in the discussion about German spelling: Casimir is the conservative person trying to main the status quo and Wendy is the progressive person trying to change rules to make them easier and more consistent.
 
 The second purpose is to display the impact of the various rules on a concrete text, which is to say that every time the user changes one of the rules the changes in the text are immediately reflected. For a short period of time the actual changes are highlighted: letters which are to be deleted are shown with grey background and striked out. Letters which are to be inserted are shown with green background. (see screenshot below) Usually (unless deactivated) the highlighted sections are removed after a certain delay (e.g. 5 seconds). 
 

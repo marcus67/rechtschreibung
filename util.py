@@ -5,6 +5,8 @@ import difflib
 import string
 import six
 
+PARAMETER_RUNNING_ON_TARGET_DEVICE = "--target-device"
+
 DIFF_INSERT = u'i'
 DIFF_DELETE = u'd'
 DIFF_CHANGE = u'c'
@@ -22,6 +24,7 @@ def count_bits(value):
 	while value > 0:
 		if value & 1 > 0:
 			count = count + 1
+			
 		value = value >> 1
 		
 	return count
@@ -29,6 +32,7 @@ def count_bits(value):
 def set_container_value(container, name, value):
 	if getattr(container, name, None) != None:
 		setattr(container, name, value)
+		
 	else:
 		print ("ERROR: name '%s' not found in container '%s'" % (name, type(container).__name__))
 		
@@ -85,9 +89,9 @@ def get_html_content(oldString, newString, show_changes):
 			if c == DIFF_NONE:
 				newString = newString + enhancedNewString[i]
 			elif c == DIFF_INSERT:
-				newString = newString + '<span id=''ins''>' + enhancedNewString[i] + '</span>'
+				newString = newString + "<span id='ins'>" + enhancedNewString[i] + '</span>'
 			elif c == DIFF_DELETE:
-				newString = newString + '<span id=''del''>' + enhancedNewString[i] + '</span>'
+				newString = newString + "<span id='del'>" + enhancedNewString[i] + '</span>'
 			i = i + 1
 			
 	# do some final replacements:
@@ -109,9 +113,5 @@ def count_differences_in_dicts(dict1, dict2):
 	common_keys = set(dict1.keys()).intersection(dict2.keys())
 	return sum([1 if dict1[key] != dict2[key] else 0 for key in common_keys])
 	
-def test():
-	print (get_html_content("Zwei šBären","Eine Bäršin", True))
-	
-if __name__ == '__main__':
-	test()
-
+def is_running_on_target_device():
+	return PARAMETER_RUNNING_ON_TARGET_DEVICE in sys.argv

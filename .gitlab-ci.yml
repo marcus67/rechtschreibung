@@ -1,0 +1,11 @@
+image: python:3.5
+
+
+cache:
+  paths:
+    - .
+
+test:
+    script:
+    - pip install six console
+    - python test_base_suite.py
