@@ -5,6 +5,8 @@ import difflib
 import string
 import six
 
+PARAMETER_RUNNING_ON_TARGET_DEVICE = "--target-device"
+
 DIFF_INSERT = u'i'
 DIFF_DELETE = u'd'
 DIFF_CHANGE = u'c'
@@ -111,5 +113,5 @@ def count_differences_in_dicts(dict1, dict2):
 	common_keys = set(dict1.keys()).intersection(dict2.keys())
 	return sum([1 if dict1[key] != dict2[key] else 0 for key in common_keys])
 	
-	
-
+def is_running_on_target_device():
+	return PARAMETER_RUNNING_ON_TARGET_DEVICE in sys.argv

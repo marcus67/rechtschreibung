@@ -55,6 +55,10 @@ def write_mode(p_document_directory, mode):
 	global logger
 	
 	filename = get_mode_filename(p_document_directory, mode.control.name)
+	
+	directory = os.path.dirname(filename)
+	os.mkdirs(directory, exist_ok=True)
+	
 	logger.info("write mode file '%s'" % filename)
 	file = io.open(filename, "wb")
 	pickle.dump(mode, file)
@@ -83,12 +87,12 @@ def get_available_modes(p_document_directory, includePredefinedModes = True):
 	
 def test():
 
-	modes = get_available_modes()
+	modes = get_available_modes(".")
 	for mode in modes:
 		if mode.control.isImmutable:
 			mode.control.name = mode.control.name + u' (pickled)'
 			mode.control.isImmutable = False
-			write_mode(mode)
+			write_mode(".", mode)
 			
 if __name__ == '__main__':
 	test()

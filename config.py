@@ -147,7 +147,9 @@ class ConfigHandler(object):
 				for attr_name in sub_config.__dict__:
 					self.config_file.set(section_name, attr_name, str(getattr(sub_config, attr_name)))
 			
-			filename = self._config_filename # + ".test"
+			filename = self._config_filename
+			directory = os.path.dirname(filename)
+			os.makedirs(directory, exist_ok=True)
 			file = open(filename, "w", encoding = "UTF-8")
 			fmt = "Writing modified configuration to %s" % filename
 			logger.info(fmt)
