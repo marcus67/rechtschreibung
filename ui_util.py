@@ -5,6 +5,7 @@ import six
 import ui
 import logging
 import gc
+import objc_util
 
 import log
 import util
@@ -405,6 +406,11 @@ class NavigationViewController(ViewController):
 	def __init__(self, parent_vc):
 	
 		super(NavigationViewController, self).__init__(parent_vc)
+		
+def get_document_directory():
+	
+	f = objc_util.ObjCClass('NSFileManager').defaultManager()
+	return str(f.URLsForDirectory_inDomains_(9,1)[0].path())
 		
 def test():
 
