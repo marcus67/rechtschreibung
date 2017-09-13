@@ -6,6 +6,7 @@ import ui
 import logging
 import gc
 import objc_util
+import os
 
 import log
 import util
@@ -414,6 +415,8 @@ def get_document_directory():
 		
 def test():
 
+	print(os.getcwd())
+	print(get_document_directory())
 	model = spelling_mode.spelling_mode()
 	vc = ViewController()
 	vc.set_model(model)

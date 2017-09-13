@@ -92,7 +92,7 @@ class MainViewController ( ui_util.ViewController ):
 	The view controller handles the top view of the Rechtschreibing application.
 	"""
 	
-	def __init__(self):
+	def __init__(self, p_document_directory):
 		"""
 		Create an instance of the MainViewCntroller
 		
@@ -102,6 +102,10 @@ class MainViewController ( ui_util.ViewController ):
 		
 		super(MainViewController, self).__init__()
 		
+		self._document_directory = p_document_directory
+		fmt = "App is running with document directory %s" % self._document_directory
+		logger.info(fmt)
+			
 		self._save_timer = None
 		
 		# True to activate the saving of configs
@@ -176,12 +180,6 @@ class MainViewController ( ui_util.ViewController ):
 		self._config_handler = p_config_handler
 		conf_file = os.path.join(self._document_directory, CONFIG_FILE)
 		self.conf = self._config_handler.read_config_file(conf_file, SAMPLE_CONFIG_FILE)
-		
-		if self.conf.rechtschreibung.on_target_device:
-			self._document_directory = ui_util.get_document_directory()
-			fmt = "App is running on target device with document directory %s" % self._document_directory
-			logger.info(fmt)
-			
 		self.retrieve_from_model(self.conf.state)
 	
 	def select_reference_rule_set(self):		
@@ -402,8 +400,8 @@ class MainViewController ( ui_util.ViewController ):
 		else:
 			compareText = self.referenceSampleText
 		html_content = util.get_html_content(
-		compareText, self.current_sample_text,
-		self.conf.state.highlighting_mode and not self.suppress_highlight_changes)
+			compareText, self.current_sample_text,
+			self.conf.state.highlighting_mode and not self.suppress_highlight_changes)
 		
 		webview.eval_js('document.getElementById("content").innerHTML = "%s"' % html_content)
 		webview.set_needs_display()
@@ -539,12 +537,22 @@ class MainViewController ( ui_util.ViewController ):
 		
 ##### MAIN ######################
 
-def main():
+def main(p_running_on_target_device = False):
 
 	global logger
 	
 	console.clear()
-	logger = log.open_logging('rechtschreibung', reload=True)
+	
+	if p_running_on_target_device:
+		document_directory = ui_util.get_document_directory()
+	
+	else:
+		document_directory = "."
+		
+	logger = log.open_logging(
+		'rechtschreibung', 
+		reload=True, 
+		p_document_directory=document_directory)
 	logger.info("Start application")
 	
 	default_mode = spelling_mode.spelling_mode()
@@ -552,8 +560,9 @@ def main():
 	
 	config_handler = config.ConfigHandler(app_config.AppConfig())
 	
-	image_rechtschreibung = ui.Image.named(IMAGE_URL_RECHTSCHREIBUNG).with_rendering_mode(ui.RENDERING_MODE_ORIGINAL)
-	my_main_view_controller = MainViewController()
+	image_rechtschreibung = (
+		ui.Image.named(IMAGE_URL_RECHTSCHREIBUNG).with_rendering_mode(ui.RENDERING_MODE_ORIGINAL))
+	my_main_view_controller = MainViewController(p_document_directory=document_directory)
 	
 	top_navigation_vc = ui_util.ViewController(my_main_view_controller)
 	navigation_vc = ui_util.ViewController(top_navigation_vc)
@@ -637,7 +646,8 @@ def main():
 	# method "update_sample_text". We use an absolute path to load the page so that the relative
 	# path reference to the style sheet can be derrived by the browser.
 	text_view = my_main_view_controller.find_subview_by_name('webview_text_view')
-	absolute_page_path = 'file:' + os.path.abspath('etc/text_page.html')
+	rel_path = os.path.join(document_directory, 'etc/text_page.html')
+	absolute_page_path = 'file:' + os.path.abspath(rel_path)
 	logger.info('Loading HTML page at %s' % absolute_page_path)
 	text_view.load_url(absolute_page_path)
 	
