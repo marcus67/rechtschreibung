@@ -97,7 +97,7 @@ def get_html_content(oldString, newString, show_changes):
 	# do some final replacements:
 	# -) replace the surrogate characters used for those not found on the Apple keyboard by their HTML codes
 	# -) replace the double quote character '"' bei &quot; so that the resultsing string can be used in JS.
-	return newString.replace("\n","<BR/>").replace("ė","&#275;").replace("Ė","&#274;").replace('"','&quot;')
+	return newString.replace("\n","<BR/>").replace(u"ė",u"&#275;").replace(u"Ė",u"&#274;").replace('"','&quot;')
 	
 	
 def add_missing_attributes(object, template):

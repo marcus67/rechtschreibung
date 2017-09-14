@@ -27,71 +27,71 @@ def get_default_mode():
 	
 
 def to_upper(l):
-	if l == 'ü':
-		return 'Ü'
-	elif l == 'ä':
-		return 'Ä'
-	elif l == 'ö':
-		return 'Ö'
-	elif l == 'š':
-		return 'Š'
-	elif l == 'č':
-		return 'Č'
-	elif l == 'ā':
-		return 'Ā'
-	elif l == 'ė':
-		return 'Ė'
-	elif l == 'ī':
-		return 'Ī'
-	elif l == 'ō':
-		return 'Ō'
-	elif l == 'ū':
-		return 'Ū'
-	elif l == 'ß':
-		return 'ß'
+	if l == u'ü':
+		return u'Ü'
+	elif l == u'ä':
+		return u'Ä'
+	elif l == u'ö':
+		return u'Ö'
+	elif l == u'š':
+		return u'Š'
+	elif l == u'č':
+		return u'Č'
+	elif l == u'ā':
+		return u'Ā'
+	elif l == u'ė':
+		return u'Ė'
+	elif l == u'ī':
+		return u'Ī'
+	elif l == u'ō':
+		return u'Ō'
+	elif l == u'ū':
+		return u'Ū'
+	elif l == u'ß':
+		return u'ß'
 	else:
 		return l.upper()
 
 
 def to_lower(l):
-	if l == 'Ü':
-		return 'ü'
-	elif l == 'Ä':
-		return 'ä'
-	elif l == 'Ö':
-		return 'ö'
-	elif l == 'Š':
-		return 'š'
-	elif l == 'Č':
-		return 'č'
-	elif l == 'Ā':
-		return 'ā'
-	elif l == 'Ė':
-		return 'ė'
-	elif l == 'Ī':
-		return 'ī'
-	elif l == 'Ō':
-		return 'ō'
-	elif l == 'Ū':
-		return 'ū'
-	elif l == 'ß':
-		return 'ß'
+	if l == u'Ü':
+		return u'ü'
+	elif l == u'Ä':
+		return u'ä'
+	elif l == u'Ö':
+		return u'ö'
+	elif l == u'Š':
+		return u'š'
+	elif l == u'Č':
+		return u'č'
+	elif l == u'Ā':
+		return u'ā'
+	elif l == u'Ė':
+		return u'ė'
+	elif l == u'Ī':
+		return u'ī'
+	elif l == u'Ō':
+		return u'ō'
+	elif l == u'Ū':
+		return u'ū'
+	elif l == u'ß':
+		return u'ß'
 	else:
 		return l.lower()
 
 
 def string_to_lower(s):
-	return "".join([to_lower(c) for c in s])
+	return u"".join([to_lower(c) for c in s])
 	
 		
 def capitalize(l, c=C_NONE):
 	if (default_mode.switch_capitalization_all_capital or
 				(c & default_mode.bitswitch_capitalization)):
-		if l == 'ß':
+		if l == u'ß':
 			if default_mode.switch_capitalization_expand_sz:
-				return 'SS'
+				return u'SS'
 			else:
-				return 'ß'
+				return u'ß'
 		else:
 			return to_upper(l)
 	else:
@@ -134,15 +134,15 @@ def elongation(l, c, m):
 					(current_mode == ELONGATION_MODE_DEFAULT and
 						default_elongation_mode == ELONGATION_MODE_MACRON)):
 		if (l == a):
-			return capitalize("ā", c=c)
+			return capitalize(u"ā", c=c)
 		elif (l == e):
-			return capitalize("ė", c=c)
+			return capitalize(u"ė", c=c)
 		elif (l == i):
-			return capitalize("ī", c=c)
+			return capitalize(u"ī", c=c)
 		elif (l == o):
-			return capitalize("ō", c=c)
+			return capitalize(u"ō", c=c)
 		elif (l == u):
-			return capitalize("ū", c=c)
+			return capitalize(u"ū", c=c)
 		else:
 			return l(c) + l()
 			
@@ -221,10 +221,10 @@ def au(c=C_NONE):
 
 
 def _auml(c=C_NONE):
-	return capitalize("ä", c)
+	return capitalize(u"ä", c)
 	
 
-@RuleDecorator(p_pattern='ä')
+@RuleDecorator(p_pattern=u'ä')
 def auml(c=C_NONE, m=0):
 	if default_mode.switch_simplification_expand_umlaut:
 		return capitalize("a", c) + capitalize("e")
@@ -238,12 +238,12 @@ def auml(c=C_NONE, m=0):
 			return _auml(c)
 
 
-@RuleDecorator(p_pattern='äu')
+@RuleDecorator(p_pattern=u'äu')
 def aumlu(c=C_NONE):
 	if default_mode.switch_simplification_aumlu_oi:
 		return o(c) + i()
 	else:
-		return capitalize("ä", c) + u()
+		return capitalize(u"ä", c) + u()
 		
 
 @RuleDecorator(p_check_voicefullness=True)
@@ -320,7 +320,7 @@ def e(c=C_NONE, m=0):
 		return elongation(e, c, m & ~ACTUALLY_ELONGATED)
 
 	elif default_mode.switch_misc_trema and (m & TREMA):
-		return capitalize("ë", c)
+		return capitalize(u"ë", c)
 
 	else:
 		return capitalize("e", c)
@@ -390,10 +390,10 @@ def h(c=C_NONE, m=0):
 @RuleDecorator()
 def i(c=C_NONE, m=0):
 	if default_mode.switch_misc_trema and (m & TREMA):
-		return capitalize("ï", c)
+		return capitalize(u"ï", c)
 
 	else:
-		return capitalize("i", c)
+		return capitalize(u"i", c)
 		
 
 @RuleDecorator()
@@ -465,16 +465,16 @@ def oi(c=C_NONE):
 		return o(c) + i()
 		
 
-@RuleDecorator(p_pattern='ö')
+@RuleDecorator(p_pattern=u'ö')
 def ouml(c=C_NONE):
 	if default_mode.switch_simplification_expand_umlaut:
 		return capitalize("o", c) + capitalize("e")
 
 	else:
-		return capitalize("ö", c)
+		return capitalize(u"ö", c)
 		
 
-@RuleDecorator(p_pattern='öh')
+@RuleDecorator(p_pattern=u'öh')
 def oumlh(c=C_NONE):
 	return elongation(ouml, c, ELONGATION_MODE_H)
 	
@@ -525,7 +525,7 @@ def s(c=C_NONE, m=0):
 @RuleDecorator()
 def sp(c=C_NONE):
 	if default_mode.switch_simplification_sch_s:
-		return capitalize("š", c) + p()
+		return capitalize(u"š", c) + p()
 
 	else:
 		return s(c) + p()
@@ -536,20 +536,20 @@ def ss(c=C_NONE):
 	return double_consonant("s")
 	
 
-@RuleDecorator(p_pattern='ß')
+@RuleDecorator(p_pattern=u'ß')
 def sz(c=C_NONE, m=NEOW):
 	if (default_mode.switch_simplification_sz_ss or
 				(m == EOW and not default_mode.switch_legacy_sz)):
 		return ss()
 
 	else:
-		return capitalize("ß", c)
+		return capitalize(u"ß", c)
 		
 
 @RuleDecorator()
 def sch(c=C_NONE):
 	if default_mode.switch_simplification_sch_s:
-		return capitalize("š", c)
+		return capitalize(u"š", c)
 
 	else:
 		return s(c) + capitalize("c") + capitalize("h")
@@ -558,7 +558,7 @@ def sch(c=C_NONE):
 @RuleDecorator()
 def st(c=C_NONE):
 	if default_mode.switch_simplification_sch_s:
-		return capitalize("š", c) + t()
+		return capitalize(u"š", c) + t()
 
 	else:
 		return s(c) + t()
@@ -586,7 +586,7 @@ def tion(c=C_NONE):
 @RuleDecorator()
 def tsch(c=C_NONE):
 	if default_mode.switch_simplification_tsch_c:
-		return capitalize("č", c)
+		return capitalize(u"č", c)
 
 	else:
 		return t(c) + sch()
@@ -611,16 +611,16 @@ def u(c=C_NONE):
 	return capitalize("u", c)
 
 		
-@RuleDecorator(p_pattern='ü')
+@RuleDecorator(p_pattern=u'ü')
 def uuml(c=C_NONE):
 	if default_mode.switch_simplification_expand_umlaut:
 		return u(c) + e()
 
 	else:
-		return capitalize("ü", c)
+		return capitalize(u"ü", c)
 		
 
-@RuleDecorator(p_pattern='üh')
+@RuleDecorator(p_pattern=u'üh')
 def uumlh(c=C_NONE):
 	return elongation(uuml, c, ELONGATION_MODE_H)
 

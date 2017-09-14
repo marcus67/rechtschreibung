@@ -29,10 +29,10 @@ class TestUtil(unittest.TestCase):
 	def test_html_content_special_characters(self):
 		self.assertEqual(util.get_html_content("\n", "\n", True), "<BR/>")
 		self.assertEqual(util.get_html_content("\n", "\n", False), "<BR/>")
-		self.assertEqual(util.get_html_content("ė", "ė", True), "&#275;")
-		self.assertEqual(util.get_html_content("ė", "ė", False), "&#275;")
-		self.assertEqual(util.get_html_content("Ė", "Ė", True), "&#274;")
-		self.assertEqual(util.get_html_content("Ė", "Ė", False), "&#274;")
+		self.assertEqual(util.get_html_content(u"ė", u"ė", True), u"&#275;")
+		self.assertEqual(util.get_html_content(u"ė", u"ė", False), u"&#275;")
+		self.assertEqual(util.get_html_content(u"Ė", u"Ė", True), u"&#274;")
+		self.assertEqual(util.get_html_content(u"Ė", u"Ė", False), u"&#274;")
 		self.assertEqual(util.get_html_content('"', '"', True), "&quot;")
 		self.assertEqual(util.get_html_content('"', '"', False), "&quot;")
 		

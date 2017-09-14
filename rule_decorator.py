@@ -40,17 +40,17 @@ class Rule (object):
 		params = []
 		
 		if p_cond & COND_BOS > 0:
-			params.append("c=C_BOS")
+			params.append(u"c=C_BOS")
 		elif p_cond & COND_BOW > 0 and p_cond & COND_CAPITALIZED > 0 and not self.seperates_words:
-			params.append("c=C_NOUN")
+			params.append(u"c=C_NOUN")
 		if self.check_voicefullness and p_cond & COND_EOW > 0:
-			params.append("m=VOICELESS")
+			params.append(u"m=VOICELESS")
 		
-		param_string = ", ".join(params)
-		return "%s(%s)" % ( self.name, param_string )
+		param_string = u", ".join(params)
+		return u"%s(%s)" % ( self.name, param_string )
 		
 	def __str__(self):
-		return "rule '%s' for pattern '%s'" % ( self.name, self.pattern )
+		return u"rule '%s' for pattern '%s'" % ( self.name, self.pattern )
 		
 class RuleDecorator(object):
 	

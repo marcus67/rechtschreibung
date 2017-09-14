@@ -57,11 +57,12 @@ def write_mode(p_document_directory, mode):
 	filename = get_mode_filename(p_document_directory, mode.control.name)
 	
 	directory = os.path.dirname(filename)
-	os.mkdirs(directory, exist_ok=True)
+	if not os.path.exists(directory):
+		os.makedirs(directory)
 	
 	logger.info("write mode file '%s'" % filename)
 	file = io.open(filename, "wb")
-	pickle.dump(mode, file)
+	pickle.dump(mode, file, protocol=1)
 	file.close()
 	mode.control.is_modified = False
 	

@@ -25,7 +25,8 @@ def open_logging(module_name, reload = False, p_document_directory = "."):
 		copy_template = os.path.exists(LOGGING_TEMPLATE_FILENAME) and not os.path.exists(logging_filename)
 		if copy_template:
 			directory = os.path.dirname(logging_filename)
-			os.makedirs(directory, exist_ok=True)
+			if not os.path.exists(directory):
+				os.makedirs(directory)
 			shutil.copyfile(LOGGING_TEMPLATE_FILENAME, logging_filename)
 		logging_config_json_file = open(logging_filename)
 		parsed_logging_data = json.load(logging_config_json_file)
