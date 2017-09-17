@@ -3,8 +3,11 @@ jobs:
   build:
     working_directory: ~
     docker:
-      - image: python:2.7.12
+      - image: python:3.5
     steps:
       - checkout
-      - run: pip install six console
-      - run: python test_base_suite.py
+      - run: apt-get -y install python-pip
+      - run: pip2 install six console
+      - run: pip3 install six console
+      - run: python2.7 test_base_suite.py
+      - run: python3.5 test_base_suite.py
