@@ -14,67 +14,67 @@ class TestRulesets(unittest.TestCase):
 	
 	def test_capitalize(self):
 		
-		self.assertEqual("e", rulesets.capitalize("e", c = rulesets.C_NONE))
-		self.assertEqual("E", rulesets.capitalize("e", c = rulesets.C_ADDRESSING))
-		self.assertEqual("E", rulesets.capitalize("e", c = rulesets.C_BOS))
-		self.assertEqual("E", rulesets.capitalize("e", c = rulesets.C_NAME))
-		self.assertEqual("E", rulesets.capitalize("e", c = rulesets.C_NOUN))
+		self.assertEqual(u"e", rulesets.capitalize(u"e", c = rulesets.C_NONE))
+		self.assertEqual(u"E", rulesets.capitalize(u"e", c = rulesets.C_ADDRESSING))
+		self.assertEqual(u"E", rulesets.capitalize(u"e", c = rulesets.C_BOS))
+		self.assertEqual(u"E", rulesets.capitalize(u"e", c = rulesets.C_NAME))
+		self.assertEqual(u"E", rulesets.capitalize(u"e", c = rulesets.C_NOUN))
 		
 	def test_double_consonant(self):
 		
-		self.assertEqual("ll", rulesets.double_consonant("l"))
+		self.assertEqual(u"ll", rulesets.double_consonant(u"l"))
 		modified_combination = rulesets.spelling_mode().combination
 		modified_combination.switch_simplification_double_consonants = True
 		rulesets.set_default_mode(modified_combination)
-		self.assertEqual("l", rulesets.double_consonant("l"))
+		self.assertEqual(u"l", rulesets.double_consonant(u"l"))
 
 	def test_elongation(self):
 		
-		self.assertEqual("ie", rulesets.elongation(
+		self.assertEqual(u"ie", rulesets.elongation(
 			rulesets.i, c=rulesets.C_NONE, 
 			m=rulesets.ELONGATION_MODE_E))
 
-		self.assertEqual("ih", rulesets.elongation(
+		self.assertEqual(u"ih", rulesets.elongation(
 			rulesets.i, c=rulesets.C_NONE, 
 			m=rulesets.ELONGATION_MODE_H))
 			
-		self.assertEqual("ii", rulesets.elongation(
+		self.assertEqual(u"ii", rulesets.elongation(
 			rulesets.i, c=rulesets.C_NONE, 
 			m=rulesets.ELONGATION_MODE_DOUBLE))
 						
-		self.assertEqual("ī", rulesets.elongation(
+		self.assertEqual(u"ī", rulesets.elongation(
 			rulesets.i, c=rulesets.C_NONE, 
 			m=rulesets.ELONGATION_MODE_MACRON))
 		
-		self.assertEqual("Ie", rulesets.elongation(
+		self.assertEqual(u"Ie", rulesets.elongation(
 			rulesets.i, c=rulesets.C_NOUN, 
 			m=rulesets.ELONGATION_MODE_E))
 
-		self.assertEqual("Ih", rulesets.elongation(
+		self.assertEqual(u"Ih", rulesets.elongation(
 			rulesets.i, c=rulesets.C_NOUN, 
 			m=rulesets.ELONGATION_MODE_H))
 			
-		self.assertEqual("Ii", rulesets.elongation(
+		self.assertEqual(u"Ii", rulesets.elongation(
 			rulesets.i, c=rulesets.C_NOUN, 
 			m=rulesets.ELONGATION_MODE_DOUBLE))
 						
-		self.assertEqual("Ī", rulesets.elongation(
+		self.assertEqual(u"Ī", rulesets.elongation(
 			rulesets.i, c=rulesets.C_NOUN, 
 			m=rulesets.ELONGATION_MODE_MACRON))
 				
-		self.assertEqual("ā", rulesets.elongation(
+		self.assertEqual(u"ā", rulesets.elongation(
 			rulesets.a, c=rulesets.C_NONE, 
 			m=rulesets.ELONGATION_MODE_MACRON))
 
-		self.assertEqual("ė", rulesets.elongation(
+		self.assertEqual(u"ė", rulesets.elongation(
 			rulesets.e, c=rulesets.C_NONE, 
 			m=rulesets.ELONGATION_MODE_MACRON))
 			
-		self.assertEqual("ō", rulesets.elongation(
+		self.assertEqual(u"ō", rulesets.elongation(
 			rulesets.o, c=rulesets.C_NONE, 
 			m=rulesets.ELONGATION_MODE_MACRON))
 					
-		self.assertEqual("ū", rulesets.elongation(
+		self.assertEqual(u"ū", rulesets.elongation(
 			rulesets.u, c=rulesets.C_NONE, 
 			m=rulesets.ELONGATION_MODE_MACRON))		
 		
@@ -82,3 +82,4 @@ class TestRulesets(unittest.TestCase):
 		
 if __name__ == '__main__':
 	unittest.main()
+	

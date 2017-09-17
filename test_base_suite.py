@@ -4,7 +4,7 @@
 import sys
 import unittest
 
-import test_rulesets
+import test_base_rulesets
 import test_base_words
 import test_base_paragraph01
 import test_base_paragraph02
@@ -18,7 +18,7 @@ class TestBaseSuite(unittest.TestSuite):
 	def __init__(self):
 		
 		super(TestBaseSuite, self).__init__()
-		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_rulesets))
+		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_rulesets))
 		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_words))
 		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_paragraph01))
 		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_paragraph02))
