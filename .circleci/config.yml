@@ -6,6 +6,7 @@ jobs:
       - image: python:3.5
     steps:
       - checkout
+      - run: apt-get update
       - run: apt-get -y install python-pip
       - run: pip2 install six console
       - run: pip3 install six console
