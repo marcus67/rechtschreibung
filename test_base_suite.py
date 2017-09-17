@@ -1,6 +1,7 @@
 #coding: utf-8
 # This file is part of https://github.com/marcus67/rechtschreibung
 
+import sys
 import unittest
 
 import test_rulesets
@@ -29,6 +30,7 @@ class TestBaseSuite(unittest.TestSuite):
 								
 if __name__ == '__main__':
 	
+	print ("Testing with python %s" % sys.version)
 	test_suite = TestBaseSuite()
 	test_result = unittest.TestResult()
 	test_suite.run(test_result)

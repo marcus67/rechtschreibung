@@ -100,7 +100,7 @@ def capitalize(l, c=C_NONE):
 				
 def para():
 	if default_mode.switch_layout_paragraph_separation:
-		return "\n"
+		return u"\n"
 	else:
 		return space()
 
@@ -123,12 +123,12 @@ def elongation(l, c, m):
 	elif (current_mode == ELONGATION_MODE_E or
 					(current_mode == ELONGATION_MODE_DEFAULT and
 						default_elongation_mode == ELONGATION_MODE_E)):
-		return l(c) + capitalize("e")
+		return l(c) + capitalize(u"e")
 		
 	elif (current_mode == ELONGATION_MODE_H or
 					(current_mode == ELONGATION_MODE_DEFAULT and
 						default_elongation_mode == ELONGATION_MODE_H)):
-		return l(c) + capitalize("h")
+		return l(c) + capitalize(u"h")
 		
 	elif (current_mode == ELONGATION_MODE_MACRON or
 					(current_mode == ELONGATION_MODE_DEFAULT and
@@ -150,54 +150,54 @@ def elongation(l, c, m):
 		return l(c) + l()
 				
 
-@RuleDecorator(p_pattern=" ", p_seperates_words=True)
+@RuleDecorator(p_pattern=u" ", p_seperates_words=True)
 def space(c=C_NONE):
 	if default_mode.switch_layout_word_separation:
-		return " "
+		return u" "
 	else:
-		return ""
+		return u""
 
 
-@RuleDecorator(p_pattern=".", p_seperates_words=True, p_conditions=COND_EOS)
+@RuleDecorator(p_pattern=u".", p_seperates_words=True, p_conditions=COND_EOS)
 def fs():
 	if default_mode.switch_punctuation_full_stop:
-		return "."
+		return u"."
 	else:
-		return ""
+		return u""
 
 
-@RuleDecorator(p_pattern=",", p_seperates_words=True)
+@RuleDecorator(p_pattern=u",", p_seperates_words=True)
 def comma_sc():
 	if default_mode.switch_punctuation_comma_sub_clause:
-		return ","
+		return u","
 	else:
-		return ""
+		return u""
 
 				
-@RuleDecorator(p_pattern=":", p_seperates_words=True)
+@RuleDecorator(p_pattern=u":", p_seperates_words=True)
 def colon():
 	if default_mode.switch_punctuation_colon:
-		return ":"
+		return u":"
 	else:
-		return ""
+		return u""
 		
 
-@RuleDecorator(p_pattern=".", p_seperates_words=True)
+@RuleDecorator(p_pattern=u".", p_seperates_words=True)
 def dot_abbr():
 	if default_mode.switch_punctuation_dot_abbr:
-		return "."
+		return u"."
 	else:
-		return ""
+		return u""
 
 				
-@RuleDecorator(p_pattern="-", p_seperates_words=True)
+@RuleDecorator(p_pattern=u"-", p_seperates_words=True)
 def hyphen():
-	return "-"
+	return u"-"
 		
 
 @RuleDecorator()
 def a(c=C_NONE):
-	return capitalize("a", c)
+	return capitalize(u"a", c)
 	
 
 @RuleDecorator()
@@ -217,7 +217,7 @@ def ai(c=C_NONE):
 
 @RuleDecorator()
 def au(c=C_NONE):
-	return capitalize("a", c) + capitalize("u")
+	return capitalize(u"a", c) + capitalize(u"u")
 
 
 def _auml(c=C_NONE):
@@ -227,7 +227,7 @@ def _auml(c=C_NONE):
 @RuleDecorator(p_pattern=u'ä')
 def auml(c=C_NONE, m=0):
 	if default_mode.switch_simplification_expand_umlaut:
-		return capitalize("a", c) + capitalize("e")
+		return capitalize(u"a", c) + capitalize(u"e")
 		
 	else:
 		if ((m & ACTUALLY_ELONGATED) > 0 and
@@ -251,12 +251,12 @@ def b(c=C_NONE, m=VOICEFULL):
 	if default_mode.switch_simplification_b_p and m == VOICELESS:
 		return p(c)
 	else:
-		return capitalize("b", c)
+		return capitalize(u"b", c)
 	
 
 @RuleDecorator()
 def bb():
-	return double_consonant("b")
+	return double_consonant(u"b")
 	
 
 @RuleDecorator()
@@ -271,7 +271,7 @@ def c(c=C_NONE, m=C_K):
 		else:
 			return z(c)
 	else:
-		return capitalize("c", c)
+		return capitalize(u"c", c)
 		
 
 @RuleDecorator()
@@ -279,19 +279,19 @@ def ch(c=C_NONE, m=0):
 	if default_mode.switch_simplification_ch_sch and m == CH_GREEK:
 		return sch(c)
 	elif default_mode.switch_simplification_ch_ck and m == CH_CK:
-		return capitalize("c", c) + k()
+		return capitalize(u"c", c) + k()
 	elif default_mode.switch_simplification_ch_k and m == CH_K:
 		return k(c)
 	else:
-		return capitalize("c", c) + capitalize("h")
+		return capitalize(u"c", c) + capitalize(u"h")
 		
 
 @RuleDecorator()
 def ck(c=C_NONE):
 	if default_mode.switch_simplification_ck_kk:
-		return double_consonant("k")
+		return double_consonant(u"k")
 	else:
-		return capitalize("c", c) + k()
+		return capitalize(u"c", c) + k()
 		
 
 @RuleDecorator(p_check_voicefullness=True)
@@ -299,7 +299,7 @@ def d(c=C_NONE, m=VOICEFULL):
 	if default_mode.switch_simplification_d_t and m == VOICELESS:
 		return t(c)
 	else:
-		return capitalize("d", c)
+		return capitalize(u"d", c)
 		
 
 @RuleDecorator()
@@ -323,7 +323,7 @@ def e(c=C_NONE, m=0):
 		return capitalize(u"ë", c)
 
 	else:
-		return capitalize("e", c)
+		return capitalize(u"e", c)
 		
 
 @RuleDecorator()
@@ -365,26 +365,26 @@ def eu(c=C_NONE):
 
 @RuleDecorator()
 def f(c=C_NONE):
-	return capitalize("f", c)
+	return capitalize(u"f", c)
 	
 
 @RuleDecorator()
 def ff():
-	return double_consonant("f")
+	return double_consonant(u"f")
 	
 
 @RuleDecorator()
 def g(c=C_NONE):
-	return capitalize("g", c)
+	return capitalize(u"g", c)
 	
 
 @RuleDecorator()
 def h(c=C_NONE, m=0):
 	if default_mode.switch_simplification_suppress_mute_h and m == MUTE:
-		return ""
+		return u""
 		
 	else:
-		return capitalize("h", c)
+		return capitalize(u"h", c)
 		
 
 @RuleDecorator()
@@ -408,32 +408,32 @@ def ih(c=C_NONE):
 
 @RuleDecorator()
 def j(c=C_NONE):
-	return capitalize("j", c)
+	return capitalize(u"j", c)
 	
 
 @RuleDecorator()
 def k(c=C_NONE):
-	return capitalize("k", c)
+	return capitalize(u"k", c)
 	
 
 @RuleDecorator()
 def l(c=C_NONE):
-	return capitalize("l", c)
+	return capitalize(u"l", c)
 	
 
 @RuleDecorator()
 def ll():
-	return double_consonant("l")
+	return double_consonant(u"l")
 	
 
 @RuleDecorator()
 def m(c=C_NONE):
-	return capitalize("m", c)
+	return capitalize(u"m", c)
 	
 
 @RuleDecorator()
 def mm():
-	return double_consonant("m")
+	return double_consonant(u"m")
 
 
 @RuleDecorator()
@@ -443,17 +443,17 @@ def n(c=C_NONE, m=0):
 		return nn()
 
 	else:
-		return capitalize("n", c)
+		return capitalize(u"n", c)
 
 				
 @RuleDecorator()
 def nn():
-	return double_consonant("n")
+	return double_consonant(u"n")
 	
 
 @RuleDecorator()
 def o(c=C_NONE):
-	return capitalize("o", c)
+	return capitalize(u"o", c)
 
 
 @RuleDecorator()
@@ -468,7 +468,7 @@ def oi(c=C_NONE):
 @RuleDecorator(p_pattern=u'ö')
 def ouml(c=C_NONE):
 	if default_mode.switch_simplification_expand_umlaut:
-		return capitalize("o", c) + capitalize("e")
+		return capitalize(u"o", c) + capitalize(u"e")
 
 	else:
 		return capitalize(u"ö", c)
@@ -481,35 +481,35 @@ def oumlh(c=C_NONE):
 
 @RuleDecorator()
 def p(c=C_NONE):
-	return capitalize("p", c)
+	return capitalize(u"p", c)
 
 
 @RuleDecorator()
 def ph(c=C_NONE):
 	if default_mode.switch_simplification_ph_f:
-		return capitalize("f", c)
+		return capitalize(u"f", c)
 
 	else:
-		return capitalize("p", c) + capitalize("h")
+		return capitalize(u"p", c) + capitalize(u"h")
 		
 
 @RuleDecorator()
 def pp():
-	return double_consonant("p")
+	return double_consonant(u"p")
 	
 
 @RuleDecorator()
 def qu(c=C_NONE):
 	if default_mode.switch_simplification_qu_kw:
-		return capitalize("k", c) + capitalize("w")
+		return capitalize(u"k", c) + capitalize(u"w")
 
 	else:
-		return capitalize("q", c) + capitalize("u")
+		return capitalize(u"q", c) + capitalize(u"u")
 		
 		
 @RuleDecorator()
 def r(c=C_NONE):
-	return capitalize("r", c)
+	return capitalize(u"r", c)
 	
 
 @RuleDecorator()
@@ -519,7 +519,7 @@ def s(c=C_NONE, m=0):
 		return ss()
 
 	else:
-		return capitalize("s", c)
+		return capitalize(u"s", c)
 		
 
 @RuleDecorator()
@@ -533,7 +533,7 @@ def sp(c=C_NONE):
 
 @RuleDecorator()
 def ss(c=C_NONE):
-	return double_consonant("s")
+	return double_consonant(u"s")
 	
 
 @RuleDecorator(p_pattern=u'ß')
@@ -552,7 +552,7 @@ def sch(c=C_NONE):
 		return capitalize(u"š", c)
 
 	else:
-		return s(c) + capitalize("c") + capitalize("h")
+		return s(c) + capitalize(u"c") + capitalize(u"h")
 		
 
 @RuleDecorator()
@@ -571,7 +571,7 @@ def t(c=C_NONE, m=0):
 		return tt()
 
 	else:
-		return capitalize("t", c)
+		return capitalize(u"t", c)
 
 
 @RuleDecorator()
@@ -595,20 +595,20 @@ def tsch(c=C_NONE):
 @RuleDecorator()
 def th(c=C_NONE):
 	if default_mode.switch_simplification_th_t:
-		return capitalize("t", c)
+		return capitalize(u"t", c)
 
 	else:
-		return capitalize("t", c) + capitalize("h")
+		return capitalize(u"t", c) + capitalize(u"h")
 		
 
 @RuleDecorator()
 def tt():
-	return double_consonant("t")
+	return double_consonant(u"t")
 
 
 @RuleDecorator()
 def u(c=C_NONE):
-	return capitalize("u", c)
+	return capitalize(u"u", c)
 
 		
 @RuleDecorator(p_pattern=u'ü')
@@ -635,12 +635,12 @@ def v(c=C_NONE, m=VOICELESS):
 			return w(c)
 
 	else:
-		return capitalize("v", c)
+		return capitalize(u"v", c)
 
 
 @RuleDecorator()
 def w(c=C_NONE):
-	return capitalize("w", c)
+	return capitalize(u"w", c)
 	
 
 @RuleDecorator()
@@ -648,7 +648,7 @@ def x(c=C_NONE):
 	if default_mode.switch_simplification_x_ks:
 		return k(c) + s()
 	else:
-		return capitalize("x")
+		return capitalize(u"x")
 		
 		
 @RuleDecorator()
@@ -664,7 +664,7 @@ def y(c=C_NONE, m=Y_UE):
 			return j(c)
 	
 	else:
-		return capitalize("y", c)
+		return capitalize(u"y", c)
 		
 
 @RuleDecorator()
@@ -673,5 +673,5 @@ def z(c=C_NONE):
 		return t(c) + s()
 	
 	else:
-		return capitalize("z", c)
+		return capitalize(u"z", c)
 
