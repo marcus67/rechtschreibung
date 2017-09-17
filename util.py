@@ -39,16 +39,16 @@ def set_container_value(container, name, value):
 def get_change_control_strings(oldString, newString):
 
 	enhancedString = oldString # .encode("utf-8" )
-	controlString = ( " " * len(enhancedString) ) #.encode( "utf-8" )
+	controlString = ( u" " * len(enhancedString) ) #.encode( "utf-8" )
 	
 	for i,s in enumerate(difflib.ndiff(oldString, newString)):
-		if s[0]==' ':
+		if s[0] == u' ':
 			continue
 			
-		elif s[0]=='-':
+		elif s[0] == u'-':
 			controlString = controlString[0:i] + DIFF_DELETE + controlString[i+1:]
 			
-		elif s[0]=='+':
+		elif s[0] == u'+':
 			enhancedString = enhancedString[0:i] + s[-1] + enhancedString[i:]
 			controlString = controlString[0:i] + DIFF_INSERT + controlString[i:]
 			
@@ -57,17 +57,17 @@ def get_change_control_strings(oldString, newString):
 	
 def get_multi_token_change_control_strings(oldString, newString):
 
-	oldTokens = oldString.split(' ')
-	newTokens = newString.split(' ')
+	oldTokens = oldString.split(u' ')
+	newTokens = newString.split(u' ')
 	if len(oldTokens) == len(newTokens):
-		enhancedString = ''
-		controlString = ''
+		enhancedString = u''
+		controlString = u''
 		i = 0
 		for oldToken in oldTokens:
 			enhancedToken, tokenControlString = get_change_control_strings(oldToken,newTokens[i])
 			if len(enhancedString) > 0:
-				enhancedString = enhancedString + ' '
-				controlString = controlString + ' '
+				enhancedString = enhancedString + u' '
+				controlString = controlString + u' '
 			enhancedString = enhancedString + enhancedToken
 			controlString = controlString + tokenControlString
 			i = i + 1
@@ -89,15 +89,16 @@ def get_html_content(oldString, newString, show_changes):
 			if c == DIFF_NONE:
 				newString = newString + enhancedNewString[i]
 			elif c == DIFF_INSERT:
-				newString = newString + "<span id='ins'>" + enhancedNewString[i] + '</span>'
+				newString = newString + u"<span id='ins'>" + enhancedNewString[i] + u'</span>'
 			elif c == DIFF_DELETE:
-				newString = newString + "<span id='del'>" + enhancedNewString[i] + '</span>'
+				newString = newString + u"<span id='del'>" + enhancedNewString[i] + u'</span>'
 			i = i + 1
 			
 	# do some final replacements:
 	# -) replace the surrogate characters used for those not found on the Apple keyboard by their HTML codes
 	# -) replace the double quote character '"' bei &quot; so that the resultsing string can be used in JS.
-	return newString.replace("\n","<BR/>").replace("ė","&#275;").replace("Ė","&#274;").replace('"','&quot;')
+	return newString.replace(
+		u"\n",u"<BR/>").replace(u"ė",u"&#275;").replace(u"Ė",u"&#274;").replace(u'"',u'&quot;')
 	
 	
 def add_missing_attributes(object, template):

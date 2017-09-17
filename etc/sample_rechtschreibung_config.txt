@@ -10,3 +10,10 @@ auto_hide_delay = 5
 
 # Set the speed of the speech playback. The value range is between 0 (slowest) and 100 (fastest).
 speech_speed = 50
+
+[state]
+
+switch_auto_hide = False
+
+
+

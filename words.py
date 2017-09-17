@@ -78,7 +78,7 @@ def einen(c=0):
 def end(c=0):
 	return e(c)+n()+d(m=VOICELESS)
 	
-@RuleDecorator(p_pattern = "für", p_conditions = COND_SEPERATED_WORD)		
+@RuleDecorator(p_pattern = u"für", p_conditions = COND_SEPERATED_WORD)		
 def fuer(c=0):
 	return f()+uuml()+r()
 	
@@ -98,7 +98,7 @@ def man(c=0):
 def mit(c=0):
 	return m(c)+i()+t(m=ACTUALLY_SHORT)
 	
-@RuleDecorator(p_pattern = "schließen", p_conditions = COND_EOW)
+@RuleDecorator(p_pattern = u"schließen", p_conditions = COND_EOW)
 def schlieszen(c=0):
 	return sch(c)+l()+ie()+sz()+e()+n()
 	
@@ -118,7 +118,7 @@ def sind(c=0):
 def speichern(c=0):
 	return sp(c)+ei()+ch()+e()+r()+n()
 	
-@RuleDecorator(p_pattern = "überschreiben", p_conditions = COND_SEPERATED_WORD)
+@RuleDecorator(p_pattern = u"überschreiben", p_conditions = COND_SEPERATED_WORD)
 def ueberschreiben(c=0):
 	return uuml(c)+b()+er()+sch()+r()+ei()+b()+e()+n()
 	
