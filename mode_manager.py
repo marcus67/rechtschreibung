@@ -28,15 +28,17 @@ global logger
 
 logger = log.open_logging(__name__)
 
-def get_mode_filename(modeName):
+def get_mode_filename(p_document_directory, modeName):
 
-	return os.path.join(MODE_FILE_DIRECTORY, u"%s%s" % ( modeName, MODE_FILE_EXTENSION))
+	return os.path.join(
+		p_document_directory, MODE_FILE_DIRECTORY, 
+		u"%s%s" % ( modeName, MODE_FILE_EXTENSION))
 	
-def read_mode(modeName):
+def read_mode(p_document_directory, modeName):
 
 	global logger
 	
-	filename = get_mode_filename(modeName)
+	filename = get_mode_filename(p_document_directory, modeName)
 	file = io.open(filename, "rb")
 	logger.info("read mode file '%s'" % filename)
 	mode = pickle.load(file)
@@ -48,18 +50,23 @@ def read_mode(modeName):
 		write_mode(mode)
 	return mode
 	
-def write_mode(mode):
+def write_mode(p_document_directory, mode):
 
 	global logger
 	
-	filename = get_mode_filename(mode.control.name)
+	filename = get_mode_filename(p_document_directory, mode.control.name)
+	
+	directory = os.path.dirname(filename)
+	if not os.path.exists(directory):
+		os.makedirs(directory)
+	
 	logger.info("write mode file '%s'" % filename)
 	file = io.open(filename, "wb")
-	pickle.dump(mode, file)
+	pickle.dump(mode, file, protocol=1)
 	file.close()
 	mode.control.is_modified = False
 	
-def get_available_modes(includePredefinedModes = True):
+def get_available_modes(p_document_directory, includePredefinedModes = True):
 
 	modes = []
 	
@@ -68,12 +75,12 @@ def get_available_modes(includePredefinedModes = True):
 		
 	filePattern = re.compile(MODE_FILE_EXTENSION_PATTERN)
 	
-	for file in os.listdir(MODE_FILE_DIRECTORY):
+	for file in os.listdir(os.path.join(p_document_directory, MODE_FILE_DIRECTORY)):
 		match = filePattern.match(file)
 		
 		if (match):
 			modeName = match.group(1)
-			mode = read_mode(modeName)
+			mode = read_mode(p_document_directory, modeName)
 			modes.append(mode)
 			
 	return modes
@@ -81,12 +88,12 @@ def get_available_modes(includePredefinedModes = True):
 	
 def test():
 
-	modes = get_available_modes()
+	modes = get_available_modes(".")
 	for mode in modes:
 		if mode.control.isImmutable:
 			mode.control.name = mode.control.name + u' (pickled)'
 			mode.control.isImmutable = False
-			write_mode(mode)
+			write_mode(".", mode)
 			
 if __name__ == '__main__':
 	test()

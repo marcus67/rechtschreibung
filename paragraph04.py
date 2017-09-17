@@ -25,9 +25,9 @@ from words import *
 
 def sentence001():
 	return (
-		"Da Wendy sich mit Software-Entwicklung auskennt, hatte sie die Idee, "
-		"eine Applikation zu entwickeln, mit der man verschiedene Regelsätze für die "
-		"deutsche Rechtschreibung schnell ausprobieren kann.",
+		u"Da Wendy sich mit Software-Entwicklung auskennt, hatte sie die Idee, "
+		u"eine Applikation zu entwickeln, mit der man verschiedene Regelsätze für die "
+		u"deutsche Rechtschreibung schnell ausprobieren kann.",
 		d(c=C_BOS)+a()+space()+wendy()+space()+sich()+space()+mit()+space()+
 		s(c=C_NOUN)+o()+f()+t()+w()+a()+r()+e()+hyphen()+
 		e(c=C_NOUN)+n()+t()+w()+i()+ck()+l()+u()+n()+g()+space()+au()+s()+k()+e()+nn()+t()+comma_sc()+
@@ -42,8 +42,8 @@ def sentence001():
 
 def sentence002():
 	return (
-		"Es ist ein Unterschied, ob man über unterschiedliche Regelsätze nur redet oder "
-		"ob man sich die Auswirkungen auf einen Text direkt konkret anschauen kann.",
+		u"Es ist ein Unterschied, ob man über unterschiedliche Regelsätze nur redet oder "
+		u"ob man sich die Auswirkungen auf einen Text direkt konkret anschauen kann.",
 		e(c=C_BOS)+s()+space()+ist()+space()+ein()+space()+
 		u(c=C_NOUN)+n()+t()+e()+r()+sch()+ie()+d()+comma_sc()+space()+
 		o()+b(m=VOICELESS)+space()+man()+space()+uuml()+b()+e()+r()+space()+
@@ -58,8 +58,8 @@ def sentence002():
 
 def sentence003():
 	return (
-		"Zu diesem Zweck haben sich beide einen Text überlegt, der viele der Phänomene "
-		"enthält, an denen sich die Unterschiede leicht erkennen lassen.",
+		u"Zu diesem Zweck haben sich beide einen Text überlegt, der viele der Phänomene "
+		u"enthält, an denen sich die Unterschiede leicht erkennen lassen.",
 		z(c=C_BOS)+u()+space()+d()+ie()+s()+e()+m()+space()+z(c=C_NOUN)+w()+e()+ck()+space()+
 		h()+a()+b()+e()+n()+space()+sich()+space()+bei()+d()+e()+space()+einen()+space()+
 		t(c=C_NOUN)+e()+x()+t()+space()+uuml()+b()+er()+l()+e()+g()+t()+comma_sc()+space()+
@@ -72,7 +72,7 @@ def sentence003():
 		
 def sentence004():
 	return (
-		"Mithilfe von Schaltern lassen sich Regeln individuell aktivieren bzw. deaktivieren.",
+		u"Mithilfe von Schaltern lassen sich Regeln individuell aktivieren bzw. deaktivieren.",
 		mit(c=C_BOS)+h()+i()+l()+f()+e()+space()+von()+space()+
 		sch(c=C_NOUN)+a()+l()+t()+er()+n()+space()+l()+a()+ss()+e()+n()+space()+
 		sich()+space()+r(c=C_NOUN)+e()+g()+e()+l()+n()+space()+
@@ -82,8 +82,8 @@ def sentence004():
 		
 def sentence005():
 	return (
-		"Die daraus resultierende Schreibweise des gesamten Textes wird direkt in einem "
-		"Fenster dargestellt.",
+		u"Die daraus resultierende Schreibweise des gesamten Textes wird direkt in einem "
+		u"Fenster dargestellt.",
 		die(c=C_BOS)+space()+d()+a()+r()+aus()+space()+
 		r()+e()+s()+u()+l()+t()+ie()+r()+e()+n()+d()+e()+space()+
 		sch(c=C_NOUN)+r()+ei()+b()+w()+ei()+s()+e()+space()+
@@ -95,8 +95,8 @@ def sentence005():
 		
 def sentence006():
 	return (
-		"Außerdem werden auf Wunsch, Unterschiede zum Stand vor dem Umschalten farblich "
-		"hervorgehoben.",
+		u"Außerdem werden auf Wunsch, Unterschiede zum Stand vor dem Umschalten farblich "
+		u"hervorgehoben.",
 		au(c=C_BOS)+sz()+er()+dem()+space()+w()+er()+den()+space()+
 		au()+f()+space()+w(c=C_NOUN)+u()+n()+sch()+comma_sc()+space()+
 		u(c=C_NOUN)+n()+t()+er()+sch()+ie()+d()+e()+space()+
@@ -108,8 +108,8 @@ def sentence006():
 		
 def sentence007():
 	return (
-		"Wenn der Benutzer einen besonders interessanten Regelsatz gebaut hat, kann er "
-		"diesen zum späteren Gebrauch unter einem sprechenden Namen abspeichern.",
+		u"Wenn der Benutzer einen besonders interessanten Regelsatz gebaut hat, kann er "
+		u"diesen zum späteren Gebrauch unter einem sprechenden Namen abspeichern.",
 		w(c=C_BOS)+e()+nn()+space()+der()+space()+
 		b(c=C_NOUN)+e()+n()+u()+t()+z()+er()+space()+
 		einen()+space()+b()+e()+s()+o()+n()+d()+er()+s()+space()+
@@ -124,8 +124,8 @@ def sentence007():
 		
 def sentence008():
 	return (
-		"Casimir ist ganz begeistert von der Idee und trägt durch eigene Vorschläge zum "
-		"Gelingen des Projektes bei.",
+		u"Casimir ist ganz begeistert von der Idee und trägt durch eigene Vorschläge zum "
+		u"Gelingen des Projektes bei.",
 		casimir(c=C_BOS|C_NAME)+space()+ist()+space()+g()+a()+n()+z()+space()+
 		b()+e()+g()+ei()+st()+er()+t()+space()+von()+space()+
 		der()+space()+i(c=C_NOUN)+d()+ee()+space()+und()+space()+

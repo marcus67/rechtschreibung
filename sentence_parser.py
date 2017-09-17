@@ -116,7 +116,7 @@ def parse_string(p_string):
 		cond = cond & ~ rule_decorator.COND_BOS
 		last_pattern_length = current_pattern_length
 		
-	return "+".join(result)
+	return u"+".join(result)
 	
 def setup_logging():
 	global logger

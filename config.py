@@ -6,6 +6,7 @@ import string
 import shutil
 import os
 import six
+import io
 
 import log
 
@@ -147,8 +148,11 @@ class ConfigHandler(object):
 				for attr_name in sub_config.__dict__:
 					self.config_file.set(section_name, attr_name, str(getattr(sub_config, attr_name)))
 			
-			filename = self._config_filename # + ".test"
-			file = open(filename, "w", encoding = "UTF-8")
+			filename = self._config_filename
+			directory = os.path.dirname(filename)
+			if not os.path.exists(directory):
+				os.makedirs(directory)
+			file = open(filename, "w")
 			fmt = "Writing modified configuration to %s" % filename
 			logger.info(fmt)
 			self.config_file.write(file)

@@ -1,9 +1,10 @@
 #coding: utf-8
 # This file is part of https://github.com/marcus67/rechtschreibung
 
+import sys
 import unittest
 
-import test_rulesets
+import test_base_rulesets
 import test_base_words
 import test_base_paragraph01
 import test_base_paragraph02
@@ -17,7 +18,7 @@ class TestBaseSuite(unittest.TestSuite):
 	def __init__(self):
 		
 		super(TestBaseSuite, self).__init__()
-		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_rulesets))
+		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_rulesets))
 		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_words))
 		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_paragraph01))
 		self.addTest(unittest.defaultTestLoader.loadTestsFromModule(test_base_paragraph02))
@@ -29,6 +30,7 @@ class TestBaseSuite(unittest.TestSuite):
 								
 if __name__ == '__main__':
 	
+	print ("Testing with python %s" % sys.version)
 	test_suite = TestBaseSuite()
 	test_result = unittest.TestResult()
 	test_suite.run(test_result)

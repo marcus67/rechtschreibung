@@ -92,7 +92,7 @@ class MainViewController ( ui_util.ViewController ):
 	The view controller handles the top view of the Rechtschreibing application.
 	"""
 	
-	def __init__(self):
+	def __init__(self, p_document_directory):
 		"""
 		Create an instance of the MainViewCntroller
 		
@@ -102,7 +102,14 @@ class MainViewController ( ui_util.ViewController ):
 		
 		super(MainViewController, self).__init__()
 		
+		self._document_directory = p_document_directory
+		fmt = "App is running with document directory %s" % self._document_directory
+		logger.info(fmt)
+			
 		self._save_timer = None
+		
+		# True to activate the saving of configs
+		self._save_timer_active = False
 		
 		# Store the text as it was before the most recent ruleset change. This text is used to derive
 		# the changes between the previous ruleset settings and the current ones.
@@ -141,12 +148,7 @@ class MainViewController ( ui_util.ViewController ):
 		# the current ruleset. The reference rule set must never set directly but only by calling
 		# method set_reference_ruleset.
 		self.reference_mode = None
-		
-		# Set the first available ruleset reference as the default reference rule set
-		#self.set_reference_mode(filter(lambda m:m.control.isReference, mode_manager.get_available_modes())[0])
-		reference_rulesets = [ m for m in mode_manager.get_available_modes() if m.control.isReference ]
-		self.set_reference_mode(reference_rulesets[0])
-			
+					
 		# Ruleset that had been loaded most recently. Note that the current ruleset (see below) may have
 		# been changed already since the last load. This ruleset is used to determine whether the current
 		# ruleset is equivalent to the one most previously loaded. If they match the ruleset name in the view
@@ -167,14 +169,26 @@ class MainViewController ( ui_util.ViewController ):
 		else:
 			self.orientations = ( 'landscape', )
 			
+		# Path to the directory where files can be stored. Under Pythonista this
+		# defaults to the local directory. On the target device this will the document directory.
+		
+		self._document_directory = '.'
+			
 	def load_config(self, p_config_handler):
 		
 		# Store the configuration instance
 		self._config_handler = p_config_handler
-		self.conf = self._config_handler.read_config_file(CONFIG_FILE, SAMPLE_CONFIG_FILE)
-	
+		conf_file = os.path.join(self._document_directory, CONFIG_FILE)
+		self.conf = self._config_handler.read_config_file(conf_file, SAMPLE_CONFIG_FILE)
 		self.retrieve_from_model(self.conf.state)
-			
+	
+	def select_reference_rule_set(self):		
+		# Set the first available ruleset reference as the default reference rule set
+		#self.set_reference_mode(filter(lambda m:m.control.isReference, mode_manager.get_available_modes())[0])
+		reference_rulesets = [ m for m in mode_manager.get_available_modes(
+			p_document_directory = self._document_directory) if m.control.isReference ]
+		self.set_reference_mode(reference_rulesets[0])
+		
 	def handle_change_in_mode(self):
 		self.previous_sample_text = self.current_sample_text
 		self.suppress_highlight_changes = False
@@ -324,10 +338,22 @@ class MainViewController ( ui_util.ViewController ):
 		self.hideTimer.start()
 		
 	def activate_save_timer(self):
-		self._save_timer = threading.Timer(
-			self.conf.rechtschreibung.save_interval,
-			lambda x:x.handle_save_timer(), [ self ] )
-		self._save_timer.start()
+			self._save_timer_active = True
+			self.start_save_timer()
+			
+	def deactivate_save_timer(self):
+			self._save_timer_active = False
+			if self._save_timer is not None:
+				self._save_timer.cancel()
+				self._save_timer = None
+			
+	
+	def start_save_timer(self):
+		if self._save_timer_active:
+			self._save_timer = threading.Timer(
+				self.conf.rechtschreibung.save_interval,
+				lambda x:x.handle_save_timer(), [ self ] )
+			self._save_timer.start()
 		
 	def handle_hide_timer(self):
 		self.suppress_highlight_changes = True
@@ -340,7 +366,7 @@ class MainViewController ( ui_util.ViewController ):
 	def check_write_current_rule_set(self):
 		if self.current_mode is not None:
 			if self.current_mode.control.is_modified:
-				mode_manager.write_mode(self.current_mode)
+				mode_manager.write_mode(self._document_directory,  self.current_mode)
 		
 	def handle_save_timer(self):
 		try:
@@ -357,7 +383,7 @@ class MainViewController ( ui_util.ViewController ):
 			fmt = "Exception %s while writing current rule set" % str(e)
 			logger.error(fmt)
 		
-		self.activate_save_timer()
+		self.start_save_timer()
 			
 	def update_sample_text(self, p_initial_update = False):
 		"""
@@ -374,8 +400,8 @@ class MainViewController ( ui_util.ViewController ):
 		else:
 			compareText = self.referenceSampleText
 		html_content = util.get_html_content(
-		compareText, self.current_sample_text,
-		self.conf.state.highlighting_mode and not self.suppress_highlight_changes)
+			compareText, self.current_sample_text,
+			self.conf.state.highlighting_mode and not self.suppress_highlight_changes)
 		
 		webview.eval_js('document.getElementById("content").innerHTML = "%s"' % html_content)
 		webview.set_needs_display()
@@ -415,9 +441,10 @@ class MainViewController ( ui_util.ViewController ):
 	def load_mode_start(self, load_mode_type):
 		self.load_mode_type = load_mode_type
 		self.select_mode_vc.select(
-		mode_manager.get_available_modes(), cancel_label=words.abbrechen(c=rulesets.C_BOS),
-		close_label=words.schlieszen(c=rulesets.C_BOS),
-		title = 'Regelsatz laden' if load_mode_type == LOAD_MODE_RULESET else 'Referenz laden')
+			mode_manager.get_available_modes(p_document_directory = self._document_directory), 
+			cancel_label=words.abbrechen(c=rulesets.C_BOS),
+			close_label=words.schlieszen(c=rulesets.C_BOS),
+			title = 'Regelsatz laden' if load_mode_type == LOAD_MODE_RULESET else 'Referenz laden')
 		
 	def activate_mode(self, new_mode):
 		logger.info("Set working mode '%s'" % new_mode.control.name)
@@ -447,7 +474,7 @@ class MainViewController ( ui_util.ViewController ):
 		
 	def save_mode_start(self):
 		self.select_mode_for_save_vc.select(
-			mode_manager.get_available_modes(), 
+			mode_manager.get_available_modes(p_document_directory = self._document_directory), 
 			self.current_mode,cancel_label=words.abbrechen(c=rulesets.C_BOS), 
 			save_label=words.speichern(c=rulesets.C_BOS), 
 			overwrite_label=words.ueberschreiben(c=rulesets.C_BOS), 
@@ -457,7 +484,7 @@ class MainViewController ( ui_util.ViewController ):
 		selectedMode = self.select_mode_for_save_vc.get_selected_mode()
 		
 		if selectedMode is not None:
-			mode_manager.write_mode(selectedMode)
+			mode_manager.write_mode(self._document_directory, selectedMode)
 			self.loaded_mode = copy.copy(selectedMode)
 			self.handle_change_in_mode()
 			
@@ -471,10 +498,7 @@ class MainViewController ( ui_util.ViewController ):
 	def shutdown(self):		
 		speech.stop()
 		self.check_write_config_file()
-		
-		if self._save_timer is not None:
-			self._save_timer.cancel()
-			self._save_timer = None
+		self.deactivate_save_timer()
 				
 	def set_feature_mode(self):
 		"""
@@ -497,10 +521,14 @@ class MainViewController ( ui_util.ViewController ):
 		
 	def load_current_rule_set(self):
 		
-		filename = mode_manager.get_mode_filename(modeName = self.conf.state.current_rule_set_name)
+		filename = mode_manager.get_mode_filename(
+			p_document_directory = self._document_directory,
+			 modeName = self.conf.state.current_rule_set_name)
 		
 		if os.path.exists(filename):	
-			mode = mode_manager.read_mode(modeName = self.conf.state.current_rule_set_name)
+			mode = mode_manager.read_mode(
+				p_document_directory = self._document_directory, 
+				modeName = self.conf.state.current_rule_set_name)
 			
 		else:
 			mode = spelling_mode.spelling_mode()
@@ -509,12 +537,22 @@ class MainViewController ( ui_util.ViewController ):
 		
 ##### MAIN ######################
 
-def main():
+def main(p_running_on_target_device = False):
 
 	global logger
 	
 	console.clear()
-	logger = log.open_logging('rechtschreibung', reload=True)
+	
+	if p_running_on_target_device:
+		document_directory = ui_util.get_document_directory()
+	
+	else:
+		document_directory = "."
+		
+	logger = log.open_logging(
+		'rechtschreibung', 
+		reload=True, 
+		p_document_directory=document_directory)
 	logger.info("Start application")
 	
 	default_mode = spelling_mode.spelling_mode()
@@ -522,8 +560,9 @@ def main():
 	
 	config_handler = config.ConfigHandler(app_config.AppConfig())
 	
-	image_rechtschreibung = ui.Image.named(IMAGE_URL_RECHTSCHREIBUNG).with_rendering_mode(ui.RENDERING_MODE_ORIGINAL)
-	my_main_view_controller = MainViewController()
+	image_rechtschreibung = (
+		ui.Image.named(IMAGE_URL_RECHTSCHREIBUNG).with_rendering_mode(ui.RENDERING_MODE_ORIGINAL))
+	my_main_view_controller = MainViewController(p_document_directory=document_directory)
 	
 	top_navigation_vc = ui_util.ViewController(my_main_view_controller)
 	navigation_vc = ui_util.ViewController(top_navigation_vc)
@@ -599,6 +638,7 @@ def main():
 	my_main_view_controller.set_model(default_mode.combination)
 	
 	my_main_view_controller.load_config(config_handler)
+	my_main_view_controller.select_reference_rule_set()
 	my_main_view_controller.set_feature_mode()
 	my_main_view_controller.load_current_rule_set()
 	
@@ -606,13 +646,15 @@ def main():
 	# method "update_sample_text". We use an absolute path to load the page so that the relative
 	# path reference to the style sheet can be derrived by the browser.
 	text_view = my_main_view_controller.find_subview_by_name('webview_text_view')
-	absolute_page_path = 'file:' + os.path.abspath('etc/text_page.html')
+	rel_path = os.path.join(document_directory, 'etc/text_page.html')
+	absolute_page_path = 'file:' + os.path.abspath(rel_path)
 	logger.info('Loading HTML page at %s' % absolute_page_path)
 	text_view.load_url(absolute_page_path)
 	
 	my_main_view_controller.update_sample_text(p_initial_update = True)
 	my_main_view_controller.activate_save_timer()
 	my_main_view_controller.present('fullscreen', title_bar_color=defaults.COLOR_GREY)
+	my_main_view_controller.shutdown()
 	logger.info("Terminate application")
 	
 if __name__ == '__main__':

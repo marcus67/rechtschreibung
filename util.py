@@ -5,6 +5,8 @@ import difflib
 import string
 import six
 
+PARAMETER_RUNNING_ON_TARGET_DEVICE = "--target-device"
+
 DIFF_INSERT = u'i'
 DIFF_DELETE = u'd'
 DIFF_CHANGE = u'c'
@@ -22,6 +24,7 @@ def count_bits(value):
 	while value > 0:
 		if value & 1 > 0:
 			count = count + 1
+			
 		value = value >> 1
 		
 	return count
@@ -29,22 +32,23 @@ def count_bits(value):
 def set_container_value(container, name, value):
 	if getattr(container, name, None) != None:
 		setattr(container, name, value)
+		
 	else:
 		print ("ERROR: name '%s' not found in container '%s'" % (name, type(container).__name__))
 		
 def get_change_control_strings(oldString, newString):
 
 	enhancedString = oldString # .encode("utf-8" )
-	controlString = ( " " * len(enhancedString) ) #.encode( "utf-8" )
+	controlString = ( u" " * len(enhancedString) ) #.encode( "utf-8" )
 	
 	for i,s in enumerate(difflib.ndiff(oldString, newString)):
-		if s[0]==' ':
+		if s[0] == u' ':
 			continue
 			
-		elif s[0]=='-':
+		elif s[0] == u'-':
 			controlString = controlString[0:i] + DIFF_DELETE + controlString[i+1:]
 			
-		elif s[0]=='+':
+		elif s[0] == u'+':
 			enhancedString = enhancedString[0:i] + s[-1] + enhancedString[i:]
 			controlString = controlString[0:i] + DIFF_INSERT + controlString[i:]
 			
@@ -53,17 +57,17 @@ def get_change_control_strings(oldString, newString):
 	
 def get_multi_token_change_control_strings(oldString, newString):
 
-	oldTokens = oldString.split(' ')
-	newTokens = newString.split(' ')
+	oldTokens = oldString.split(u' ')
+	newTokens = newString.split(u' ')
 	if len(oldTokens) == len(newTokens):
-		enhancedString = ''
-		controlString = ''
+		enhancedString = u''
+		controlString = u''
 		i = 0
 		for oldToken in oldTokens:
 			enhancedToken, tokenControlString = get_change_control_strings(oldToken,newTokens[i])
 			if len(enhancedString) > 0:
-				enhancedString = enhancedString + ' '
-				controlString = controlString + ' '
+				enhancedString = enhancedString + u' '
+				controlString = controlString + u' '
 			enhancedString = enhancedString + enhancedToken
 			controlString = controlString + tokenControlString
 			i = i + 1
@@ -85,15 +89,16 @@ def get_html_content(oldString, newString, show_changes):
 			if c == DIFF_NONE:
 				newString = newString + enhancedNewString[i]
 			elif c == DIFF_INSERT:
-				newString = newString + '<span id=''ins''>' + enhancedNewString[i] + '</span>'
+				newString = newString + u"<span id='ins'>" + enhancedNewString[i] + u'</span>'
 			elif c == DIFF_DELETE:
-				newString = newString + '<span id=''del''>' + enhancedNewString[i] + '</span>'
+				newString = newString + u"<span id='del'>" + enhancedNewString[i] + u'</span>'
 			i = i + 1
 			
 	# do some final replacements:
 	# -) replace the surrogate characters used for those not found on the Apple keyboard by their HTML codes
 	# -) replace the double quote character '"' bei &quot; so that the resultsing string can be used in JS.
-	return newString.replace("\n","<BR/>").replace("ė","&#275;").replace("Ė","&#274;").replace('"','&quot;')
+	return newString.replace(
+		u"\n",u"<BR/>").replace(u"ė",u"&#275;").replace(u"Ė",u"&#274;").replace(u'"',u'&quot;')
 	
 	
 def add_missing_attributes(object, template):
@@ -109,9 +114,5 @@ def count_differences_in_dicts(dict1, dict2):
 	common_keys = set(dict1.keys()).intersection(dict2.keys())
 	return sum([1 if dict1[key] != dict2[key] else 0 for key in common_keys])
 	
-def test():
-	print (get_html_content("Zwei šBären","Eine Bäršin", True))
-	
-if __name__ == '__main__':
-	test()
-
+def is_running_on_target_device():
+	return PARAMETER_RUNNING_ON_TARGET_DEVICE in sys.argv

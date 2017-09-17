@@ -14,13 +14,13 @@ class TestWords(unittest.TestCase):
 		rulesets.set_default_mode(rulesets.spelling_mode().combination)
 	
 	def test_word_abbrechen(self):
-		self.assertEqual("abbrechen", words.abbrechen())
+		self.assertEqual(u"abbrechen", words.abbrechen())
 
 	def test_word_schlieszen(self):
-		self.assertEqual("schließen", words.schlieszen())
+		self.assertEqual(u"schließen", words.schlieszen())
 		
 	def test_word_speichern(self):
-		self.assertEqual("speichern", words.speichern())
+		self.assertEqual(u"speichern", words.speichern())
 		
 if __name__ == '__main__':
 	unittest.main()
