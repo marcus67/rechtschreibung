@@ -7,5 +7,8 @@ cache:
 
 test:
     script:
-    - pip install six console
-    - python test_base_suite.py
+    - apt-get -y install python-pip
+    - pip2 install six console
+    - pip3 install six console
+    - python2.7 test_base_suite.py
+    - python3.5 test_base_suite.py
