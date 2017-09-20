@@ -19,11 +19,11 @@ else:
 	
 reload(log)
 
-global logger
-
-logger = log.open_logging(__name__)
-
 class BaseConfig(object):
+
+	def __init__(self):
+		
+		self._logger = log.open_logging(__name__)
 
 	def getIntAttributes(self):
 		return list()
@@ -35,17 +35,15 @@ class BaseConfig(object):
 		self._dump(conf=self, parent_prefix=type(self).__name__ + '.')
 		
 	def _dump(self, conf, parent_prefix):
-		global logger
-		
 		for (key, value) in conf.__dict__.items():
 			attr_type = type(getattr(conf, key)).__name__
 			name = parent_prefix + key
 			#print attr_type
 			if attr_type in ('int', 'bool', 'str'):
-				logger.debug('%s=%s' % (name, str(value)))
+				self._logger.debug('%s=%s' % (name, str(value)))
 				
 			elif attr_type == 'NoneType':
-				logger.debug('%s=<NONE>' % name)
+				self._logger.debug('%s=<NONE>' % name)
 				
 			else:
 				self._dump(value, name + '.')
@@ -56,7 +54,8 @@ class ConfigHandler(object):
 		self.config_template = config_template
 		self._changed = False
 		self._config_filename = None
-		
+		self._logger = log.open_logging(__name__)
+				
 	def scan_section(self, sectionName, model):
 		for option in self.config_file.options(sectionName):
 		
@@ -92,8 +91,6 @@ class ConfigHandler(object):
 				
 	def read_config_file(self, filename, sample_filename=None):
 	
-		global logger
-		
 		self.config_file = ConfigParser()
 		self.config_file.optionxform = str # make options case sensitive
 		self._config = copy.deepcopy(self.config_template)
@@ -102,7 +99,7 @@ class ConfigHandler(object):
 		
 		try:
 			if sample_filename != None and (not os.path.exists(filename)) and os.path.exists(sample_filename):
-				logger.info("Copying sample configuration file '%s'" % sample_filename)
+				self._logger.info("Copying sample configuration file '%s'" % sample_filename)
 				shutil.copyfile(sample_filename, filename)
 				
 		except Exception as e:
@@ -111,7 +108,7 @@ class ConfigHandler(object):
 			
 		if not error_message:
 			fmt = "reading configuration file '%s' for config '%s'"
-			logger.info(fmt % (filename, type(self.config_template).__name__))
+			self._logger.info(fmt % (filename, type(self.config_template).__name__))
 			
 			try:
 				files_read = self.config_file.read([filename])
@@ -154,7 +151,7 @@ class ConfigHandler(object):
 				os.makedirs(directory)
 			file = open(filename, "w")
 			fmt = "Writing modified configuration to %s" % filename
-			logger.info(fmt)
+			self._logger.info(fmt)
 			self.config_file.write(file)
 			file.close()
 			self._changed = False
