@@ -33,10 +33,6 @@ MAX_BITS = 8
 NAVIGATION_VIEW_TITLE_HEIGHT = 64
 PORTRAIT_SMALL_VIEW_HEIGHT = 480
 
-global logger
-
-logger = log.open_logging(__name__)
-
 def is_iphone():
 	return ui.get_screen_size().width < 768
 	#return True
@@ -99,6 +95,7 @@ class ViewController (object):
 
 	def __init__(self, parent_vc=None):
 	
+		self._logger = log.open_logging(__name__)
 		self.parent_vc = parent_vc
 		self.model = None
 		self.child_controllers = {}
@@ -116,12 +113,10 @@ class ViewController (object):
 		
 	def add_subview(self, parent_view_name, subview):
 	
-		global logger
-		
 		container_view = self.find_subview_by_name(parent_view_name)
 		
 		if not container_view:
-			logger.warning("add_subview: cannot find parent view '%s'" % parent_view_name)
+			self._logger.warning("add_subview: cannot find parent view '%s'" % parent_view_name)
 			return
 			
 		container_view.add_subview(subview)
@@ -134,11 +129,11 @@ class ViewController (object):
 		
 	def add_left_button_item(self, view_name, name, button_item):
 	
-		global logger
+		logger = log.open_logging(__name__)
 		
 		view = self.find_subview_by_name(view_name)
 		if view == None:
-			logger.warning("add_left_button_item: cannot find view %s" % view_name)
+			self._logger.warning("add_left_button_item: cannot find view %s" % view_name)
 			return
 			
 		button_item.action = ButtonItemAction(self, button_item).handle_action
@@ -157,7 +152,7 @@ class ViewController (object):
 		
 		view = self.find_subview_by_name(view_name)
 		if view == None:
-			logger.warning("add_right_button_item: cannot find view %s" % view_name)
+			self._logger.warning("add_right_button_item: cannot find view %s" % view_name)
 			return
 			
 		button_item.action = ButtonItemAction(self, button_item).handle_action
@@ -174,7 +169,7 @@ class ViewController (object):
 		
 		view = self.find_subview_by_name(view_name)
 		if view == None:
-			logger.warning("add_right_button_item: cannot find view %s" % view_name)
+			self._logger.warning("add_right_button_item: cannot find view %s" % view_name)
 			return
 			
 		self.condenser = button_item_condenser.ButtonItemCondenser(button_item_list,x_spacing=0)
@@ -192,11 +187,11 @@ class ViewController (object):
 		global logger
 		
 		if name in self.subview_map:
-			logger.debug("find_subview_by_name: found '%s' in cache" % name)
+			self._logger.debug("find_subview_by_name: found '%s' in cache" % name)
 			return self.subview_map[name]
 			
 		if self.view is not None:
-			logger.debug("find_subview_by_name: find %s in vc of view %s" % (name, self.view.name))
+			self._logger.debug("find_subview_by_name: find %s in vc of view %s" % (name, self.view.name))
 			descendant_view = self.find_subview_by_name2(self.view, name)
 			if descendant_view is not None:
 				self.subview_map[name] = descendant_view
@@ -209,7 +204,7 @@ class ViewController (object):
 				return descendant_view
 		
 		if first_level:		
-			logger.warn("find_subview_by_name: view '%s' not found!" % name)
+			self._logger.warn("find_subview_by_name: view '%s' not found!" % name)
 			
 		return None
 		
@@ -222,7 +217,7 @@ class ViewController (object):
 			else:
 				if type(view).__name__ == 'SegmentedControl':
 					if not self.warningWorkaroundIssued:
-						logger.warning("find_subview_by_name2: WORKAROUND: skipping iteration over subviews of SegmentedControl '%s'" % view.name)
+						self._logger.warning("find_subview_by_name2: WORKAROUND: skipping iteration over subviews of SegmentedControl '%s'" % view.name)
 						self.warningWorkaroundIssued = True
 				else:
 					if type(view).__name__ == 'NavigationView':
@@ -244,49 +239,49 @@ class ViewController (object):
 		
 		if type(sender).__name__ == 'ListDataSource':
 			fmt = "handle_action: ListDataSource: %s"
-			logger.debug(fmt % str(sender))
+			self._logger.debug(fmt % str(sender))
 			return self.handle_list_data_source_action(sender)
 			
 		elif type(sender).__name__ == 'Button':
 			fmt = "handle_action: Button: %s"
-			logger.debug(fmt % sender.name)
+			self._logger.debug(fmt % sender.name)
 			return self.handle_button_action(sender.name, sender)
 			
 		elif type(sender).__name__ == 'Switch':
 			fmt = "handle_action: Switch: %s"
-			logger.debug(fmt % sender.name)
+			self._logger.debug(fmt % sender.name)
 			return self.handle_switch_action(sender)
 			
 		elif type(sender).__name__ == 'SegmentedControl':
 			fmt = "handle_action: SegmentedControl: %s"
-			logger.debug(fmt % sender.name)
+			self._logger.debug(fmt % sender.name)
 			return self.handle_segmented_control_action(sender)
 			
 		elif type(sender).__name__ == 'TextFieldDelegate':
 			fmt = "handle_action: TextFieldDelegate: %s"
-			logger.debug(fmt % sender.name)
+			self._logger.debug(fmt % sender.name)
 			return self.handle_textfield_action(sender)
 			
 		elif type(sender).__name__ == 'ButtonItem':
 			if str(sender) in self.button_items:
 				fmt = "handle_action: ButtonItem: %s"
 				name = self.button_items[str(sender)]
-				logger.debug(fmt % name)
+				self._logger.debug(fmt % name)
 				return self.handle_button_action(name, sender)
 				
 			elif sender.title:
 				fmt = "handle_action: ButtonItem: %s"
 				name = sender.title
-				logger.debug(fmt % name)
+				self._logger.debug(fmt % name)
 				return self.handle_button_action(name, sender)
 				
 			else:
 				fmt = "handle_action: ButtonItem: unknown class instance '%s'"
-				logger.warning(fmt % str(sender))
+				self._logger.warning(fmt % str(sender))
 				
 		else:
 			fmt = "handle_action: unknown class '%s'"
-			logger.warning(fmt % type(sender).__name__)
+			self._logger.warning(fmt % type(sender).__name__)
 			
 		return 0
 		
@@ -296,7 +291,7 @@ class ViewController (object):
 			return self.parent_vc.handle_named_action(name)
 			
 		fmt = "handle_named_action: action '%s' not handled"
-		logger.warning(fmt % name)
+		self._logger.warning(fmt % name)
 		
 	def handle_button_action(self, name, sender):
 		global logger
@@ -305,7 +300,7 @@ class ViewController (object):
 			return self.parent_vc.handle_button_action(name, sender)
 			
 		fmt = "handle_button_action: button '%s' not handled"
-		logger.warning(fmt % name)
+		self._logger.warning(fmt % name)
 		
 	def handle_switch_action(self, sender):
 		global logger
@@ -314,7 +309,7 @@ class ViewController (object):
 			return self.parent_vc.handle_switch_action(sender)
 			
 		fmt = "handle_switch_action: switch '%s' not handled"
-		logger.warning(fmt % sender.name)
+		self._logger.warning(fmt % sender.name)
 		
 	def handle_segmented_control_action(self, sender):
 		global logger
@@ -323,7 +318,7 @@ class ViewController (object):
 			return self.parent_vc.handle_segmented_control_action(sender)
 			
 		fmt = "handle_segmented_control_action: control '%s' not handled"
-		logger.warning(fmt % sender.name)
+		self._logger.warning(fmt % sender.name)
 		
 	def handle_list_data_source_action(self, sender):
 	
@@ -331,7 +326,7 @@ class ViewController (object):
 			return self.parent_vc.handle_list_data_source_action(sender)
 			
 		fmt = "handle_list_data_source_action: not handled"
-		logger.warning(fmt)
+		self._logger.warning(fmt)
 		
 	def handle_textfield_action(self, sender):
 	
@@ -339,7 +334,7 @@ class ViewController (object):
 			return self.parent_vc.handle_textfield_action(sender)
 			
 		fmt = "handle_textfield_action: not handled"
-		logger.warning(fmt)
+		self._logger.warning(fmt)
 		
 	def present(self, style='popover', title=None, orientations=None, title_bar_color=None):
 		global logger
@@ -350,7 +345,7 @@ class ViewController (object):
 			self.view.wait_modal()
 			
 		except Exception as e:
-			logger.error("Exception '%s' caught" % str(e))
+			self._logger.error("Exception '%s' caught" % str(e))
 			self.view.close()
 			
 	def retrieve_from_model(self, p_model = None):
@@ -370,7 +365,7 @@ class ViewController (object):
 					view.value = getattr(model, att)
 
 				else:
-					logger.warning("retrieve_from_model: no view found for switch attribute '%s'" % att)
+					self._logger.warning("retrieve_from_model: no view found for switch attribute '%s'" % att)
 					
 			elif att.startswith(BITSWITCH_PREFIX):
 				bit = 1
@@ -383,17 +378,17 @@ class ViewController (object):
 						found = True
 					bit = bit * 2
 				if not found:
-					logger.warning("retrieve_from_model: no view found for BIT switch attribute '%s'" % att)
+					self._logger.warning("retrieve_from_model: no view found for BIT switch attribute '%s'" % att)
 					
 			elif att.startswith(SEGMENTED_CONTROL_PREFIX):
 				view = self.find_subview_by_name(att)
 				if view != None:
 					view.selected_index = getattr(model, att)
 				else:
-					logger.warning("retrieve_from_model: no view found for segmented control attribute '%s'" % att)
+					self._logger.warning("retrieve_from_model: no view found for segmented control attribute '%s'" % att)
 					
 			else:
-				logger.debug("retrieve_from_model: unsupported attribute prefix in attribute '%s'" % att)
+				self._logger.debug("retrieve_from_model: unsupported attribute prefix in attribute '%s'" % att)
 				
 				
 	def set_model(self, model, retrieve=True):

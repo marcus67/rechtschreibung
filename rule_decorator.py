@@ -41,8 +41,10 @@ class Rule (object):
 		
 		if p_cond & COND_BOS > 0:
 			params.append(u"c=C_BOS")
+			
 		elif p_cond & COND_BOW > 0 and p_cond & COND_CAPITALIZED > 0 and not self.seperates_words:
 			params.append(u"c=C_NOUN")
+			
 		if self.check_voicefullness and p_cond & COND_EOW > 0:
 			params.append(u"m=VOICELESS")
 		

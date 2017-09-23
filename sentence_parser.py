@@ -10,14 +10,11 @@ import log
 import rule_decorator
 import util
 
-global logger
-
 def print_rules():
 	for rule in rule_decorator.get_rules():
 		print (str(rule))
 
 def get_single_char_pattern_map(p_rules):
-	global logger
 	
 	map = {}
 	
@@ -35,8 +32,8 @@ def get_single_char_pattern_map(p_rules):
 	return map			
 			
 def parse_string(p_string):
-	global logger
 	
+	logger = log.open_logging('parser')
 	s = p_string
 	cond = rule_decorator.COND_BOS | rule_decorator.COND_BOW
 	rules = rule_decorator.get_rules()
@@ -118,15 +115,10 @@ def parse_string(p_string):
 		
 	return u"+".join(result)
 	
-def setup_logging():
-	global logger
-	
-	logger = log.open_logging('parser', reload=True)	
 
 def main():
-	global logger
 	
-	setup_logging()
+	logger = log.open_logging('parser', reload=True)
 	logger.info("Start parser")
 	sentence = input("Enter sentence:")
 	print (parse_string(sentence))

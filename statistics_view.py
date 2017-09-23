@@ -10,6 +10,7 @@ import ui_util
 import rulesets
 import statistics
 import charts
+import log
 
 if six.PY3:
 	from importlib import reload
@@ -19,6 +20,7 @@ reload(ui_util)
 reload(rulesets)
 reload(statistics)
 reload(charts)
+reload(log)
 
 from rulesets import *
 
@@ -32,10 +34,14 @@ class StatisticsViewController ( ui_util.ViewController ) :
 
 	def __init__(self, parent_vc=None):
 		super(StatisticsViewController, self).__init__(parent_vc)
+		self._logger = log.open_logging('StatisticsView')
+		
 		if ui_util.is_iphone():
 			self.load('statistics_view_iphone')
+		
 		else:
 			self.load('statistics_view')
+		
 		self.imageview_plot1 = self.find_subview_by_name('imageview_plot1')
 		self.imageview_plot2 = self.find_subview_by_name('imageview_plot2')
 		self.imageview_plot3 = self.find_subview_by_name('imageview_plot3')
@@ -45,7 +51,7 @@ class StatisticsViewController ( ui_util.ViewController ) :
 			self.view.close()
 			
 		else:
-			print ("WARNING: action '%s' not handled!" % sender.name)
+			self._logger.warning("action '%s' not handled!" % sender.name)
 			
 		return 0
 		

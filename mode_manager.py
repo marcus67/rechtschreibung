@@ -24,10 +24,6 @@ MODE_FILE_DIRECTORY = u'configurations'
 MODE_FILE_EXTENSION = u'.mode.pickle'
 MODE_FILE_EXTENSION_PATTERN = u'(.+)' + MODE_FILE_EXTENSION.replace(u'.', u'\.')
 
-global logger
-
-logger = log.open_logging(__name__)
-
 def get_mode_filename(p_document_directory, modeName):
 
 	return os.path.join(
@@ -36,8 +32,7 @@ def get_mode_filename(p_document_directory, modeName):
 	
 def read_mode(p_document_directory, modeName):
 
-	global logger
-	
+	logger = log.open_logging(__name__)
 	filename = get_mode_filename(p_document_directory, modeName)
 	file = io.open(filename, "rb")
 	logger.info("read mode file '%s'" % filename)
@@ -52,11 +47,11 @@ def read_mode(p_document_directory, modeName):
 	
 def write_mode(p_document_directory, mode):
 
-	global logger
+	logger = log.open_logging(__name__)
 	
 	filename = get_mode_filename(p_document_directory, mode.control.name)
-	
 	directory = os.path.dirname(filename)
+	
 	if not os.path.exists(directory):
 		os.makedirs(directory)
 	
@@ -89,6 +84,7 @@ def get_available_modes(p_document_directory, includePredefinedModes = True):
 def test():
 
 	modes = get_available_modes(".")
+	
 	for mode in modes:
 		if mode.control.isImmutable:
 			mode.control.name = mode.control.name + u' (pickled)'

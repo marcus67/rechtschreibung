@@ -6,12 +6,9 @@ import unittest
 import sentence_parser
 import rulesets
 
-global logger
-
 class TestParser(unittest.TestCase):
 	
 	def setUp(self):
-		sentence_parser.setup_logging()		
 		rulesets.set_default_mode(rulesets.spelling_mode().combination)
 	
 
