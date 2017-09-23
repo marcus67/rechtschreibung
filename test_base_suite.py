@@ -31,6 +31,7 @@ class TestBaseSuite(unittest.TestSuite):
 if __name__ == '__main__':
 	
 	print ("Testing with python %s" % sys.version)
+	
 	test_suite = TestBaseSuite()
 	test_result = unittest.TestResult()
 	test_suite.run(test_result)

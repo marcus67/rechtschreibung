@@ -21,15 +21,14 @@ reload(ui_util)
 reload(spelling_mode)
 reload(mode_manager)
 
-global logger
-logger = log.open_logging(__name__)
-
-
 class SpellingModeSaver(ui_util.ViewController):
 
 	def __init__(self, parent_vc=None):
 	
 		super(SpellingModeSaver, self).__init__(parent_vc)
+		
+		self._logger = log.open_logging(__name__)
+		
 		self.load('mode_saver')
 		
 		self.text_field_mode_name = self.find_subview_by_name('textfield_mode_name')
@@ -48,10 +47,10 @@ class SpellingModeSaver(ui_util.ViewController):
 	
 		return sender == self
 		
-	def select(self, modes, current_mode, cancel_label='Abbrechen', save_label='Speichern', overwrite_label='Überschreiben', style='sheet'):
+	def select(
+		self, modes, current_mode, cancel_label='Abbrechen', 
+		save_label='Speichern', overwrite_label='Überschreiben', style='sheet'):
 	
-		global logger
-		
 		self.cancel_label = cancel_label
 		self.save_label = save_label
 		self.overwrite_label = overwrite_label
@@ -61,7 +60,7 @@ class SpellingModeSaver(ui_util.ViewController):
 		
 		for mode in modes:
 		
-			logger.debug("add mode '%s' to list" % mode.control.name)
+			self._logger.debug("add mode '%s' to list" % mode.control.name)
 			entry_map = { 'title' : mode.control.name }
 			
 			items.append(entry_map)
@@ -135,19 +134,20 @@ class SpellingModeSaver(ui_util.ViewController):
 		
 def test():
 
-	global logger
-	
+	logger = log.open_logging(__name__, reload=True)
 	logger.info("Test started")
 	saver = SpellingModeSaver()
 	
 	current_mode = spelling_mode.spelling_mode()
-	saver.select(mode_manager.get_available_modes(False), current_mode)
+	saver.select(mode_manager.get_available_modes('.', False), current_mode)
 	result = saver.get_selected_mode()
 	
 	if result:
 		logger.info("selected_mode='%s' comment='%s'" % (result.control.name, result.control.comment))
+	
 	else:
 		logger.info("selection cancelled")
+	
 	logger.info("Test finished")
 	
 if __name__ == '__main__':

@@ -54,8 +54,6 @@ reload(app_config)
 reload(statistics)
 reload(rules_doc_manager)
 
-global logger
-
 # Location of the application global configuration file. This will be automatically updated after
 # any change in the configuration.
 CONFIG_FILE = 'etc/rechtschreibung_config.txt'
@@ -102,9 +100,11 @@ class MainViewController ( ui_util.ViewController ):
 		
 		super(MainViewController, self).__init__()
 		
+		self._logger = log.open_logging('rechtschreibung')
+		
 		self._document_directory = p_document_directory
 		fmt = "App is running with document directory %s" % self._document_directory
-		logger.info(fmt)
+		self._logger.info(fmt)
 			
 		self._save_timer = None
 		
@@ -244,7 +244,7 @@ class MainViewController ( ui_util.ViewController ):
 				return 1
 				
 			else:
-				logger.warning("cannot find subview '%s" % view_name)
+				self._logger.warning("cannot find subview '%s" % view_name)
 				
 		elif name.startswith(INFO_PREFIX):
 			info_name = name[len(INFO_PREFIX):]
@@ -254,7 +254,7 @@ class MainViewController ( ui_util.ViewController ):
 				self.info_popup.present(rule_info, close_label=words.schlieszen(c=rulesets.C_BOS))
 				
 			else:
-				logger.error("cannot find info text for %s" % info_name)
+				self._logger.error("cannot find info text for %s" % info_name)
 				
 		else:
 			super(MainViewController, self).handle_button_action(name, sender)
@@ -306,7 +306,7 @@ class MainViewController ( ui_util.ViewController ):
 		view = self.find_subview_by_name(NAME_NAVIGATION_VIEW)
 		
 		if view is None:
-			logger.warning("open_top_navigation_view: cannot find view %s" % NAME_NAVIGATION_VIEW)
+			self._logger.warning("open_top_navigation_view: cannot find view %s" % NAME_NAVIGATION_VIEW)
 			return
 			
 		self.delay_highlight_changes = True
@@ -374,14 +374,14 @@ class MainViewController ( ui_util.ViewController ):
 		
 		except Exception as e:
 			fmt = "Exception %s while writing status configuration" % str(e)
-			logger.error(fmt)
+			self._logger.error(fmt)
 		
 		try:
 			self.check_write_current_rule_set()
 		
 		except Exception as e:
 			fmt = "Exception %s while writing current rule set" % str(e)
-			logger.error(fmt)
+			self._logger.error(fmt)
 		
 		self.start_save_timer()
 			
@@ -447,7 +447,7 @@ class MainViewController ( ui_util.ViewController ):
 			title = 'Regelsatz laden' if load_mode_type == LOAD_MODE_RULESET else 'Referenz laden')
 		
 	def activate_mode(self, new_mode):
-		logger.info("Set working mode '%s'" % new_mode.control.name)
+		self._logger.info("Set working mode '%s'" % new_mode.control.name)
 		rulesets.set_default_mode(new_mode.combination)
 		self.loaded_mode = copy.deepcopy(new_mode)
 		self.current_mode = copy.copy(new_mode)
@@ -465,7 +465,7 @@ class MainViewController ( ui_util.ViewController ):
 				self.activate_mode(new_mode = selectedMode)
 				
 			else:
-				logger.info("Set reference mode '%s'" % selectedMode.control.name)
+				self._logger.info("Set reference mode '%s'" % selectedMode.control.name)
 				self.set_reference_mode(copy.deepcopy(selectedMode))
 				self.update_sample_text()
 				self.update_views()
@@ -491,7 +491,7 @@ class MainViewController ( ui_util.ViewController ):
 	def button_icon_rechtschreibung(self):
 		global logger
 		
-		logger.info("Opening URL %s" % GITHUB_URL_RECHTSCHREIBUNG)
+		self._logger.info("Opening URL %s" % GITHUB_URL_RECHTSCHREIBUNG)
 		wb.open(GITHUB_URL_RECHTSCHREIBUNG, modal=True)
 		
 	
@@ -506,11 +506,11 @@ class MainViewController ( ui_util.ViewController ):
 		"""					
 		if self.conf.rechtschreibung.full_feature_mode:
 			fmt = "Running in full feature mode"
-			logger.info(fmt)
+			self._logger.info(fmt)
 			
 		else:
 			fmt = "Running in restricted feature mode"
-			logger.info(fmt)
+			self._logger.info(fmt)
 			
 			for view_name in FULL_FEATURE_VIEWS:
 				view = self.find_subview_by_name(view_name)
@@ -539,8 +539,6 @@ class MainViewController ( ui_util.ViewController ):
 
 def main(p_running_on_target_device = False):
 
-	global logger
-	
 	console.clear()
 	
 	if p_running_on_target_device:

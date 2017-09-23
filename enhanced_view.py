@@ -9,9 +9,6 @@ import log
 
 STATUS_ROW_HEIGHT = 20
 
-global logger
-
-logger = log.open_logging(__name__)
 
 def get_absolute_y(view):
 	"""
@@ -73,6 +70,7 @@ class EnhancedView(ui.View):
 
 	def __init__(self):
 	
+		self._logger = log.open_logging(__name__)
 		self.subviews_enhanced = False
 		self.current_text_element = None
 		self.saved_right_button_items = None
@@ -150,5 +148,5 @@ class EnhancedView(ui.View):
 				self.right_button_items = []
 				
 		self.bounds = scene.Rect(self.bounds[0], delta_y, self.bounds[2], self.bounds[3])
-		logger.debug("keyboard_frame_did_change: frame=%s, delta_y=%d" % (str(frame), delta_y) )
+		self._logger.debug("keyboard_frame_did_change: frame=%s, delta_y=%d" % (str(frame), delta_y) )
 
