@@ -139,16 +139,22 @@ class ConfigHandler(object):
 		
 	def write_config_file(self):
 		if self._changed:		
-			
+	
 			for section_name in self.config_template.__dict__:
 				sub_config = getattr(self._config, section_name)
+				
 				for attr_name in sub_config.__dict__:
+					if not self.config_file.has_section(section_name):
+						self.config_file.add_section(section_name)
+						
 					self.config_file.set(section_name, attr_name, str(getattr(sub_config, attr_name)))
 			
 			filename = self._config_filename
 			directory = os.path.dirname(filename)
+
 			if not os.path.exists(directory):
 				os.makedirs(directory)
+			
 			file = open(filename, "w")
 			fmt = "Writing modified configuration to %s" % filename
 			self._logger.info(fmt)

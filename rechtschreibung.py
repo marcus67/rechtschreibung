@@ -338,14 +338,14 @@ class MainViewController ( ui_util.ViewController ):
 		self.hideTimer.start()
 		
 	def activate_save_timer(self):
-			self._save_timer_active = True
-			self.start_save_timer()
+		self._save_timer_active = True
+		self.start_save_timer()
 			
 	def deactivate_save_timer(self):
-			self._save_timer_active = False
-			if self._save_timer is not None:
-				self._save_timer.cancel()
-				self._save_timer = None
+		self._save_timer_active = False
+		if self._save_timer is not None:
+			self._save_timer.cancel()
+			self._save_timer = None
 			
 	
 	def start_save_timer(self):
