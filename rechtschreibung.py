@@ -643,14 +643,14 @@ def main(p_running_on_target_device = False):
 	my_main_view_controller.load_current_rule_set()
 	
 	# Set the empty html page for displaying the sample text. The actual content will be set in
-	# method "update_sample_text". We use an absolute path to load the page so that the relative
-	# path reference to the style sheet can be derrived by the browser.
+	# method "update_sample_text".
 	text_view = my_main_view_controller.find_subview_by_name('webview_text_view')
 	rel_path = os.path.join(".", 'etc/text_page.html')
-	absolute_page_path = 'file:' + os.path.abspath(rel_path)
+	absolute_page_path = os.path.abspath(rel_path)
 	logger.info('Loading HTML page at %s' % absolute_page_path)
-	text_view.load_url(absolute_page_path)
-	
+	with open(absolute_page_path, "r") as f:
+		html_string = f.read()
+	text_view.load_html(html_string)
 	my_main_view_controller.update_sample_text(p_initial_update = True)
 	my_main_view_controller.activate_save_timer()
 	my_main_view_controller.present('fullscreen', title_bar_color=defaults.COLOR_GREY)
