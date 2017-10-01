@@ -3,19 +3,12 @@
 
 import six
 
-import log
 import rulesets
 
 if six.PY3:
 	from importlib import reload
 	
-reload(log)
 reload(rulesets)
-
-global logger
-
-logger = log.open_logging(__name__)
-
 
 def get_letter_histogram(text):
 	histogram = {}
