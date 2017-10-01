@@ -543,6 +543,8 @@ def main(p_running_on_target_device = False):
 	
 	console.clear()
 	
+	print ("running on target device", p_running_on_target_device)
+	
 	if p_running_on_target_device:
 		document_directory = ui_util.get_document_directory()
 	
@@ -646,7 +648,7 @@ def main(p_running_on_target_device = False):
 	# method "update_sample_text". We use an absolute path to load the page so that the relative
 	# path reference to the style sheet can be derrived by the browser.
 	text_view = my_main_view_controller.find_subview_by_name('webview_text_view')
-	rel_path = os.path.join(document_directory, 'etc/text_page.html')
+	rel_path = os.path.join(".", 'etc/text_page.html')
 	absolute_page_path = 'file:' + os.path.abspath(rel_path)
 	logger.info('Loading HTML page at %s' % absolute_page_path)
 	text_view.load_url(absolute_page_path)

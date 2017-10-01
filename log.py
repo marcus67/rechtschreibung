@@ -30,8 +30,15 @@ def open_logging(module_name, reload = False, p_document_directory = "."):
 			shutil.copyfile(LOGGING_TEMPLATE_FILENAME, logging_filename)
 		logging_config_json_file = open(logging_filename)
 		parsed_logging_data = json.load(logging_config_json_file)
-		log_dir = os.path.join(p_document_directory, parsed_logging_data["handlers"]["file"]["filename"])
-		parsed_logging_data["handlers"]["file"]["filename"] = log_dir
+		print ("doc dir", p_document_directory)
+		print ("aus Config", parsed_logging_data["handlers"]["file"]["filename"])
+		log_file = os.path.join(p_document_directory, parsed_logging_data["handlers"]["file"]["filename"])
+		print (log_file)
+		#exit(0)
+		parsed_logging_data["handlers"]["file"]["filename"] = log_file
+		log_dir = os.path.dirname(log_file)
+		if not os.path.exists(log_dir):
+			os.makedirs(log_dir)
 		logging_config_json_file.close()
 		logging.config.dictConfig(parsed_logging_data)
 		
