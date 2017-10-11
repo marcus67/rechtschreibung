@@ -11,6 +11,7 @@ import os
 import time
 import webbrowser as wb
 import six 
+import sys
 
 import log
 import defaults
@@ -168,11 +169,6 @@ class MainViewController ( ui_util.ViewController ):
 			self.orientations = ( 'portrait', )
 		else:
 			self.orientations = ( 'landscape', )
-			
-		# Path to the directory where files can be stored. Under Pythonista this
-		# defaults to the local directory. On the target device this will the document directory.
-		
-		self._document_directory = '.'
 			
 	def load_config(self, p_config_handler):
 		
@@ -487,7 +483,9 @@ class MainViewController ( ui_util.ViewController ):
 			mode_manager.write_mode(self._document_directory, selectedMode)
 			self.loaded_mode = copy.copy(selectedMode)
 			self.handle_change_in_mode()
-			
+			self.conf.state.current_rule_set_name = selectedMode.control.name
+			self._config_handler.mark_configuration_as_changed()
+					
 	def button_icon_rechtschreibung(self):
 		global logger
 		
@@ -540,20 +538,25 @@ class MainViewController ( ui_util.ViewController ):
 def main(p_running_on_target_device = False):
 
 	console.clear()
-	
-	print ("running on target device", p_running_on_target_device)
-	
+
 	if p_running_on_target_device:
 		document_directory = ui_util.get_document_directory()
-	
+		
+		if '1C5C0C21-808E-415D-BAEA-D74333EF8AA6' in document_directory:
+			document_directory = "../rechtschreibung_doc_dir"
+			
 	else:
 		document_directory = "."
 		
 	logger = log.open_logging(
 		'rechtschreibung', 
 		reload=True, 
-		p_document_directory=document_directory)
-	logger.info("Start application")
+		p_document_directory=document_directory,
+		p_running_on_target_device=p_running_on_target_device)
+	
+	fmt = "Start application (p_running_on_target_device=%s, cwd=%s)" % (
+		str(p_running_on_target_device), os.getcwd())
+	logger.info(fmt)
 	
 	default_mode = spelling_mode.spelling_mode()
 	rulesets.set_default_mode(default_mode.combination)
@@ -658,5 +661,6 @@ def main(p_running_on_target_device = False):
 	logger.info("Terminate application")
 	
 if __name__ == '__main__':
-	main()
+	running_on_target_device = (len(sys.argv) > 1 and sys.argv[1] == 'running_on_target_device')
+	main(p_running_on_target_device=running_on_target_device)
 

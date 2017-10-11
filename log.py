@@ -11,14 +11,24 @@ import json
 
 LOGGING_FILENAME = "etc/log_config.json"
 LOGGING_TEMPLATE_FILENAME = "etc/log_config_template.json"
+LOGGING_TARGET_DEVICE_TEMPLATE_FILENAME = "etc/log_config_target_device_template.json"
 
-def open_logging(module_name, reload = False, p_document_directory = "."):
+def open_logging(
+	module_name, reload = False, p_document_directory = ".",
+	p_running_on_target_device=False):
 
 	global logger
 	
 	if reload:
 		logging_filename = os.path.join(p_document_directory, LOGGING_FILENAME)
-		copy_template = os.path.exists(LOGGING_TEMPLATE_FILENAME) and not os.path.exists(logging_filename)
+		
+		if p_running_on_target_device:
+			template_filename = LOGGING_TARGET_DEVICE_TEMPLATE_FILENAME
+			
+		else:
+			template_filename = LOGGING_TEMPLATE_FILENAME
+			
+		copy_template = os.path.exists(template_filename) and not os.path.exists(logging_filename)
 		
 		if copy_template:
 			directory = os.path.dirname(logging_filename)
@@ -26,15 +36,11 @@ def open_logging(module_name, reload = False, p_document_directory = "."):
 			if not os.path.exists(directory):
 				os.makedirs(directory)
 			
-			shutil.copyfile(LOGGING_TEMPLATE_FILENAME, logging_filename)
+			shutil.copyfile(template_filename, logging_filename)
 		
 		logging_config_json_file = open(logging_filename)
 		parsed_logging_data = json.load(logging_config_json_file)
-		print ("doc dir", p_document_directory)
-		print ("aus Config", parsed_logging_data["handlers"]["file"]["filename"])
 		log_file = os.path.join(p_document_directory, parsed_logging_data["handlers"]["file"]["filename"])
-		print (log_file)
-		#exit(0)
 		parsed_logging_data["handlers"]["file"]["filename"] = log_file
 		log_dir = os.path.dirname(log_file)
 		if not os.path.exists(log_dir):

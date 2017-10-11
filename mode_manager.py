@@ -70,7 +70,11 @@ def get_available_modes(p_document_directory, includePredefinedModes = True):
 		
 	filePattern = re.compile(MODE_FILE_EXTENSION_PATTERN)
 	
-	for file in os.listdir(os.path.join(p_document_directory, MODE_FILE_DIRECTORY)):
+	mode_file_directory = os.path.join(p_document_directory, MODE_FILE_DIRECTORY)
+	if not os.path.exists(mode_file_directory):
+		os.makedirs(mode_file_directory)
+	
+	for file in os.listdir(mode_file_directory):
 		match = filePattern.match(file)
 		
 		if (match):

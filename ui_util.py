@@ -410,8 +410,6 @@ def get_document_directory():
 		
 def test():
 
-	print(os.getcwd())
-	print(get_document_directory())
 	model = spelling_mode.spelling_mode()
 	vc = ViewController()
 	vc.set_model(model)
