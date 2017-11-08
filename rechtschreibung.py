@@ -544,7 +544,7 @@ class MainViewController ( ui_util.ViewController ):
 		
 ##### MAIN ######################
 
-def main(p_running_on_target_device = False):
+def main(p_running_on_target_device = False, p_running_on_iphone=False):
 
 	console.clear()
 
@@ -592,7 +592,7 @@ def main(p_running_on_target_device = False):
 	my_main_view_controller.add_child_controller(NAME_NAVIGATION_VIEW, top_navigation_vc)
 	top_navigation_view.name = NAME_NAVIGATION_VIEW
 	
-	if ui_util.is_iphone():
+	if ui_util.is_iphone() or p_running_on_iphone:
 		my_main_view_controller.load('rechtschreibung_iphone')
 		app_control_vc = ui_util.ViewController(my_main_view_controller)
 		app_control_vc.load('rechtschreibung_app_control_iphone')
@@ -604,7 +604,12 @@ def main(p_running_on_target_device = False):
 		button = my_main_view_controller.find_subview_by_name('button_open_app_control_view')
 		button.image = image_app_control
 		button.hidden = False
-				
+		
+		my_main_view_controller.add_left_button_item(
+			NAME_NAVIGATION_VIEW_TOP_LEVEL, 
+			'button_close_top_navigation_view', 
+			ui.ButtonItem(image=image_close_app))
+					
 	else:
 		my_main_view_controller.load('rechtschreibung')
 		my_main_view_controller.add_right_button_item(
@@ -692,6 +697,9 @@ def main(p_running_on_target_device = False):
 	logger.info("Terminate application")
 	
 if __name__ == '__main__':
-	running_on_target_device = (len(sys.argv) > 1 and sys.argv[1] == 'running_on_target_device')
-	main(p_running_on_target_device=running_on_target_device)
+	running_on_target_device = 'running_on_target_device' in sys.argv
+	running_on_iphone = 'running_on_iphone' in sys.argv
+	main(
+		p_running_on_target_device=running_on_target_device,
+		p_running_on_iphone=running_on_iphone)
 
