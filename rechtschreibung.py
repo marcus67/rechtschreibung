@@ -556,7 +556,9 @@ def main(p_running_on_target_device = False):
 			
 	else:
 		document_directory = "."
-		
+	
+	#print("running_on_target_device", p_running_on_target_device)
+			
 	logger = log.open_logging(
 		'rechtschreibung', 
 		reload=True, 
@@ -595,11 +597,6 @@ def main(p_running_on_target_device = False):
 		app_control_vc = ui_util.ViewController(my_main_view_controller)
 		app_control_vc.load('rechtschreibung_app_control_iphone')
 		
-		my_main_view_controller.add_left_button_item(
-			NAME_NAVIGATION_VIEW_TOP_LEVEL, 
-			'button_close_top_navigation_view', 
-			ui.ButtonItem(image=image_close_app))
-			
 		button = my_main_view_controller.find_subview_by_name('button_open_top_navigation_view')
 		button.image = image_top_navigation
 		button.hidden = False
@@ -678,17 +675,14 @@ def main(p_running_on_target_device = False):
 	
 		
 	if p_running_on_target_device:
-		hide_title_bar = True
 		animated = False	
-		
+		button = my_main_view_controller.find_subview_by_name('button_close_app')
+		button.hidden = True	
+			
 	else:
-		hide_title_bar = True
 		animated = True
-		my_main_view_controller.add_left_button_item(
-				NAME_HEADER_VIEW, 
-				'button_close_app', 
-				ui.ButtonItem(image=ui.Image.named('iob:close_round_32')))		
 	
+	hide_title_bar = True
 	my_main_view_controller.present(
 		'fullscreen', title_bar_color=defaults.COLOR_GREY,
 		hide_title_bar=hide_title_bar,

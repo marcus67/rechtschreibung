@@ -418,7 +418,7 @@
               "name" : "label_app_name",
               "font_name" : "<System-Bold>"
             },
-            "selected" : true
+            "selected" : false
           },
           {
             "nodes" : [
@@ -507,11 +507,11 @@
     "frame" : "{{0, 0}, {1024, 768}}",
     "class" : "View",
     "attributes" : {
-      "name" : "Rechtschreibung",
-      "enabled" : true,
-      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "enabled" : true,
       "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "name" : "Rechtschreibung",
       "flex" : ""
     },
     "selected" : false

@@ -217,9 +217,9 @@
       "flex" : "",
       "enabled" : true,
       "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "name" : "Regeln",
       "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
-      "name" : "Regeln"
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)"
     },
     "selected" : false
   }
