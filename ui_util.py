@@ -336,10 +336,20 @@ class ViewController (object):
 		fmt = "handle_textfield_action: not handled"
 		self._logger.warning(fmt)
 		
-	def present(self, style='popover', title=None, orientations=None, title_bar_color=None):
+	def present(
+		self, style='popover', title=None, 
+		orientations=None, title_bar_color=None,
+		hide_title_bar=False, animated=True):
 		global logger
 		
-		self.view.present(style=style, title_bar_color=title_bar_color, orientations=orientations if orientations else self.orientations)
+		lbi = self.view.left_button_items
+		
+		self.view.left_button_items = []
+		
+		self.view.present(
+			style=style, title_bar_color=title_bar_color, 
+			orientations=orientations if orientations else self.orientations,
+			hide_title_bar=hide_title_bar, animated=animated)
 		
 		try:
 			self.view.wait_modal()

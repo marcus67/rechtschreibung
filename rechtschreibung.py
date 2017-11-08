@@ -65,6 +65,7 @@ SAMPLE_CONFIG_FILE = 'etc/sample_rechtschreibung_config.txt'
 
 NAME_NAVIGATION_VIEW = 'top_navigation_view'
 NAME_NAVIGATION_VIEW_TOP_LEVEL = 'Regeln'
+NAME_HEADER_VIEW = "view_header"
 
 # Filename of the application icon
 IMAGE_URL_RECHTSCHREIBUNG = 'lib/rechtschreibung_32.png'
@@ -140,7 +141,8 @@ class MainViewController ( ui_util.ViewController ):
 		self.select_mode_for_save_vc = mode_saver.SpellingModeSaver(self)
 		
 		# View controller for displaying the statistical diagrams of the spelling ruleset
-		self.statistics_view_vc = statistics_view.StatisticsViewController(self)
+		self.statistics_view_vc = statistics_view.StatisticsViewController(
+			p_parent_vc=self, p_document_directory=self._document_directory)
 		
 		# View controller for displaying information on rules
 		self.info_popup = popup.PopupViewController()
@@ -228,8 +230,11 @@ class MainViewController ( ui_util.ViewController ):
 		elif name == 'button_close_top_navigation_view':
 			self.close_top_navigation_view()
 			
-		elif name == 'button_icon_rechtschreibung':
-			self.button_icon_rechtschreibung()
+		elif name == 'button_open_app_info':
+			self.button_open_app_info()
+			
+		elif name == 'button_close_app':
+			self.close_app()
 			
 		elif name.startswith(BUTTON_PREFIX):
 			view_name = name[len(BUTTON_PREFIX):]
@@ -314,6 +319,10 @@ class MainViewController ( ui_util.ViewController ):
 		view.close()
 		self.delay_highlight_changes = False
 		self.update_sample_text()
+		
+	def close_app(self):
+		view = self.find_subview_by_name('Rechtschreibung')
+		view.close()
 		
 	def open_app_control_view(self):
 		view = self.find_subview_by_name('App-Konfiguration')
@@ -486,7 +495,7 @@ class MainViewController ( ui_util.ViewController ):
 			self.conf.state.current_rule_set_name = selectedMode.control.name
 			self._config_handler.mark_configuration_as_changed()
 					
-	def button_icon_rechtschreibung(self):
+	def button_open_app_info(self):
 		global logger
 		
 		self._logger.info("Opening URL %s" % GITHUB_URL_RECHTSCHREIBUNG)
@@ -565,6 +574,10 @@ def main(p_running_on_target_device = False):
 	
 	image_rechtschreibung = (
 		ui.Image.named(IMAGE_URL_RECHTSCHREIBUNG).with_rendering_mode(ui.RENDERING_MODE_ORIGINAL))
+	image_close_app = ui.Image.named('iob:close_round_32')
+	image_top_navigation = ui.Image.named('lib/ios7_toggle_32.png')
+	image_app_control = ui.Image.named('ionicons-gear-a-32')
+	
 	my_main_view_controller = MainViewController(p_document_directory=document_directory)
 	
 	top_navigation_vc = ui_util.ViewController(my_main_view_controller)
@@ -581,33 +594,39 @@ def main(p_running_on_target_device = False):
 		my_main_view_controller.load('rechtschreibung_iphone')
 		app_control_vc = ui_util.ViewController(my_main_view_controller)
 		app_control_vc.load('rechtschreibung_app_control_iphone')
+		
 		my_main_view_controller.add_left_button_item(
 			NAME_NAVIGATION_VIEW_TOP_LEVEL, 
 			'button_close_top_navigation_view', 
-			ui.ButtonItem(image=ui.Image.named('iob:close_round_32')))
-		button_item_list = [
-			ui.ButtonItem(
-				image=ui.Image.named('lib/ios7_toggle_32.png'), 
-				action=my_main_view_controller.handle_action, 
-				title='button_open_top_navigation_view'),
-			ui.ButtonItem(
-				image=ui.Image.named('ionicons-gear-a-32'), 
-				action=my_main_view_controller.handle_action, 
-				title='button_open_app_control_view'),
-			ui.ButtonItem(
-				image=image_rechtschreibung, 
-				action=my_main_view_controller.handle_action, 
-				title='button_icon_rechtschreibung'),
-			]
-		my_main_view_controller.set_right_button_item_list('Rechtschreibung', button_item_list)
-		
+			ui.ButtonItem(image=image_close_app))
+			
+		button = my_main_view_controller.find_subview_by_name('button_open_top_navigation_view')
+		button.image = image_top_navigation
+		button.hidden = False
+	
+		button = my_main_view_controller.find_subview_by_name('button_open_app_control_view')
+		button.image = image_app_control
+		button.hidden = False
+				
 	else:
 		my_main_view_controller.load('rechtschreibung')
 		my_main_view_controller.add_right_button_item(
-			'Rechtschreibung', 
+			NAME_HEADER_VIEW, 
 			'button_icon_rechtschreibung', 
 			ui.ButtonItem(image=image_rechtschreibung))
-		my_main_view_controller.add_subview('view_container_navigation', top_navigation_vc.view)
+	
+	button = my_main_view_controller.find_subview_by_name('button_close_app')
+	button.image = image_close_app
+	
+	button = my_main_view_controller.find_subview_by_name('button_open_app_info')
+	button.image = image_rechtschreibung
+	
+		
+		#my_main_view_controller.add_left_button_item(
+		#	'Rechtschreibung', 
+		#	'button_icon_rechtschreibung', 
+		#	ui.ButtonItem(image=image_rechtschreibung))
+	my_main_view_controller.add_subview('view_container_navigation', top_navigation_vc.view)
 		
 	view = my_main_view_controller.find_subview_by_name('segmented_control_highlighting_mode')
 	view.action = my_main_view_controller.handle_action
@@ -656,7 +675,25 @@ def main(p_running_on_target_device = False):
 	text_view.load_html(html_string)
 	my_main_view_controller.update_sample_text(p_initial_update = True)
 	my_main_view_controller.activate_save_timer()
-	my_main_view_controller.present('fullscreen', title_bar_color=defaults.COLOR_GREY)
+	
+		
+	if p_running_on_target_device:
+		hide_title_bar = True
+		animated = False	
+		
+	else:
+		hide_title_bar = True
+		animated = True
+		my_main_view_controller.add_left_button_item(
+				NAME_HEADER_VIEW, 
+				'button_close_app', 
+				ui.ButtonItem(image=ui.Image.named('iob:close_round_32')))		
+	
+	my_main_view_controller.present(
+		'fullscreen', title_bar_color=defaults.COLOR_GREY,
+		hide_title_bar=hide_title_bar,
+		animated=animated)
+		
 	my_main_view_controller.shutdown()
 	logger.info("Terminate application")
 	

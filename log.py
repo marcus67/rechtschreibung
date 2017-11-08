@@ -9,6 +9,8 @@ import os
 import shutil
 import json
 
+import util
+
 LOGGING_FILENAME = "etc/log_config.json"
 LOGGING_TEMPLATE_FILENAME = "etc/log_config_template.json"
 LOGGING_TARGET_DEVICE_TEMPLATE_FILENAME = "etc/log_config_target_device_template.json"
@@ -31,20 +33,14 @@ def open_logging(
 		copy_template = os.path.exists(template_filename) and not os.path.exists(logging_filename)
 		
 		if copy_template:
-			directory = os.path.dirname(logging_filename)
-			
-			if not os.path.exists(directory):
-				os.makedirs(directory)
-			
+			util.check_directory(p_filename=logging_filename)
 			shutil.copyfile(template_filename, logging_filename)
 		
 		logging_config_json_file = open(logging_filename)
 		parsed_logging_data = json.load(logging_config_json_file)
 		log_file = os.path.join(p_document_directory, parsed_logging_data["handlers"]["file"]["filename"])
 		parsed_logging_data["handlers"]["file"]["filename"] = log_file
-		log_dir = os.path.dirname(log_file)
-		if not os.path.exists(log_dir):
-			os.makedirs(log_dir)
+		util.check_directory(p_filename=log_file)
 		logging_config_json_file.close()
 		logging.config.dictConfig(parsed_logging_data)
 		

@@ -4,6 +4,7 @@
 import difflib
 import string
 import six
+import os.path
 
 PARAMETER_RUNNING_ON_TARGET_DEVICE = "--target-device"
 
@@ -116,3 +117,9 @@ def count_differences_in_dicts(dict1, dict2):
 	
 def is_running_on_target_device():
 	return PARAMETER_RUNNING_ON_TARGET_DEVICE in sys.argv
+	
+def check_directory(p_filename):
+	directory = os.path.dirname(p_filename)
+			
+	if not os.path.exists(directory):
+		os.makedirs(directory)

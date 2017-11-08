@@ -6,16 +6,19 @@ import console
 import six
 
 import defaults
+import util
 import ui_util
 import rulesets
 import statistics
 import charts
 import log
+import os.path
 
 if six.PY3:
 	from importlib import reload
 	
 reload(defaults)
+reload(util)
 reload(ui_util)
 reload(rulesets)
 reload(statistics)
@@ -32,9 +35,11 @@ PLOT3_FILENAME = 'doc/plot3.png'
 
 class StatisticsViewController ( ui_util.ViewController ) :
 
-	def __init__(self, parent_vc=None):
-		super(StatisticsViewController, self).__init__(parent_vc)
+	def __init__(self, p_document_directory='.', p_parent_vc=None):
+		
+		super(StatisticsViewController, self).__init__(p_parent_vc)
 		self._logger = log.open_logging('StatisticsView')
+		self._document_directory = p_document_directory
 		
 		if ui_util.is_iphone():
 			self.load('statistics_view_iphone')
@@ -79,14 +84,25 @@ class StatisticsViewController ( ui_util.ViewController ) :
 			
 	def present(self, reference_text, working_text, style='sheet'):
 		console.show_activity('Aufbereiten der Graphik')
-		self.prepare_histogram_image_view(reference_text, PLOT1_FILENAME)
-		self.imageview_plot1.image = ui.Image.named(PLOT1_FILENAME).with_rendering_mode(ui.RENDERING_MODE_ORIGINAL)
+		filename = os.path.join(self._document_directory, PLOT1_FILENAME)
+		util.check_directory(p_filename=filename)
+		self.prepare_histogram_image_view(reference_text, filename)
+		self.imageview_plot1.image = ui.Image.named(
+			filename).with_rendering_mode(ui.RENDERING_MODE_ORIGINAL)
 		
-		self.prepare_histogram_image_view(working_text, PLOT2_FILENAME)
-		self.imageview_plot2.image = ui.Image.named(PLOT2_FILENAME).with_rendering_mode(ui.RENDERING_MODE_ORIGINAL)
+		filename = os.path.join(self._document_directory, PLOT2_FILENAME)
+		util.check_directory(p_filename=filename)
+		self.prepare_histogram_image_view(working_text, filename)
+		self.imageview_plot2.image = ui.Image.named(
+			filename).with_rendering_mode(ui.RENDERING_MODE_ORIGINAL)
 		
-		if self.prepare_bar_plot_image_view(reference_text, working_text, PLOT3_FILENAME, self.imageview_plot3.width, self.imageview_plot3.height):
-			self.imageview_plot3.image = ui.Image.named(PLOT3_FILENAME).with_rendering_mode(ui.RENDERING_MODE_ORIGINAL)
+		filename = os.path.join(self._document_directory, PLOT3_FILENAME)
+		util.check_directory(p_filename=filename)
+		if self.prepare_bar_plot_image_view(
+				reference_text, working_text, filename, 
+				self.imageview_plot3.width, self.imageview_plot3.height):
+			self.imageview_plot3.image = ui.Image.named(
+				filename).with_rendering_mode(ui.RENDERING_MODE_ORIGINAL)
 			self.imageview_plot3.hidden = False
 			
 		else:

@@ -1,16 +1,12 @@
 [
   {
-    "selected" : false,
-    "frame" : "{{0, 0}, {320, 480}}",
-    "class" : "View",
     "nodes" : [
       {
-        "selected" : false,
-        "frame" : "{{0, 0}, {326, 480}}",
-        "class" : "WebView",
         "nodes" : [
 
         ],
+        "frame" : "{{0, 66}, {320, 414}}",
+        "class" : "WebView",
         "attributes" : {
           "flex" : "WH",
           "border_width" : 0,
@@ -19,16 +15,129 @@
           "uuid" : "5353A67C-5CDA-4E56-B74E-D449F4191102",
           "corner_radius" : 0,
           "name" : "webview_text_view"
-        }
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+          {
+            "nodes" : [
+
+            ],
+            "frame" : "{{282, 24}, {32, 32}}",
+            "class" : "Button",
+            "attributes" : {
+              "action" : "self.handle_action",
+              "flex" : "L",
+              "frame" : "{{472, 16}, {80, 32}}",
+              "title" : "Button",
+              "uuid" : "14E00A2B-2FD5-4635-BD2C-5AD0449EA481",
+              "class" : "Button",
+              "name" : "button_open_app_info",
+              "font_size" : 15
+            },
+            "selected" : false
+          },
+          {
+            "nodes" : [
+
+            ],
+            "frame" : "{{202, 24}, {32, 32}}",
+            "class" : "Button",
+            "attributes" : {
+              "action" : "self.handle_action",
+              "flex" : "L",
+              "frame" : "{{472, 16}, {80, 32}}",
+              "title" : "Button",
+              "uuid" : "8E135FA2-BBCB-4619-997C-E1D240203F4F",
+              "class" : "Button",
+              "custom_attributes" : "{ 'hidden' : True }\n",
+              "name" : "button_open_app_control_view",
+              "font_size" : 15
+            },
+            "selected" : false
+          },
+          {
+            "nodes" : [
+
+            ],
+            "frame" : "{{242, 24}, {32, 32}}",
+            "class" : "Button",
+            "attributes" : {
+              "action" : "self.handle_action",
+              "flex" : "L",
+              "frame" : "{{472, 16}, {80, 32}}",
+              "title" : "Button",
+              "uuid" : "93ACF146-D552-4120-89D9-733AD26A8ED5",
+              "class" : "Button",
+              "custom_attributes" : "{ 'hidden' : True }",
+              "name" : "button_open_top_navigation_view",
+              "font_size" : 15
+            },
+            "selected" : false
+          },
+          {
+            "nodes" : [
+
+            ],
+            "frame" : "{{44, 24}, {150, 32}}",
+            "class" : "Label",
+            "attributes" : {
+              "flex" : "WTB",
+              "font_name" : "<System-Bold>",
+              "frame" : "{{437, 8}, {150, 32}}",
+              "uuid" : "D779BE52-185E-480B-9CE7-FD6DCE1EAC18",
+              "class" : "Label",
+              "alignment" : "center",
+              "text" : "Rechtschreibung",
+              "background_color" : "RGBA(0.870283,0.870283,0.870283,1.000000)",
+              "name" : "label_app_name",
+              "font_size" : 18
+            },
+            "selected" : false
+          },
+          {
+            "nodes" : [
+
+            ],
+            "frame" : "{{4, 24}, {32, 34}}",
+            "class" : "Button",
+            "attributes" : {
+              "flex" : "R",
+              "action" : "self.handle_action",
+              "frame" : "{{472, 8}, {80, 32}}",
+              "title" : "Button",
+              "uuid" : "E398604A-B80B-421B-8140-8B92427F7718",
+              "class" : "Button",
+              "name" : "button_close_app",
+              "font_size" : 15
+            },
+            "selected" : true
+          }
+        ],
+        "frame" : "{{0, 0}, {320, 64}}",
+        "class" : "View",
+        "attributes" : {
+          "flex" : "W",
+          "frame" : "{{110, 190}, {100, 100}}",
+          "background_color" : "RGBA(0.866667,0.866667,0.866667,1.000000)",
+          "class" : "View",
+          "name" : "view_header",
+          "uuid" : "BB0C36A4-4C97-4FAB-98E0-F73E634F049A"
+        },
+        "selected" : true
       }
     ],
+    "frame" : "{{0, 0}, {320, 480}}",
+    "class" : "View",
     "attributes" : {
       "flex" : "",
       "enabled" : true,
       "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
       "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
-      "name" : "Rechtschreibung",
-      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)"
-    }
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "name" : "Rechtschreibung"
+    },
+    "selected" : false
   }
 ]
